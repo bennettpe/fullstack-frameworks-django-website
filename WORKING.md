@@ -7,7 +7,7 @@ GitHub:      <br>
 
 This is the milestone project that I have created for the **“Fullstack Frameworks with Django”** module, which is part of  “Full Stack Web Development Course” offered by Code Institute.
 
-## Step1 Creating Project Enviroment 
+## Step1 Creating Django Project Enviroment 
 1. Create the project Clould9 Workspace **fullstack-frameworks-django-project**  <span style="color:green">Done</span> <br>
 
 2. Install Django 1.11.20 <span style="color:green">Done</span> <br>
@@ -253,3 +253,272 @@ This is the milestone project that I have created for the **“Fullstack Framewo
     Applying auth.0008_alter_user_username_max_length... OK
     Applying sessions.0001_initial... OK
     ```
+
+20. Run the following commands to Commit changes to git.
+    ```python
+    git add .
+    git commit -m "git commit -m "Initial commit for django project"
+    ```
+
+    output from bash terminal
+    ```python
+    [master 5dfdc88] Initial commit for django project
+    8 files changed, 392 insertions(+), 4 deletions(-)
+    create mode 100755 manage.py
+    create mode 100644 triumphant_triumphs/__init__.py
+    create mode 100644 triumphant_triumphs/settings.py
+    create mode 100644 triumphant_triumphs/urls.py
+    create mode 100644 triumphant_triumphs/wsgi.py
+    ```
+    
+## Step2 Authentication App - Authentication and Authorisation 
+
+This section is for setting up an **authentication mechanism** to allow users to register and log in.
+
+1. **Create** Django app called **account** 
+    ```python
+    django-admin startproject accounts
+    ```
+ 
+     ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ django-admin startapp accounts 
+    ```
+    
+    The following django files have been **created**
+    ```
+    fullstack-frameworks-django-project
+    │
+    └── accounts
+        ├── migrations
+        │   └── __init__.py # Python file to allow app packages to be imported from other directories.  
+        │
+        ├── __init__.py     # Python file to allow app packages to be imported from other directories. 
+        ├── admin.py        # File with admin definitions for the app. 
+        ├── apps.py         # File with configuration parameters for the app.
+        ├── models.py       # File with database definitions (i.e., model classes) for the app.
+        ├── tests.py        # File with test definitions for the app.
+        └── views.py        # File with view definitions (i.e., controller methods) for the app.
+    ```    
+2. In **setting.py** 
+   go to **INSTALLED_APPS** section and add line containing **accounts** 
+   ```python
+   # Application definition
+
+   INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'accounts',                   <== this line added.
+    ]
+   ```
+
+3. **Create** admin superuser
+   ```python
+   python3 manage.py createsuperuser
+   ```
+
+   ouput from bash terminal
+   ```python
+   bennettpe:~/workspace (master) $ python3 manage.py createsuperuser
+   Username (leave blank to use 'ubuntu'): admin
+   Email address: admin@gmail.com
+   Password: 
+   Password (again): 
+   Superuser created successfully.
+   ```
+   
+4. Log into Django admin 
+   **Go to** https://fullstack-frameworks-django-project-bennettpe.c9users.io/admin <br>
+   Enter **Username** and **Password** created in admin superuser. <br>
+   Your now have access to the Django admin panel.
+
+5. Create a **templates** folder in the **accounts** app <br>
+   Create a new file called **index.html**
+   ```python
+   <!DOCTYPE html>
+    <html>
+        <head>
+            <title> Django Auth </title>
+        </head>
+        <body>
+            <nav>
+               <ul>
+                <li> <a href="#"> Login </a></li>
+                <li> <a href="#"> Logout </a></li>
+                <li> <a href="#"> Register </a></li>
+                <li> <a href="#"> Profile </a></li>
+               </ul>
+            </nav>
+        </body>
+     </html>
+   ```
+
+6. Create a view function called **index** in **views.py**
+   ```python
+   def index(request):
+    """Return the index.html file"""
+    return render(request, 'index.html')
+   ```
+
+7. Create a url pattern in **triumphant_triumphs/urls.py**
+   ```python
+   from accounts.views import index   
+   url(r'^$', index),
+   ```
+
+8. Linking hrefs to URLs
+   update file called **index.html**
+   ```python
+    <li> <a href="#"> Logout </a></li>
+   ```
+   change to
+   ```python
+    <li> <a href="{% url 'logout' %}"> Logout </a></li>
+   ```
+
+9. Create a view function called **logout** in **views.py**
+   ```python
+   from django.shortcuts import render, redirect, reverse <== add redirect, reverse
+   from django.contrib import auth                        <== add this line
+   # The 'logout' view allows users to logout
+     def logout(request):
+     """Log the user out"""
+     auth.logout(request)
+     return redirect(reverse('index'))
+   ```
+
+10. Create a url pattern in **triumphant_triumphs/urls.py**
+    ```python
+    from accounts.views import index, logout <== add logout
+    url(r'^accounts/logout/$', logout, name="logout")
+    ```
+    
+    amend
+    ```python
+    url(r'^$', index),               <== change from 
+    url(r'^$', index, name="index"), <== change to
+    ``` 
+
+11. Add Django messages 
+    in **accounts/views.py**
+    amend
+    ```python
+    from django.contrib import auth            <== change from
+    from django.contrib import auth, messages  <== change to
+    ```
+    add
+    ```python
+     messages.success(request, "You have successfully been logged out!")
+    ```
+
+    in **accounts/templates/index.html**
+    add
+    ```html
+    {% if messages %}
+    <div>
+         {% for message in messages %}
+             {{ messages }}
+         {% endfor %}
+    </div>
+        {% endif %}
+    ```
+    
+    Update **settings.py** file
+    ```python
+    MESSAGE_STORAGE ="django.contrib.messages.storage.session.SessionStroage"
+    ```
+
+12. Create a view function called **login** in **accounts/views.py**
+    ```python
+    # The 'logoin' view allows users to login 
+    def login(request):
+    """Log the user in"""
+    return render(request, 'login.html')
+    ```
+
+13. Linking hrefs to URLs
+    update **accounts/template/index.html**
+    ```python
+     <li> <a href="#"> Logoin </a></li>                   <== change from
+     <li> <a href="{% url 'logoin' %}"> Logoin </a></li>  <== change to
+    ```
+
+14. Copy contents of **accounts/templates/index.html**   
+    Create           **accounts/templates/login.html**   
+    Amend H1 heading to `User Login`
+
+15. Create a url pattern in **triumphant_triumphs/urls.py**
+    ```python
+    from accounts.views import index, logout, login <== add login
+    url(r'^accounts/login/$', login, name="login")
+    ```
+
+16. Create login form in **accounts**
+    ```python
+    from django import forms
+
+    class UserLoginForm(forms.Form):
+    """Form to be used to log users in """
+    
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+    ```
+
+17. Update **accounts/view.py**
+    Add 
+    ```python
+    from accounts.forms import UserLoginForm
+    ```
+    Amend in view function called **login**
+    ```python
+     login_form = UserLoginForm() <== add this line
+     return render(request, 'login.html') <== change from 
+     return render(request, 'login.html', {"login_form": login_form}) <== change to
+    ```
+  
+18. Update **accounts/templates/login.html
+    Add
+    ```python
+    <form method="POST">
+            {% csrf_token %}
+            {{ login_form.as_p }}
+            <button type="submit"> Login </button>
+        </form> 
+        
+        {% if messages %}
+            <div>
+                {% for messages in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        {% endif %}
+    ```
+
+19. Backend logic to authenticate user in **accounts/views.py**
+    Add
+    ```python
+    # The 'logoin' view allows users to login 
+    def login(request):
+    """Log the user in"""
+    if request.method == "POST":
+        login_form = UserLoginForm(request.POST)
+        
+        if login_form.is_valid():
+            user = auth.authenticate(username=request.POST['username'],
+                                     password=request.POST['password'])
+            if user:
+                auth.login(user=user, request=request)
+                messages.success(request, "You have successfully logged in!") 
+            else:
+                login_form.add_error(None, "Your username or password is incorrect")
+                
+    else:
+        login_form = UserLoginForm()
+    return render(request, 'login.html', {"login_form": login_form})
+    ```
+    
+    
