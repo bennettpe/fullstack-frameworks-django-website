@@ -520,5 +520,333 @@ This section is for setting up an **authentication mechanism** to allow users to
         login_form = UserLoginForm()
     return render(request, 'login.html', {"login_form": login_form})
     ```
+
+20. Apply template inheritance
+    Create **template** folder in fullstack-frameworks_dgango-project
+    Create **base.html** file  in fullstack-frameworks-django-project/templates
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title> {% block page_title %} {% endblock %} </title>
+    </head>
     
+    <body>
+        <h1> {% block page_heading %} {% endblock %} </h1>
+        <nav>
+            <ul>
+              <li> <a href="{% url 'login' %}" > Login </a></li>
+              <li> <a href="{% url 'logout' %}"> Logout </a></li>
+              <li> <a href="#"> Register </a></li>
+              <li> <a href="#"> Profile </a></li>
+            </ul>
+        </nav>
+        <hr>
+        {% if messages %}
+        <div>
+            {% for messages in messages %}
+                {{ messages }}
+            {% endfor %}
+        </div>
+            {% endif %}
+            {% block content %} {% endblock %}
+    </body>
+    </html>
+    ```
+
+    Update **index.html** in **fullstack-frameworks-django-project/templates**
+    ```html
+    {% extends 'base.html' %}
+
+    {% block page_title %} Home Page {% endblock %}
+    {% block page_heading %} Home    {% endblock %} 
+    ```
     
+    Update DIRS= in **settings.py** 
+    ```python
+    'DIRS': [os.path.join(BASE_DIR, 'templates')],
+    ```
+    
+    Update **login.html** in **fullstack-frameworks-django-project/templates**
+    ```html
+    {% extends 'base.html' %}
+
+    {% block page_title %} Login Page {% endblock %}
+    {% block page_heading %} User Login {% endblock %} 
+
+    {% block content %}
+    <form method="POST">
+     {% csrf_token %}
+        {{ login_form.as_p }}
+        <button type="submit"> Login </button>
+    </form> 
+    {% endblock %}
+    ```
+    
+21. Apply If user is not logged in show Register / Login options
+    update **base.html** in **fullstack-frameworks-django-project/templates**
+    ```html
+    <ul>
+        {% if user.is_authenticated %}  
+            <li> <a href="#"> Profile </a></li>
+            <li> <a href="{% url 'logout' %}"> Logout </a></li>
+        {% else %}
+            <li> <a href="#"> Register </a></li>
+            <li> <a href="{% url 'login' %}" > Login </a></li>
+        {% endif %}      
+    </ul>
+    ```
+
+22. Allow logging out of users to only logged in users 
+    Update **views.py** in **fullstack-frameworks-django-project/accounts**
+    add if request.user_is_authenticated:
+    ```python
+    def login(request):
+    """Log the user in"""
+    if request.user.is_authenticated:
+         return redirect(reverse('index')) #Redirect to index page
+    if request.method == "POST":
+        login_form = UserLoginForm(request.POST)
+    ```
+
+    add
+    ```python
+    from django.contrib.auth.decorators import login_required
+    
+    @login_required <== add this line
+    def logout(request):
+    ```
+
+#### Setting up registration View and template    
+
+1. Create a view function called **registration** in **views.py**
+   ```python
+   # The 'registration' view allows user to register
+    def registration(request):
+    """Manages the registration pages"""
+    return render(request, 'registration.html')
+   ```
+
+   in **fullstack-freameworks-django-project\triumphant_triumphs\urls.py**
+   ```python 
+   from accounts.views import index, logout, login                <== change from 
+   from accounts.views import index, logout, login, registration  <== change to
+   ```
+    
+   in **fullstack-freameworks-django-project\triumphant_triumphs\templates\base.html** <br>
+   Update
+   ```python
+   <li> <a href="{% url 'registration' %}" > Register </a></li>
+   ```
+    
+   in **fullstack-freameworks-django-project\triumphant_triumphs\templates** <br>
+   Create **registration.html** and copy content of **login.html** <br>
+   Update **registration.html**
+   ```html
+   % extends 'base.html' %}
+
+   {% block page_title %} Registration Page {% endblock %}
+   {% block page_heading %} User Registration {% endblock %} 
+
+   {% block content %}
+   <p> If you have an account, Please log in <a href="{% url 'login' %}"> Sign in </a> </p>
+   {% endblock %}
+   ```
+   
+2. Add User registration form to **fullstack-frameworks-django-project\accounts\** <br>
+   In **forms.py** <br>
+   Add
+   ```python
+   from django.contrib.auth.models import User
+   from django.contrib.auth.forms import UserCreationForm
+   from django.core.exceptions import ValidationError  
+   
+   class UserRegistrationForm(UserCreationForm):  
+    """Form used to register a new user"""
+    
+    password1 = forms.CharField(widget=forms.PasswordInput)
+    password2 = forms.CharField(label="Password Confirmation", widget=forms.PasswordInput)
+    
+    class Meta:
+        model = User
+        fields = ['email', 'username', 'password1', 'password2']
+   ```
+
+   In **views.py** <br>
+   Update
+   ```python
+   from accounts.forms import UserLoginForm                        <== change from 
+   from accounts.forms import UserLoginForm, UserRegistrationForm  <== change to
+   
+   return render(request, 'registration.html', {"registration_form": registration_form})
+   ```
+   
+   Copy from **login.html** into **registration.htnl** 
+   ```python
+   <form method="POST">
+    {% csrf_token %}
+    {{ registration_form.as_p }}
+    <button type="submit"> Register </button>
+   </form>  
+   ```
+   
+3. Django form validation
+   Create the following in **forms.py**
+   ```python
+   from django import forms
+   from django.contrib.auth.models import User
+   from django.contrib.auth.forms import UserCreationForm
+   from django.core.exceptions import ValidationError
+
+   class UserLoginForm(forms.Form):
+    """Form to be used to log users in """
+    
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+    
+   class UserRegistrationForm(UserCreationForm):  
+    """Form used to register a new user"""
+    
+    password1 = forms.CharField(label="Password", widget=forms.PasswordInput)
+    password2 = forms.CharField(label="Password Confirmation", widget=forms.PasswordInput)
+    
+    class Meta:
+        model = User
+        fields = ['email', 'username', 'password1', 'password2']
+   
+    def clean_email(self):  
+        email = self.cleaned_data.get('email')
+        username = self.cleaned_data.get('username')
+        if User.objects.filter(email=email).exclude(username=username):
+            raise forms.ValidationError(u'Email address must be unique')
+        return email
+        
+    def clean_password2(self):
+        password1 = self.cleaned_data.get('password1')
+        password2 = self.cleaned_data.get('password2')
+        
+        if not password1 or not password2:
+            raise ValidationError("Please confirm your password")
+            
+        if password1 != password2:
+            raise ValidationError("Passwords must match")
+            
+        return password2
+    ```
+
+4. View logic for registration
+   Update a view function called **registration** in views.py
+   ```python
+   # The 'registration' view allows user to register
+   def registration(request):
+    """Manages the registration pages"""
+    if request.user.is_authenticated:
+        return redirect(reverse('index')) #Redirect to index page
+        
+    if request.method == "POST":
+        registration_form = UserRegistrationForm(request.POST)
+        
+        if registration_form.is_valid():
+            registration_form.save()
+            
+            user = auth.authenticate(username=request.POST['username'],
+                                     password=request.POST['password1'])
+            
+            if user:
+                auth.login(user=user, request=request)
+                messages.success(request, "You have sucessfully registered")
+                return redirect(reverse('index')) #Redirect to index page
+            else:
+                messages.error(request, "Unable to register your account at this time")
+    else:      
+        registration_form = UserRegistrationForm()
+        
+    return render(request, 'registration.html', {"registration_form": registration_form})
+    ```
+5. Create User Profile
+   Create a view function called **user_profile** in views.py
+   ```python
+    from django.contrib.auth.models import User
+    def user_profile(request):
+    """The user's profile page"""
+    user = User.objects.get(email=request.user.email)
+    return render(request, 'profile.html', {"profile": user})
+   ```
+
+    update **base.html** in **fullstack-frameworks-django-project/templates**
+    ```html
+    <li> <a href="{%url 'profile' %}"> Profile </a></li>
+    ```
+    
+    In **urls.py** <br>
+    Update
+    ```python
+    from accounts.views import index, logout, login, registration               <== change from
+    from accounts.views import index, logout, login, registration, user_profile <== change to
+    ```
+    Add
+    ```python
+    url(r'^accounts/profile/$', user_profile, name="profile")
+    ```
+    
+    Create a html page called **profile.html** in **fullstack-frameworks-django-project/templates**
+    ```python
+    {% extends 'base.html' %}
+
+    {% block page_title %} {{ user }}'s Profile {% endblock %}
+    {% block page_heading %} {{ user }}'s Profile   {% endblock %} 
+    ```
+    
+#### Password Reset
+
+1. Create new file **url_reset.py** in **fullstack-frameworks-django-project/accounts/**
+   ```python
+   # Reset Password
+
+   from django.urls.conf import url
+   from django.core.urlresolvers import reverse_lazy
+   from django.contrib.auth.views import password_reset, password_reset_done,\
+     password_reset_confirm, password_reset_complete
+
+   urlpatterns = [
+    url(r'^$', password_reset,
+        {'post_reset_redirect': reverse_lazy('password_reset_done')}, name='password_reset'),
+    url(r'done/$', password_reset_done, name='password_reset_done'),
+    url(r'^(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', password_reset_confirm,
+        {'post_reset_redirect': reverse_lazy('password_reset_complete')}, name='password_reset_confirm'),
+    url(r'^complete/$', password_reset_complete, name='password_reset_complete')
+   ]
+   ```
+
+2. Create new file **urls.py** in **fullstack-frameworks-django-project/accounts/**
+   Cut urls for accounts from **urls.py** in **fullstack-frameworks-django-project**
+   Add `include` 
+   ```python
+   # Accounts related urls
+
+   from django.conf.urls import url, include                                    
+   from accounts.views import index, logout, login, registration, user_profile
+   import url_reset
+
+   urlpatterns = [
+       url(r'^logout/$', logout, name="logout"),
+       url(r'^login/$', login, name="login"),
+       url(r'^register/$', registration, name="registration"),
+       url(r'^profile/$', user_profile, name="profile"),
+       url(r'^password-reset/', include(url_reset)) <== remove $
+   ]    
+   ```
+3. Update file **urls.py** in **fullstack-frameworks-django-project**
+   Remove accounts urls
+   ```python
+   from django.conf.urls import url, include  <== add include
+   from django.contrib import admin
+   from accounts.views import index           <== add this line
+   from accounts import urls as accounts_urls <== add this line
+
+   urlpatterns = [
+      url(r'^admin/', admin.site.urls),
+      url(r'^$', index, name="index"),
+      url(r'^accounts/', include(accounts_urls)) <== add this line
+   ]
+   ```
