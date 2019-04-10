@@ -1,4 +1,4 @@
-#Test Registration 
+#Testing Functionality of Registration Form
 
 from django.test import TestCase
 from .forms import UserRegistrationForm

@@ -140,7 +140,7 @@ This is the milestone project that I have created for the **“Fullstack Framewo
     ```
     This installs **dj-database-url 0.5.0** 
 
-    ouput fram bash terminal
+    ouput from bash terminal
     ```python
     bennettpe:~/workspace (master) $ sudo pip3 install dj-database-url
     Downloading/unpacking dj-database-url
@@ -617,7 +617,7 @@ This section is for setting up an **authentication mechanism** to allow users to
     def logout(request):
     ```
 
-#### Setting up registration View and template    
+##### Setting up registration View and template    
 
 1. Create a view function called **registration** in **views.py**
    ```python
@@ -797,7 +797,7 @@ This section is for setting up an **authentication mechanism** to allow users to
     {% block page_heading %} {{ user }}'s Profile   {% endblock %} 
     ```
     
-#### Password Reset
+##### Password Reset
 
 1. Create new file **url_reset.py** in **fullstack-frameworks-django-project/accounts/**
    ```python
@@ -850,3 +850,150 @@ This section is for setting up an **authentication mechanism** to allow users to
       url(r'^accounts/', include(accounts_urls)) <== add this line
    ]
    ```
+
+##### Sending email to Console
+    
+1.  Add to **settings.py**
+    ```python
+    EMAIL_BACKEND ="django.core.mail.backends.console.EmailBackend"
+    ```
+
+##### Password Reset Templates
+1.  Create new folder **registration** in **fullstack-frameworks-django-project/templates/** <br>
+    Create new file   **password_reset_form.html** in **fullstack-frameworks-django-project/templates/registration**
+    ```python
+     <!--Password Reset Form --> 
+
+    {% extends 'base.html' %}
+    {% block page_title %} Password reset page {% endblock %}
+    {% block page_heading %} Reset Password {% endblock %}
+
+    {% block content %}
+    <form method="POST">
+    <p> Please enter your email address </p>
+    
+    {% csrf_token %}
+    {{ form.email.errors }}
+    <p>
+        <label for="id_email"> Email address: </label>
+        {{ form.email }}
+        
+        <buttton> Reset Password </buttton>
+    </p>
+    </form>
+    {% endblock %}
+    ```
+
+    Update file **login.html** in **fullstack-frameworks-django-project/templates**
+    Add
+    ```python
+    <p><a href="{% url 'password_reset' %}"> Reset Password </a></p>
+    ```
+
+##### Sending a Real Email  
+1.  Add the following to **settings.py** in **fullstack-frameworks-django-project/triumphant_triumphs** 
+    ```python
+    EMAIL_USE_TLS = True
+    EMAIL_HOST = 'smtp.gmail.com' 
+    EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
+    EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
+    EMAIL_PORT = 587
+    ```
+
+##### Email Authentication
+1. Add the following to **settings.py** in **fullstack-frameworks-django-project/triumphant_triumphs** 
+    ```python
+    AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.EmailAuth'
+    ]
+    ```
+2.  Create new file   **backends.py** in **fullstack-frameworks-django-project/accounts**
+    ```python
+    # Email Authentication 
+
+    from django.contrib.auth.models import User
+
+    class EmailAuth:
+    """Authenticate a user by an exact match on the email and password"""
+    
+    def authenticate(self, username=None, password=None):
+        """ Get an instance of `User` based off the email and verify the password """
+        
+        try:
+            user = User.objects.get(email=username)
+            
+            if user.check_password(password):
+                return user
+            return None
+        except User.DoesNotExist:
+            return None
+            
+    def get_user(self, user_id):
+        """ Used by the Django authentication sysytem to receive a user instance """
+        
+        try:
+            user = User.objects.get(pk=user_id)
+            
+            if user.is_active:
+                return user
+            return None
+        except User.DoesNotExist:
+            return None
+    ```
+
+##### Adding Bootstrap Styling
+1. Add bootstrap cdn links to **base.html** **fullstack-frameworks-django-project/templates**
+
+#### Adding Django-forms-bootstrap
+1.Install django-forms-bootstrap
+    ```python
+    sudo pip3 install django-forms-bootstrap
+    ```
+    This installs **dj-forms-bootstrap 3.1.0** 
+
+    ouput from bash terminal
+    ```python
+    Downloading/unpacking django-forms-bootstrap
+    Downloading django_forms_bootstrap-3.1.0-py2.py3-none-any.whl
+    Installing collected packages: django-forms-bootstrap
+    Successfully installed django-forms-bootstrap
+    Cleaning up...
+    ```
+2. In **setting.py** 
+   go to **INSTALLED_APPS** section and add line containing **django_forms_bootstrap** 
+   ```python
+   # Application definition
+
+   INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django_forms_bootstrap',     <== this line added.
+    'accounts',                  
+    ]
+   ```
+
+3. in **registration.html** 
+Add
+```python
+{% load bootstrap_tags %}
+```
+
+Amend to
+```python
+{{ registration_form | as_bootstrap }}
+```
+4. in **login.html** 
+Add
+```python
+{% load bootstrap_tags %}
+```
+
+Amend to
+```python
+{{ login_form | as_bootstrap }}
+```

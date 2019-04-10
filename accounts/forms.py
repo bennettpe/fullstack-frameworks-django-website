@@ -1,22 +1,20 @@
 #Form for users to register
 
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
 
-
 class UserLoginForm(forms.Form):
-    """Used to log users in """
+    """Form Used to log users in """
     
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
 
 
-    
 class UserRegistrationForm(UserCreationForm):  
-    """Used to register a new user"""
+    """Form Used to register a new user"""
     
     password1 = forms.CharField(
         label="Password", 
@@ -30,13 +28,20 @@ class UserRegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['email', 'username', 'password1', 'password2']
+
    
     def clean_email(self):  
         email = self.cleaned_data.get('email')
         username = self.cleaned_data.get('username')
+        
+        if not email:
+            raise ValidationError("Email address must not be empty")
+            
         if User.objects.filter(email=email).exclude(username=username):
-            raise forms.ValidationError(u'Email address must be unique')
+            raise forms.ValidationError(u'Email address must be unique')    
+            
         return email
+
         
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
