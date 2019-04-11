@@ -1140,3 +1140,52 @@ Amend to
 5. Do a `git status` to make sure **eny.py** is exclude
 6. Add to file **settings.py** in **fullstack-frameworks-django-project/triumphant_triumphs**   
    import env
+7. git commit changes
+
+
+## Checkout App - using Stripe
+
+This section is for setting up an **customer payment mechanism** to allow users ability to pay.
+
+1. **Create** Django app called **checkout** 
+    ```python
+    python3 manage.py startapp checkout 
+    ```
+ 
+     ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py startapp checkout 
+    ```
+    
+    The following django files have been **created**
+    ```
+    fullstack-frameworks-django-project
+    │
+    └── checkout
+        ├── migrations
+        │   └── __init__.py # Python file to allow app packages to be imported from other directories.  
+        │
+        ├── __init__.py     # Python file to allow app packages to be imported from other directories. 
+        ├── admin.py        # File with admin definitions for the app. 
+        ├── apps.py         # File with configuration parameters for the app.
+        ├── models.py       # File with database definitions (i.e., model classes) for the app.
+        ├── tests.py        # File with test definitions for the app.
+        └── views.py        # File with view definitions (i.e., controller methods) for the app.
+    ```  
+
+2. In **setting.py** 
+   go to **INSTALLED_APPS** section and add line containing **accounts** 
+   ```python
+   # Application definition
+
+   INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'accounts',                  
+    'checkout',             <== this line added.
+    ]
+   ```
