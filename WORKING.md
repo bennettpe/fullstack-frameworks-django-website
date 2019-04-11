@@ -1039,12 +1039,104 @@ Amend to
 8. Paste Code into top of README.md file
 9. Create new file **.travis.yml** 
 10. Add the following to **.travis.yml**
-```python
-language: python
-python:
-    - "3.4"
-install: "pip install -r requirements.txt"
-script:
-- SECRET_KEY="blah" ./manage.py test
-```
+    ```python
+    language: python
+    python:
+         - "3.4"
+    install: "pip install -r requirements.txt"
+    script:
+    - SECRET_KEY="blah" ./manage.py test
+    ```
+11. Git commit changes
+12. Push changes to github
+    ```python
+    bennettpe:~/workspace (master) $ git add .
+    bennettpe:~/workspace (master) $ git commit -m "Commit Travis changes"
+    [master 7991b24] Commit Travis changes
+    11 files changed, 199 insertions(+), 48 deletions(-)
+    create mode 100644 .travis.yml
+    create mode 100644 static/css/styles.css
+    create mode 100644 templates/footer.html
+    create mode 100644 templates/navbar.html
+    rewrite templates/registration/password_reset_form.html (65%)
+    bennettpe:~/workspace (master) $ git push
+    Username for 'https://github.com': bennettpe
+    Password for 'https://bennettpe@github.com': 
+    Counting objects: 84, done.
+    Delta compression using up to 8 threads.
+    Compressing objects: 100% (79/79), done.
+    Writing objects: 100% (84/84), 23.61 KiB | 1.82 MiB/s, done.
+    Total 84 (delta 30), reused 0 (delta 0)
+    remote: Resolving deltas: 100% (30/30), completed with 1 local object.
+    To https://github.com/bennettpe/fullstack-frameworks-django-website.git
+    7fd944a..7991b24  master -> master
+    ```
 
+#### Install Stripe
+1.Install stripe
+    ```python
+    sudo pip3 install stripe
+    ```
+    This installs **stripe 2.24.1** 
+                  **requests-2.21.0**
+                  **chardet-3.0.4**
+                  **urllib3-1.24.1**
+                  **idna-2.8**
+                  **certifi-2019.3.9**
+
+    ouput from bash terminal
+    ```python
+    Downloading/unpacking stripe
+    Downloading stripe-2.24.1-py2.py3-none-any.whl (194kB): 194kB downloaded
+    Downloading/unpacking requests>=2.20 (from stripe)
+    Downloading requests-2.21.0-py2.py3-none-any.whl (57kB): 57kB downloaded
+    Downloading/unpacking chardet>=3.0.2,<3.1.0 (from requests>=2.20->stripe)
+    Downloading chardet-3.0.4-py2.py3-none-any.whl (133kB): 133kB downloaded
+    Downloading/unpacking urllib3>=1.21.1,<1.25 (from requests>=2.20->stripe)
+    Downloading urllib3-1.24.1-py2.py3-none-any.whl (118kB): 118kB downloaded
+    Downloading/unpacking idna>=2.5,<2.9 (from requests>=2.20->stripe)
+    Downloading idna-2.8-py2.py3-none-any.whl (58kB): 58kB downloaded
+    Downloading/unpacking certifi>=2017.4.17 (from requests>=2.20->stripe)
+    Downloading certifi-2019.3.9-py2.py3-none-any.whl (158kB): 158kB downloaded
+    Installing collected packages: stripe, requests, chardet, urllib3, idna, certifi
+    Found existing installation: requests 2.2.1
+    Not uninstalling requests at /usr/lib/python3/dist-packages, owned by OS
+    Found existing installation: chardet 2.2.1
+    Not uninstalling chardet at /usr/lib/python3/dist-packages, owned by OS
+    Found existing installation: urllib3 1.7.1
+    Not uninstalling urllib3 at /usr/lib/python3/dist-packages, owned by OS
+    Successfully installed stripe requests chardet urllib3 idna certifi
+    Cleaning up...
+    ```
+    
+2.  Update `requirements.txt` file <br>
+   ```python
+   sudo pip3 freeze --local > requirements.txt
+   ```
+   output from bash terminal
+   ```python
+   bennettpe:~/workspace (master) $ sudo pip3 freeze --local > requirements.txt
+   ``` 
+
+1  Go to https://dashboard.stripe.com and either login or create an account
+2. Add to file **settings.py** in **fullstack-frameworks-django-project/triumphant_triumphs**
+    ```python
+    STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
+    STRIPE_SECRET = os.getenv('STRIPE_SECRET')
+    ```
+3. Create file **env.py** in **fullstack-frameworks-django-project/triumphant_triumphs**
+   Copy Publishable key and Secret key from your stripe dashboard
+   NB Do not push these keys to github as anyone thats gets these keys can hack into your account
+   Make sure you add env.py to your .gitignore file
+   
+   ```python
+   import os
+
+   os.environ.setdefault("STRIPE_PUBLISHABLE", "add key here")
+   os.environ.setdefault("STRIPE_SECRET", "add key here")
+   ```
+4. Add to file **.gitignore** in **fullstack-frameworks-django-project/triumphant_triumphs**   
+   eny.py
+5. Do a `git status` to make sure **eny.py** is exclude
+6. Add to file **settings.py** in **fullstack-frameworks-django-project/triumphant_triumphs**   
+   import env
