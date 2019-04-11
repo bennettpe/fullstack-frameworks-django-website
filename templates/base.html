@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
     
@@ -9,37 +10,29 @@
     <!-- FONTAWESOME minified CSS file (v4.1.3)    --> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
                                                         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
                                                         crossorigin="anonymous">
-    <!-- Custom styles for this template           -->
-    <!-- Favicon for this template                 --> 
+    <!-- Custom styles for this template           --> <link rel="stylesheet" href="{% static 'css/styles.css' %}"  type="text/css">
+    <!-- Favicon                                   --> 
 </head>
     
-    <body>
-        <h1> {% block page_heading %} {% endblock %} </h1>
-        <nav>
-            <ul>
-              <!-- If user is not logged in show Register / Login options -->  
-              {% if user.is_authenticated %}  
-                  <li> <a href="{% url 'profile' %}"> Profile </a></li>
-                  <li> <a href="{% url 'logout' %}"> Logout </a></li>
-              {% else %}
-                  <li> <a href="{% url 'registration' %}" > Register </a></li>
-                  <li> <a href="{% url 'login' %}" > Login </a></li>
-              {% endif %}      
-            </ul>
-        </nav>
+<body>
+    <!-- NAVIGATION -->
+    {% include 'navbar.html' %}
         
-        <hr>
-        {% if messages %}
-        <div>
-            {% for messages in messages %}
-                {{ messages }}
-            {% endfor %}
-        </div>
-            {% endif %}
-            {% block content %} {% endblock %}
-    </body>
+    <!-- MESSAGES -->
+    {% if messages %}
+    <div>
+        {% for messages in messages %}
+            {{ messages }}
+        {% endfor %}
+    </div>
+        {% endif %}
+        {% block content %} {% endblock %}
+
+    <!-- FOOTER -->
+    {% include 'footer.html' %}
     
     <!-- SCRIPT -->
     <!-- JQuery minified Javascript file (v3.3.1)         --> <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>   
     <!-- Bootstrap core JavaScript minified file (v4.3.1) --> <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"> </script>
+</body>
 </html>

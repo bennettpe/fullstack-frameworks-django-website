@@ -977,7 +977,16 @@ This section is for setting up an **authentication mechanism** to allow users to
     ]
    ```
 
-3. in **registration.html** 
+3.  Update `requirements.txt` file <br>
+   ```python
+   sudo pip freeze --local > requirements.txt
+   ```
+   output from bash terminal
+   ```python
+   bennettpe:~/workspace (master) $ sudo pip3 freeze --local > requirements.txt
+   ``` 
+
+4. in **registration.html** 
 Add
 ```python
 {% load bootstrap_tags %}
@@ -987,7 +996,7 @@ Amend to
 ```python
 {{ registration_form | as_bootstrap }}
 ```
-4. in **login.html** 
+5. in **login.html** 
 Add
 ```python
 {% load bootstrap_tags %}
@@ -997,3 +1006,45 @@ Amend to
 ```python
 {{ login_form | as_bootstrap }}
 ```
+
+#### Adding Static Files
+1. Create new folder **static**     in **fullstack-frameworks-django-project**
+2. Create new folder **css**        in **fullstack-frameworks-django-project/static**
+3. Create new file   **styles.css** in **fullstack-frameworks-django-project/static/css**
+4. Add to file **base.html**        in **fullstack-frameworks-django-project/templates**
+    ```python
+    {% load staticfiles %}
+    ```
+5. Add to file *settings.py**       in **fullstack-frameworks-django-project/triumphant_triumphs**
+    ```python
+    STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+    )
+    ```
+6. Add to file **styles.css** in **fullstack-frameworks-django-project/static/css**
+    ```html
+    form {
+    width: 50%;
+    }
+    ```
+
+#### Install Travis
+1. Go to https://travis-ci.org/
+2. Go to https://travis-ci.org/account/repositories and click toggle switch for required repository **fullstack-frameworks-django-project**
+3. Click on repository name
+4. Click on Build Unknown
+5. Click on Image URL dropdown box
+6. Choose Markdown
+7. Copy Code that appears
+8. Paste Code into top of README.md file
+9. Create new file **.travis.yml** 
+10. Add the following to **.travis.yml**
+```python
+language: python
+python:
+    - "3.4"
+install: "pip install -r requirements.txt"
+script:
+- SECRET_KEY="blah" ./manage.py test
+```
+
