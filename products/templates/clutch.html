@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+<h2> Clutch </h2>
+            <!-- loop through the contents of products_list, and assigns the current Product object in the list to the 'product' variable. -->
+            {% for product in products_list %}
+                <div class="row list_item">
+                    <div class="col-xs-12 col-sm-4"><img class="product_image" src="{{ MEDIA_URL }}{{ product.image }}"></div>
+                    <div class="col-xs-12 col-sm-8">
+                        <h3> {{ product.part_name }} </h3>
+                        <p class="gtext"> {{ product.part_number}} </p>
+                        <p class="vehicle-model"> {{ product.vehicle_model }} </p>
+                        <p> {{ product.required }} </p>
+                        <p> {{ product.diagram_number }} </p>
+                        <p> {{ product.description }} </p>
+                        <p><strong>&pound; {{ product.price }} </strong></p>
+
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <input name="quantity" type="number" min="1" max="999" value="1" class="form-control" placeholder="Quantity">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-success" type="submit"> Add </button>
+                                </span>
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+</div>
+</div>
+{% endblock %}

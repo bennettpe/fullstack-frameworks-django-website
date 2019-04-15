@@ -228,7 +228,7 @@ This is the milestone project that I have created for the **“Fullstack Framewo
 
 18. Run `git status` to check which files will be added and commited to Git. 
 
-19. Run the following command toinitialize our databases and get table ready.
+19. Run the following command to initialize our databases and get table ready.
     ```python
     python3 manage.py migrate
     ```
@@ -960,6 +960,7 @@ This section is for setting up an **authentication mechanism** to allow users to
     Successfully installed django-forms-bootstrap
     Cleaning up...
     ```
+    
 2. In **setting.py** 
    go to **INSTALLED_APPS** section and add line containing **django_forms_bootstrap** 
    ```python
@@ -1073,7 +1074,7 @@ Amend to
     ```
 
 #### Install Stripe
-1.Install stripe
+1.  Install stripe
     ```python
     sudo pip3 install stripe
     ```
@@ -1142,6 +1143,326 @@ Amend to
    import env
 7. git commit changes
 
+## Products App 
+
+This section is for setting up an **products** to allow users ability to select products.
+
+1. **Create** Django app called **products** 
+    ```python
+    python3 manage.py startapp products
+    ```
+
+    ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py startapp products 
+    ```
+    
+     The following django files have been **created**
+    ```
+    fullstack-frameworks-django-project
+    │
+    └── products
+        ├── migrations
+        │   └── __init__.py # Python file to allow app packages to be imported from other directories.  
+        │
+        ├── __init__.py     # Python file to allow app packages to be imported from other directories. 
+        ├── admin.py        # File with admin definitions for the app. 
+        ├── apps.py         # File with configuration parameters for the app.
+        ├── models.py       # File with database definitions (i.e., model classes) for the app.
+        ├── tests.py        # File with test definitions for the app.
+        └── views.py        # File with view definitions (i.e., controller methods) for the app.
+    ```  
+    
+2. Add to **models.py** in **fullstack-frameworks-django-project/products** 
+    ```python
+    from django.db import models
+
+    # Create your models here.
+    class Product(models.Model):
+    category = models.CharField(max_length=254)
+    part_name = models.CharField(max_length=100)
+    part_number = models.CharField(max_length=30)
+    vehicle_model = models.CharField(max_length=25)
+    required = models.DecimalField(max_digits=3, decimal_places=0)
+    diagram_number = models.DecimalField(max_digits=3, decimal_places=0)
+    description = models.TextField()
+    image = models.ImageField(upload_to='images')
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+   
+    def __str__(self):
+        return self.part_name
+    ```
+
+3. Add to **admin.py** in **fullstack-frameworks-django-project/products**      
+   To allow products to be added through the admin panel
+   ```python
+   from django.contrib import admin
+   from .models import Product
+
+   # Register your models here.
+   admin.site.register(Product)
+   ```
+
+4. In **setting.py** 
+   go to **INSTALLED_APPS** section and add line containing **products** 
+   ```python
+   # Application definition
+
+   INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django_forms_bootstrap',     
+    'accounts',  
+    'products',               <== this line added.
+    ]
+   ```
+
+5. Install pillow
+    Have to install pillow 5.4.1 as clould9 uses python3.4
+    
+    Backwards Incompatible Changes
+    Python 3.4 dropped
+    Python 3.4 is EOL since 2019-03-16 and no longer supported.    
+    We will not be creating binaries, testing, or retaining compatibility with this version.   
+    The final version of Pillow for Python 3.4 is 5.4.1.
+    
+    ```python
+    sudo pip3 install pillow==5.4.1 
+    ```
+    
+    This installs **pillow 5.4.1** 
+
+    ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ sudo pip3 install pillow==5.4.1 
+    Downloading/unpacking pillow==5.4.1
+    Downloading Pillow-5.4.1.tar.gz (16.0MB): 16.0MB downloaded
+    Running setup.py (path:/tmp/pip_build_root/pillow/setup.py) egg_info for package pillow
+    /usr/lib/python3.4/distutils/dist.py:260: UserWarning: Unknown distribution option: 'python_requires'
+      warnings.warn(msg)
+    ....
+    --------------------------------------------------------------------
+    PIL SETUP SUMMARY
+    --------------------------------------------------------------------
+    version      Pillow 5.4.1
+    platform     linux 3.4.3 (default, Nov 17 2016, 01:08:31)
+                 [GCC 4.8.4]
+    --------------------------------------------------------------------
+    --- JPEG support available
+    *** OPENJPEG (JPEG2000) support not available
+    --- ZLIB (PNG/ZIP) support available
+    *** LIBIMAGEQUANT support not available
+    *** LIBTIFF support not available
+    --- FREETYPE2 support available
+    *** LITTLECMS2 support not available
+    *** WEBP support not available
+    *** WEBPMUX support not available
+    --------------------------------------------------------------------
+    To add a missing option, make sure you have the required
+    library and headers.
+    See https://pillow.readthedocs.io/en/latest/installation.html#building-from-source
+    
+    To check the build, run the selftest.py script.
+    
+    Successfully installed pillow
+    Cleaning up...
+    ```
+    
+6. Update `requirements.txt` file <br>
+    ```python
+    sudo pip3 freeze --local > requirements.txt
+    ```
+
+    output from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ sudo pip3 freeze --local > requirements.txt
+    ``` 
+    
+7. Run the following command to makemigrations.
+    ```python
+    python3 manage.py makemigrations products
+    ```
+
+    output from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py makemigrations products
+    Migrations for 'products':
+    products/migrations/0001_initial.py
+    - Create model Product
+    ```
+
+8. Run the following command to migrate and create table in our database.
+    ```python
+    python3 manage.py migrate products
+    ```
+    
+    output from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py migrate products
+    Operations to perform:
+    Apply all migrations: products
+    Running migrations:
+    Applying products.0001_initial... OK
+    ```
+    
+#### Create Produts view and urls 
+1. Create a view function called **products** in **fullstack-frameworks-django-project/products/views.py**
+   ```python
+   from django.shortcuts import render
+    from products.models import Product
+
+    # Create your views here.
+    def products(request):
+    return render(request, 'categories.html')
+
+    # Product.objects.filter() will find all the product entries in the database whose category=engine
+    # Then assign them to a 'products_list' variable and send that variable to engine.html template
+
+    #ENGINE
+    def engine(request):
+    return render(request, 'engine.html', 
+    {'products_list': Product.objects.filter(category='engine')})
+    #CLUTCH
+    def clutch(request):
+    return render(request, 'clutch.html', 
+    {'products_list': Product.objects.filter(category='clutch')})
+    #GEARBOX
+    def gearbox(request):
+    return render(request, 'gearbox.html', 
+    {'products_list': Product.objects.filter(category='gearbox')})
+    #COOLING SYSTEM
+    def cooling(request):
+    return render(request, 'cooling.html', 
+    {'products_list': Product.objects.filter(category='cooling')})
+    #FUEL SYSTEM
+    def fuel(request):
+    return render(request, 'fuel.html', 
+    {'products_list': Product.objects.filter(category='fuel')})   
+    #STEERING
+    def steering(request):
+    return render(request, 'steering.html', 
+    {'products_list': Product.objects.filter(category='steering')})     
+    #FRONT SUSPENSION
+    def suspfront(request):
+    return render(request, 'suspfront.html', 
+    {'products_list': Product.objects.filter(category='suspfront')})   
+    #REAR SUSPENSION
+    def susprear(request):
+    return render(request, 'susprear.html', 
+    {'products_list': Product.objects.filter(category='susprear')})  
+    #BRAKE SYSTEM
+    def brake(request):
+    return render(request, 'brake.html', 
+    {'products_list': Product.objects.filter(category='brake')})  
+    #EXHAUST SYSTEM
+    def exhaust(request):
+    return render(request, 'exhaust.html', 
+    {'products_list': Product.objects.filter(category='exhaust')}) 
+    #ELECTRICS
+    def electrics(request):
+    return render(request, 'electrics.html', 
+    {'products_list': Product.objects.filter(category='electrics')})      
+    #INTERIOR
+    def interior(request):
+    return render(request, 'interior.html', 
+    {'products_list': Product.objects.filter(category='interior')})     
+    #EXTERIOR
+    def exterior(request):
+    return render(request, 'exterior.html', 
+    {'products_list': Product.objects.filter(category='exterior')}) 
+    #BODY & CHASSIS
+    def body(request):
+    return render(request, 'body.html', 
+    {'products_list': Product.objects.filter(category='body')})    
+    ```
+
+2. Create urls **urls.py** in **fullstack-frameworks-django-project/products**
+    ```python
+    # Products related urls
+
+    from django.conf.urls import url, include
+    from products.views import products, engine, clutch, gearbox, cooling, fuel, steering, suspfront, susprear, brake, \
+                           exhaust, electrics, interior, exterior, body
+
+    urlpatterns = [
+    url(r'^categories/$', products, name='categories'),
+    url(r'^engine/$', engine, name='engine'),
+    url(r'^clutch/$', clutch, name='clutch'),
+    url(r'^gearbox/$', gearbox, name='gearbox'),
+    url(r'^cooling/$', cooling, name='cooling'),
+    url(r'^fuel/$', fuel, name='fuel'),
+    url(r'^steering/$', steering, name='steering'),
+    url(r'^suspfront/$', suspfront, name='suspfront'),
+    url(r'^susprear/$', susprear, name='susprear'),
+    url(r'^brake/$', brake, name='brake'),
+    url(r'^exhaust/$', exhaust, name='exhaust'),
+    url(r'^electrics/$', electrics, name='electrics'), 
+    url(r'^interior/$', interior, name='interior'),
+    url(r'^exterior/$', exterior, name='exterior'),
+    url(r'^body/$', body, name='body')
+    ]
+    ```
+
+3. Update file **urls.py** in **fullstack-frameworks-django-project\triumphant_triumphs**
+   Add product urls
+   ```python
+   from django.conf.urls import url, include
+   from django.contrib import admin
+   from accounts.views import index
+   from accounts import urls as accounts_urls
+   from products import urls as products_urls   <== add this line
+
+   urlpatterns = [
+       url(r'^admin/', admin.site.urls),
+       url(r'^$', index, name="index"),
+       url(r'^accounts/', include(accounts_urls)),
+       url(r'^products/', include(products_urls))  <== add this line
+   ]
+   ```
+
+4. Create html files ***.html** in **fullstack-frameworks-django-project\products\templates**
+
+5. Update **settings.py** in **fullstack-frameworks-django-project\triumphant_triumphs**
+     go to **TEMPLATES** section and add the following line
+     ```python
+     TEMPLATES = [
+     {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',              <== Add this line
+                 ],
+             },
+         },
+     ]
+     ```
+
+     add the following lines
+     ```python
+     MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
+     MEDIA_URL = '/media/'
+     ```
+     
+6. Update **urls.py** in **fullstack-frameworks-django-project\triumphant_triumphs**
+     add the following line
+     ```python   
+     from django.views import static
+     from .settings import MEDIA_ROOT
+     url(r'^media/(?P<path>.*)$', static.serve,{'document_root': MEDIA_ROOT}),
+     ```
+
+7. Create Media folder in **fullstack-frameworks-django-project**
+   Create Images folder in **fullstack-frameworks-django-project**
 
 ## Checkout App - using Stripe
 
@@ -1189,3 +1510,64 @@ This section is for setting up an **customer payment mechanism** to allow users 
     'checkout',             <== this line added.
     ]
    ```
+
+#### Create Checkout Models
+1. In **models.py** in **fullstack-frameworks-django-project/checkout**     
+    Add   
+    ```python
+    from django.db import models
+    from products.models import Product
+
+    # Create your models here.
+    class Order(models.Model):
+    full_name = models.CharField(max_length=50, blank=False)
+    phone_number = models.CharField(max_length=20, blank=False)
+    country = models.CharField(max_length=40, blank=False)
+    postcode = models.CharField(max_length=20, blank=True)
+    town_or_city = models.CharField(max_length=40, blank=False)
+    street_address1 = models.CharField(max_length=40, blank=False)
+    street_address2 = models.CharField(max_length=40, blank=False)
+    county = models.CharField(max_length=40, blank=False)
+    date = models.DateField()
+
+    def __str__(self):
+        return "{0}-{1}-{2}".format(self.id, self.date, self.full_name)
+
+    class OrderLineItem(models.Model):
+    order = models.ForeignKey(Order, null=False)
+    product = models.ForeignKey(Product, null=False)
+    quantity = models.IntegerField(blank=False)
+
+    def __str__(self):
+        return "{0} {1} @ {2}".format(self.quantity, self.product.name, self.product.price)
+    ```
+2. Add Models to Admin
+   In **admin.py** in **fullstack-frameworks-django-project/checkout**  
+   Add
+   ```python
+   from django.contrib import admin
+   from .models import Order, OrderLineItem
+
+   # Register your models here.
+   class OrderLineAdminInline(admin.TabularInline):
+     model = OrderLineItem
+
+   class OrderAdmin(admin.ModelAdmin):
+    inlines = (OrderLineAdminInline,)
+
+   admin.site.register(Order, OrderAdmin)
+   ```
+
+3. Run the following command to makemigrations. TODO FROM HERE AFTER FIXING PRODUCTS
+    ```python
+    python3 manage.py startapp checkout
+    ```
+
+4. Run the following command to migrate.
+    ```python
+    python3 manage.py makemigrations checkout
+    ```
+5. Run the following command to migrate.
+    ```python
+    python3 manage.py migrate checkout
+    ```

@@ -1,6 +1,6 @@
 <!-- NAVIGATION NAVBAR -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-secondary fixed-top" id="mainNav">
-      <div class="container">
+    <nav class="navbar navbar-expand-md navbar-dark bg-info fixed-top" id="mainNav">
+      <div class="container-fluid main">
         <a class="navbar-brand" href="/"> Triumphant Triumphs </a>
         <button class="navbar-toggler navbar-toggler-right" 
                  type="button" 
@@ -14,38 +14,44 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive"> 
           <ul class="navbar-nav ml-auto">
-              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="/"> <i class="fas fa-home fa-lg"></i> Home </a></li>
-              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="/about"> <i class="fas fa-home fa-lg"></i> About </a></li>
-              <li class="dropdown"> <a class="dropdown-toggle" href="" data-toggle="dropdown" role="button"> Parts <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/products/categories/"> All Parts </a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="/parts/engine"> Engine  </a></li>
-                    <li><a href="/parts/clutch"> Clutch  </a></li>
-                    <li><a href="/parts/gearbox"> Gearbox and Overdrive  </a></li>
-                    <li><a href="/parts/water"> Cooling and Heating </a></li>
-                    <li><a href="/parts/fuel"> Fuel system  </a></li>
-                    <li><a href="/parts/steering"> Steering </a></li>
-                    <li><a href="/parts/front"> Front Suspension  </a></li>
-                    <li><a href="/parts/rear"> Rear Suspension  </a></li>
-                    <li><a href="/parts/brake"> Brake System </a></li>
-                    <li><a href="/parts/exhaust"> Exhaust System </a></li>
-                    <li><a href="/parts/electrics"> Electrics </a></li>
-                    <li><a href="/parts/interior"> Interior </a></li>
-                    <li><a href="/parts/exterior"> Exterior </a></li>
-                    <li><a href="/parts/body"> Body Parts & Fittings </a></li>
-                </ul>
-              </li>
+              <li class="navbar-item"> <a class="nav-link js-scroll-trigger" href="/"> <i class="fas fa-home fa-lg"></i> Home </a></li>
+              <li class="navbar-item"> <a class="nav-link js-scroll-trigger" href="/about"> <i class="fas fa-home fa-lg"></i> About </a></li>
+              
+            <li class="navbar-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download"> Parts <span class="caret"></span></a>
+              <div class="dropdown-menu" aria-labelledby="download">
+                <a class="dropdown-item" href="/products/categories"> All Parts </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/products/engine"> Engine </a>
+                <a class="dropdown-item" href="/products/clutch"> Clutch </a>
+                <a class="dropdown-item" href="/products/gearbox"> Gearbox and Overdrive </a>
+                <a class="dropdown-item" href="/products/cooling"> Cooling system </a>
+                <a class="dropdown-item" href="/products/fuel"> Fuel system </a>
+                <a class="dropdown-item" href="/products/steering"> Steering </a>
+                <a class="dropdown-item" href="/products/suspfront"> Front Suspension </a>
+                <a class="dropdown-item" href="/products/susprear"> Rear Suspension </a>
+                <a class="dropdown-item" href="/products/brake"> Brake System </a>
+                <a class="dropdown-item" href="/products/exhaust"> Exhaust System </a>
+                <a class="dropdown-item" href="/products/electrics"> Electrics </a>
+                <a class="dropdown-item" href="/products/interior"> Interior </a>
+                <a class="dropdown-item" href="/products/exterior"> Exterior </a>
+                <a class="dropdown-item" href="/products/body"> Body Parts & Fittings </a>
+              </div>
+            </li>
+          
             <!-- If user is not logged in show Register / Login options -->   
-            {% if user.is_authenticated %}  
-              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{% url 'profile' %}"> <i class="fa fa-user"></i> Profile </a></li>
-              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}"> <i class="fa fa-sign-out-alt"> </i>Log Out </a></li>
-            {% else %}   
-              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{% url 'registration' %}"> <i class="fa fa-user-plus"></i> Register </a></li>
-              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="{% url 'login' %}"> <i class="fa fa-sign-in-alt"></i> Log In </a></li>
+            {% if user.is_authenticated %} 
+            {% if user.is_superuser %}
+              <li class="navbar-item"><a class="nav-link js-scroll-trigger"  href="/admin/"> <i class="fas fa-lock"></i> Admin </a></li>
             {% endif %}
-              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="/contact/"> <i class="fa fa-sign-in-alt"></i> Contact </a></li>
-              <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="/stats/"> <i class="fa fa-sign-in-alt"></i> Stats </a></li>
+              <li class="navbar-item"> <a class="nav-link js-scroll-trigger" href="{% url 'profile' %}"> <i class="fa fa-user"></i> Profile </a></li>
+              <li class="navbar-item"> <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}"> <i class="fa fa-sign-out-alt"> </i>Log Out </a></li>
+            {% else %}   
+              <li class="navbar-item"> <a class="nav-link js-scroll-trigger" href="{% url 'registration' %}"> <i class="fa fa-user-plus"></i> Register </a></li>
+              <li class="navbar-item"> <a class="nav-link js-scroll-trigger" href="{% url 'login' %}"> <i class="fa fa-sign-in-alt"></i> Log In </a></li>
+            {% endif %}
+              <li class="navbar-item"> <a class="nav-link js-scroll-trigger" href="/contact/"> <i class="fa fa-sign-in-alt"></i> Contact </a></li>
+              <li class="navbar-item"> <a class="nav-link js-scroll-trigger" href="/stats/"> <i class="fa fa-sign-in-alt"></i> Stats </a></li>
           </ul>
         </div>
       </div> 

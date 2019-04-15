@@ -1,3 +1,144 @@
 /*-----------------------------------*/
 /* main.css: Add and override styles */
 /*-----------------------------------*/
+body,
+html {
+    height: 100%;
+}
+
+/* CHANGE color */
+a {
+    color: #ee6c4d; /* light red ochre */
+}
+
+/* CHANGE color when hovered over */
+a:hover {
+    color: #ee6c4d; /* light red ochre */
+}
+
+
+
+
+/* ----- Changes to Nav Bar ----- */
+/* CHANGE color of dropdown item when hovered over */
+.dropdown-item:hover {
+    background-color: #98c1d9; /* pale cerulean */
+    color: black;
+}
+
+/* CHANGE color of navbar link when hovered over */
+.navbar-item:hover {
+	background-color: #3d5a80; /* purple navy */
+}
+
+/**/
+.navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 15px;
+    line-height: 20px;
+}
+
+
+
+
+/* ----- Changes to Header ----- */
+/* ADD background */
+.masthead {
+    position: relative;
+    width: 100%;
+    height: 75%;
+    background: url("/static/img/bg-1963-triumph-spitfire-gt6r-le-mans-recreation.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+.masthead img {
+    max-width: 100%;
+}
+
+/* CHANGE font of h1 */
+h1 {
+    font-family: 'Varela Round';
+    font-size: 2rem;
+    line-height: 2rem;
+    letter-spacing: 0.5rem;
+}
+
+/* CHANGE font of h2 */
+h2 {
+    font-family: 'Varela Round';
+}
+
+/* Move to top left of background image */
+.bg-header {
+    text-align: left;
+    top: 0;
+    bottom: 0;
+}
+
+/* CHANGE color */
+.bg-info {
+ background-color: #3d5a80 !important; /* pale cerulean */   
+}
+
+/* Move to botton of background image */
+.bg-tagline {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+
+
+
+
+/* ----- Changes to Models Section ----- */
+/* Change font size of h2 */
+.model-header {
+   font-size: 1.25rem; 
+}
+
+
+
+
+/* ----- Changes to Back To Top Button ----- */
+/* Back to top button */
+.bttop {
+    width: 65px;
+    background: #ee6c4d;
+    position: fixed;
+    right: -9px;
+    bottom: 33px;
+    z-index: 9998;
+    border: 2px solid #fff;
+    border-radius: 10px;
+}
+
+/* Back to top button hover */
+.bttop:hover {
+    background: #ee6c4d;
+    box-shadow: 5px 10px 25px #555;
+}
+
+.bttop i {
+    color: #ffffffd4;
+    font-size: 35px;
+    padding: 7px;
+}
+  
+/* Back to top button icon hover */
+.bttop i:hover {
+    color: #fff;
+}
+
+
+
+
+/* ----- Changes to Footer ----- */
+/* Back to top button icon hover */
+footer {
+    margin-top: 1.0rem;
+}

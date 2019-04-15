@@ -1,4 +1,129 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+{% block page_title %} Home page {% endblock %}
 
-{% block page_title %} Home Page {% endblock %}
-{% block page_heading %} Home    {% endblock %} 
+{% block content %}
+<!-- Header -->
+<header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+        <div class="mx-auto text-center">
+            <h1 class="text-uppercase text-white"> TRIUMPHANT TRIUMPHS </h1>
+            {% if not user.is_authenticated %}
+            <div class="row justify-content-center">
+                <a class="btn btn-primary btn-lg m-2" href="{% url 'registration' %}"> Register </a>
+                <a class="btn btn-primary btn-lg m-2" href="{% url 'login' %}"> Log In </a>
+            </div>
+            {% endif %}
+            <h2 class="bg-tagline text-white mt-2 mb-2 text-center"> Triumph Spitfire Mk3 ,Mk4 & 1500 Parts Store </h2>
+        </div>
+    </div>
+</header>
+
+<!-- Models Header -->
+<h1 class="text-uppercase text-black mt-4 text-center"> Models </h1>
+
+<!-- MK1 Section -->
+<section class="mk1-section">
+    <div class="container" id="mk1">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="model-header text-black text-right mb-2 mr-4"> MK1 (1962 - 1964) </h2>
+                <p class="text-black-50"> <img src="{% static 'img/mk1.jpg' %}" alt="Image of mk1" width="40%" 
+                        style="float: right">CAM-PAL is smart software that suggests settings based on your subject and
+                    environment. It picks the optimal settings for any scene and then it lets you control the final
+                    shot.
+                </p>
+                <p class="black-white-50">CAM-PAL customises settings based on the lens and camera you're using, along
+                    with how they
+                    perform in different situations. CAM-PAL will move
+                    settings to avoid your cameras weaknesses. It can then choose the perfect shutter speed to get
+                    sharp photos without noise.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MK2 Section -->
+<section class="mk1-section">
+    <div class="container" id="mk2">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="model-header text-black text-left mb-2 ml-4"> MK2 (1964 - 1967) </h2>
+                <p class="text-black-50"> <img src="{% static 'img/mk2.jpg' %}" alt="Image of mk2" width="40%"
+                        style="float: left">CAM-PAL is smart software that suggests settings based on your subject and
+                    environment. It picks the optimal settings for any scene and then it lets you control the final
+                    shot.
+                </p>
+                <p class="black-white-50">CAM-PAL customises settings based on the lens and camera you're using, along
+                    with how they
+                    perform in different situations. CAM-PAL will move
+                    settings to avoid your cameras weaknesses. It can then choose the perfect shutter speed to get
+                    sharp photos without noise.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MK3 Section -->
+<section class="mk1-section">
+    <div class="container" id="mk3">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="model-header text-black text-right mb-2 mr-4"> MK3 (1967 - 1970) </h2>
+                <p class="text-black-50"> <img src="{% static 'img/mk3.jpg' %}" alt="Image of mk3" width="40%"
+                        style="float: right">CAM-PAL is smart software that suggests settings based on your subject and
+                    environment. It picks the optimal settings for any scene and then it lets you control the final
+                    shot.
+                </p>
+                <p class="black-white-50">CAM-PAL customises settings based on the lens and camera you're using, along
+                    with how they
+                    perform in different situations. CAM-PAL will move
+                    settings to avoid your cameras weaknesses. It can then choose the perfect shutter speed to get
+                    sharp photos without noise.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MK4 Section -->
+<section class="mk4-section">
+    <div class="container" id="mk4">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="model-header text-black text-left mb-2 ml-4"> MK4 (1970 - 1974) </h2>
+                <p class="text-black-50"> <img src="{% static 'img/mk4.jpg' %}" alt="Image of mk4" width="40%"
+                        style="float: left"> CAM-PAL is smart software that suggests settings based on your subject and
+                    environment. It picks the optimal settings for any scene and then it lets you control the final
+                    shot.
+                </p>
+                <p class="black-white-50">CAM-PAL customises settings based on the lens and camera you're using, along
+                    with how they
+                    perform in different situations. CAM-PAL will move
+                    settings to avoid your cameras weaknesses. It can then choose the perfect shutter speed to get
+                    sharp photos without noise.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 1500 Section -->
+<section class="mk1500-section">
+    <div class="container" id="mk1500">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="model-header text-black text-right mb-2 mr-4"> 1500 (1974 - 1980) </h2>
+                <p class="text-black-50"> <img src="{% static 'img/1500.jpg' %}" alt="Image of 1500" width="40%"
+                        style="float: right"> CAM-PAL is smart software that suggests settings based on your subject and
+                    environment. It picks the optimal settings for any scene and then it lets you control the final
+                    shot.
+                </p>
+                <p class="black-white-50">CAM-PAL customises settings based on the lens and camera you're using, along
+                    with how they
+                    perform in different situations. CAM-PAL will move
+                    settings to avoid your cameras weaknesses. It can then choose the perfect shutter speed to get
+                    sharp photos without noise.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}  
