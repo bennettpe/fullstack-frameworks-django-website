@@ -6,38 +6,57 @@
 <!-- Header -->
 <header class="masthead">
     <div class="container d-flex h-100 align-items-center">
-        <div class="mx-auto text-center">
-            <h1 class="text-uppercase text-white"> TRIUMPHANT TRIUMPHS </h1>
+        <div class="mx-auto">
+            <h1 class="bg-header text-uppercase text-white"> TRIUMPHANT TRIUMPHS </h1>
             {% if not user.is_authenticated %}
             <div class="row justify-content-center">
                 <a class="btn btn-primary btn-lg m-2" href="{% url 'registration' %}"> Register </a>
                 <a class="btn btn-primary btn-lg m-2" href="{% url 'login' %}"> Log In </a>
             </div>
             {% endif %}
-            <h2 class="bg-tagline text-white mt-2 mb-2 text-center"> Triumph Spitfire Mk3 ,Mk4 & 1500 Parts Store </h2>
+            <h2 class="bg-tagline text-white mt-2 mb-2"> Triumph Spitfire Mk3 ,Mk4 & 1500 Parts Store </h2>
         </div>
     </div>
 </header>
 
-<!-- Models Header -->
-<h1 class="text-uppercase text-black mt-4 text-center"> Models </h1>
+<!-- Model Overview Section -->
+<section class="model-section">
+    <div class="container" id="overview">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h1 class="text-uppercase text-black mt-4 text-center"> <u> Models </u></h1>
+                <p class="muted"> 
+                    The Triumph Spitfire is a two-seater sports car with a four-cylinder in-line engine, 
+                    built between 1962 to 1980 by the British car manufacturer Triumph , designed by Harry Webster, 
+                    and equipped with a body designed by Giovanni Michelotti.
+                    The Spitfire was manufactured at the Standard-Triumph works at Canley, in Coventry UK. 
+                </p>
+                <p class="muted">
+                    The bodywork was fitted to a separate structural chassis, but for the open-top convertible Spitfire the backbone chassis' rigidity was augmented 
+                    by the use of structural components within the bodywork, with the rear trailing arms being bolted to the body rather than the chassis.
+                    </p>
+                 <div class="text-center">       
+                    <img class="img-fluid mb-3" src="{% static 'img/spit-specs.jpg' %}" alt="Image of spit-specs" width="90%" id="spit-spec">  
+                </div>    
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- MK1 Section -->
 <section class="mk1-section">
     <div class="container" id="mk1">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h2 class="model-header text-black text-right mb-2 mr-4"> MK1 (1962 - 1964) </h2>
-                <p class="text-black-50"> <img src="{% static 'img/mk1.jpg' %}" alt="Image of mk1" width="40%" 
-                        style="float: right">CAM-PAL is smart software that suggests settings based on your subject and
-                    environment. It picks the optimal settings for any scene and then it lets you control the final
-                    shot.
+                <h2 class="model-header text-black text-center mt-2 mb-2"> <u> Spitfire 4 or MKI (1962 - 1964) </u></h2>
+                <img class="img-fluid" src="{% static 'img/mk1.jpg' %}" alt="Image of mk1" width="40%" align="right" id="photo-right"> 
+                <p class="muted"> 
+                        The production car changed little from the prototype, although the full-width rear bumper was dropped in 
+                        favour of two part-bumpers curving around each corner, with overriders.
+                        The mechanicals were basically from a stock Herald with the notable addition of front disc brakes. 
+                        The engine was an 1,147 cc four-cylinder with a pushrod OHV cylinder head and two valves per cylinder, 
+                        mildly tuned for the Spitfire, fed by twin SU carburettors. 
                 </p>
-                <p class="black-white-50">CAM-PAL customises settings based on the lens and camera you're using, along
-                    with how they
-                    perform in different situations. CAM-PAL will move
-                    settings to avoid your cameras weaknesses. It can then choose the perfect shutter speed to get
-                    sharp photos without noise.</p>
             </div>
         </div>
     </div>
@@ -48,17 +67,23 @@
     <div class="container" id="mk2">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h2 class="model-header text-black text-left mb-2 ml-4"> MK2 (1964 - 1967) </h2>
-                <p class="text-black-50"> <img src="{% static 'img/mk2.jpg' %}" alt="Image of mk2" width="40%"
-                        style="float: left">CAM-PAL is smart software that suggests settings based on your subject and
-                    environment. It picks the optimal settings for any scene and then it lets you control the final
-                    shot.
+                <h2 class="model-header text-black text-center mt-2 mb-2"> <u> Spitfire MKII (1964 - 1967) </u></h2>
+                <img src="{% static 'img/mk2.jpg' %}" alt="Image of mk2" width="40%" align="left" id="photo-left">
+                <p class="muted"> 
+                        Introduction of the Spitfire MK2 with following changes: 
+                        engine power was increased from 63 BHP to 67 BHP, primarily achieved by a new camshaft and a tubular manifold. 
+                        Aluminium fan blade fitted. Oil filler cap no longer used for ventilation. 
+                        The Delco Remy D200 type distributor (serial no. 7953166) got a new vacuum unit and different centrifugal advance weights. 
+                        The coil spring clutch was replaced by a modern diaphragm spring clutch. 
+                        Revised radiator grille with horizontal slats. 
+                        New badges fitted. 
+                        New water temperature gauge with continuous scale and new tachometer. 
+                        Twin black air filter box. 
+                        Choke knob no longer removable from cable. 
+                        Redesigned interior grab handle. 
+                        Seats now had piping and better padding. 
+                        Paint and trim codes added to commission plate.
                 </p>
-                <p class="black-white-50">CAM-PAL customises settings based on the lens and camera you're using, along
-                    with how they
-                    perform in different situations. CAM-PAL will move
-                    settings to avoid your cameras weaknesses. It can then choose the perfect shutter speed to get
-                    sharp photos without noise.</p>
             </div>
         </div>
     </div>
@@ -69,17 +94,42 @@
     <div class="container" id="mk3">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h2 class="model-header text-black text-right mb-2 mr-4"> MK3 (1967 - 1970) </h2>
-                <p class="text-black-50"> <img src="{% static 'img/mk3.jpg' %}" alt="Image of mk3" width="40%"
-                        style="float: right">CAM-PAL is smart software that suggests settings based on your subject and
-                    environment. It picks the optimal settings for any scene and then it lets you control the final
-                    shot.
+                <h2 class="model-header text-black text-center mt-2 mb-2"> <u> Spitfire MKIII (1967 - 1970) </u></h2>
+                <img src="{% static 'img/mk3.jpg' %}" alt="Image of mk3" width="40%" align="right" id="photo-right">
+                <p class="muted"> 
+                        Introduction of the Spitfire MK3 with following changes: 
+                        new 1300 cc. engine with 8 port cylinder head. 
+                        The power was up from 67 BHP to 75 BPH. 
+                        A cast exhaust manifold replaced the tubular manifold used on the MK2. 
+                        New 4-port water heated inlet manifold with engine breathing control valve. 
+                        Narrower radiator with fan guard. 
+                        New 4 bladed fan (aluminium early, yellow painted steel later) for all countries except Germany. 
+                        Exports for Germany fitted with a 6 bladed fan. 
+                        New 3-synchro 3-rail gearbox, identified by the number prefix: FD and loose mounted needle bearing between first motion shaft and main shaft. 
+                        Fusebox now mounted to bulkhead. 
+                        Car electric now with negitive earth. 
+                        
+                        Body modifications: 
+                        the front bumpers raised by 9“ changes to the front indicator lamps to suit. 
+                        The rear bumpers raised and the overriders were deleted. 
+                        Rear indicator lenses now plastic. 
+                        Two reverse lamps now standard. 
+                        Redesigned hood frame. 
+                        New bonnet, now featured with a wider aluminium radiator grille.
+                        Wire wheels and a redesigned hardtop are now available as special order. 
+                        
+                        Interior modifications: 
+                        15“ wire spoked steering wheel, wood veneer dashboard, positions of ignition switch and light switch swapped. 
+                        New 120 MPH resp. 180 KMH speedometer.
+                        Positions of ignition switch and light switch swapped. 
+                        Ignition switch and lock now standard for export models to Germany. 
+                        Breakaway interior mirror. 
+                        Seat belt anchors added. 
+                        Indicator stick cowls go from metal to plastic. 
+                        The round gear knob was now inscribed with the positions of the gears. 
+                        Dual line brake system introduced to all LHD markets except Belgium, France, Luxembourg and the Netherlands. 
+                        Accordingly new brake master cylinder and pressure failure switch fitted to suit.
                 </p>
-                <p class="black-white-50">CAM-PAL customises settings based on the lens and camera you're using, along
-                    with how they
-                    perform in different situations. CAM-PAL will move
-                    settings to avoid your cameras weaknesses. It can then choose the perfect shutter speed to get
-                    sharp photos without noise.</p>
             </div>
         </div>
     </div>
@@ -90,17 +140,57 @@
     <div class="container" id="mk4">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h2 class="model-header text-black text-left mb-2 ml-4"> MK4 (1970 - 1974) </h2>
-                <p class="text-black-50"> <img src="{% static 'img/mk4.jpg' %}" alt="Image of mk4" width="40%"
-                        style="float: left"> CAM-PAL is smart software that suggests settings based on your subject and
-                    environment. It picks the optimal settings for any scene and then it lets you control the final
-                    shot.
-                </p>
-                <p class="black-white-50">CAM-PAL customises settings based on the lens and camera you're using, along
-                    with how they
-                    perform in different situations. CAM-PAL will move
-                    settings to avoid your cameras weaknesses. It can then choose the perfect shutter speed to get
-                    sharp photos without noise.</p>
+                <h2 class="model-header text-black text-center mt-2 mb-2"> <u> Spitfire MKIV (1970 - 1974)  </u></h2>
+                <img src="{% static 'img/mk4.jpg' %}" alt="Image of mk4" width="40%" align="left" id="photo-left"> 
+                <p class="muted"> 
+                        Introduction of the Spitfire MK4 with a new style based on that of the Triumph Stag: 
+                        a new bonnet, 
+                        a new front bumper with black plastic underriders, 
+                        a new radiator grille, 
+                        a new windscreen frame integrally pressed with the scuttle top, 
+                        new door shells, 
+                        new rear wings with decking panel, 
+                        rear valance and boot lid with lock, 
+                        new full-width wrap-around rear bumper. 
+                        
+                        Engine modification: 
+                        stronger push rods, new crankshaft - identify by 1.3/8“ diameter nose, 
+                        new cylinder 
+                        block to accommodate the larger bearings and con rods, 
+                        detail changes on front engine plate and tming cover to suit. 
+                        The crank case breathing system changed again and with it the rocker cover. 
+                        The net result of the changes to the engine was a power of 63 DIN PS on European models. 
+                       
+                        Further modification: 
+                        new rear lamps. 
+                        New 4.1/2Jx13“ disc wheels. 
+                        New rear suspension arrangement with a new spring with five leaves instead of six. 
+                        Larger diameter flanges on gearbox and differential. 
+                        Rear axle with a higher ratio of 3.89:1 for more relaxed high speed driving. 
+                        New 4-synchro 3-rail gearbox, identify by the number prefix: FH. 
+                        The gear knob changed from ball to conical shape. 
+                        The bulkhead behind the battery now included a recess to adapt the dual line brake master cylinder fitted to LHD models. 
+                        New outer door handle with integrated lock barrel. 
+                        A new air filter box was introduced. 
+                        A new seven blade plastic fan was fitted. 
+                        New radiator cap with 13 lbs pressure. 
+                        For the first time the carburettors were cable-operated and a new accelerator linkage and bracket for the throttle return springs 
+                        were bolted to the inlet manifold. 
+                        An ignition ballast resistor was introduced for improved cold starting. 
+                        New 14W type Lucas 2-speed wiper motor fitted. 
+                        Horn relay fitted to either battery box or bulkhead. 
+                        A new electric windscreen washer pump was fitted to all Swedish models. 
+                        New Delco Remy D204 type distributor with reference no. 7953460. 
+                        An alternator, supplied by either Lucas or AC Delco was fitted as standard. 
+                        A square Lucas 4ST starter solenoid was fitted now as standard. 
+                        Also the speedometer and tachometer cables now no longer passed through the heater unit. 
+                        Because of a different arrangement of heater controls on the dashboard, a new heater valve was used. 
+                        New grain finished black plastic dashboard with new Jaeger instruments. 
+                        Wiper switch incorporated pump-action washer. 
+                        High beam switch moved to the steering column. 
+                        Ignition switch and lock now standard in all countries. 
+                        Redesigned seats with slide handles coming out from under the front of the seat and long tilt handle at rear. 
+                        Seat belts now standard equipment.
             </div>
         </div>
     </div>
@@ -111,19 +201,34 @@
     <div class="container" id="mk1500">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h2 class="model-header text-black text-right mb-2 mr-4"> 1500 (1974 - 1980) </h2>
-                <p class="text-black-50"> <img src="{% static 'img/1500.jpg' %}" alt="Image of 1500" width="40%"
-                        style="float: right"> CAM-PAL is smart software that suggests settings based on your subject and
-                    environment. It picks the optimal settings for any scene and then it lets you control the final
-                    shot.
+                <h2 class="model-header text-black text-center mt-2 mb-2"> <u> Spitfire 1500 (1974 - 1980) </u></h2>
+                <img src="{% static 'img/1500.jpg' %}" alt="Image of 1500" width="40%" align="right" id="photo-right"> 
+                <p class="muted"> 
+                        The Spitfire 1500 was introduced to all European markets with following modifications: 
+                        new 1500 cc. engine with a compression ratio of 9:1 and 71 DIN PS. 
+                        Red rocker cover with chrome filler cap. 
+                        Full flow oil filter fitted. 
+                        Larger 7.25“ clutch with 20 splines to suit to the new 4-synchro single-rail gearbox, identify by the number prefix: FR. 
+                        New Lucas 45D4 type distributor fitted. 
+                        Electric tachometer. 
+                        Rear axle with a higher ratio of 3.63:1. 
+                        New twin SU-HS4 type carburettors, reference no: AUD665. 
+                        Heat shield between manifolds. 
+                        "4-2-1" exhaust with cut out in frame for clearance. 
+                        Larger 7-bladed fan made from plastic. 
+                        Interior light in boot now standard, 
+                        Sill plates fitted. 
+                        Commission plates had "Spitfire 1500" at top. 
+                        "Spitfire 1500" decals on bonnet and boot lid. 
+                        Silver hub caps. 
+                        Black boot trim mouldings at rear. 
+                        New seats fitted.
                 </p>
-                <p class="black-white-50">CAM-PAL customises settings based on the lens and camera you're using, along
-                    with how they
-                    perform in different situations. CAM-PAL will move
-                    settings to avoid your cameras weaknesses. It can then choose the perfect shutter speed to get
-                    sharp photos without noise.</p>
             </div>
         </div>
     </div>
 </section>
+
+<!-- FOOTER -->
+    {% include 'footer.html' %}
 {% endblock %}  

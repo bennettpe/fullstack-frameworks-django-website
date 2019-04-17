@@ -6,6 +6,17 @@ html {
     height: 100%;
 }
 
+body {
+    background: #98c1d9;
+    padding-top: 65px;
+}
+
+.login-container,
+.reset-container,
+.register-container {
+    margin-top: 8rem;
+}
+
 /* CHANGE color */
 a {
     color: #ee6c4d; /* light red ochre */
@@ -39,9 +50,6 @@ a:hover {
     line-height: 20px;
 }
 
-
-
-
 /* ----- Changes to Header ----- */
 /* ADD background */
 .masthead {
@@ -74,7 +82,7 @@ h2 {
 
 /* Move to top left of background image */
 .bg-header {
-    text-align: left;
+    text-align: center;
     top: 0;
     bottom: 0;
 }
@@ -90,6 +98,7 @@ h2 {
     width: 100%;
     left: 0;
     bottom: 0;
+    text-align: center;
 }
 
 
@@ -101,8 +110,26 @@ h2 {
    font-size: 1.25rem; 
 }
 
+/* Add photo spacing left & border */
+#photo-left {
+    float: left;    
+    margin: 0 15px 0 0;
+    border: 1px solid #000;
+    padding: 0;
+}
 
+/* Add photo spacing right & border */
+#photo-right {
+    float: right;    
+    margin: 0 0 0 15px;
+    border: 1px solid #000;
+    padding: 0;
+}
 
+/* Add border to photo */
+.product_image {
+    border: 1px solid #000;
+}
 
 /* ----- Changes to Back To Top Button ----- */
 /* Back to top button */
@@ -134,11 +161,12 @@ h2 {
     color: #fff;
 }
 
-
-
-
-/* ----- Changes to Footer ----- */
-/* Back to top button icon hover */
-footer {
-    margin-top: 1.0rem;
+/* Push Footer to bottom of page */
+.footer-bottom {
+   position: absolute;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   text-align: center;
 }

@@ -1468,21 +1468,21 @@ This section is for setting up an **products** to allow users ability to select 
 
 This section is for setting up an **customer payment mechanism** to allow users ability to pay.
 
-1. **Create** Django app called **checkout** 
+1. **Create** Django app called **cart** 
     ```python
-    python3 manage.py startapp checkout 
+    python3 manage.py startapp cart
     ```
  
      ouput from bash terminal
     ```python
-    bennettpe:~/workspace (master) $ python3 manage.py startapp checkout 
+    bennettpe:~/workspace (master) $ python3 manage.py startapp cart 
     ```
     
     The following django files have been **created**
     ```
     fullstack-frameworks-django-project
     │
-    └── checkout
+    └── cart
         ├── migrations
         │   └── __init__.py # Python file to allow app packages to be imported from other directories.  
         │
@@ -1492,27 +1492,87 @@ This section is for setting up an **customer payment mechanism** to allow users 
         ├── models.py       # File with database definitions (i.e., model classes) for the app.
         ├── tests.py        # File with test definitions for the app.
         └── views.py        # File with view definitions (i.e., controller methods) for the app.
-    ```  
+    ```
 
 2. In **setting.py** 
-   go to **INSTALLED_APPS** section and add line containing **accounts** 
+   go to **INSTALLED_APPS** section and add line containing **cart** 
    ```python
    # Application definition
 
    INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'accounts',                  
-    'checkout',             <== this line added.
+    'cart',             <== this line added.
     ]
    ```
 
+3. Create file **contexts.py** in <i>fullstack-frameworks-django-project/checkout/cart</i>
+
+4. In **setting.py** 
+   go to **TEMPLATES** section and add line containing **'cart.contexts.cart_contents',** 
+   ```python
+
+   TEMPLATES = [
+    {
+            'context_processors': [
+                'cart.contexts.cart_contents', <== Add this line
+                ],
+            },
+        },
+    ]
+   ```
+
+5. Create **urls.py** in <i>fullstack-frameworks-django-project/cart</i>  
+    ```python
+    from django.conf.urls import url
+    from .views import view_cart, add_to_cart, adjust_cart, remove_from_cart
+
+
+    urlpatterns = [
+        url(r'^$', view_cart, name="view_cart"),
+        url(r'^add/(?P<id>\d+)', add_to_cart, name='add_to_cart'),
+        url(r'^adjust/(?P<id>\d+)', adjust_cart, name='adjust_cart'),
+        url(r'^remove/(?P<id>\d+)', remove_from_cart, name='remove_from_cart'),
+    ]
+    ```
+
+6. Update **views.py** in <i>fullstack-frameworks-django-project/cart</i>  
+
+7. Update file **urls.py** in <i>fullstack-frameworks-django-project\triumphant_triumphs</i> <br>
+   Add cart urls
+   ```python
+    from cart import urls as cart_urls  <== Add this line
+    url(r'^cart/', include(cart_urls)), <== Add this line
+   ```
+
+8. Run the following command to makemigrations.
+    ```python
+    python3 manage.py makemigrations cart
+    ```
+    
+    output from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py makemigrations cart
+    No changes detected in app 'cart'
+    ```
+
+9.  Run the following command to migrate.
+    ```python
+    python3 manage.py migrate cart
+    ```
+    
+    output from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py migrate cart
+    Operations to perform:
+    Apply all migrations: (none)
+    Running migrations:
+    No migrations to apply.
+    ```
+
+10. Create folder **templates** in <i>fullstack-frameworks-django-project/cart/</i> 
+11. Create file **cart.html** in <i>fullstack-frameworks-django-project/cart/template</i> 
+
 #### Create Checkout Models
-1. In **models.py** in **fullstack-frameworks-django-project/checkout**     
+1. In **models.py** in <i>fullstack-frameworks-django-project/checkout</i>     
     Add   
     ```python
     from django.db import models
@@ -1523,7 +1583,7 @@ This section is for setting up an **customer payment mechanism** to allow users 
     full_name = models.CharField(max_length=50, blank=False)
     phone_number = models.CharField(max_length=20, blank=False)
     country = models.CharField(max_length=40, blank=False)
-    postcode = models.CharField(max_length=20, blank=True)
+    postcode = models.CharField(max_length=20, blank=True) #Can be left blank
     town_or_city = models.CharField(max_length=40, blank=False)
     street_address1 = models.CharField(max_length=40, blank=False)
     street_address2 = models.CharField(max_length=40, blank=False)
@@ -1539,10 +1599,11 @@ This section is for setting up an **customer payment mechanism** to allow users 
     quantity = models.IntegerField(blank=False)
 
     def __str__(self):
-        return "{0} {1} @ {2}".format(self.quantity, self.product.name, self.product.price)
+        return "{0} {1} {2} @ {3}".format(self.quantity, self.product.part_name, self.product.part_number, self.product.price)
     ```
+
 2. Add Models to Admin
-   In **admin.py** in **fullstack-frameworks-django-project/checkout**  
+   In **admin.py** in <i>fullstack-frameworks-django-project/checkout</i> 
    Add
    ```python
    from django.contrib import admin
@@ -1558,7 +1619,7 @@ This section is for setting up an **customer payment mechanism** to allow users 
    admin.site.register(Order, OrderAdmin)
    ```
 
-3. Run the following command to makemigrations. TODO FROM HERE AFTER FIXING PRODUCTS
+3. Run the following command to makemigrations.
     ```python
     python3 manage.py startapp checkout
     ```
@@ -1567,7 +1628,89 @@ This section is for setting up an **customer payment mechanism** to allow users 
     ```python
     python3 manage.py makemigrations checkout
     ```
+
+   ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py makemigrations checkout
+    Migrations for 'checkout':
+    checkout/migrations/0001_initial.py
+    - Create model Order
+    - Create model OrderLineItem
+    ```
+
 5. Run the following command to migrate.
     ```python
     python3 manage.py migrate checkout
     ```
+
+    output from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $  python3 manage.py migrate checkout
+    Operations to perform:
+    Apply all migrations: checkout
+    Running migrations:
+    Applying checkout.0001_initial... OK
+    ```
+    
+#### Create Checkout Forms
+1. Create **forms.py** in <i>fullstack-frameworks-django-project/checkout</i>    
+    ```python
+   from django import forms
+   from .models import Order
+
+   class MakePaymentForm(forms.Form):
+
+    MONTH_CHOICES = [(i, i) for i in range(1, 12)]
+    YEAR_CHOICES = [(i, i) for i in range(2019, 2036)]
+
+    credit_card_number = forms.CharField(label='Credit card number', required=False)
+    cvv = forms.CharField(label='Security code (CVV)', required=False)
+    expiry_month = forms.ChoiceField(label='Month', choices=MONTH_CHOICES, required=False)
+    expiry_year = forms.ChoiceField(label='Year', choices=YEAR_CHOICES, required=False)
+    stripe_id = forms.CharField(widget=forms.HiddenInput)
+
+    class OrderForm(forms.ModelForm):
+
+    class Meta:
+        model = Order
+        fields = (
+            'full_name', 'phone_number', 'country', 'postcode',
+            'town_or_city', 'street_address1', 'street_address2',
+            'county'
+        ) 
+    ```
+#### Create Checkout Forms
+1. Create **Views.py** in <i>fullstack-frameworks-django-project/checkout</i> 
+
+#### Create Checkout html
+1. Create **urls.py** in <i>fullstack-frameworks-django-project/checkout</i>  
+    ```python
+    from django.conf.urls import url
+    from .views import checkout
+
+    urlpatterns = [
+    url(r'^$', checkout, name='checkout'),
+    ]
+    ```
+    
+2. Update file **urls.py** in <i>fullstack-frameworks-django-project\triumphant_triumphs</i> <br>
+   Add checkout urls
+   ```python
+    from checkout import urls as checkout_urls  <== Add this line
+    url(r'^checkout/', include(checkout_urls)), <== Add this line
+   ```
+
+3. Create **checkout.html** in <i>fullstack-frameworks-django-project/checkout/templates</i> 
+
+4. Update file **base.html** in <i>fullstack-frameworks-django-project/checkout/templates</i> <br>
+   to include stripe js in head section
+    ```python 
+    <!-- STRIPE -->          <== add this section
+    {% block head_js %}
+    {% endblock head_js %}
+    </head>
+    ```
+
+#### Create javascript for Stripe
+1. Create folder **js** in <i>fullstack-frameworks-django-project/checkout/static</i> <br>
+2. Create file **stripe.js** in <i>fullstack-frameworks-django-project/checkout/static/js</i> 
