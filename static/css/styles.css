@@ -1,45 +1,48 @@
 /*-----------------------------------*/
 /* main.css: Add and override styles */
 /*-----------------------------------*/
+
+/*----------------------------------------------------*/
+/* https://coolors.co/3d5a80-98c1d9-e0fbfc-ee6c4d-293241
+/* Colors used                       
+/* #3d5a80 = navy purple
+/* #98c1d9 = pale cerulean
+/* #e0fbfc = light cyan
+/* #ee6c4d = light red orche
+/* #293241 = gun metal
+/*----------------------------------------------------*/
+
 body,
 html {
     height: 100%;
 }
 
 body {
-    background: #98c1d9;
+    background: #98c1d9; /* pale cerulean */
     padding-top: 65px;
 }
 
+/* ----- Changes to Paragraphs ----- */
+p {
+ margin :10px;
+ line-height: 15px;
+}
+
+/* Add margin */
 .login-container,
 .reset-container,
 .register-container {
     margin-top: 8rem;
 }
 
-/* CHANGE color */
-a {
-    color: #ee6c4d; /* light red ochre */
-}
-
-/* CHANGE color when hovered over */
-a:hover {
-    color: #ee6c4d; /* light red ochre */
-}
-
-
 
 
 /* ----- Changes to Nav Bar ----- */
-/* CHANGE color of dropdown item when hovered over */
-.dropdown-item:hover {
-    background-color: #98c1d9; /* pale cerulean */
-    color: black;
-}
-
-/* CHANGE color of navbar link when hovered over */
-.navbar-item:hover {
-	background-color: #3d5a80; /* purple navy */
+/*text colour for the link on the navbar */
+.navbar .nav-link, 
+.navbar .nav-link:hover {
+	color: white;
+	font-size: 13px; 
 }
 
 /**/
@@ -48,6 +51,56 @@ a:hover {
     height: 50px;
     padding: 15px;
     line-height: 20px;
+}
+
+/* CHANGE color of dropdown item when hovered over */
+.dropdown-item:hover {
+    background-color: #98c1d9; /* pale cerulean */
+    color: black;
+}
+
+/**/
+.badge {
+    padding-left: 9px;
+    padding-right: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+    font-size:13px;
+    background-color: #ee6c4d;
+    color:  #ffffffd4;
+} 
+
+
+
+/* ----- Changes to Breadcrumb ----- */
+/* CHANGE color & font-size*/
+.breadcrumb {
+	background-color: #3d5a80; /* purple navy */
+	font-size: 13px; 
+}
+
+/* ADD matgins */
+.bcrumb-margins {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+/* Change color */
+.breadcrumb-item > a {
+	color: rgba(255,255,255,0.5); 
+	text-decoration: none;
+}
+
+/* Change color */
+.breadcrumb-item > a:hover {
+    color: white; 
+    text-decoration: none;
+}
+
+/* Change color */
+.breadcrumb-item.active {
+    color: #ee6c4d;
 }
 
 /* ----- Changes to Header ----- */
@@ -103,7 +156,6 @@ h2 {
 
 
 
-
 /* ----- Changes to Models Section ----- */
 /* Change font size of h2 */
 .model-header {
@@ -124,10 +176,44 @@ h2 {
     margin: 0 0 0 15px;
     border: 1px solid #000;
     padding: 0;
+    
 }
 
 /* Add border to photo */
-.product_image {
+.product-image {
+    border: 1px solid #000;
+}
+
+
+
+/* ----- Changes to Cards ----- */
+
+/* CHANGE border for card */
+.card {
+  border: 1px solid #000;
+  border-radius: 0px;
+  padding: 0;
+}
+
+/* CHANGE padding for Card body */
+.card-body {
+  padding: 0rem;
+}
+
+/* CHANGE color for Card link */
+.card-link:hover {
+  color: #ee6c4d; 
+  text-decoration: none;
+}
+
+/* CHANGE font size for Card title */
+.card-title {
+  color: #ee6c4d; 
+  font-size: 1.5em;
+}
+
+/* Add border to parts diagram */
+.parts-diagram {
     border: 1px solid #000;
 }
 
@@ -161,6 +247,9 @@ h2 {
     color: #fff;
 }
 
+
+
+/* ----- Changes to Footer ----- */
 /* Push Footer to bottom of page */
 .footer-bottom {
    position: absolute;
@@ -169,4 +258,17 @@ h2 {
    left: 0;
    width: 100%;
    text-align: center;
+}
+
+/* Change color of links */
+.footer-link, 
+.footer-link:hover {
+    color: #ee6c4d;
+}
+
+/* Change color */
+.href-link,
+.href-link:hover {
+	color: #ee6c4d; 
+	text-decoration: none;
 }

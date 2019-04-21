@@ -9,6 +9,10 @@
 
 <!-- Registration form -->
 <div class="container register-container">
+	<ol class="breadcrumb bcrumb-margins"> <li class="breadcrumb-item"> <a href="{% url 'index' %}"> Home </a></li>
+		<li class="breadcrumb-item active"> Register </li>
+    </ol>
+    
 	<div class="row justify-content-md-center">
 		<div class="col-md-6">
 			<form method="POST">
@@ -20,9 +24,7 @@
 				</div>
 			</form>
 			<div class="text-center mt-3">
-				<p> If you already have an account?, Please 
-					<a href="{% url 'login' %}"> Log in </a>
-				</p>
+				<p> If you already have an account?, Please <a class="href-link" href="{% url 'login' %}"> Log in </a></p>
 			</div>
 		</div>
 	</div>

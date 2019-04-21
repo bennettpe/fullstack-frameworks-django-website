@@ -3,8 +3,13 @@
 {% block content %}
 <div class="container d-flex h-100 align-items-center" id="engine">
     <div class="row">
-        <div class="col-xs-12 mx-auto ">
-<h2> Engine </h2>
+        <div class="col-xs-12">
+            <ol class="breadcrumb bcrumb-margins">
+                <li class="breadcrumb-item"> <a href="{% url 'index' %}"> Home </a> </li>
+                <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a> </li>
+                <li class="breadcrumb-item active"> Engine </li>
+            </ol>
+            <h2> Engine </h2>
             <!-- loop through the contents of products_list, and assigns the current Product object in the list to the 'product' variable. -->
             {% for product in products_list %}
                 <div class="row list_item">

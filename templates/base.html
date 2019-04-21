@@ -4,14 +4,14 @@
     
 <head>
     <title> {% block page_title %} {% endblock %} </title>
-    <!-- Required mega tags                         --> <meta charset="utf-8">
-    <!-- Required mega tags                         --> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- BOOTSTRAP THEME minified CSS file (v4.1.3) --> <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/sandstone/bootstrap.min.css" rel="stylesheet">
-    <!-- FONTAWESOME minified CSS file (v5.3.1)     --> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
-                                                         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-                                                         crossorigin="anonymous">
-    <!-- Custom styles for this template            --> <link rel="stylesheet" href="{% static 'css/styles.css' %}"  type="text/css">
-    <!-- Favicon                                    --> 
+    <!-- Required mega tags                           --> <meta charset="utf-8">
+    <!-- Required mega tags                           --> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- BOOTSTRAP THEME minified CSS file (v4.1.3)   --> <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/sandstone/bootstrap.min.css" rel="stylesheet"> 
+    <!-- MAGNIFIC POPUP minified CSS file (v0.3.0)    --> <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js">
+    <!-- FONTAWESOME minified CSS file (v5.8.1)       --> <link rel="stylesheet" href="{% static 'font-awesome/css/all.min.css' %}">
+    <!-- BOOTSTRAP MAGNIFY CSS file ()                --> <link rel="stylesheet" href="{% static 'css/bootstrap-magnify.css' %}"  type="text/css">
+    <!-- Custom styles for this template              --> <link rel="stylesheet" href="{% static 'css/styles.css' %}"  type="text/css">
+    <!-- Favicon                                      --> 
     
     <!-- STRIPE -->
     {% block head_js %}
@@ -33,7 +33,9 @@
         {% block content %} {% endblock %}
     
     <!-- SCRIPT -->
-    <!-- JQuery minified Javascript file (v3.3.1)         --> <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>   
-    <!-- Bootstrap core JavaScript minified file (v4.3.1) --> <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"> </script>
+    <!-- JQuery minified Javascript file (v3.3.1)            --> <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>   
+    <!-- Bootstrap core JavaScript minified file (v4.3.1)    --> <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"> </script>
+    <!-- Bootstrap Magnify JavaScript minified file (v4.3.1) --> <script src="{% static 'js/bootstrap-magnify.js' %}"> </script>
+    <!-- Custom JavaScript for this template                 --> <script src="{% static 'js/custom.js' %}"> </script>
 </body>
 </html>

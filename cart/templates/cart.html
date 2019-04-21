@@ -5,18 +5,14 @@
 {% block content %}
 <div class="container">
     <ol class="breadcrumb bcrumb-margins">
-        <li class="breadcrumb-item">
-            <a href="{% url 'index' %}"> Home </a>
-        </li>
-         <li class="breadcrumb-item">
-             <a href="{% url 'products' %}"> Products </a>
-         </li>
+        <li class="breadcrumb-item"> <a href="{% url 'index' %}"> Home </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
         <li class="breadcrumb-item active"> Cart </li>
     </ol>
 
     <div class="row row-flex">
         {% for item in cart_items %}
-        <div class="col-xs-12 col-sm-6 col-md-4 display panel-outer panel-display">
+        <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-display">
             <div class="panel-body">
 
                 <div class="product" style="background-image: url('{{ STATIC_URL }}{{ item.product.image }}')"></div>
@@ -28,29 +24,27 @@
                     <p>
                         
                     <form class="form-inline" method="post" action="{% url 'adjust_cart' item.id %}">
-                        {% csrf_token %}
-                        <div class="form-group form-margin">
-                            <label for="product-input-amount" class="sr-only"> New Qty </label>
-                            <div class="input-group">
-                                <div class="input-group-addon"> Qty </div>
-                                <input name="quantity" type="number" min="0" max="999" value="1" class="form-control">
-                                <div class="input-group-addon"> {{item.quantity}} </div>
-                            </div>
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleInputAmount" class="sr-only"> New Qty </label>
+                        <div class="input-group">
+                            <div class="input-group-addon"> Qty </div>
+                            <input name="quantity" type="number" min="0" max="999" class="form-control">
+                            <div class="input-group-addon">{{ item.quantity }}</div>
                         </div>
-                        <button type="submit" class="btn btn-success adjust-cart"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Amend </button>
-                    </form>
-                    
+                    </div>
+                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Amend </button>
+                </form>
                     </p>
                 </div>
-
             </div>
         </div>
         {% endfor %}
     </div>
 
-    <div>
+    <div class="row">
         <p><b> <u>Total</u> </b></p>
-        <p><i class="glyphicon glyphicon-gbp"> </i><b> {{ total }} </b></p>
+        <p> £ {{ total }} </b></p>
         {% if cart_items %}
             <a href="{% url 'checkout' %}" class="btn btn-primary" role="button"> <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Checkout </a>
         {% else %}
