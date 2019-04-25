@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
+
 import os
 import dj_database_url
 # Used locally and not in Heroku
@@ -23,17 +24,23 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
+
 # SECURITY WARNING: keep the secret key used in production secret!
+# A secret key for a particular Django installation
 SECRET_KEY = 'xi@wniybq4x6i7r7&3)3sgv@f7z(g1-+wd9t8o9bcb*i_0n81^'
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
+# A boolean that turns on/off debug mode
 DEBUG = True
 
+
+# A list of strings representing the host/domain names that this Django site can serve
 ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME')]
 
 
 # Application definition
-
+# A list of strings designating all applications that are enabled in this Django installation
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -48,6 +55,9 @@ INSTALLED_APPS = [
     'products',
 ]
 
+
+# Middleware is a framework of hooks into Django’s request/response processing.
+# It’s a light, low-level “plugin” system for globally altering Django’s input or output.
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -58,8 +68,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+# A string representing the full Python import path to your root URLconf
 ROOT_URLCONF = 'triumphant_triumphs.urls'
 
+
+# Templates
+#---------------------------------------------------------------
+# A list containing the settings for all template engines to be used with Django
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -78,19 +94,14 @@ TEMPLATES = [
     },
 ]
 
+# The full Python path of the WSGI application object that Django’s built-in servers (e.g. runserver) will use
 WSGI_APPLICATION = 'triumphant_triumphs.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#    }
-#}
-
+#---------------------------------------------------------------
+# Check if DATABASE_URL if not use SQLite3
 if "DATABASE_URL" in os.environ:
     DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 else:
@@ -105,7 +116,8 @@ else:
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
-
+#------------------------------------------------------------------------------
+# The list of validators that are used to check the strength of user’s passwords
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -124,41 +136,66 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
-
+#----------------------------------------------------
+# LANGUAGE_CODE = Represents the name of a language
+# USE_I18N      = A boolean that specifies whether Django’s translation system should be enabled
+# USE_L10N      = A boolean that specifies if localized formatting of data will be enabled by default or not
+# USE_TZ        = A boolean that specifies if datetimes will be timezone-aware by default or not
+#----------------------------------------------------
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+#-----------------------------------------------------------
+# STATIC_ROOT     = Absolute Path to the directory where collectstatic will collect static files for deployment
+# STATIC_URL      = URL to use when referring to static files located in STATIC ROOT
+# STATICFILE_DIRS = # Look for static files here
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')    
+STATIC_URL = '/static/'                                   
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),) 
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# Media files
+#-----------------------------------------------------------
+# MEDIA_URL  = URL that handles media servered from MEDIA_ROOT
+# MEDIA_ROOT = Absolute Path to the directory that will hold user-upload files
+# Comment out for media hosting in production
+MEDIA_URL = '/media/'                                                      
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+
+
+# Controls where Django stores message data
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+# Email
+#-----------------------------------------------------------
+# EMAIL_USE_TLS       = Whether to use a TLS (secure) connection when talking to the SMTP server
+# EMAIL_HOST          = The host to use for sending email.
+# EMAIL_HOST_USER     = Username to use for the SMTP server defined in EMAIL_HOST
+# EMAIL_HOST_PASSWORD = Password to use for the SMTP server defined in EMAIL_HOST
+# EMAIL_PORT          = Port to use for the SMTP server defined in EMAIL_HOST.
+# EMAIL_BACKEND       = The backend to use for sending emails
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com' 
 EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_PORT = 587
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+
+# A list of authentication backend classes (as strings) to use when attempting to authenticate a user
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'accounts.backends.EmailAuth'
 ]
 
+
+# STRIPE
 STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
 STRIPE_SECRET = os.getenv('STRIPE_SECRET')

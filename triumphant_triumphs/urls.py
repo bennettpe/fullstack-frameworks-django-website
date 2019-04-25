@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views import static
 
 from accounts import urls as accounts_urls
 from cart import urls as cart_urls
@@ -22,9 +23,7 @@ from checkout import urls as checkout_urls
 from products import urls as products_urls
 
 from accounts.views import index
-from django.views import static
 from .settings import MEDIA_ROOT 
-
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

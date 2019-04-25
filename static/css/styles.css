@@ -15,6 +15,7 @@
 body,
 html {
     height: 100%;
+    width: 100%;
 }
 
 body {
@@ -22,8 +23,8 @@ body {
     padding-top: 65px;
 }
 
-/* ----- Changes to Paragraphs ----- */
-p {
+/* ----- Changes to Paragraphs ----- */ 
+p.card-body {
  margin :10px;
  line-height: 15px;
 }
@@ -130,7 +131,7 @@ h1 {
 
 /* CHANGE font of h2 */
 h2 {
-    font-family: 'Varela Round';
+    font-family: Verdana;
 }
 
 /* Move to top left of background image */
@@ -216,6 +217,43 @@ h2 {
 .parts-diagram {
     border: 1px solid #000;
 }
+
+/* ADD border & color for Card footer */
+.card-footer {
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  border-top: none;
+  background-color: #ddd; 
+  padding: 0;
+}
+
+/* ADD border & color for Card header */
+.card-header {
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  background-color: #ddd; 
+  padding: 0;
+}
+
+
+/* ----- Changes to cart html ----- */
+/* Add font-size to cart totals */
+.cart-total {
+    font-size: 22px;
+}
+
+/* Add padding to qty box */
+.input-group, 
+.form-control {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+/* CHANGE Paragraphs for Card text */ 
+p.card-text {
+ margin :10px;
+ line-height: 15px;
 
 /* ----- Changes to Back To Top Button ----- */
 /* Back to top button */
