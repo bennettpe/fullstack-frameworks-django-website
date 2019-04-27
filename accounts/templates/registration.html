@@ -9,8 +9,10 @@
 
 <!-- Registration form -->
 <div class="container register-container">
-	<ol class="breadcrumb bcrumb-margins"> <li class="breadcrumb-item"> <a href="{% url 'index' %}"> Home </a></li>
+	<ol class="breadcrumb bcrumb-margins"> <li class="breadcrumb-item"> <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a></li>
+		<li class="breadcrumb-item"> <a href="{% url 'login' %}"> Login </a></li>
 		<li class="breadcrumb-item active"> Register </li>
+		<li class="breadcrumb-item"> <a href="{% url 'password_reset' %}"> Reset Password </a></li>
     </ol>
     
 	<div class="row justify-content-md-center">

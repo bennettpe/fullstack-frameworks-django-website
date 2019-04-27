@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block page_title %} Home page {% endblock %}
 
 {% block content %}
 <!-- Header -->
 <header class="masthead">
+    <!-- MESSAGES -->
+    {% include 'messages.html' %}
+    
+    <!-- NAVIGATION -->
     <div class="container d-flex h-100 align-items-center">
         <div class="mx-auto">
             <h1 class="bg-header text-uppercase text-white"> TRIUMPHANT TRIUMPHS </h1>

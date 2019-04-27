@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-(% load staticfiles %}
+{% load static %}
 
 {% block content %}
 <div class="container brakes_fr-container">
@@ -18,12 +18,14 @@
             <!-- Parts Diagram(s) -->
             <div class="row  pl-4 pr-4 text-center">
                 <div class="col-md-6 col-sm-6">
-                    <img class=" img-fluid parts-diagram" data-toggle="magnify" src="/media/images/brakes/front brakes.gif" alt="scparts">
-                    <h2 class="mt-2"> Brakes front </h2>
+                    <img class=" img-fluid parts-diagram" data-toggle="magnify" 
+                    src="{% static 'img/brakes/front brakes.gif' %}" alt="scparts">
+                    <h2 class="mb-2"> Brakes front </h2>
                 </div>
                 <div class="col-md-6 col-sm-6">
-                    <img class="img-fluid parts-diagram" data-toggle="magnify" src="/media/images/brakes/rear brakes.gif" alt="scparts">
-                    <h2 class="mt-2"> Brakes rear </h2>
+                    <img class="img-fluid parts-diagram" data-toggle="magnify" 
+                    src="{% static 'img/brakes/rear brakes.gif' %}" alt="scparts">
+                    <h2 class="mb-2"> Brakes rear </h2>
                 </div>
             </div>
             

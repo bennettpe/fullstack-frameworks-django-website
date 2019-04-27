@@ -8,8 +8,11 @@
 {% block content %}
 <!-- Log In form -->
 <div class="container login-container">
-	<ol class="breadcrumb bcrumb-margins"><li class="breadcrumb-item"> <a href="{% url 'index' %}"> Home </a></li>
-		<li class="breadcrumb-item active">Log In</li>
+	<ol class="breadcrumb bcrumb-margins"> 
+		<li class="breadcrumb-item"> <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a></li>
+		<li class="breadcrumb-item active"> Log In </li>
+		<li class="breadcrumb-item"> <a href="{% url 'registration' %}"> Register </a></li>
+		<li class="breadcrumb-item"> <a href="{% url 'password_reset' %}"> Reset Password </a></li>
     </ol>
     
 	<div class="row justify-content-md-center">

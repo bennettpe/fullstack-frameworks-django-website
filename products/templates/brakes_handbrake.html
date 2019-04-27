@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-(% load staticfiles %}
+{% load static %}
 
 {% block content %}
 <div class="container handbrake-container">
@@ -18,8 +18,9 @@
             <!-- Parts Diagram(s) -->
             <div class="row pl-4 pr-4 justify-content-center text-center">
                 <div class="col-md-6 col-sm-6">
-                    <img class=" img-fluid parts-diagram" data-toggle="magnify" src="/media/images/brakes/handbrake.gif" alt="scparts">
-                    <h2 class="mt-2"> Handbrake </h2>
+                    <img class=" img-fluid parts-diagram" data-toggle="magnify" 
+                    src="{% static 'img/brakes/handbrake.gif' %}" alt="scparts">
+                    <h2 class="mb-2"> Handbrake </h2>
                 </div>
             </div>
             

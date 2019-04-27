@@ -8,11 +8,12 @@ def products(request):
 # Product.objects.filter() will find all the product entries in the database whose category=engine
 # Then assign them to a 'products_list' variable and send that variable to engine.html template
 
+
 #ALTERNATOR & DYNAMO
 def alt_dyno(request):
     return render(request, 'alt_dyno.html', 
     {'products_list': Product.objects.filter(category='alt_dyno').order_by('part_name','part_number')}) 
-#BODY & CHASSIS
+#BODY
 def body(request):
     return render(request, 'body.html', 
     {'products_list': Product.objects.filter(category='body').order_by('part_name','part_number')}) 
@@ -79,11 +80,27 @@ def gearbox_mk4(request):
 #GEARBOX_1500
 def gearbox_1500(request):
     return render(request, 'gearbox_1500.html', 
-    {'products_list': Product.objects.filter(category='gearbox_1500').order_by('part_name','part_number')})    
+    {'products_list': Product.objects.filter(category='gearbox_1500').order_by('part_name','part_number')}) 
+#HEATING
+def heating(request):
+    return render(request, 'heating.html', 
+    {'products_list': Product.objects.filter(category='heating').order_by('part_name','part_number')})
+#IGNITION
+def ignition(request):
+    return render(request, 'ignition.html', 
+    {'products_list': Product.objects.filter(category='ignition').order_by('part_name','part_number')})     
+#INSTRUMENT ANS SWITCHES
+def inst_sw(request):
+    return render(request, 'inst_sw.html', 
+    {'products_list': Product.objects.filter(category='inst_sw').order_by('part_name','part_number')}) 
 #INTERIOR
 def interior(request):
     return render(request, 'interior.html', 
     {'products_list': Product.objects.filter(category='interior').order_by('part_name','part_number')}) 
+#LAMPS
+def lamps(request):
+    return render(request, 'lamps.html', 
+    {'products_list': Product.objects.filter(category='lamps').order_by('part_name','part_number')}) 
 #OIL SUMP
 def oilsump(request):
     return render(request, 'oilsump.html', 
@@ -112,3 +129,11 @@ def service(request):
 def steering(request):
     return render(request, 'steering.html', 
     {'products_list': Product.objects.filter(category='steering').order_by('part_name','part_number')})  
+#WINDSCREEN WIPERS & WASHER
+def wshld_wipe_wash(request):
+    return render(request, 'wshld_wipe_wash.html', 
+    {'products_list': Product.objects.filter(category='wshld_wipe_wash').order_by('part_name','part_number')})      
+#WIRING AND INTERNAL ELECTRICS
+def wire_int(request):
+    return render(request, 'wire_int.html', 
+    {'products_list': Product.objects.filter(category='wire_int').order_by('part_name','part_number')})      

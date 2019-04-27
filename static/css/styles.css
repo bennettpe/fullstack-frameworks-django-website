@@ -23,17 +23,45 @@ body {
     padding-top: 65px;
 }
 
-/* ----- Changes to Paragraphs ----- */ 
+/* ----- Changes to Padding for Messages ----- */ 
+/* see http://stephen.io/mediaqueries          */
+
+/* iPhone 5 & 5S in portrait & landscape */
+@media (min-width: 320px) and (max-width: 568px) {
+body { 
+    padding-top: 90px; }
+}
+/* iPhone 6, 7, & 8 in portrait & landscape */
+@media (min-width: 375px) and (max-width: 667px)  {
+body { 
+    padding-top: 65px; }
+}
+/* iPhone X in portrait & landscape */
+@media (min-width: 375px) and (max-width: 812px)  {
+body { 
+    padding-top: 65px; }
+}
+/* iPhone 6, 7, & 8 Plus in portrait & landscape */
+@media (min-width: 414px) and (max-width: 736px)  {
+body { 
+    padding-top: 65px; }
+}
+/* iPad in portrait & landscape */
+@media (min-width: 768px) and (max-width: 1024px)  {
+body { 
+    padding-top: 65px; }
+}
+
+
+ 
 p.card-body {
  margin :10px;
  line-height: 15px;
 }
 
-/* Add margin */
-.login-container,
-.reset-container,
-.register-container {
-    margin-top: 8rem;
+p.card-footer {
+ margin: 0;
+ padding: 0;
 }
 
 
@@ -72,7 +100,22 @@ p.card-body {
     color:  #ffffffd4;
 } 
 
+/* ----- Changes to Messages ------- */
+.alert {
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
 
+.alert-success {
+    background-color: #75BF00;
+}
+
+.alert-danger {
+    background-color: #ee6c4d;
+}
 
 /* ----- Changes to Breadcrumb ----- */
 /* CHANGE color & font-size*/
@@ -226,6 +269,7 @@ h2 {
   border-top: none;
   background-color: #ddd; 
   padding: 0;
+  margin: 0;
 }
 
 /* ADD border & color for Card header */
@@ -237,7 +281,8 @@ h2 {
 }
 
 
-/* ----- Changes to cart html ----- */
+
+/* ----- Changes to cart.html ----- */
 /* Add font-size to cart totals */
 .cart-total {
     font-size: 22px;
@@ -254,6 +299,9 @@ h2 {
 p.card-text {
  margin :10px;
  line-height: 15px;
+}
+
+
 
 /* ----- Changes to Back To Top Button ----- */
 /* Back to top button */

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container lamps-container">
+            <ol class="breadcrumb bcrumb-margins">
+                <li class="breadcrumb-item"> <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a></li>
+                <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
+                <li class="breadcrumb-item"> <a href="{% url 'electrical' %}"> Battery </a></li>
+                <li class="breadcrumb-item"> <a href="{% url 'alt_dyno' %}"> Charging & Starting </a></li>
+                <li class="breadcrumb-item"> <a href="{% url 'ignition' %}"> Ignition </a></li>
+                <li class="breadcrumb-item"> <a href="{% url 'heating' %}"> Heating </a></li>
+                <li class="breadcrumb-item active"> Lamps </li>
+                <li class="breadcrumb-item"> <a href="{% url 'inst_sw' %}"> Instruments & Switches </a></li>
+                <li class="breadcrumb-item"> <a href="{% url 'wshld_wipe_wash' %}"> Windscreen Wipers & Washer </a></li>
+                <li class="breadcrumb-item"> <a href="{% url 'wire_int' %}"> Wiring & Internal Electrics </a></li>
+            </ol>
+            
+            <!-- Parts Heading -->
+            <h2 class="pl-4 pr-4"> Lamps </h2>
+            <br>
+            
+            <!-- Parts Diagram(s) -->
+            <div class="row  pl-4 pr-4 justify-content-center text-center">
+                <div class="col-md-6 col-sm-6">
+                    <img class="img-fluid parts-diagram" data-toggle="magnify" 
+                    src="{% static 'img/electrical/Number plate lamps - MK3.gif' %}" alt="scparts">
+                    <h2 class="mb-2"> Number plate lamps - Mk3 </h2>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <img class="img-fluid parts-diagram" data-toggle="magnify" 
+                    src="{% static 'img/electrical/Rear lamps European models - MK4 and 1500.gif' %}" alt="scparts">
+                    <h2 class="mb-2"> Number plate lamps Mk4 and 1500 </h2>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <img class=" img-fluid parts-diagram mt-4" data-toggle="magnify" 
+                    src="{% static 'img/electrical/Rear lamps European models - MK3.gif' %}" alt="scparts">
+                    <h2 class="mb-4"> Rear lamps - Mk3 </h2>                     
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <img class=" img-fluid parts-diagram mt-4" data-toggle="magnify" 
+                    src="{% static 'img/electrical/Rear lamps European models - MK4 and 1500.gif' %}" alt="scparts">
+                    <h2 class="mb-4"> Rear lamps Mk4 and 1500 </h2>                     
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <img class=" img-fluid parts-diagram" data-toggle="magnify" 
+                    src="{% static 'img/electrical/Headlamps.gif' %}" alt="scparts">
+                    <h2 class="mb-4"> Headlamps </h2>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <img class=" img-fluid parts-diagram" data-toggle="magnify" 
+                    src="{% static 'img/electrical/Front and side lamps - European models.gif' %}" alt="scparts">
+                    <h2 class="mb-4"> Front and side lamps </h2>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <img class=" img-fluid parts-diagram" data-toggle="magnify" 
+                    src="{% static 'img/electrical/Interior and boot lamps.gif' %}" alt="scparts">
+                    <h2 class="mb-2"> Interior and boot lamps </h2>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <img class=" img-fluid parts-diagram" data-toggle="magnify" 
+                    src="{% static 'img/electrical/Bulbs.gif' %}" alt="scparts">
+                    <h2 class="mb-2"> Bulbs </h2>
+                </div>
+            </div>
+            
+            <!-- Parts Cards -->
+           {% include 'parts_cards.html' %}
+</div>
+           <!-- FOOTER -->
+           {% include 'footer.html' %}
+{% endblock %}

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-(% load staticfiles %}
+{% load static %}
 
 {% block content %}
 <div class="container clutch-container">
@@ -18,49 +18,20 @@
             <!-- Parts Diagram(s) -->
             <div class="row  pl-4 pr-4 text-center">
                 <div class="col-md-6 col-sm-6">
-                    <img class=" img-fluid parts-diagram" data-toggle="magnify" src="/media/images/clutch/clutch.gif" alt="scparts">
+                    <img class=" img-fluid parts-diagram" data-toggle="magnify" 
+                    src="/static/img/clutch/clutch.gif" alt="scparts">
                     <h2 class="mt-2"> Clutch </h2>
                 </div>
                 <div class="col-md-6 col-sm-6">
-                    <img class="img-fluid parts-diagram" data-toggle="magnify" src="/media/images/clutch/clutch_hydraulics.gif" alt="scparts">
+                    <img class="img-fluid parts-diagram" data-toggle="magnify" 
+                    src="/static/img/clutch/clutch_hydraulics.gif" alt="scparts">
                     <h2 class="mt-2"> Clutch hydraulics </h2>
                 </div>
             </div>
             
             <!-- Parts Cards -->
-            <div class="row p-4">    
-                <!-- loop through the contents of products_list, 
-                     and assigns the current Product object in the list to the 'product' variable. -->
-                {% for product in products_list %}
-                   <div class="col-md-3 p-2">
-                       <div class="card h-100 mb-3">
-                           <div class="card-body">
-                             <img src="{{ MEDIA_URL }}{{ product.image }}" class="card-img-top p-1" alt="scparts"> 
-                             <h3 class="card-title text-center mt2"> <u>{{ product.part_name }}</u> </h3>
-                             <p class="card-text"> <strong> Part no: </strong> {{ product.part_number}} </p>
-                             <p class="card-text"> <strong> Model: </strong> {{ product.vehicle_model }} </p>
-                             <p class="card-text"> <strong> Required: </strong> {{ product.required }} </p>
-                             <p class="card-text"> <strong> Diagram number: </strong> {{ product.diagram_number }} </p> 
-                             <p class="card-text text-wrap"> <strong> Product description: </strong> <br> {{ product.description }} </p>
-                             <p class="card-text"> <strong> £ {{ product.price }} </strong> </p>
-
-                            <form method="post" action="{% url 'add_to_cart' product.id %}">
-                                {% csrf_token %}
-                                <div class="input-group p-3">
-                                    <p>Qty : &nbsp;</p>
-                                    <input name="quantity" type="number" min="1" max="999" value="1" class="form-control" placeholder="Quantity"> 
-                                </div>
-                                <div class="text-center">
-                                    <button class="btn btn-success" type="submit"> Add to My Cart </button>
-                                </div>
-                            </form>
-                          </div>      
-                        </div> 
-                    </div> 
-                {% endfor %}
-            </div>
+            {% include 'parts_cards.html' %}
 </div>
-<!-- FOOTER -->
-{% include 'footer.html' %}
+            <!-- FOOTER -->
+            {% include 'footer.html' %}
 {% endblock %}
-

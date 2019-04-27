@@ -1,4 +1,5 @@
-{% load staticfiles %}
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     
@@ -22,15 +23,8 @@
     <!-- NAVIGATION -->
     {% include 'navbar.html' %}
     
-    <!-- MESSAGES -->
-    {% if messages %}
-    <div>
-        {% for messages in messages %}
-            {{ messages }}
-        {% endfor %}
-    </div>
-        {% endif %}
-        {% block content %} {% endblock %}
+    {% block content %} 
+    {% endblock %}
     
     <!-- SCRIPT -->
     <!-- JQuery minified Javascript file (v3.3.1)            --> <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>   
@@ -39,3 +33,6 @@
     <!-- Custom JavaScript for this template                 --> <script src="{% static 'js/custom.js' %}"> </script>
 </body>
 </html>
+
+<!-- messages -->
+    

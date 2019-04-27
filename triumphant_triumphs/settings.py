@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 import os
 import dj_database_url
@@ -19,10 +21,6 @@ import env
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -94,6 +92,7 @@ TEMPLATES = [
     },
 ]
 
+
 # The full Python path of the WSGI application object that Django’s built-in servers (e.g. runserver) will use
 WSGI_APPLICATION = 'triumphant_triumphs.wsgi.application'
 
@@ -157,7 +156,7 @@ USE_TZ = True
 # STATICFILE_DIRS = # Look for static files here
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')    
 STATIC_URL = '/static/'                                   
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),) 
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 
 # Media files
