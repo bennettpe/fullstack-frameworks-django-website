@@ -7,19 +7,21 @@
     <!-- MESSAGES -->
     {% include 'messages.html' %}
     
-    <!-- NAVIGATION -->
+    <h1 class="bg-header text-uppercase text-white"> TRIUMPHANT TRIUMPHS </h1>   
+    
+     <!-- NAVIGATION -->
     <div class="container d-flex h-100 align-items-center">
         <div class="mx-auto">
-            <h1 class="bg-header text-uppercase text-white"> TRIUMPHANT TRIUMPHS </h1>
             {% if not user.is_authenticated %}
-            <div class="row justify-content-center">
-                <a class="btn btn-primary btn-lg m-2" href="{% url 'registration' %}"> Register </a>
-                <a class="btn btn-primary btn-lg m-2" href="{% url 'login' %}"> Log In </a>
+            <div class="row">
+                <a class="btn btn-primary btn-lg btn-colour m-2" href="{% url 'registration' %}"> Register </a>
+                <a class="btn btn-primary btn-lg btn-colour m-2" href="{% url 'login' %}"> Log In </a>
             </div>
             {% endif %}
-            <h2 class="bg-tagline text-white mt-2 mb-2"> Triumph Spitfire Mk3 ,Mk4 & 1500 Parts Store </h2>
         </div>
-    </div>
+    </div> 
+    
+    <h3 class="bg-tagline text-white"> Triumph Spitfire MKIII, MKIV & 1500 Parts Store </h3>
 </header>
 
 <!-- Model Overview Section -->
@@ -51,7 +53,7 @@
     <div class="container" id="mk1">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h2 class="model-header text-black text-center mt-2 mb-2"> <u> Spitfire 4 or MKI (1962 - 1964) </u></h2>
+                <h2 class="model-header text-black text-center mt-2 mb-2"> <u>Spitfire 4 or MKI (1962 - 1964)</u></h2>
                 <img class="img-fluid" src="{% static 'img/vehicles/mk1.jpg' %}" alt="Image of mk1" width="40%" align="right" id="photo-right"> 
                 <p class="muted"> 
                         The production car changed little from the prototype, although the full-width rear bumper was dropped in 
@@ -70,7 +72,7 @@
     <div class="container" id="mk2">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h2 class="model-header text-black text-center mt-2 mb-2"> <u> Spitfire MKII (1964 - 1967) </u></h2>
+                <h2 class="model-header text-black text-center mt-2 mb-2"> <u>Spitfire MKII (1964 - 1967)</u></h2>
                 <img src="{% static 'img/vehicles/mk2.jpg' %}" alt="Image of mk2" width="40%" align="left" id="photo-left">
                 <p class="muted"> 
                         Introduction of the Spitfire MK2 with following changes: 
@@ -97,7 +99,7 @@
     <div class="container" id="mk3">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h2 class="model-header text-black text-center mt-2 mb-2"> <u> Spitfire MKIII (1967 - 1970) </u></h2>
+                <h2 class="model-header text-black text-center mt-2 mb-2"> <u>Spitfire MKIII (1967 - 1970)</u></h2>
                 <img src="{% static 'img/vehicles/mk3.jpg' %}" alt="Image of mk3" width="40%" align="right" id="photo-right">
                 <p class="muted"> 
                         Introduction of the Spitfire MK3 with following changes: 
@@ -143,7 +145,7 @@
     <div class="container" id="mk4">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h2 class="model-header text-black text-center mt-2 mb-2"> <u> Spitfire MKIV (1970 - 1974)  </u></h2>
+                <h2 class="model-header text-black text-center mt-2 mb-2"> <u>Spitfire MKIV (1970 - 1974)</u></h2>
                 <img src="{% static 'img/vehicles/mk4.jpg' %}" alt="Image of mk4" width="40%" align="left" id="photo-left"> 
                 <p class="muted"> 
                         Introduction of the Spitfire MK4 with a new style based on that of the Triumph Stag: 
@@ -204,7 +206,7 @@
     <div class="container" id="mk1500">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h2 class="model-header text-black text-center mt-2 mb-2"> <u> Spitfire 1500 (1974 - 1980) </u></h2>
+                <h2 class="model-header text-black text-center mt-2 mb-2"> <u>Spitfire 1500 (1974 - 1980)</u></h2>
                 <img src="{% static 'img/vehicles/1500.jpg' %}" alt="Image of 1500" width="40%" align="right" id="photo-right"> 
                 <p class="muted"> 
                         The Spitfire 1500 was introduced to all European markets with following modifications: 

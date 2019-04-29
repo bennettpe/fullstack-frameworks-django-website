@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <!-- NAVIGATION NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
       <div class="container-fluid">
@@ -18,7 +20,7 @@
               <li class="nav-item"> <a class="nav-link" href="/about"> About </a></li>
               
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download"> Parts <span class="caret"></span></a>
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download"> <i class="fas fa-wrench"></i> Parts <span class="caret"></span></a>
               <div class="dropdown-menu" aria-labelledby="download">
                 <a class="dropdown-item" href="/products/categories"> All Parts </a>
                 <div class="dropdown-divider"></div>
@@ -31,10 +33,9 @@
                 <a class="dropdown-item" href="/products/exhaust"> Exhaust System </a>
                 <a class="dropdown-item" href="/products/exterior"> Exterior </a>
                 <a class="dropdown-item" href="/products/fuel"> Fuel system </a>
-                <a class="dropdown-item" href="/products/steering"> Steering & Suspension </a>
                 <a class="dropdown-item" href="/products/interior"> Interior </a>
                 <a class="dropdown-item" href="/products/roadwheels"> Roadwheels </a>
-                <a class="dropdown-item" href="/products/service"> Sevice </a>
+                <a class="dropdown-item" href="/products/steering"> Steering & Suspension </a>
               </div>
             </li>
           
@@ -44,7 +45,7 @@
               <li class="nav-item"><a class="nav-link" href="/admin/"> <i class="fas fa-lock"></i> Admin </a></li>
             {% endif %}
               <li class="nav-item"> <a class="nav-link" href="{% url 'profile' %}"> <i class="fa fa-user"></i> Profile </a></li>
-              <li class="nav-item"> <a class="nav-link" href="{% url 'logout' %}"> <i class="fa fa-sign-out-alt"> </i> Log Out </a></li>
+              <li class="nav-item"> <a class="nav-link" href="{% url 'logout' %}"> <i class="fa fa-sign-out-alt"> </i> Log Out ({{ user.username }}) </a></li>
             {% else %}   
               <li class="nav-item"> <a class="nav-link" href="{% url 'registration' %}"> <i class="fa fa-user-plus"></i> Register </a></li>
               <li class="nav-item"> <a class="nav-link" href="{% url 'login' %}"> <i class="fa fa-sign-in-alt"></i> Log In </a></li>
@@ -55,7 +56,7 @@
                     {% endif %}
                   </a>
               </li>
-              <li class="nav-item"> <a class="nav-link" href="/contact/"> Contact </a></li>
+              <li class="nav-item"> <a class="nav-link" href="/contact/"> <i class="fas fa-inbox"></i> Contact </a></li>
           </ul>
         </div>
       </div> 

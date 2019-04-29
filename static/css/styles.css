@@ -24,36 +24,50 @@ body {
 }
 
 /* ----- Changes to Padding for Messages ----- */ 
-/* see http://stephen.io/mediaqueries          */
 
 /* iPhone 5 & 5S in portrait & landscape */
 @media (min-width: 320px) and (max-width: 568px) {
 body { 
-    padding-top: 90px; }
+    padding-top: 90px;}
+    
+/* ADD fixed, scrollable navbar */
+/* see https://codepen.io/ondrejsvestka/pen/BZJEpp */
+.fixed-top .navbar-collapse {
+  max-height: 340px;
+  overflow-y: auto;}    
 }
+
 /* iPhone 6, 7, & 8 in portrait & landscape */
 @media (min-width: 375px) and (max-width: 667px)  {
 body { 
-    padding-top: 65px; }
+    padding-top: 65px;
+    }
 }
 /* iPhone X in portrait & landscape */
 @media (min-width: 375px) and (max-width: 812px)  {
 body { 
-    padding-top: 65px; }
+    padding-top: 65px;
+    }
 }
 /* iPhone 6, 7, & 8 Plus in portrait & landscape */
 @media (min-width: 414px) and (max-width: 736px)  {
 body { 
-    padding-top: 65px; }
+    padding-top: 65px;
+    }
 }
 /* iPad in portrait & landscape */
 @media (min-width: 768px) and (max-width: 1024px)  {
 body { 
-    padding-top: 65px; }
+    padding-top: 65px;
+    }
+}
+/* iPad Pro in portrait & landscape */
+@media (min-width: 1024px) and (max-width: 1366px)  {
+body { 
+    padding-top: 65px;
+    }
 }
 
-
- 
 p.card-body {
  margin :10px;
  line-height: 15px;
@@ -89,6 +103,21 @@ p.card-footer {
 }
 
 /**/
+.dropdown-menu .dropdown-item {
+    line-height: 16px;
+}
+
+/**/
+.dropdown-menu.show {
+  padding: 4px;
+}
+
+/* CHANGE padding of dtopdown item */
+.dropdown-item {
+    padding: 0.25rem 0.25rem;
+}
+
+/**/
 .badge {
     padding-left: 9px;
     padding-right: 9px;
@@ -99,6 +128,8 @@ p.card-footer {
     background-color: #ee6c4d;
     color:  #ffffffd4;
 } 
+
+
 
 /* ----- Changes to Messages ------- */
 .alert {
@@ -117,11 +148,14 @@ p.card-footer {
     background-color: #ee6c4d;
 }
 
+
+
 /* ----- Changes to Breadcrumb ----- */
 /* CHANGE color & font-size*/
 .breadcrumb {
 	background-color: #3d5a80; /* purple navy */
 	font-size: 13px; 
+	list-style:none;
 }
 
 /* ADD matgins */
@@ -147,30 +181,33 @@ p.card-footer {
     color: #ee6c4d;
 }
 
+
+
 /* ----- Changes to Header ----- */
 /* ADD background */
 .masthead {
-    position: relative;
-    width: 100%;
-    height: 75%;
-    background: url("/static/img/bg-1963-triumph-spitfire-gt6r-le-mans-recreation.jpg");
+    width: 100%; 
+    height: 100%; 
+    background: url("/static/img/vehicles/triumph-spitfire-le-mans-recreation.jpg");
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-size: cover;
+    background-attachment: scroll; 
+    background-size: cover; 
 }
 
 .masthead img {
     max-width: 100%;
 }
 
+
 /* CHANGE font of h1 */
+/*
 h1 {
-    font-family: 'Varela Round';
+    font-family: 'Varela Round'; 
     font-size: 2rem;
     line-height: 2rem;
     letter-spacing: 0.5rem;
-}
+}*/
 
 /* CHANGE font of h2 */
 h2 {
@@ -179,9 +216,11 @@ h2 {
 
 /* Move to top left of background image */
 .bg-header {
-    text-align: center;
     top: 0;
     bottom: 0;
+    margin: auto;
+    padding: 20px 0  0 10px;
+    text-align: left;
 }
 
 /* CHANGE color */
@@ -195,9 +234,16 @@ h2 {
     width: 100%;
     left: 0;
     bottom: 0;
+    margin: auto;
+    padding: 0 10px 10px 10px;
     text-align: center;
 }
 
+/* Change btn colour */
+.btn-colour {
+    background-color: #ee6c4d;
+    border: 1px solid #000;
+}
 
 
 /* ----- Changes to Models Section ----- */
@@ -211,6 +257,7 @@ h2 {
     float: left;    
     margin: 0 15px 0 0;
     border: 1px solid #000;
+    border-radius: 10px;
     padding: 0;
 }
 
@@ -219,8 +266,15 @@ h2 {
     float: right;    
     margin: 0 0 0 15px;
     border: 1px solid #000;
+    border-radius: 10px;
     padding: 0;
     
+}
+
+/* Add border radius to spec */
+#spit-spec {
+    border: 1px solid #000;
+    border-radius: 10px;   
 }
 
 /* Add border to photo */
@@ -231,17 +285,19 @@ h2 {
 
 
 /* ----- Changes to Cards ----- */
-
-/* CHANGE border for card */
 .card {
-  border: 1px solid #000;
-  border-radius: 0px;
-  padding: 0;
+    border: none;
+    border-radius: 0;
+}
+
+.parts-cards {
+    border: 1.5px solid #9b9797;
+    border-radius: 10px;
 }
 
 /* CHANGE padding for Card body */
 .card-body {
-  padding: 0rem;
+    padding: 0;
 }
 
 /* CHANGE color for Card link */
@@ -256,17 +312,13 @@ h2 {
   font-size: 1.5em;
 }
 
-/* Add border to parts diagram */
-.parts-diagram {
-    border: 1px solid #000;
-}
-
 /* ADD border & color for Card footer */
 .card-footer {
-  border-left: 1px solid #000;
-  border-right: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-left: 1px solid #9b9797;
+  border-right: 1px solid #9b9797;
+  border-bottom: 1px solid #9b9797;
   border-top: none;
+  border-radius: 0 0 10px 10px ;
   background-color: #ddd; 
   padding: 0;
   margin: 0;
@@ -274,10 +326,22 @@ h2 {
 
 /* ADD border & color for Card header */
 .card-header {
-  border-left: 1px solid #000;
-  border-right: 1px solid #000;
+  border-left: 1px solid #9b9797;
+  border-right: 1px solid #9b9797;
   background-color: #ddd; 
   padding: 0;
+}
+
+/* Add border to parts diagram */
+.parts-diagram {
+    border: 1px solid #9b9797;
+    border-radius: 10px;  
+}
+
+/* Add border to top of parts diagram */
+.parts-diagram-footer {
+    border: 1px solid #9b9797;
+    border-radius: 10px 10px 0 0; 
 }
 
 
@@ -357,4 +421,41 @@ p.card-text {
 .href-link:hover {
 	color: #ee6c4d; 
 	text-decoration: none;
+}
+
+
+
+/* ----- Changes to checkout.html ----- */
+/* Change font-size , paddig of legend */
+legend {
+	font-size: 25px;
+	padding: 15px 0 15px 0;
+	text-align: center;
+}
+
+/* Change color to card errors */
+.card-errors {
+    font-size: 18px;
+    color: #ee6c4d;
+    font-weight: bold;
+}
+
+/* Add styling to payment section */
+fieldset {
+	border: 1.5px solid #9b9797;
+	border-radius: 10px;
+	padding: 20px;
+	margin-bottom: 50px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #98c1d9; 
+}
+
+.stripe-container {
+    padding-top: 25px;
+}
+
+/* Add darker border */
+.form-control {
+	border: 1px solid #9b9797;
 }

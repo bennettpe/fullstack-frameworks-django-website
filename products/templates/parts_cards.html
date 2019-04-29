@@ -4,7 +4,7 @@
                      and assigns the current Product object in the list to the 'product' variable. -->
                 {% for product in products_list %}
                    <div class="col-md-3 p-2">
-                       <div class="card h-100 mb-3">
+                       <div class="card h-100 mb-3 parts-cards">
                            <div class="card-body">
                              <img src="{{ MEDIA_URL }}{{ product.image }}" class="card-img-top p-1" alt="scparts"> 
                              <h3 class="card-title text-center mt2"> <u>{{ product.part_name }}</u> </h3>

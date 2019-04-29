@@ -13,10 +13,6 @@
     <!-- BOOTSTRAP MAGNIFY CSS file ()                --> <link rel="stylesheet" href="{% static 'css/bootstrap-magnify.css' %}"  type="text/css">
     <!-- Custom styles for this template              --> <link rel="stylesheet" href="{% static 'css/styles.css' %}"  type="text/css">
     <!-- Favicon                                      --> 
-    
-    <!-- STRIPE -->
-    {% block head_js %}
-    {% endblock head_js %}
 </head>
     
 <body>
@@ -27,12 +23,12 @@
     {% endblock %}
     
     <!-- SCRIPT -->
-    <!-- JQuery minified Javascript file (v3.3.1)            --> <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>   
+    <!-- JQuery minified Javascript file (v3.2.1)            --> <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
     <!-- Bootstrap core JavaScript minified file (v4.3.1)    --> <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"> </script>
     <!-- Bootstrap Magnify JavaScript minified file (v4.3.1) --> <script src="{% static 'js/bootstrap-magnify.js' %}"> </script>
     <!-- Custom JavaScript for this template                 --> <script src="{% static 'js/custom.js' %}"> </script>
+    <!-- STRIPE -->
+    {% block head_js %}
+    {% endblock head_js %}
 </body>
 </html>
-
-<!-- messages -->
-    

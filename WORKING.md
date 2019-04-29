@@ -1714,3 +1714,11 @@ This section is for setting up an **customer payment mechanism** to allow users 
 #### Create javascript for Stripe
 1. Create folder **js** in <i>fullstack-frameworks-django-project/checkout/static</i> <br>
 2. Create file **stripe.js** in <i>fullstack-frameworks-django-project/checkout/static/js</i> 
+3. Test Stripe using Test Credit Card details as follows 
+    ```
+    Name:   Test Customer
+    Credit card number: 4242424242424242
+    Security code(CVV): 111
+    Month:  1
+    Year: 2020
+    ```

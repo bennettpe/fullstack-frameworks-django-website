@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap_tags %}
+
+{% block content %}
+<!-- PAYMENT FORM -->
+    <section class="container">
+        <ol class="breadcrumb bcrumb-margins">
+            <li class="breadcrumb-item">
+                <a href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="breadcrumb-item active">Contact</li>
+        </ol>
+        <h2>Contact Us</h2>
+        <br>
+        <p>Our fully qualified and experienced consultants are here to help you out with any AV challenges that may stand in your way. Please fill out the form below to get started.</p>
+        
+        <div id="form-area">
+            <form method="post">
+                <fieldset>
+                    <legend>Contact Form</legend>
+                    {% csrf_token %}
+                    <div class="form-group col-md-12">
+                        {{ form | as_bootstrap }}
+                        <input class="btn btn-primary" type="submit" value="Submit">
+                    </div>
+                </fieldset>
+            </form>
+            
+        </div>
+    </section>
+{% endblock %}

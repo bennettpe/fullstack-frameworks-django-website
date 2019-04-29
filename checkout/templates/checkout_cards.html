@@ -1,0 +1,18 @@
+<!-- Checkout Cards -->
+<div class="row p-4">    
+    {% for item in cart_items %}
+    <div class="col-md-3 p-2">
+        <div class="card h-100 mb-3">
+            <div class="card-body">
+                <img src="{{ MEDIA_URL }}{{ item.product.image }}" class="card-img-top p-1" alt="scparts"> 
+                <h3 class="card-title text-center mt2"> <u>{{ item.product.part_name }}</u> </h3>
+                <p class="card-text"> <strong> Part no: </strong> {{ item.product.part_number}} </p>
+                <p class="card-text"> <strong> Model: </strong> {{ item.product.vehicle_model }} </p>
+                <p class="card-text text-wrap"> <strong> Product description: </strong> <br> {{ item.product.description }} </p>
+                <p class="card-text"> <strong> Quantity: </strong> {{ item.quantity }} </p>
+                <p class="card-text"> <strong> £ {{ item.product.price }} </strong> </p>
+            </div> 
+        </div> 
+    </div>
+    {% endfor %}
+</div>                            

@@ -1,10 +1,10 @@
 <!-- MESSAGES -->
-    {% if messages %}
-        <div class="container-fluid messages-container">
-            {% for msg in messages %}       
-                <div class="alert alert-{{msg.level_tag}}" role="alert">
-                    {{msg.message}}
-                </div>
-            {% endfor %}
+{% if messages %}
+        <div class="alert alert-success">
+            <div class="messages">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
         </div>
-    {% endif %}
+    {% endif %}    
