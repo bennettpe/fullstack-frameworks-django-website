@@ -1,39 +1,41 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} 
+{% load static %} 
 
 {% block content %}
-<div class="container overdrive-container">
-            <ol class="breadcrumb bcrumb-margins">
-                <li class="breadcrumb-item"> <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'clutch' %}"> Clutch </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'gearbox' %}"> Gearbox </a></li>
-                <li class="breadcrumb-item active"> Overdrive 'D' type </li>
-                <li class="breadcrumb-item"> <a href="{% url 'overdrive_j' %}"> Overdrive 'J' type </a></li>
-            </ol>
-            
-            <!-- Parts Heading -->
-            <h2 class="pl-4 pr-4"> Overdrive 'D' type </h2>
-            <p class="pl-4 pr-4">  To chassis no. FH60000 and FM10000 (January 1967 to August 1973) </p>
-            </br>
-            
-            <!-- Parts Diagram(s) -->
-            <div class="row  pl-4 pr-4 text-center">
-                <div class="col-md-6 col-sm-6">
-                    <img class=" img-fluid parts-diagram" data-toggle="magnify" 
-                    src="/static/img/overdrive/D type overdrive, inner Spitfire Mk3 and early Mk4.gif" alt="scparts">
-                    <h2 class="mb-2"> Overdrive inner 'D' type </h2>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <img class="img-fluid parts-diagram" data-toggle="magnify"
-                    src="/static/img/overdrive/D type overdrive, outer- Spitfire Mk3 and early Mk4.gif" alt="scparts">
-                    <h2 class="mb-2"> Overdrive outer'D' type </h2>
-                </div>
-            </div>
-            
-            <!-- Parts Cards -->
-            {% include 'parts_cards.html' %}
+<!-- OVERDRIVE D TYPE -->
+<div class="container overdrive-d-type-container">
+    <ol class="breadcrumb bcrumb-margins">
+        <li class="breadcrumb-item">
+            <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a>
+        </li>
+        <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'clutch' %}"> Clutch </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'gearbox' %}"> Gearbox </a></li>
+        <li class="breadcrumb-item active"> Overdrive 'D' type </li>
+        <li class="breadcrumb-item"> <a href="{% url 'overdrive_j' %}"> Overdrive 'J' type </a></li>
+    </ol>
+
+    <!-- Parts Heading -->
+    <h2 class="pl-4 pr-4"> Overdrive 'D' type </h2>
+    <p class="pl-4 pr-4"> To chassis no. FH60000 and FM10000 (January 1967 to August 1973) </p>
+    </br>
+
+    <!-- Parts Diagram(s) -->
+    <div class="row  pl-4 pr-4 text-center">
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram" data-toggle="magnify" src="/static/img/overdrive/D type overdrive, inner Spitfire Mk3 and early Mk4.gif" alt="scparts">
+            <h2 class="mb-2"> Overdrive inner 'D' type </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class="img-fluid parts-diagram" data-toggle="magnify" src="/static/img/overdrive/D type overdrive, outer- Spitfire Mk3 and early Mk4.gif" alt="scparts">
+            <h2 class="mb-2"> Overdrive outer'D' type </h2>
+        </div>
+    </div>
+
+    <!-- Parts Cards -->
+    {% include 'parts_cards.html' %}
 </div>
-            <!-- FOOTER -->
-            {% include 'footer.html' %}
+
+<!-- BACK TO TOP -->
+{% include 'bttop.html' %} 
 {% endblock %}

@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
-{% load static %}
-{% load bootstrap_tags %}
+{% extends 'base.html' %} 
+{% load static %} 
+{% load bootstrap_tags %} 
 
 {% block head_js %}
 <!-- STRIPE -->
@@ -11,7 +11,7 @@
     //]]>
 </script>
 <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
-{% endblock %}
+{% endblock %} 
 
 {% block content %}
 <!-- PAYMENT FORM -->
@@ -22,21 +22,21 @@
         <li class="breadcrumb-item"> <a href="{% url 'view_cart' %}"> Cart </a></li>
         <li class="breadcrumb-item active"> Checkout </li>
     </ol>
-    
+
     <!-- Checkout Cards -->
-    <h2> Checkout <i class="far fa-credit-card ml-2"></i></h2>
-    {% include 'checkout_cards.html' %}
-    
+    <h2> Checkout <i class="far fa-credit-card ml-2"></i></h2> {% include 'checkout_cards.html' %}
+
     <div class="row pl-4">
         <p class="cart-total card-text"><b> TOTAL </b></p>
-        <p class="cart-total card-text"> £ {{ total }} </b></p>
+        <p class="cart-total card-text"> £ {{ total }} </b>
+        </p>
     </div>
-</div>   
+</div>
 
 <div class="container stripe-container">
     <div class="row pl-4">
         <div class="col-12">
-            
+
             <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
                 <fieldset>
                     <!-- CREDIT CARD MESSAGES -->
@@ -50,25 +50,27 @@
                         <div class="row">
                             <!-- USERS DETAILS -->
                             <div class="form-group col-md-6">
-                                <legend> Order Details </legend>   
+                                <legend> Order Details </legend>
                                 {{ order_form | as_bootstrap }}
                             </div>
-                    
+
                             <!-- CREDIT CARD DETAILS -->
                             <div class="form-group col-md-6">
-                                <legend> Payment Details </legend>   
-                                {{ payment_form | as_bootstrap }}
-                                {% csrf_token %}
+                                <legend> Payment Details </legend>
+                                {{ payment_form | as_bootstrap }} {% csrf_token %}
                                 <div class="form-group col-md-12 text-center">
                                     <input class="btn btn-success" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
                                 </div>
                             </div>
-                        </div>  
+                        </div>
                     </div>
                 </fieldset>
             </form>
-            
-        </div>  
+
+        </div>
     </div>
 </div>
+
+<!-- BACK TO TOP -->
+{% include 'bttop.html' %} 
 {% endblock %}

@@ -1,59 +1,52 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} 
+{% load static %} 
 
 {% block content %}
+<!-- BRAKE HYDRAULICS -->
 <div class="container brake-container">
-            <ol class="breadcrumb bcrumb-margins">
-                <li class="breadcrumb-item"> <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
-                <li class="breadcrumb-item active"> Brake Hydraulics </li>
-                <li class="breadcrumb-item"> <a href="{% url 'brakes_fr' %}"> Front & Rear brakes</a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'brakes_handbrake' %}"> Handbrake </a></li>
-            </ol>
-            
-            <!-- Parts Heading -->
-            <h2 class="pl-4 pr-4"> Brakes </h2>
-            <br>
-            
-            <!-- Parts Diagram(s) -->
-            <div class="row  pl-4 pr-4 text-center">
-                <div class="col-md-6 col-sm-6">
-                    <img class=" img-fluid parts-diagram-footer" data-toggle="magnify" 
-                    src="{% static 'img/brakes/brake hydraulics - single line system.gif' %}" alt="scparts">
-                    <p class="card-footer text-center"> Models for France, Belgium, 
-                                                        Luxembourg and Netherland to 1976. </br> RHD models to 1979 </p>
-                    <h2 class="mb-2"> Brake hydraulics - single line </h2>
-                    
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <img class="img-fluid parts-diagram-footer" data-toggle="magnify" 
-                    src="{% static 'img/brakes/brake pipes - single line system.gif' %}" alt="scparts">
-                    <p class="card-footer text-center"> Models for France, Belgium, 
-                                                        Luxembourg and Netherland to 1976. </br> RHD models to 1979</p>
-                    <h2 class="mb-2"> Brake pipes - single line </h2>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <img class=" img-fluid parts-diagram-footer mt-4" data-toggle="magnify" 
-                    src="{% static 'img/brakes/brake hydraulics - dual line system.gif' %}" alt="scparts">
-                    <p class="card-footer text-center"> All LHD models except France, Belgium, 
-                                                        Luxembourg and Netherland from 1967. Models for France, Belgium, 
-                                                        Luxembourg and Netherland from 1976. </br> RHD models from 1979 </p>
-                    <h2 class="mb-2"> Brake hydraulics - dual line </h2>                     
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <img class="img-fluid parts-diagram-footer mt-4" data-toggle="magnify" 
-                    src="{% static 'img/brakes//brake pipes - dual line system.gif' %}" alt="scparts">
-                    <p class="card-footer text-center"> All LHD models except France, Belgium, 
-                                                        Luxembourg and Netherland from 1967. Models for France, Belgium, 
-                                                        Luxembourg and Netherland from 1976. </br> RHD models from 1979 </p>
-                    <h2 class="mb-2"> Brake pipes - dual line </h2>
-                </div>
-            </div>
-            
-            <!-- Parts Cards -->
-            {% include 'parts_cards.html' %}
+    <ol class="breadcrumb bcrumb-margins">
+        <li class="breadcrumb-item">
+            <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a>
+        </li>
+        <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
+        <li class="breadcrumb-item active"> Brake Hydraulics </li>
+        <li class="breadcrumb-item"> <a href="{% url 'brakes_fr' %}"> Front & Rear brakes</a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'brakes_handbrake' %}"> Handbrake </a></li>
+    </ol>
+    <!-- Parts Heading -->
+    <h2 class="pl-4 pr-4"> Brakes </h2>
+    <br>
+    <!-- Parts Diagram(s) -->
+    <div class="row  pl-4 pr-4 text-center">
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram-footer" data-toggle="magnify" src="{% static 'img/brakes/brake hydraulics - single line system.gif' %}" alt="scparts">
+            <p class="card-footer text-center"> Models for France, Belgium, Luxembourg and Netherland to 1976. </br> RHD models to 1979
+            </p>
+            <h2 class="mb-2"> Brake hydraulics - single line </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class="img-fluid parts-diagram-footer" data-toggle="magnify" src="{% static 'img/brakes/brake pipes - single line system.gif' %}" alt="scparts">
+            <p class="card-footer text-center"> Models for France, Belgium, Luxembourg and Netherland to 1976. </br> RHD models to 1979
+            </p>
+            <h2 class="mb-2"> Brake pipes - single line </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram-footer mt-4" data-toggle="magnify" src="{% static 'img/brakes/brake hydraulics - dual line system.gif' %}" alt="scparts">
+            <p class="card-footer text-center"> All LHD models except France, Belgium, Luxembourg and Netherland from 1967. Models for France, Belgium, Luxembourg and Netherland from 1976. </br> RHD models from 1979
+            </p>
+            <h2 class="mb-2"> Brake hydraulics - dual line </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class="img-fluid parts-diagram-footer mt-4" data-toggle="magnify" src="{% static 'img/brakes//brake pipes - dual line system.gif' %}" alt="scparts">
+            <p class="card-footer text-center"> All LHD models except France, Belgium, Luxembourg and Netherland from 1967. Models for France, Belgium, Luxembourg and Netherland from 1976. </br> RHD models from 1979
+            </p>
+            <h2 class="mb-2"> Brake pipes - dual line </h2>
+        </div>
+    </div>
+    <!-- Parts Cards -->
+    {% include 'parts_cards.html' %}
 </div>
-            <!-- FOOTER -->
-            {% include 'footer.html' %}
-            
+
+<!-- BACK TO TOP -->
+{% include 'bttop.html' %} 
 {% endblock %}

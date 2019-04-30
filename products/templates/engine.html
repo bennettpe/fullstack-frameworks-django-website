@@ -1,37 +1,37 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} 
+{% load static %} 
 
 {% block content %}
+<!-- CYLINDER BLOCK & HEAD -->
 <div class="container gearbox-container">
-            <ol class="breadcrumb bcrumb-margins">
-                <li class="breadcrumb-item"> <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
-                <li class="breadcrumb-item active"> Cylinder block & head </li>
-                <li class="breadcrumb-item"> <a href="{% url 'crankshaft' %}"> Crankshaft </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'oilsump' %}"> Oil sump </a></li>
-            </ol>
-            
-            <!-- Parts Heading -->
-            <h2 class="pl-4 pr-4"> Cylinder block and Cylinder head </h2>
-            </br>
-            
-            <!-- Parts Diagram(s) -->
-            <div class="row  pl-4 pr-4 text-center">
-                <div class="col-md-6 col-sm-6">
-                    <img class=" img-fluid parts-diagram" data-toggle="magnify" 
-                    src="/static/img/engine/cylinder_head.gif" alt="scparts">
-                    <h2 class="mb-2"> Cylinder head </h2>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <img class="img-fluid parts-diagram" data-toggle="magnify" 
-                    src="/static/img/engine/cylinder_block.gif" alt="scparts">
-                    <h2 class="mb-2"> Cylinder block </h2>
-                </div>
-            </div>
-            
-            <!-- Parts Cards -->
-            {% include 'parts_cards.html' %}
+    <ol class="breadcrumb bcrumb-margins">
+        <li class="breadcrumb-item"> <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
+        <li class="breadcrumb-item active"> Cylinder block & head </li>
+        <li class="breadcrumb-item"> <a href="{% url 'crankshaft' %}"> Crankshaft </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'oilsump' %}"> Oil sump </a></li>
+    </ol>
+
+    <!-- Parts Heading -->
+    <h2 class="pl-4 pr-4"> Cylinder block and Cylinder head </h2>
+    </br>
+
+    <!-- Parts Diagram(s) -->
+    <div class="row  pl-4 pr-4 text-center">
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram" data-toggle="magnify" src="/static/img/engine/cylinder_head.gif" alt="scparts">
+            <h2 class="mb-2"> Cylinder head </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class="img-fluid parts-diagram" data-toggle="magnify" src="/static/img/engine/cylinder_block.gif" alt="scparts">
+            <h2 class="mb-2"> Cylinder block </h2>
+        </div>
+    </div>
+
+    <!-- Parts Cards -->
+    {% include 'parts_cards.html' %}
 </div>
-            <!-- FOOTER -->
-            {% include 'footer.html' %}
+
+<!-- BACK TO TOP -->
+{% include 'bttop.html' %} 
 {% endblock %}

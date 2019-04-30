@@ -1722,3 +1722,97 @@ This section is for setting up an **customer payment mechanism** to allow users 
     Month:  1
     Year: 2020
     ```
+
+#### Create contact app
+1. **Create** Django app called **contact** 
+    ```python
+    python3 manage.py startapp contact
+    ```
+ 
+     ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py startapp contact 
+    ```
+    
+    The following django files have been **created**
+    ```
+    fullstack-frameworks-django-project
+    │
+    └── contact
+        ├── migrations
+        │   └── __init__.py # Python file to allow app packages to be imported from other directories.  
+        │
+        ├── __init__.py     # Python file to allow app packages to be imported from other directories. 
+        ├── admin.py        # File with admin definitions for the app. 
+        ├── apps.py         # File with configuration parameters for the app.
+        ├── models.py       # File with database definitions (i.e., model classes) for the app.
+        ├── tests.py        # File with test definitions for the app.
+        └── views.py        # File with view definitions (i.e., controller methods) for the app.
+    ```
+
+2. In **setting.py** 
+   go to **INSTALLED_APPS** section and add line containing **contact** 
+   ```python
+   # Application definition
+
+   INSTALLED_APPS = [
+    'contact',             <== this line added.
+    ]
+   ```
+3. Install django-phonenumber-field
+    Have to install pillow 5.4.1 as clould9 uses python3.4
+    
+    ```python
+    sudo pip3 install django-phonenumber-field
+    ```
+    
+    This installs **phonenumberfield** 
+
+    ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ sudo pip3 install django-phonenumber-field                                                                                                              
+    Downloading/unpacking django-phonenumber-field
+    Downloading django_phonenumber_field-2.3.1-py2.py3-none-any.whl (45kB): 45kB downloaded
+    Downloading/unpacking babel (from django-phonenumber-field)
+    Downloading Babel-2.6.0-py2.py3-none-any.whl (8.1MB): 8.1MB downloaded
+    Requirement already satisfied (use --upgrade to upgrade): Django>=1.11.3 in /usr/local/lib/python3.4/dist-packages (from django-phonenumber-field)
+    Requirement already satisfied (use --upgrade to upgrade): pytz>=0a in /usr/local/lib/python3.4/dist-packages (from babel->django-phonenumber-field)
+    Installing collected packages: django-phonenumber-field, babel
+    Successfully installed django-phonenumber-field babel
+    Cleaning up...
+    ```
+    
+4. Update `requirements.txt` file <br>
+    ```python
+    sudo pip3 freeze --local > requirements.txt
+    ```
+
+    output from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ sudo pip3 freeze --local > requirements.txt
+    ```    
+
+5. In **setting.py** 
+   go to **INSTALLED_APPS** section and add line containing **phonenumber_field** 
+   ```python
+   # Application definition
+
+   INSTALLED_APPS = [
+    'phonenumber_field',     <== this line added.
+    ]
+   ```   
+
+   Also add the following lines 
+   ```python
+   # PhoneNumberField Django library; allowing the use of GB numbers for contact app
+     PHONENUMBER_DB_FORMAT = 'NATIONAL'
+     PHONENUMBER_DEFAULT_REGION = 'GB'
+   ```
+   
+4. Create **forms.py** in **fullstack-frameworks-django-project/contact** 
+5. Add to **views.py** in **fullstack-frameworks-django-project/contact** 
+6. Create **templates** in **fullstack-frameworks-django-project/contact** 
+7. Update root **urls.py** in 
+8. Create templates folder in **fullstack-frameworks-django-project/contact** 
+8. Create **contact.html** in templates folder
+9. Create **urls.py** **fullstack-frameworks-django-project/contact** 

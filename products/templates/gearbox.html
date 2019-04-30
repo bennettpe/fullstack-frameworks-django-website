@@ -1,41 +1,40 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} 
+{% load static %} 
 
 {% block content %}
+<!-- GEARBOX MK3 -->
 <div class="container gearbox-container">
-            <ol class="breadcrumb bcrumb-margins">
-                <li class="breadcrumb-item"> <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'clutch' %}"> Clutch </a></li>
-                <li class="breadcrumb-item active"> Gearbox Mk3 </li>
-                <li class="breadcrumb-item"> <a href="{% url 'gearbox_mk4' %}"> Gearbox Mk4 </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'gearbox_1500' %}"> Gearbox 1500 </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'overdrive' %}"> Overdrive </a></li>
-            </ol>
-            
-            <!-- Parts Heading -->
-            <h2 class="pl-4 pr-4"> Gearbox Mk3 </h2>
-            <p class="pl-4 pr-4">  From chassis number FD1 to FD92803 (January 1967 to November 1970) 
-                                   - gearbox code: FD. Characteristic: 3 rail type </p>
-            </br>
-            
-            <!-- Parts Diagram(s) -->
-            <div class="row  pl-4 pr-4 text-center">
-                <div class="col-md-6 col-sm-6">
-                    <img class=" img-fluid parts-diagram" data-toggle="magnify" 
-                    src="/static/img/gearbox/3 syncro gearbox,inner - Mk3.gif" alt="scparts">
-                    <h2 class="mb-2"> Gearbox inner Mk3 </h2>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <img class="img-fluid parts-diagram" data-toggle="magnify" 
-                    src="/static/img//gearbox/3 syncro gearbox, outer - Mk3.gif" alt="scparts">
-                    <h2 class="mb-2"> Gearbox outer Mk3 </h2>
-                </div>
-            </div>
-            
-            <!-- Parts Cards -->
-            {% include 'parts_cards.html' %}
+    <ol class="breadcrumb bcrumb-margins">
+        <li class="breadcrumb-item"> <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'clutch' %}"> Clutch </a></li>
+        <li class="breadcrumb-item active"> Gearbox Mk3 </li>
+        <li class="breadcrumb-item"> <a href="{% url 'gearbox_mk4' %}"> Gearbox Mk4 </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'gearbox_1500' %}"> Gearbox 1500 </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'overdrive' %}"> Overdrive </a></li>
+    </ol>
+
+    <!-- Parts Heading -->
+    <h2 class="pl-4 pr-4"> Gearbox Mk3 </h2>
+    <p class="pl-4 pr-4"> From chassis number FD1 to FD92803 (January 1967 to November 1970) - gearbox code: FD. Characteristic: 3 rail type </p>
+    </br>
+
+    <!-- Parts Diagram(s) -->
+    <div class="row  pl-4 pr-4 text-center">
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram" data-toggle="magnify" src="/static/img/gearbox/3 syncro gearbox,inner - Mk3.gif" alt="scparts">
+            <h2 class="mb-2"> Gearbox inner Mk3 </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class="img-fluid parts-diagram" data-toggle="magnify" src="/static/img//gearbox/3 syncro gearbox, outer - Mk3.gif" alt="scparts">
+            <h2 class="mb-2"> Gearbox outer Mk3 </h2>
+        </div>
+    </div>
+
+    <!-- Parts Cards -->
+    {% include 'parts_cards.html' %}
 </div>
-            <!-- FOOTER -->
-            {% include 'footer.html' %}
+
+<!-- BACK TO TOP -->
+{% include 'bttop.html' %} 
 {% endblock %}

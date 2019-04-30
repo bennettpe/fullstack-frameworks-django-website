@@ -50,7 +50,9 @@ INSTALLED_APPS = [
     'accounts',
     'cart',
     'checkout',
+    'contact',
     'products',
+    'phonenumber_field',
 ]
 
 
@@ -185,7 +187,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_PORT = 587
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # A list of authentication backend classes (as strings) to use when attempting to authenticate a user
@@ -198,3 +200,8 @@ AUTHENTICATION_BACKENDS = [
 # STRIPE
 STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
 STRIPE_SECRET = os.getenv('STRIPE_SECRET')
+
+
+# PhoneNumberField Django library; allowing the use of GB numbers for contact app
+PHONENUMBER_DB_FORMAT = 'NATIONAL'
+PHONENUMBER_DEFAULT_REGION = 'GB'

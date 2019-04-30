@@ -1,54 +1,54 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} 
+{% load static %} 
 
 {% block content %}
+<!-- CHARGING & STARTING -->
 <div class="container alt_dyno-container">
-            <ol class="breadcrumb bcrumb-margins">
-                <li class="breadcrumb-item"> <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'electrical' %}"> Battery </a></li>
-                <li class="breadcrumb-item active"> Charging & Starting</li>
-                <li class="breadcrumb-item"> <a href="{% url 'ignition' %}"> Ignition </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'heating' %}"> Heating </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'lamps' %}"> Lamps </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'inst_sw' %}"> Instruments & Switches </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'wire_int' %}"> Wiring & Relays </a></li>
-            </ol>
-            
-            <!-- Parts Heading -->
-            <h2 class="pl-4 pr-4"> Alternator, Dynamo & Starter </h2>
-            <br>
-            
-            <!-- Parts Diagram(s) -->
-            <div class="row  pl-4 pr-4 text-center">
-                <div class="col-md-6 col-sm-6">
-                    <img class=" img-fluid parts-diagram-footer" data-toggle="magnify" 
-                    src="{% static 'img/electrical/Alternator Delco Remy DN460 - optional fitment for pre 1973 MK4 models.gif' %}" alt="scparts">
-                    <p class="card-footer text-center"> Optional fitment for pre 1973 Mk4 models </p>
-                    <h2 class="mb-2"> Alternator Delco Remy DN460 </h2>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <img class="img-fluid parts-diagram-footer" data-toggle="magnify" 
-                    src="{% static 'img/electrical/Alternator Lucas ACR type - MK4 and 1500.gif' %}" alt="scparts">
-                    <p class="card-footer text-center"> Mk4 and 1500</p>
-                    <h2 class="mb-2"> Alternator Lucas ACR type </h2>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <img class=" img-fluid parts-diagram-footer mt-4" data-toggle="magnify" 
-                    src="{% static 'img/electrical/Dynamo Lucas C40 type - MK3.gif' %}" alt="scparts">
-                    <p class="card-footer text-center"> Mk3</p>
-                    <h2 class="mb-2"> Dynamo Lucas C40 type </h2>                     
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <img class="img-fluid parts-diagram mt-4" data-toggle="magnify" 
-                    src="{% static 'img/electrical/Starter motor.gif' %}" alt="scparts">
-                    <h2 class="mb-2"> Starter motor </h2>
-                </div>
-            </div>
-            
-            <!-- Parts Cards -->
-           {% include 'parts_cards.html' %}
+    <ol class="breadcrumb bcrumb-margins">
+        <li class="breadcrumb-item">
+            <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a>
+        </li>
+        <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'electrical' %}"> Battery </a></li>
+        <li class="breadcrumb-item active"> Charging & Starting</li>
+        <li class="breadcrumb-item"> <a href="{% url 'ignition' %}"> Ignition </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'heating' %}"> Heating </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'lamps' %}"> Lamps </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'inst_sw' %}"> Instruments & Switches </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'wire_int' %}"> Wiring & Relays </a></li>
+    </ol>
+
+    <!-- Parts Heading -->
+    <h2 class="pl-4 pr-4"> Alternator, Dynamo & Starter </h2>
+    <br>
+
+    <!-- Parts Diagram(s) -->
+    <div class="row  pl-4 pr-4 text-center">
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram-footer" data-toggle="magnify" src="{% static 'img/electrical/Alternator Delco Remy DN460 - optional fitment for pre 1973 MK4 models.gif' %}" alt="scparts">
+            <p class="card-footer text-center"> Optional fitment for pre 1973 Mk4 models </p>
+            <h2 class="mb-2"> Alternator Delco Remy DN460 </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class="img-fluid parts-diagram-footer" data-toggle="magnify" src="{% static 'img/electrical/Alternator Lucas ACR type - MK4 and 1500.gif' %}" alt="scparts">
+            <p class="card-footer text-center"> Mk4 and 1500</p>
+            <h2 class="mb-2"> Alternator Lucas ACR type </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram-footer mt-4" data-toggle="magnify" src="{% static 'img/electrical/Dynamo Lucas C40 type - MK3.gif' %}" alt="scparts">
+            <p class="card-footer text-center"> Mk3</p>
+            <h2 class="mb-2"> Dynamo Lucas C40 type </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class="img-fluid parts-diagram mt-4" data-toggle="magnify" src="{% static 'img/electrical/Starter motor.gif' %}" alt="scparts">
+            <h2 class="mb-2"> Starter motor </h2>
+        </div>
+    </div>
+
+    <!-- Parts Cards -->
+    {% include 'parts_cards.html' %}
 </div>
-           <!-- FOOTER -->
-           {% include 'footer.html' %}
+
+<!-- BACK TO TOP -->
+{% include 'bttop.html' %} 
 {% endblock %}

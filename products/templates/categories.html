@@ -1,126 +1,127 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
-{% load bootstrap_tags %}
+{% extends 'base.html' %} 
+{% load staticfiles %} 
+{% load bootstrap_tags %} 
 
 {% block content %}
+<!-- CATEGORIES -->
 <section class="container mx-auto">
-   <ol class="breadcrumb bcrumb-margins">
-      <li class="breadcrumb-item"> <a href="{% url 'index' %}"> Home </a> </li>
-      <li class="breadcrumb-item active"> Products </li>
-   </ol>
-   <h2> Part Categories </h2>
-   <br>
-   
-   <div class="row justify-content-center">
-      <div class="card-group">
-         <section class="card w-33.3 m-1">
-            <a class="card-link" href="/products/body">
-               <div class="card-body">
-                  <img class="img-fluid" src="{% static 'img/categories/cat_body.jpg' %}" alt="Body">
-               </div>
-               <h5 class="card-title text-center">Body</h5>
-            </a>
-         </section>
-         <section class="card w-33.3 m-1">
-            <a class="card-link" href="/products/brakes">
-               <div class="card-body">
-                  <img class="img-fluid" src="{% static 'img/categories/cat_brakes.jpg' %}" alt="Brakes">
-               </div>
-               <h5 class="card-title text-center">Brakes</h5>
-            </a>
-         </section>
-         <section class="card w-33.3 m-1">
-            <a class="card-link" href="/products/clutch">
-               <div class="card-body">
-                  <img class="img-fluid" src="{% static 'img/categories/cat_clutch.jpg' %}" alt="Clutch/Gearbox/Overdrive">
-               </div>
-               <h5 class="card-title text-center">Clutch, Gearbox & Overdrive</h5>
-            </a>
-         </section>
-      </div>
-      
-      <div class="card-group">
-         <section class="card w-33.3 m-1">
-            <a class="card-link" href="/products/cooling">
-               <div class="card-body">
-                  <img class="img-fluid" src="{% static 'img/categories/cat_cooling.jpg' %}" alt="Cooling">
-               </div>
-               <h5 class="card-title text-center">Cooling</h5>
-            </a>
-         </section>
-         <section class="card w-33.3 m-1">
-            <a class="card-link" href="/products/electrical">
-               <div class="card-body">
-                  <img class="img-fluid" src="{% static 'img/categories/cat_electrical.jpg' %}" alt="Electrical">
-               </div>
-               <h5 class="card-title text-center">Electrical</h5>
-            </a>
-         </section>
-         <section class="card w-33.3 m-1">
-            <a class="card-link" href="/products/engine">
-               <div class="card-body">
-                  <img class="img-fluid" src="{% static 'img/categories/cat_engine.jpg' %}" alt="Engine">
-               </div>
-               <h5 class="card-title text-center">Engine</h5>
-            </a>
-         </section>
-      </div>
-      
-      <div class="card-group">
-         <section class="card w33.3 m-1">
-            <a class="card-link" href="/products/exhaust">
-               <div class="card-body">
-                  <img class="img-fluid" src="{% static 'img/categories/cat_exhaust.jpg' %}" alt="Exhaust">
-               </div>
-               <h5 class="card-title text-center">Exhaust</h5>
-            </a>
-         </section>
-         <section class="card w-33.3 m-1">
-            <a class="card-link" href="/products/exterior">
-               <div class="card-body">
-                  <img class="img-fluid" src="{% static 'img/categories/cat_exterior.jpg' %}" alt="Exterior">
-               </div>
-               <h5 class="card-title text-center">Exterior</h5>
-            </a>
-         </section>
-         <section class="card w-33.3  m-1">
-            <a class="card-link" href="/products/fuel">
-               <div class="card-body">
-                  <img class="img-fluid" src="{% static 'img/categories/cat_fuel.jpg' %}" alt="Fuel">
-               </div>
-               <h5 class="card-title text-center">Fuel</h5>
-            </a>
-         </section>
-      </div>
-      
-      <div class="card-group mb-4">
-         <section class="card w-33.3 m-1">
-            <a class="card-link" href="/products/interior">
-               <div class="card-body">
-                  <img class="img-fluid" src="{% static 'img/categories/cat_interior.jpg' %}" alt="Interior">
-               </div>
-               <h5 class="card-title text-center">Interior</h5>
-            </a>
-         </section>
-         <section class="card w-33.3 m-1">
-            <a class="card-link" href="/products/roadwheels">
-               <div class="card-body">
-                  <img class="img-fluid" src="{% static 'img/categories/cat_roadwheels.jpg' %}" alt="Roadwheels">
-               </div>
-               <h5 class="card-title text-center">Roadwheels</h5>
-            </a>
-         </section>
-         <section class="card w-33.3 m-1">
-         <a class="card-link" href="/products/steering">
-            <div class="card-body">
-               <img class="img-fluid" src="{% static 'img/categories/cat_steering_suspension.jpg' %}" alt="Steering/Suspension">
-            </div>
-            <h5 class="card-title text-center">Steering & Suspension</h5>
-         </a>
-      </section>
-      </div>
+    <ol class="breadcrumb bcrumb-margins">
+        <li class="breadcrumb-item"> <a href="{% url 'index' %}"> Home </a> </li>
+        <li class="breadcrumb-item active"> Products </li>
+    </ol>
+    <h2> Part Categories </h2>
+    <br>
 
-   </div>      
+    <div class="row justify-content-center">
+        <div class="card-group">
+            <section class="card w-33.3 m-1">
+                <a class="card-link" href="/products/body">
+                    <div class="card-body">
+                        <img class="img-fluid" src="{% static 'img/categories/cat_body.jpg' %}" alt="Body">
+                    </div>
+                    <h5 class="card-title text-center">Body</h5>
+                </a>
+            </section>
+            <section class="card w-33.3 m-1">
+                <a class="card-link" href="/products/brakes">
+                    <div class="card-body">
+                        <img class="img-fluid" src="{% static 'img/categories/cat_brakes.jpg' %}" alt="Brakes">
+                    </div>
+                    <h5 class="card-title text-center">Brakes</h5>
+                </a>
+            </section>
+            <section class="card w-33.3 m-1">
+                <a class="card-link" href="/products/clutch">
+                    <div class="card-body">
+                        <img class="img-fluid" src="{% static 'img/categories/cat_clutch.jpg' %}" alt="Clutch/Gearbox/Overdrive">
+                    </div>
+                    <h5 class="card-title text-center">Clutch, Gearbox & Overdrive</h5>
+                </a>
+            </section>
+        </div>
+
+        <div class="card-group">
+            <section class="card w-33.3 m-1">
+                <a class="card-link" href="/products/cooling">
+                    <div class="card-body">
+                        <img class="img-fluid" src="{% static 'img/categories/cat_cooling.jpg' %}" alt="Cooling">
+                    </div>
+                    <h5 class="card-title text-center">Cooling</h5>
+                </a>
+            </section>
+            <section class="card w-33.3 m-1">
+                <a class="card-link" href="/products/electrical">
+                    <div class="card-body">
+                        <img class="img-fluid" src="{% static 'img/categories/cat_electrical.jpg' %}" alt="Electrical">
+                    </div>
+                    <h5 class="card-title text-center">Electrical</h5>
+                </a>
+            </section>
+            <section class="card w-33.3 m-1">
+                <a class="card-link" href="/products/engine">
+                    <div class="card-body">
+                        <img class="img-fluid" src="{% static 'img/categories/cat_engine.jpg' %}" alt="Engine">
+                    </div>
+                    <h5 class="card-title text-center">Engine</h5>
+                </a>
+            </section>
+        </div>
+
+        <div class="card-group">
+            <section class="card w33.3 m-1">
+                <a class="card-link" href="/products/exhaust">
+                    <div class="card-body">
+                        <img class="img-fluid" src="{% static 'img/categories/cat_exhaust.jpg' %}" alt="Exhaust">
+                    </div>
+                    <h5 class="card-title text-center">Exhaust</h5>
+                </a>
+            </section>
+            <section class="card w-33.3 m-1">
+                <a class="card-link" href="/products/exterior">
+                    <div class="card-body">
+                        <img class="img-fluid" src="{% static 'img/categories/cat_exterior.jpg' %}" alt="Exterior">
+                    </div>
+                    <h5 class="card-title text-center">Exterior</h5>
+                </a>
+            </section>
+            <section class="card w-33.3  m-1">
+                <a class="card-link" href="/products/fuel">
+                    <div class="card-body">
+                        <img class="img-fluid" src="{% static 'img/categories/cat_fuel.jpg' %}" alt="Fuel">
+                    </div>
+                    <h5 class="card-title text-center">Fuel</h5>
+                </a>
+            </section>
+        </div>
+
+        <div class="card-group mb-4">
+            <section class="card w-33.3 m-1">
+                <a class="card-link" href="/products/interior">
+                    <div class="card-body">
+                        <img class="img-fluid" src="{% static 'img/categories/cat_interior.jpg' %}" alt="Interior">
+                    </div>
+                    <h5 class="card-title text-center">Interior</h5>
+                </a>
+            </section>
+            <section class="card w-33.3 m-1">
+                <a class="card-link" href="/products/roadwheels">
+                    <div class="card-body">
+                        <img class="img-fluid" src="{% static 'img/categories/cat_roadwheels.jpg' %}" alt="Roadwheels">
+                    </div>
+                    <h5 class="card-title text-center">Roadwheels</h5>
+                </a>
+            </section>
+            <section class="card w-33.3 m-1">
+                <a class="card-link" href="/products/steering">
+                    <div class="card-body">
+                        <img class="img-fluid" src="{% static 'img/categories/cat_steering_suspension.jpg' %}" alt="Steering/Suspension">
+                    </div>
+                    <h5 class="card-title text-center">Steering & Suspension</h5>
+                </a>
+            </section>
+        </div>
+
+    </div>
 </section>
 
 <!-- FOOTER -->

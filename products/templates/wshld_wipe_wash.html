@@ -1,54 +1,52 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} 
+{% load static %} 
 
 {% block content %}
-<div class="container ignition-container">
-            <ol class="breadcrumb bcrumb-margins">
-                <li class="breadcrumb-item"> <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'electrical' %}"> Battery </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'alt_dyno' %}"> Charging & Starting </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'ignition' %}"> Ignition </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'heating' %}"> Heating </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'lamps' %}"> Lamps </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'inst_sw' %}"> Instruments & Switches </a></li>
-                <li class="breadcrumb-item active"> Windscreen Wipers & Washer </li>
-                <li class="breadcrumb-item"> <a href="{% url 'wire_int' %}"> Wiring & Internal Electrics </a></li>
-            </ol>
-            
-            <!-- Parts Heading -->
-            <h2 class="pl-4 pr-4"> Windscreen wipers and Washers </h2>
-            <br>
-            
-            <!-- Parts Diagram(s) -->
-            <div class="row  pl-4 pr-4 justify-content-center text-center">
-                <div class="col-md-6 col-sm-6">
-                    <img class=" img-fluid parts-diagram" data-toggle="magnify" 
-                    src="{% static 'img/electrical/Wiper Motor.gif' %}" alt="scparts">
-                    <h2 class="mb-2"> Wiper motor </h2>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <img class="img-fluid parts-diagram" data-toggle="magnify" 
-                    src="{% static 'img/electrical/Windscreen wiper, rack and wheel box.gif' %}" alt="scparts">
-                    <h2 class="mb-2"> Wiper rack </h2>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <img class=" img-fluid parts-diagram-footer mt-4" data-toggle="magnify" 
-                    src="{% static 'img/electrical/Windscreen washer system - vehicles with manual washer pump.gif' %}" alt="scparts">
-                    <p class="card-footer text-center"> vehicles with manual washer pump. </p>
-                    <h2 class="mb-2"> Washer system  </h2>                     
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <img class=" img-fluid parts-diagram-footer mt-4" data-toggle="magnify" 
-                    src="{% static 'img/electrical/Windscreen washer system - vehicles with electric washer pump.gif' %}" alt="scparts">
-                    <p class="card-footer text-center"> vehicles with electric washer pump. </p>
-                    <h2 class="mb-2"> Washer system </h2>                     
-                </div>
-            </div>
-            
-            <!-- Parts Cards -->
-           {% include 'parts_cards.html' %}
+ <!-- WINDSCREEN WIPERS & WASHERS -->
+<div class="container windscreen-container">
+    <ol class="breadcrumb bcrumb-margins">
+        <li class="breadcrumb-item"> <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'electrical' %}"> Battery </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'alt_dyno' %}"> Charging & Starting </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'ignition' %}"> Ignition </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'heating' %}"> Heating </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'lamps' %}"> Lamps </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'inst_sw' %}"> Instruments & Switches </a></li>
+        <li class="breadcrumb-item active"> Windscreen Wipers & Washer </li>
+        <li class="breadcrumb-item"> <a href="{% url 'wire_int' %}"> Wiring & Internal Electrics </a></li>
+    </ol>
+
+    <!-- Parts Heading -->
+    <h2 class="pl-4 pr-4"> Windscreen wipers and Washers </h2>
+    <br>
+
+    <!-- Parts Diagram(s) -->
+    <div class="row  pl-4 pr-4 justify-content-center text-center">
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram" data-toggle="magnify" src="{% static 'img/electrical/Wiper Motor.gif' %}" alt="scparts">
+            <h2 class="mb-2"> Wiper motor </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class="img-fluid parts-diagram" data-toggle="magnify" src="{% static 'img/electrical/Windscreen wiper, rack and wheel box.gif' %}" alt="scparts">
+            <h2 class="mb-2"> Wiper rack </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram-footer mt-4" data-toggle="magnify" src="{% static 'img/electrical/Windscreen washer system - vehicles with manual washer pump.gif' %}" alt="scparts">
+            <p class="card-footer text-center"> vehicles with manual washer pump. </p>
+            <h2 class="mb-2"> Washer system  </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram-footer mt-4" data-toggle="magnify" src="{% static 'img/electrical/Windscreen washer system - vehicles with electric washer pump.gif' %}" alt="scparts">
+            <p class="card-footer text-center"> vehicles with electric washer pump. </p>
+            <h2 class="mb-2"> Washer system </h2>
+        </div>
+    </div>
+
+    <!-- Parts Cards -->
+    {% include 'parts_cards.html' %}
 </div>
-           <!-- FOOTER -->
-           {% include 'footer.html' %}
+
+<!-- BACK TO TOP -->
+{% include 'bttop.html' %} 
 {% endblock %}

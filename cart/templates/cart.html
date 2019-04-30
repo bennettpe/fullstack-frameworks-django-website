@@ -1,57 +1,66 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
-{% load bootstrap_tags %}
+{% extends 'base.html' %} 
+{% load staticfiles %} 
+{% load bootstrap_tags %} 
 
 {% block content %}
+ <!-- CART -->
 <div class="container">
     <ol class="breadcrumb bcrumb-margins">
         <li class="breadcrumb-item"> <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a></li>
         <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
         <li class="breadcrumb-item active"> Cart </li>
     </ol>
-    
+
     <h2> Your Basket <i class="fas fa-shopping-basket"></i></h2>
-        <!-- Parts Cards -->
-        <div class="row p-4">
-            {% for item in cart_items %}
-               <div class="col-md-3 p-2">
-                   <div class="card h-100 mb-3">
-                       <div class="card-body"> 
-                         <img src="{{ MEDIA_URL }}{{ item.product.image }}" class="card-img-top p-1" alt="scparts">   
-                         <h3 class="card-title text-center mt2"> <u>{{ item.product.part_name }}</u> </h3>
-                         <p class="card-text"> <strong> Part no: </strong> {{ item.product.part_number }} </p>
-                         <p class="card-text"> <strong> £{{ item.product.price }} </strong></p>
-                         <p class="card-text"> <strong> Qty Ordered: </strong>{{ item.quantity }} </p>
-                         
-                        <form method="post" action="{% url 'adjust_cart' item.id %}">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <label for="product-input-amount" class="sr-only"> New Qty </label> 
-                                <div class="input-group">
-                                    <div class="input-group-addon"> Qty &nbsp;</div>
-                                      <input name="quantity" type="number" min="0" max="999" class="form-control">
-                                </div>  
-                            </div>    
-                               
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-success"> <i class="fas fa-edit"></i> Update </button>
+    
+    {% if not cart_items %}
+       <p class="basket-msg"> Your Basket is currently empty </p>
+    {% endif %}
+        
+    <!-- Parts Cards -->
+    <div class="row p-4">
+        {% for item in cart_items %}
+        <div class="col-md-3 p-2">
+            <div class="card h-100 mb-3">
+                <div class="card-body">
+                    <img src="{{ MEDIA_URL }}{{ item.product.image }}" class="card-img-top p-1" alt="scparts">
+                    <h3 class="card-title text-center mt2"> <u>{{ item.product.part_name }}</u> </h3>
+                    <p class="card-text"> <strong> Part no: </strong> {{ item.product.part_number }}</p>
+                    <p class="card-text"> <strong> £{{ item.product.price }} </strong></p>
+                    <p class="card-text"> <strong> Qty Ordered: </strong>{{ item.quantity }}</p>
+
+                    <form method="post" action="{% url 'adjust_cart' item.id %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="product-input-amount" class="sr-only"> New Qty </label>
+                            <div class="input-group">
+                                <div class="input-group-addon"> Qty &nbsp;</div>
+                                <input name="quantity" type="number" min="0" max="999" class="form-control">
                             </div>
-                        </form>
-                    </div> 
-               </div>  
-           </div>     
-            {% endfor %}
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success"> <i class="fas fa-edit"></i> Update </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        
-        <div class="row pl-4">
-            <p class="cart-total card-text"><b> TOTAL </b></p>
-            <p class="cart-total card-text"> £{{ total }} </b></p>
-        
-            {% if cart_items %}
-               <a href="{% url 'checkout' %}" class="btn btn-primary" role="button"> <i class="fas fa-check-circle"></i> Checkout </a>
-            {% else %}
-               <button class="btn btn-primary" disabled> <i class="fas fa-check-circle"></i> Checkout </button> 
-            {% endif %}
-        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row pl-4">
+        <p class="cart-total card-text"><b> TOTAL </b></p>
+        <p class="cart-total card-text"> £{{ total }} </b></p>
+
+        {% if cart_items %}
+        <a href="{% url 'checkout' %}" class="btn btn-primary" role="button"> <i class="fas fa-check-circle"></i> Checkout </a>
+        {% else %}
+        <button class="btn btn-primary" disabled> <i class="fas fa-check-circle"></i> Checkout </button>
+        {% endif %}
+    </div>
 </div>
+
+<!-- BACK TO TOP -->
+{% include 'bttop.html' %} 
 {% endblock %}

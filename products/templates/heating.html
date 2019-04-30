@@ -1,56 +1,54 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} 
+{% load static %} 
 
 {% block content %}
+<!-- HEATING -->
 <div class="container ignition-container">
-            <ol class="breadcrumb bcrumb-margins">
-                <li class="breadcrumb-item"> <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'electrical' %}"> Battery </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'alt_dyno' %}"> Charging & Starting </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'ignition' %}"> Ignition </a></li>
-                <li class="breadcrumb-item active"> Heating </li>
-                <li class="breadcrumb-item"> <a href="{% url 'lamps' %}"> Lamps </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'inst_sw' %}"> Instruments & Switches </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'wshld_wipe_wash' %}"> Windscreen Wipers & Washer </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'wire_int' %}"> Wiring & Internal Electrics </a></li>
-            </ol>
-            
-            <!-- Parts Heading -->
-            <h2 class="pl-4 pr-4"> Heating system </h2>
-            <br>
-            
-            <!-- Parts Diagram(s) -->
-            <div class="row  pl-4 pr-4 justify-content-center text-center">
-                <div class="col-md-6 col-sm-6">
-                    <img class=" img-fluid parts-diagram-footer" data-toggle="magnify" 
-                    src="{% static 'img/electrical/Heater and heater controls - all MK3 Europe models.gif' %}" alt="scparts">
-                    <p class="card-footer text-center">all Mk3 European models </p>
-                    <h2 class="mb-2"> Heater and Controls </h2>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <img class="img-fluid parts-diagram-footer" data-toggle="magnify" 
-                    src="{% static 'img/electrical/Heater and heater controls - MK4 and 1500.gif' %}" alt="scparts">
-                    <p class="card-footer text-center"> Mk4 and 1500 </p>
-                    <h2 class="mb-2"> Heater and Controls </h2>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <img class=" img-fluid parts-diagram-footer mt-4" data-toggle="magnify" 
-                    src="{% static 'img/electrical/Heater hoses and waterflow - European models to December 1973.gif' %}" alt="scparts">
-                    <p class="card-footer text-center"> All European MK3 models, European MK4 models to engine no. FH59689. </p>
-                    <h2 class="mb-2"> Heater hoses </h2>                     
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <img class=" img-fluid parts-diagram-footer mt-4" data-toggle="magnify" 
-                    src="{% static 'img/electrical/Heater hoses and waterflow - European models from December 1973.gif' %}" alt="scparts">
-                    <p class="card-footer text-center"> European MK4 models from engine no. FH60000, all European 1500 models. </p>
-                    <h2 class="mb-2"> Heater hoses </h2>                     
-                </div>
-            </div>
-            
-            <!-- Parts Cards -->
-           {% include 'parts_cards.html' %}
+    <ol class="breadcrumb bcrumb-margins">
+        <li class="breadcrumb-item"> <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'electrical' %}"> Battery </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'alt_dyno' %}"> Charging & Starting </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'ignition' %}"> Ignition </a></li>
+        <li class="breadcrumb-item active"> Heating </li>
+        <li class="breadcrumb-item"> <a href="{% url 'lamps' %}"> Lamps </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'inst_sw' %}"> Instruments & Switches </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'wshld_wipe_wash' %}"> Windscreen Wipers & Washer </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'wire_int' %}"> Wiring & Internal Electrics </a></li>
+    </ol>
+
+    <!-- Parts Heading -->
+    <h2 class="pl-4 pr-4"> Heating system </h2>
+    <br>
+
+    <!-- Parts Diagram(s) -->
+    <div class="row  pl-4 pr-4 justify-content-center text-center">
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram-footer" data-toggle="magnify" src="{% static 'img/electrical/Heater and heater controls - all MK3 Europe models.gif' %}" alt="scparts">
+            <p class="card-footer text-center">all Mk3 European models </p>
+            <h2 class="mb-2"> Heater and Controls </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class="img-fluid parts-diagram-footer" data-toggle="magnify" src="{% static 'img/electrical/Heater and heater controls - MK4 and 1500.gif' %}" alt="scparts">
+            <p class="card-footer text-center"> Mk4 and 1500 </p>
+            <h2 class="mb-2"> Heater and Controls </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram-footer mt-4" data-toggle="magnify" src="{% static 'img/electrical/Heater hoses and waterflow - European models to December 1973.gif' %}" alt="scparts">
+            <p class="card-footer text-center"> All European MK3 models, European MK4 models to engine no. FH59689. </p>
+            <h2 class="mb-2"> Heater hoses </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram-footer mt-4" data-toggle="magnify" src="{% static 'img/electrical/Heater hoses and waterflow - European models from December 1973.gif' %}" alt="scparts">
+            <p class="card-footer text-center"> European MK4 models from engine no. FH60000, all European 1500 models. </p>
+            <h2 class="mb-2"> Heater hoses </h2>
+        </div>
+    </div>
+
+    <!-- Parts Cards -->
+    {% include 'parts_cards.html' %}
 </div>
-           <!-- FOOTER -->
-           {% include 'footer.html' %}
+
+<!-- BACK TO TOP -->
+{% include 'bttop.html' %} 
 {% endblock %}

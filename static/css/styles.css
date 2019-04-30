@@ -11,6 +11,11 @@
 /* #ee6c4d = light red orche
 /* #293241 = gun metal
 /*----------------------------------------------------*/
+/* Other Colours used
+/* #b22222 = firebrick
+/* #9b9797 = nobel
+/* #75bf00 = christi
+/*----------------------------------------------------*/
 
 body,
 html {
@@ -33,7 +38,7 @@ body {
 /* ADD fixed, scrollable navbar */
 /* see https://codepen.io/ondrejsvestka/pen/BZJEpp */
 .fixed-top .navbar-collapse {
-  max-height: 340px;
+  max-height: 300px;
   overflow-y: auto;}    
 }
 
@@ -78,6 +83,9 @@ p.card-footer {
  padding: 0;
 }
 
+.btn-success {
+    border: 1px solid #9b9797;
+}
 
 
 /* ----- Changes to Nav Bar ----- */
@@ -133,6 +141,7 @@ p.card-footer {
 
 /* ----- Changes to Messages ------- */
 .alert {
+    border-color: #9b9797;
     border-radius: 5px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -197,21 +206,6 @@ p.card-footer {
 
 .masthead img {
     max-width: 100%;
-}
-
-
-/* CHANGE font of h1 */
-/*
-h1 {
-    font-family: 'Varela Round'; 
-    font-size: 2rem;
-    line-height: 2rem;
-    letter-spacing: 0.5rem;
-}*/
-
-/* CHANGE font of h2 */
-h2 {
-    font-family: Verdana;
 }
 
 /* Move to top left of background image */
@@ -361,8 +355,13 @@ h2 {
 
 /* CHANGE Paragraphs for Card text */ 
 p.card-text {
- margin :10px;
- line-height: 15px;
+     margin :10px;
+     line-height: 15px;
+}
+
+/* CHANGE colour basket msg */
+.basket-msg {
+     color: #b22222;  /*firebrick*/  
 }
 
 
@@ -458,4 +457,14 @@ fieldset {
 /* Add darker border */
 .form-control {
 	border: 1px solid #9b9797;
+}
+
+/* ----- Changes to contact.html ----- */
+/* Change colour to  messages */
+.error-msg {
+    color: #b22222;  /*firebrick*/
+}
+
+.req-field {
+    color: #b22222;  /*firebrick*/
 }

@@ -1,0 +1,21 @@
+Hi {{ contact_name }}!
+
+Thank you for your enquiry. We will be in touch as soon as possible.
+
+Please find your details and enquiry message below.
+
+Contact Name:
+{{ contact_name }}
+
+Email:
+{{ contact_email }}
+
+Phone:
+{{ phone_number }}
+
+Enquiry:
+{{ message|safe|striptags }}
+
+yours sincerely
+
+Triumphant Triumphs

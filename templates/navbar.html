@@ -44,7 +44,6 @@
             {% if user.is_superuser %}
               <li class="nav-item"><a class="nav-link" href="/admin/"> <i class="fas fa-lock"></i> Admin </a></li>
             {% endif %}
-              <li class="nav-item"> <a class="nav-link" href="{% url 'profile' %}"> <i class="fa fa-user"></i> Profile </a></li>
               <li class="nav-item"> <a class="nav-link" href="{% url 'logout' %}"> <i class="fa fa-sign-out-alt"> </i> Log Out ({{ user.username }}) </a></li>
             {% else %}   
               <li class="nav-item"> <a class="nav-link" href="{% url 'registration' %}"> <i class="fa fa-user-plus"></i> Register </a></li>
@@ -56,7 +55,7 @@
                     {% endif %}
                   </a>
               </li>
-              <li class="nav-item"> <a class="nav-link" href="/contact/"> <i class="fas fa-inbox"></i> Contact </a></li>
+              <li class="nav-item"> <a class="nav-link" href="{% url 'contact' %}"> <i class="fas fa-inbox"></i> Contact </a></li>
           </ul>
         </div>
       </div> 

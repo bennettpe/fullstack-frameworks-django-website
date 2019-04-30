@@ -1,0 +1,33 @@
+{% extends 'base.html' %} 
+{% load bootstrap_tags %} 
+
+{% block content %}
+<!-- CONTACT FORM -->
+<div class="container contact-container">
+    <ol class="breadcrumb bcrumb-margins">
+        <li class="breadcrumb-item"> <a href="{% url 'index' %}"> Home </a></li>
+        <li class="breadcrumb-item active"> Contact Form </li>
+    </ol>
+
+    <h2> Contact Us <i class="fas fa-inbox"></i></h2>
+    <br>
+    <p> Please fill out the form below with your enquiry.</p>
+
+    <div class="row justify-content-md-center">
+        <div id="form-area" class="col-md-8">
+            <form method="post">
+                <fieldset>
+                    <div class="form-group">
+                        <legend>Contact Form</legend>
+                        {% csrf_token %} {{ form | as_bootstrap }}
+                        <p class="req-field"> * Required fields </p>
+                        <input class="btn btn-success" type="submit" value="Submit Enquiry">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+<!-- BACK TO TOP -->
+{% include 'bttop.html' %} 
+{% endblock %}

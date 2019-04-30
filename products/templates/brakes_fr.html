@@ -1,37 +1,39 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} 
+{% load static %} 
 
 {% block content %}
+<!-- BRAKE FRONT & REAR -->
 <div class="container brakes_fr-container">
-            <ol class="breadcrumb bcrumb-margins">
-                <li class="breadcrumb-item"> <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a></li>
-                <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
-                 <li class="breadcrumb-item"> <a href="{% url 'brakes' %}"> Brake Hydraulics</a></li>
-                <li class="breadcrumb-item active"> Brake Front & Rear </li>
-                <li class="breadcrumb-item"> <a href="{% url 'brakes_handbrake' %}"> Handbrake </a></li>
-            </ol>
-            
-            <!-- Parts Heading -->
-            <h2 class="pl-4 pr-4"> Brakes Front & Rear </h2>
-            </br>
-            
-            <!-- Parts Diagram(s) -->
-            <div class="row  pl-4 pr-4 text-center">
-                <div class="col-md-6 col-sm-6">
-                    <img class=" img-fluid parts-diagram" data-toggle="magnify" 
-                    src="{% static 'img/brakes/front brakes.gif' %}" alt="scparts">
-                    <h2 class="mb-2"> Brakes front </h2>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <img class="img-fluid parts-diagram" data-toggle="magnify" 
-                    src="{% static 'img/brakes/rear brakes.gif' %}" alt="scparts">
-                    <h2 class="mb-2"> Brakes rear </h2>
-                </div>
-            </div>
-            
-            <!-- Parts Cards -->
-            {% include 'parts_cards.html' %}
+    <ol class="breadcrumb bcrumb-margins">
+        <li class="breadcrumb-item">
+            <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a>
+        </li>
+        <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'brakes' %}"> Brake Hydraulics</a></li>
+        <li class="breadcrumb-item active"> Brake Front & Rear </li>
+        <li class="breadcrumb-item"> <a href="{% url 'brakes_handbrake' %}"> Handbrake </a></li>
+    </ol>
+
+    <!-- Parts Heading -->
+    <h2 class="pl-4 pr-4"> Brakes Front & Rear </h2>
+    </br>
+
+    <!-- Parts Diagram(s) -->
+    <div class="row  pl-4 pr-4 text-center">
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram" data-toggle="magnify" src="{% static 'img/brakes/front brakes.gif' %}" alt="scparts">
+            <h2 class="mb-2"> Brakes front </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class="img-fluid parts-diagram" data-toggle="magnify" src="{% static 'img/brakes/rear brakes.gif' %}" alt="scparts">
+            <h2 class="mb-2"> Brakes rear </h2>
+        </div>
+    </div>
+
+    <!-- Parts Cards -->
+    {% include 'parts_cards.html' %}
 </div>
-            <!-- FOOTER -->
-            {% include 'footer.html' %}
+
+<!-- BACK TO TOP -->
+{% include 'bttop.html' %} 
 {% endblock %}
