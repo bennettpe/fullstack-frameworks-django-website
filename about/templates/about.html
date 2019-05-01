@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container about-container">
+    <ol class="breadcrumb bcrumb-margins">
+        <li class="breadcrumb-item"> <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a></li>
+        <li class="breadcrumb-item active"> About </li>
+    </ol>
+        
+<!-- Model Overview Section -->
+<section class="about-section">
+    <div class="container" id="about">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h1 class="text-uppercase text-black mt-4 text-left"> About Triumphant Triumphs </h1>
+                <p class="muted"> 
+                    <p><strong>Triumphant Triumphs</strong> is a small company established in early 2018 that supplies supplies many of the latest 
+        Audio Visual products through its online web store at very competitive prices. 
+        Our partners are some of the world's leading suppliers in AV communication, such as Sony, 
+        3M, Bose and AMX. We also have a small team of experts who possess a wealth of technical knowledge and experience - 
+        they are fully qualified to offer comprehensive advice in relation to the best products that will fulfill 
+        your specific AV requirements, whatever those may be.</p>
+        <p>Additionally, we offer an equipment <dfn>installation service</dfn> 
+        specially aimed at our business customers, who typically require a more comprehensive AV solution when purchasing an array of products. 
+        This service is provided on a case by case basis and the customer will need to get in touch directly with our team to discuss their requirements.</p>
+        <p>The company currently operates just throughout Scotland, however we aim to expand our operations throughout all of the UK within the next year.</p>
+                </p>
+                <p class="muted">
+                    The bodywork was fitted to a separate structural chassis, but for the open-top convertible Spitfire the backbone chassis' rigidity was augmented 
+                    by the use of structural components within the bodywork, with the rear trailing arms being bolted to the body rather than the chassis.
+                    </p>
+                 <div class="text-center">       
+                    <img class="img-fluid" src="{% static 'img/vehicles/Triumph_Spitfire_MKIV_colors.svg' %}" alt="Image of colours" width="40%" align="right">  
+                </div>    
+            </div>
+        </div>
+    </div>
+</section> 
+
+<!-- MK1 Section -->
+<section class="mk1-section">
+    <div class="container" id="mk1">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="model-header text-black text-center mt-2 mb-2"> About Triumphant Triumphs </h2>
+                <img class="img-fluid" src="{% static 'img/vehicles/Triumph_Spitfire_MK3_colors.svg' %}" alt="Image of colours" width="40%" align="right"> 
+                <p class="muted"> 
+                        The production car changed little from the prototype, although the full-width rear bumper was dropped in 
+                        favour of two part-bumpers curving around each corner, with overriders.
+                        The mechanicals were basically from a stock Herald with the notable addition of front disc brakes. 
+                        The engine was an 1,147 cc four-cylinder with a pushrod OHV cylinder head and two valves per cylinder, 
+                        mildly tuned for the Spitfire, fed by twin SU carburettors. 
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+ </div>   
+<!-- FOOTER -->
+{% include 'footer.html' %}
+{% endblock %}

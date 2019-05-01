@@ -1816,3 +1816,37 @@ This section is for setting up an **customer payment mechanism** to allow users 
 8. Create templates folder in **fullstack-frameworks-django-project/contact** 
 8. Create **contact.html** in templates folder
 9. Create **urls.py** **fullstack-frameworks-django-project/contact** 
+
+#### Create contact about
+1. **Create** Django app called **about** 
+    ```python
+    python3 manage.py startapp about
+    ```
+ 
+     ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py startapp about 
+    ```
+    
+    The following django files have been **created**
+    ```
+    fullstack-frameworks-django-project
+    │
+    └── about
+        ├── migrations
+        │   └── __init__.py # Python file to allow app packages to be imported from other directories.  
+        │
+        ├── __init__.py     # Python file to allow app packages to be imported from other directories. 
+        ├── admin.py        # File with admin definitions for the app. 
+        ├── apps.py         # File with configuration parameters for the app.
+        ├── models.py       # File with database definitions (i.e., model classes) for the app.
+        ├── tests.py        # File with test definitions for the app.
+        └── views.py        # File with view definitions (i.e., controller methods) for the app.
+    ```
+
+5. Add to **views.py** in **fullstack-frameworks-django-project/about** 
+6. Create **templates** in **fullstack-frameworks-django-project/about** 
+7. Update root **urls.py** in 
+8. Create templates folder in **fullstack-frameworks-django-project/about** 
+8. Create **about.html** in templates folder
+9. Create **urls.py** **fullstack-frameworks-django-project/about** 

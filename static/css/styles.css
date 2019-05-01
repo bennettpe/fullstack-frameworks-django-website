@@ -33,7 +33,7 @@ body {
 /* iPhone 5 & 5S in portrait & landscape */
 @media (min-width: 320px) and (max-width: 568px) {
 body { 
-    padding-top: 90px;}
+    padding-top: 100px;}
     
 /* ADD fixed, scrollable navbar */
 /* see https://codepen.io/ondrejsvestka/pen/BZJEpp */
@@ -195,26 +195,16 @@ p.card-footer {
 /* ----- Changes to Header ----- */
 /* ADD background */
 .masthead {
-    width: 100%; 
+    width:100%; 
     height: 100%; 
-    background: url("/static/img/vehicles/triumph-spitfire-le-mans-recreation.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
+    background: url("/static/img/vehicles/Triumph_Spitfire_MKIV_colors.svg") no-repeat center; 
     background-attachment: scroll; 
     background-size: cover; 
+   
 }
 
 .masthead img {
     max-width: 100%;
-}
-
-/* Move to top left of background image */
-.bg-header {
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    padding: 20px 0  0 10px;
-    text-align: left;
 }
 
 /* CHANGE color */
@@ -233,10 +223,60 @@ p.card-footer {
     text-align: center;
 }
 
-/* Change btn colour */
-.btn-colour {
-    background-color: #ee6c4d;
-    border: 1px solid #000;
+/* ADD background color to intro text background */
+.intro-text-background {
+  padding: 35px;
+  background-color: rgba(245, 245, 245, 0.7);
+  border-radius: 6rem;
+  border: 1px solid #6c757d;;
+}
+
+/* CHANGE color to text */
+.intro-heading,
+.intro-tagline {
+  color: #6c757d; /* Raven */
+  margin-bottom: 10px;
+}
+
+/* CHANGE font-size to text */
+.intro-tagline {
+  font-size: 20px;
+}
+
+/* CHANGE for responsive screen */
+.masthead .intro-text .intro-heading {
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 50px;
+  justify-content: center;
+}
+
+.header-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  resize: both;
+  overflow: auto;
+}
+
+/* ----- Changes to Buttons ----- */
+/* ADD radius to buttons */
+
+.btn {
+  border-radius: 300px;
+}
+
+/* CHANGE color on button border */
+.btn-primary {
+  background-color: #ee6c4d;
+  border: 1px solid #6c757d; /* Raven */
+}
+
+/* CHANGE color on button hover */
+.btn-primary:hover {
+  background-color: #ee6c4d; 
+  color: black;
 }
 
 
@@ -468,3 +508,4 @@ fieldset {
 .req-field {
     color: #b22222;  /*firebrick*/
 }
+

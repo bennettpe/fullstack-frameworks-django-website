@@ -3,25 +3,26 @@
 
 {% block content %}
 <!-- Header -->
-<header class="masthead">
+<header class="masthead text-center d-flex">
     <!-- MESSAGES -->
     {% include 'messages.html' %}
     
-    <h1 class="bg-header text-uppercase text-white"> TRIUMPHANT TRIUMPHS </h1>   
-    
      <!-- NAVIGATION -->
-    <div class="container d-flex h-100 align-items-center">
-        <div class="mx-auto">
-            {% if not user.is_authenticated %}
-            <div class="row">
-                <a class="btn btn-primary btn-lg btn-colour m-2" href="{% url 'registration' %}"> Register </a>
-                <a class="btn btn-primary btn-lg btn-colour m-2" href="{% url 'login' %}"> Log In </a>
+    <div class="container header-container">
+        <div class="intro-text">
+            <div class="intro-text-background">
+                <div class="intro-heading"> Triumphant Triumphs </div>
+                    {% if not user.is_authenticated %}
+                    <div class="row justify-content-center">
+                        <a class="btn btn-primary btn-lg m-2" href="{% url 'registration' %}"> Register </a>
+                        <a class="btn btn-primary btn-lg m-2" href="{% url 'login' %}"> Log In </a>
+                    </div>
+                    {% endif %}
+                    <div class="intro-tagline"> Triumph Spitfire MKIII, MKIV & 1500 Parts Store </div>
+                </div>
             </div>
-            {% endif %}
         </div>
     </div> 
-    
-    <h3 class="bg-tagline text-white"> Triumph Spitfire MKIII, MKIV & 1500 Parts Store </h3>
 </header>
 
 <!-- Model Overview Section -->

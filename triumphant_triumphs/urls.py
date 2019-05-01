@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views import static
 
+from about import urls as about_urls
 from accounts import urls as accounts_urls
 from cart import urls as cart_urls
 from checkout import urls as checkout_urls
@@ -30,6 +31,7 @@ from .settings import MEDIA_ROOT
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name="index"),
+    url(r'^about/', include(about_urls)),
     url(r'^accounts/', include(accounts_urls)),
     url(r'^cart/', include(cart_urls)),
     url(r'^checkout/', include(checkout_urls)),
