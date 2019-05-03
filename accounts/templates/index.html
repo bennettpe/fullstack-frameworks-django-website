@@ -4,13 +4,10 @@
 {% block content %}
 <!-- Header -->
 <header class="masthead text-center d-flex">
-    <!-- MESSAGES -->
-    {% include 'messages.html' %}
-    
-     <!-- NAVIGATION -->
+    <!-- NAVIGATION -->
     <div class="container header-container">
-        <div class="intro-text">
-            <div class="intro-text-background">
+        <div class="intro-text-background">
+            <div class="intro-text">
                 <div class="intro-heading"> Triumphant Triumphs </div>
                     {% if not user.is_authenticated %}
                     <div class="row justify-content-center">
@@ -20,6 +17,8 @@
                     {% endif %}
                     <div class="intro-tagline"> Triumph Spitfire MKIII, MKIV & 1500 Parts Store </div>
                 </div>
+                <!-- MESSAGES -->
+                {% include 'messages.html' %}
             </div>
         </div>
     </div> 

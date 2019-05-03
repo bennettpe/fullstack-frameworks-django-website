@@ -25,7 +25,7 @@ html {
 
 body {
     background: #98c1d9; /* pale cerulean */
-    padding-top: 65px;
+    padding:70px 10px 0 10px; /*(top,right,bottom,Left) */
 }
 
 /* ----- Changes to Padding for Messages ----- */ 
@@ -33,7 +33,8 @@ body {
 /* iPhone 5 & 5S in portrait & landscape */
 @media (min-width: 320px) and (max-width: 568px) {
 body { 
-    padding-top: 100px;}
+    padding:100px 0 0 0; /*(top,right,bottom,Left) */
+}
     
 /* ADD fixed, scrollable navbar */
 /* see https://codepen.io/ondrejsvestka/pen/BZJEpp */
@@ -45,31 +46,31 @@ body {
 /* iPhone 6, 7, & 8 in portrait & landscape */
 @media (min-width: 375px) and (max-width: 667px)  {
 body { 
-    padding-top: 65px;
+    padding:75px 0 0 0; /*(top,right,bottom,Left) */
     }
 }
 /* iPhone X in portrait & landscape */
 @media (min-width: 375px) and (max-width: 812px)  {
 body { 
-    padding-top: 65px;
+     padding:75px 0 0 0; /*(top,right,bottom,Left) */
     }
 }
 /* iPhone 6, 7, & 8 Plus in portrait & landscape */
 @media (min-width: 414px) and (max-width: 736px)  {
 body { 
-    padding-top: 65px;
+     padding:75px 0 0 0; /*(top,right,bottom,Left) */
     }
 }
 /* iPad in portrait & landscape */
 @media (min-width: 768px) and (max-width: 1024px)  {
 body { 
-    padding-top: 65px;
+    padding:75px 0 0 0; /*(top,right,bottom,Left) */
     }
 }
 /* iPad Pro in portrait & landscape */
 @media (min-width: 1024px) and (max-width: 1366px)  {
 body { 
-    padding-top: 65px;
+   padding:85px 0 0 0; /*(top,right,bottom,Left) */
     }
 }
 
@@ -150,7 +151,7 @@ p.card-footer {
 }
 
 .alert-success {
-    background-color: #75BF00;
+    background-color: #0b6d52;
 }
 
 .alert-danger {
@@ -226,7 +227,7 @@ p.card-footer {
 /* ADD background color to intro text background */
 .intro-text-background {
   padding: 35px;
-  background-color: rgba(245, 245, 245, 0.7);
+  background-color: rgba(245, 245, 245, 0.9);
   border-radius: 6rem;
   border: 1px solid #6c757d;;
 }
@@ -319,19 +320,44 @@ p.card-footer {
 
 
 /* ----- Changes to Cards ----- */
+/* ADD border to Card */
 .card {
-    border: none;
-    border-radius: 0;
+   border-radius: 0.50rem; 
+   border: 1px solid #6c757d;
 }
 
+/* ADD border to first card in card-group */
+.card-group > .card:first-child {
+     border-radius: 0.50rem;
+     border: 1.5px solid #6c757d;
+}
+  
+/* ADD border to not first or las card in card-group */  
+.card-group > .card:not(:first-child):not(:last-child):not(:only-child) {
+    border-radius: 0.50rem;
+    border: 1.5px solid #6c757d;
+}  
+  
+/* ADD border to last card in card-group */  
+.card-group > .card:last-child {
+    border-radius: 0.50rem;
+    border: 1.5px solid #6c757d;
+}  
+
+/* Change padding for Card-body */
+.card-body {
+    padding:10px;
+}
+
+/* Change border for Parts cards*/  
 .parts-cards {
     border: 1.5px solid #9b9797;
     border-radius: 10px;
 }
 
-/* CHANGE padding for Card body */
-.card-body {
-    padding: 0;
+/* Add Shadow for Card hover */
+.card:hover {
+  box-shadow: 10px 10px 5px 0px rgba(61,90,128,0.64); 
 }
 
 /* CHANGE color for Card link */
@@ -377,7 +403,6 @@ p.card-footer {
     border: 1px solid #9b9797;
     border-radius: 10px 10px 0 0; 
 }
-
 
 
 /* ----- Changes to cart.html ----- */
@@ -509,3 +534,15 @@ fieldset {
     color: #b22222;  /*firebrick*/
 }
 
+
+
+/* ----- Changes to about.html ----- */
+/* Change font-size to heading */
+.about-heading {
+    font-size: 20px;
+}
+
+/* Center text */
+.center {
+    padding: 10% 0;
+}

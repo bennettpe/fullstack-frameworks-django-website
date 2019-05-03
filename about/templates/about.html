@@ -11,53 +11,70 @@
         
 <!-- Model Overview Section -->
 <section class="about-section">
-    <div class="container" id="about">
+    <div class="container" id="about">        
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h1 class="text-uppercase text-black mt-4 text-left"> About Triumphant Triumphs </h1>
-                <p class="muted"> 
-                    <p><strong>Triumphant Triumphs</strong> is a small company established in early 2018 that supplies supplies many of the latest 
-        Audio Visual products through its online web store at very competitive prices. 
-        Our partners are some of the world's leading suppliers in AV communication, such as Sony, 
-        3M, Bose and AMX. We also have a small team of experts who possess a wealth of technical knowledge and experience - 
-        they are fully qualified to offer comprehensive advice in relation to the best products that will fulfill 
-        your specific AV requirements, whatever those may be.</p>
-        <p>Additionally, we offer an equipment <dfn>installation service</dfn> 
-        specially aimed at our business customers, who typically require a more comprehensive AV solution when purchasing an array of products. 
-        This service is provided on a case by case basis and the customer will need to get in touch directly with our team to discuss their requirements.</p>
-        <p>The company currently operates just throughout Scotland, however we aim to expand our operations throughout all of the UK within the next year.</p>
-                </p>
-                <p class="muted">
-                    The bodywork was fitted to a separate structural chassis, but for the open-top convertible Spitfire the backbone chassis' rigidity was augmented 
-                    by the use of structural components within the bodywork, with the rear trailing arms being bolted to the body rather than the chassis.
+                <p> <img class="img-fluid" src="{% static 'img/vehicles/Triumph Spitfire Magenta.svg' %}" alt="Image of colours" width="20%"> </p>
+                <p class="text-uppercase text-left about-heading">  <strong> About Triumphant Triumphs </strong> </p>
+                
+                <p> <strong>Triumphant Triumphs</strong> is a small company established in early 2019 that supplies good quality parts 
+                            and accessories for restoring and maintenance of your Triumph Spitfire MK3, MKIV & 1500. </br>
+                <img class="img-fluid mt-4" src="{% static 'img/vehicles/nikola-treci-757029-unsplash.jpg' %}" 
+                       alt="Image of triumph" width="40%" align="right" id="photo-right"> </p>
+                <div>
+                    <p>
+                    We are a family run Business build upon our passion for owning, driving and maintaining classic triumphs so we know how important it is 
+                    to be able to obtain the best parts currently available, at the right price and delivered in a timely manner. </br> 
+                    We currently stock parts and accessories including: bumpers, body, engine, seats, brakes, clutches, 
+                    hardtops, windscreen, headlamps, mats, exhausts, wheels, gearboxes, suspension, and interior parts for all your classic car needs. 
                     </p>
-                 <div class="text-center">       
-                    <img class="img-fluid" src="{% static 'img/vehicles/Triumph_Spitfire_MKIV_colors.svg' %}" alt="Image of colours" width="40%" align="right">  
-                </div>    
+                </div>
+                    
             </div>
         </div>
     </div>
 </section> 
 
-<!-- MK1 Section -->
-<section class="mk1-section">
-    <div class="container" id="mk1">
+<!-- Online Section -->
+<section class="online-section">
+    <div class="container mt-4" id="online">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h2 class="model-header text-black text-center mt-2 mb-2"> About Triumphant Triumphs </h2>
-                <img class="img-fluid" src="{% static 'img/vehicles/Triumph_Spitfire_MK3_colors.svg' %}" alt="Image of colours" width="40%" align="right"> 
-                <p class="muted"> 
-                        The production car changed little from the prototype, although the full-width rear bumper was dropped in 
-                        favour of two part-bumpers curving around each corner, with overriders.
-                        The mechanicals were basically from a stock Herald with the notable addition of front disc brakes. 
-                        The engine was an 1,147 cc four-cylinder with a pushrod OHV cylinder head and two valves per cylinder, 
-                        mildly tuned for the Spitfire, fed by twin SU carburettors. 
-                </p>
+                <img class="img-fluid" src="{% static 'img/vehicles/neon-1191281_640.jpg' %}" alt="Image of mk1" width="40%" align="left" id="photo-left"> 
+                <div>
+                    <p> 
+                    Our parts and accessories can be purchased through our online web store at very competitive prices.  
+                    if there is a specific item that you desire but are not able to find it on our website, please contact us with your enquiry 
+                    and we will do our best to provide you with a competitive quotation if the parts are able to be sourced. </br>
+                    Ordering parts and spares for your Classic Triumph online is very easy as it offers you convenience, choice and flexibility in what you order.
+                    </p>
+                </div>
             </div>
         </div>
+        
     </div>
 </section>
- </div>   
+
+<!-- Postage Section -->
+<section class="postagee-section">
+    <div class="container mt-4" id="online">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <img class="img-fluid" src="{% static 'img/vehicles/post-976115_1280.png' %}" alt="Post" width="40%" align="right"> 
+                <div class="center">
+                    <p> 
+                    We ensure all parts are adequately packaged for postage and ensure your order is processed as quickly as possible 
+                    If you have any specific delivery requests then please email us details of your requirements before committing to making a Order. 
+                    Contact us today to find out how we can help you. 
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+</div> 
+ 
 <!-- FOOTER -->
 {% include 'footer.html' %}
 {% endblock %}
