@@ -84,9 +84,7 @@ p.card-footer {
  padding: 0;
 }
 
-.btn-success {
-    border: 1px solid #9b9797;
-}
+
 
 
 /* ----- Changes to Nav Bar ----- */
@@ -164,8 +162,9 @@ p.card-footer {
 /* CHANGE color & font-size*/
 .breadcrumb {
 	background-color: #3d5a80; /* purple navy */
+	border: double#3d5a80; /* purple navy */;
 	font-size: 13px; 
-	list-style:none;
+	list-style: none;
 }
 
 /* ADD matgins */
@@ -268,17 +267,16 @@ p.card-footer {
   border-radius: 300px;
 }
 
-/* CHANGE color on button border */
-.btn-primary {
-  background-color: #ee6c4d;
-  border: 1px solid #6c757d; /* Raven */
+.btn-success {
+    border: 1px solid #9b9797;
 }
 
 /* CHANGE color on button hover */
-.btn-primary:hover {
-  background-color: #ee6c4d; 
+.btn-success:hover {
+  border: 1px solid #9b9797; 
   color: black;
 }
+
 
 
 /* ----- Changes to Models Section ----- */
@@ -290,8 +288,7 @@ p.card-footer {
 /* Add photo spacing left & border */
 #photo-left {
     float: left;    
-    margin: 0 15px 0 0;
-    border: 1px solid #000;
+    margin: 0 15px 0 0; /*(top,right,bottom,Left) */
     border-radius: 10px;
     padding: 0;
 }
@@ -299,8 +296,7 @@ p.card-footer {
 /* Add photo spacing right & border */
 #photo-right {
     float: right;    
-    margin: 0 0 0 15px;
-    border: 1px solid #000;
+    margin: 0 0 0 15px; /*(top,right,bottom,Left) */
     border-radius: 10px;
     padding: 0;
     
@@ -426,7 +422,7 @@ p.card-text {
 
 /* CHANGE colour basket msg */
 .basket-msg {
-     color: #b22222;  /*firebrick*/  
+     color: #b22222;  /*firebrick*/ 
 }
 
 
@@ -524,6 +520,8 @@ fieldset {
 	border: 1px solid #9b9797;
 }
 
+
+
 /* ----- Changes to contact.html ----- */
 /* Change colour to  messages */
 .error-msg {
@@ -534,7 +532,21 @@ fieldset {
     color: #b22222;  /*firebrick*/
 }
 
+.contact-card {
+    background-color: #98c1d9; /* pale cerulean */
+	margin-bottom: 50px;
+}
 
+.first-one {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.list-group-item:last-child {
+  margin-bottom: 0;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
 
 /* ----- Changes to about.html ----- */
 /* Change font-size to heading */

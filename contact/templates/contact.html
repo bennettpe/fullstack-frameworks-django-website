@@ -10,24 +10,41 @@
     </ol>
 
     <h2> Contact Us <i class="fas fa-inbox"></i></h2>
-    <br>
-    <p> Please fill out the form below with your enquiry.</p>
-
-    <div class="row justify-content-md-center">
-        <div id="form-area" class="col-md-8">
+    
+    <div class="row">
+        <div id="form-area" class="col-md-6 mt-4">
             <form method="post">
                 <fieldset>
                     <div class="form-group">
                         <legend>Contact Form</legend>
                         {% csrf_token %} {{ form | as_bootstrap }}
                         <p class="req-field"> * Required fields </p>
-                        <input class="btn btn-primary" type="submit" value="Submit Enquiry">
+                        <input class="btn btn-success" type="submit" value="Submit Enquiry">
                     </div>
                 </fieldset>
             </form>
         </div>
-    </div>
-
+        
+        <div class="col-md-6 mt-4 contact-card">
+            <fieldset>
+            <ul class="list-group">
+                <legend>Contact Info</legend> 
+                <li class="list-group-item first-one">
+                    <h5><b> Address</b></h5> Triumphant Triumphs, Unit 01, Tigger Business Centre, Layshaft Lane, Hampshire, TI6 6GG </li> 
+                <li class="list-group-item">
+                    <h5><b> Telephone </b></h5> 01234 567890 </li>
+                <li class="list-group-item">
+                    <h5><b> Email </b></h5> <a href="mailto:info@triumpannttriumphs.co.uk"> info@triumphanttriumphs.co.uk </a></li>
+                <li class="list-group-item">
+                    <h5><b> Business Hours </b></h5> 09:00 to 17.30 GMT </li>
+                <li class="list-group-item">
+                    <h5><b> Collections </b></h5> Collections can be made from the address above between </br> 09.00 - 15.30 GMT (STRICTLY BY APPOINTMENT ONLY) </li>
+                <li class="list-group-item">    
+                    <h5><b> Company uk vat no : </b></h5> GB 111 111 111 </li>
+            </ul>
+            </fieldset>
+        </div>
+</div>
 <!-- BACK TO TOP -->
 {% include 'bttop.html' %} 
 {% endblock %}

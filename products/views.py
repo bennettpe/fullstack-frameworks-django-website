@@ -17,6 +17,14 @@ def alt_dyno(request):
 def body(request):
     return render(request, 'body.html', 
     {'products_list': Product.objects.filter(category='body').order_by('part_name','part_number')}) 
+#BONNET
+def bonnet(request):
+    return render(request, 'bonnet.html', 
+    {'products_list': Product.objects.filter(category='bonnet').order_by('part_name','part_number')})     
+#BOOT
+def boot(request):
+    return render(request, 'boot.html', 
+    {'products_list': Product.objects.filter(category='boot').order_by('part_name','part_number')})  
 #BRAKE SYSTEM
 def brakes(request):
     return render(request, 'brakes.html', 
@@ -28,7 +36,11 @@ def brakes_fr(request):
 #BRAKE HANDBRAKE
 def brakes_handbrake(request):
     return render(request, 'brakes_handbrake.html', 
-    {'products_list': Product.objects.filter(category='brakes_handbrake').order_by('part_name','part_number')})   
+    {'products_list': Product.objects.filter(category='brakes_hand').order_by('part_name','part_number')})   
+#BUMPERS
+def bumpers(request):
+    return render(request, 'bumpers.html', 
+    {'products_list': Product.objects.filter(category='bumpers').order_by('part_name','part_number')})     
 #CHARGING_STARTING
 def charging(request):
     return render(request, 'charging.html', 
@@ -45,6 +57,18 @@ def cooling(request):
 def crankshaft(request):
     return render(request, 'crankshaft.html', 
     {'products_list': Product.objects.filter(category='crankshaft').order_by('part_name','part_number')})     
+#DOOR
+def door(request):
+    return render(request, 'door.html', 
+    {'products_list': Product.objects.filter(category='door').order_by('part_name','part_number')})      
+#DASHBOARD
+def dashboard(request):
+    return render(request, 'dashboard.html', 
+    {'products_list': Product.objects.filter(category='dashboard').order_by('part_name','part_number')})   
+#DRIVE_LINE
+def drive_line(request):
+    return render(request, 'drive_line.html', 
+    {'products_list': Product.objects.filter(category='drive_line').order_by('part_name','part_number')}) 
 #ENGINE
 def engine(request):
     return render(request, 'engine.html', 
@@ -57,18 +81,22 @@ def electrical(request):
 def exhaust(request):
     return render(request, 'exhaust.html', 
     {'products_list': Product.objects.filter(category='exhaust').order_by('part_name','part_number')})
-#EXTERIOR
-def exterior(request):
-    return render(request, 'exterior.html', 
-    {'products_list': Product.objects.filter(category='exterior').order_by('part_name','part_number')})     
-#FRONT SUSPENSION
-def suspfront(request):
-    return render(request, 'suspfront.html', 
-    {'products_list': Product.objects.filter(category='suspfront').order_by('part_name','part_number')})      
+#EXTERNAL
+def external(request):
+    return render(request, 'external.html', 
+    {'products_list': Product.objects.filter(category='external').order_by('part_name','part_number')})     
 #FUEL SYSTEM
 def fuel(request):
     return render(request, 'fuel.html', 
     {'products_list': Product.objects.filter(category='fuel').order_by('part_name','part_number')})   
+#FUEL PIPES
+def fuel_pipes(request):
+    return render(request, 'fuel_pipes.html', 
+    {'products_list': Product.objects.filter(category='fuel_pipes').order_by('part_name','part_number')})     
+#FUEL TANK
+def fuel_tank(request):
+    return render(request, 'fuel_tank.html', 
+    {'products_list': Product.objects.filter(category='fuel_tank').order_by('part_name','part_number')}) 
 #GEARBOX_MK3
 def gearbox(request):
     return render(request, 'gearbox.html', 
@@ -81,6 +109,14 @@ def gearbox_mk4(request):
 def gearbox_1500(request):
     return render(request, 'gearbox_1500.html', 
     {'products_list': Product.objects.filter(category='gearbox_1500').order_by('part_name','part_number')}) 
+#HARDTOP
+def hardtop(request):
+    return render(request, 'hardtop.html', 
+    {'products_list': Product.objects.filter(category='hardtop').order_by('part_name','part_number')})   
+#HOOD
+def hood(request):
+    return render(request, 'hood.html', 
+    {'products_list': Product.objects.filter(category='hood').order_by('part_name','part_number')}) 
 #HEATING
 def heating(request):
     return render(request, 'heating.html', 
@@ -101,10 +137,14 @@ def interior(request):
 def lamps(request):
     return render(request, 'lamps.html', 
     {'products_list': Product.objects.filter(category='lamps').order_by('part_name','part_number')}) 
+#MOULDINGS
+def mouldings(request):
+    return render(request, 'mouldings.html', 
+    {'products_list': Product.objects.filter(category='mouldings').order_by('part_name','part_number')})     
 #OIL SUMP
 def oilsump(request):
     return render(request, 'oilsump.html', 
-    {'products_list': Product.objects.filter(category='oilsump').order_by('part_name','part_number')})    
+    {'products_list': Product.objects.filter(category='oil_sump').order_by('part_name','part_number')})    
 #OVERDRIVE
 def overdrive(request):
     return render(request, 'overdrive.html', 
@@ -113,22 +153,34 @@ def overdrive(request):
 def overdrive_j(request):
     return render(request, 'overdrive_j.html', 
     {'products_list': Product.objects.filter(category='overdrive_j').order_by('part_name','part_number')})    
-#REAR SUSPENSION
-def susprear(request):
-    return render(request, 'susprear.html', 
-    {'products_list': Product.objects.filter(category='susprear').order_by('part_name','part_number')}) 
+#RADIATOR GRILL
+def radgrill(request):
+    return render(request, 'radgrill.html', 
+    {'products_list': Product.objects.filter(category='radgrill').order_by('part_name','part_number')})     
 #ROADWHEELS
 def roadwheels(request):
     return render(request, 'roadwheels.html', 
     {'products_list': Product.objects.filter(category='roadwheels').order_by('part_name','part_number')})       
-#SERVICE
-def service(request):
-    return render(request, 'service.html', 
-    {'products_list': Product.objects.filter(category='service').order_by('part_name','part_number')})     
+#SEATS
+def seats(request):
+    return render(request, 'seats.html', 
+    {'products_list': Product.objects.filter(category='seats').order_by('part_name','part_number')}) 
 #STEERING
 def steering(request):
     return render(request, 'steering.html', 
-    {'products_list': Product.objects.filter(category='steering').order_by('part_name','part_number')})  
+    {'products_list': Product.objects.filter(category='steering').order_by('part_name','part_number')}) 
+#SUSPENSION
+def suspension(request):
+    return render(request, 'suspension.html', 
+    {'products_list': Product.objects.filter(category='suspension').order_by('part_name','part_number')})     
+#TRIM KITS
+def trim_kits(request):
+    return render(request, 'trim_kits.html', 
+    {'products_list': Product.objects.filter(category='trim_kits').order_by('part_name','part_number')}) 
+#WINDSCREEN 
+def windscreen(request):
+    return render(request, 'windscreen.html', 
+    {'products_list': Product.objects.filter(category='windscreen').order_by('part_name','part_number')})     
 #WINDSCREEN WIPERS & WASHER
 def wshld_wipe_wash(request):
     return render(request, 'wshld_wipe_wash.html', 

@@ -1,0 +1,53 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block content %}
+ <!-- COOLING -->
+<div class="container fuel-container">
+    <ol class="breadcrumb bcrumb-margins">
+        <li class="breadcrumb-item"> <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
+        <li class="breadcrumb-item active">Carburettors </li>
+        <li class="breadcrumb-item"> <a href="{% url 'fuel_pipes' %}"> Fuel Pipes </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'fuel_tank' %}"> Fuel Tank & Pump </a></li>
+    </ol>
+
+    <!-- Parts Heading -->
+    <h2 class="pl-4 pr-4"> Carburettors </h2>
+    </br>
+
+    <!-- Parts Diagram(s) -->
+    <div class="row  pl-4 pr-4 justify-content-center text-center">
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram" data-toggle="magnify" src="/static/img/fuel/SU-HS2 carburettor and air filter MK3 - all European specifications.gif" alt="scparts">
+            <h2 class="mb-2"> Carburettors Mk3 </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram" data-toggle="magnify" src="/static/img/fuel/SU-HS2 internal carburettor MK3 - all European specifications.gif" alt="scparts">
+            <h2 class="mb-2"> Carburettors internal Mk3 </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram" data-toggle="magnify" src="/static/img/fuel/SU-HS2 carburettor and air filter MK4 - all European specifications from November 1970 to December .gif" alt="scparts">
+            <h2 class="mb-2"> Carburettors Mk4 </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram" data-toggle="magnify" src="/static/img/fuel/SU-HS2 internal carburettor MK4- all European specifications from November 1970 to December 1974.gif" alt="scparts">
+            <h2 class="mb-2"> Carburettors internal Mk4 </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram" data-toggle="magnify" src="/static/img/fuel/SU-HS4 carburettor and air filter 1500 - all European specifications from December 1974.gif" alt="scparts">
+            <h2 class="mb-2"> Carburettors 1500 </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram" data-toggle="magnify" src="/static/img/fuel/SU-HS4 internal carburettor 1500 - all European specifications from December 1974.gif" alt="scparts">
+            <h2 class="mb-2"> Carburettors internal 1500 </h2>
+        </div>
+    </div>
+
+    <!-- Parts Cards -->
+    {% include 'parts_cards.html' %}
+</div>
+
+<!-- BACK TO TOP -->
+{% include 'bttop.html' %} 
+{% endblock %}

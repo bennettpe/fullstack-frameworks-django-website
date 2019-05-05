@@ -1,0 +1,48 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block content %}
+ <!-- SEATS -->
+<div class="container seats-container">
+    <ol class="breadcrumb bcrumb-margins">
+        <li class="breadcrumb-item"> <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'products' %}"> Products </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'interior' %}"> Carpets </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'dashboard' %}"> Dashboard </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'hardtop' %}"> Hardtop </a></li>
+        <li class="breadcrumb-item"> <a href="{% url 'hood' %}"> Hood & Tonneau </a></li>
+        <li class="breadcrumb-item active"> Seats </li>
+        <li class="breadcrumb-item"> <a href="{% url 'trim_kits' %}"> Trim Kits </a></li>
+    </ol>
+
+    <!-- Parts Heading -->
+    <h2 class="pl-4 pr-4"> Seats </h2>
+    </br>
+
+    <!-- Parts Diagram(s) -->
+    <div class="row  pl-4 pr-4 justify-content-center text-center">
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram" data-toggle="magnify" src="/static/img/interior/Seats and seat covers MK3.gif" alt="scparts">
+            <h2 class="mb-2">Seats Mk3</h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram" data-toggle="magnify" src="/static/img/interior/Seats and seat covers MK4 - from January 1973.gif" alt="scparts">
+            <h2 class="mb-2"> Seats Mk4 </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram" data-toggle="magnify" src="/static/img/interior/Seats and seat covers MK4 - all European models .gif" alt="scparts">
+            <h2 class="mb-2">Seats Mk4 </h2>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <img class=" img-fluid parts-diagram" data-toggle="magnify" src="/static/img/interior/Seats and seat covers 1500 - from December 1974.gif" alt="scparts">
+            <h2 class="mb-2"> Seats 1500 </h2>
+        </div>
+    </div>
+
+    <!-- Parts Cards -->
+    {% include 'parts_cards.html' %}
+</div>
+
+<!-- BACK TO TOP -->
+{% include 'bttop.html' %} 
+{% endblock %}
