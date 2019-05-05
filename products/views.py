@@ -45,6 +45,10 @@ def bumpers(request):
 def charging(request):
     return render(request, 'charging.html', 
     {'products_list': Product.objects.filter(category='charging').order_by('part_name','part_number')})     
+#CHASSIS
+def chassis(request):
+    return render(request, 'chassis.html', 
+    {'products_list': Product.objects.filter(category='chassis').order_by('part_name','part_number')})   
 #CLUTCH
 def clutch(request):
     return render(request, 'clutch.html', 
@@ -129,6 +133,10 @@ def ignition(request):
 def inst_sw(request):
     return render(request, 'inst_sw.html', 
     {'products_list': Product.objects.filter(category='inst_sw').order_by('part_name','part_number')}) 
+#INNER BODY
+def inner_body(request):
+    return render(request, 'inner_body.html', 
+    {'products_list': Product.objects.filter(category='inner_body').order_by('part_name','part_number')}) 
 #INTERIOR
 def interior(request):
     return render(request, 'interior.html', 
@@ -153,14 +161,18 @@ def overdrive(request):
 def overdrive_j(request):
     return render(request, 'overdrive_j.html', 
     {'products_list': Product.objects.filter(category='overdrive_j').order_by('part_name','part_number')})    
+#OUTER BODY
+def outer_body(request):
+    return render(request, 'outer_body.html', 
+    {'products_list': Product.objects.filter(category='outer_body').order_by('part_name','part_number')}) 
 #RADIATOR GRILL
-def radgrill(request):
-    return render(request, 'radgrill.html', 
-    {'products_list': Product.objects.filter(category='radgrill').order_by('part_name','part_number')})     
+def rad_grill(request):
+    return render(request, 'rad_grill.html', 
+    {'products_list': Product.objects.filter(category='rad_grill').order_by('part_name','part_number')})     
 #ROADWHEELS
-def roadwheels(request):
-    return render(request, 'roadwheels.html', 
-    {'products_list': Product.objects.filter(category='roadwheels').order_by('part_name','part_number')})       
+def road_wheels(request):
+    return render(request, 'road_wheels.html', 
+    {'products_list': Product.objects.filter(category='road_wheels').order_by('part_name','part_number')})       
 #SEATS
 def seats(request):
     return render(request, 'seats.html', 

@@ -1,9 +1,10 @@
 # Products related urls
 from django.conf.urls import url, include
 from products.views import products, alt_dyno, body, bonnet, boot, brakes, brakes_fr, brakes_handbrake, bumpers, \
-                           clutch, cooling, crankshaft, dashboard, door, drive_line, electrical, engine, exhaust, external, \
-                           fuel, fuel_pipes, fuel_tank, gearbox, gearbox_mk4, gearbox_1500, hardtop, heating, hood, ignition, inst_sw, interior, lamps, mouldings, oilsump, overdrive, \
-                           overdrive_j, radgrill, roadwheels, seats, steering, suspension, trim_kits, windscreen, wshld_wipe_wash, wire_int
+                           chassis, clutch, cooling, crankshaft, dashboard, door, drive_line, electrical, engine, exhaust, external, \
+                           fuel, fuel_pipes, fuel_tank, gearbox, gearbox_mk4, gearbox_1500, hardtop, heating, hood, \
+                           ignition, inner_body, inst_sw, interior, lamps, mouldings, oilsump, outer_body, overdrive, \
+                           overdrive_j, rad_grill, road_wheels, seats, steering, suspension, trim_kits, windscreen, wshld_wipe_wash, wire_int
                               
 urlpatterns = [
     url(r'^categories/$', products, name='products'),
@@ -15,6 +16,7 @@ urlpatterns = [
     url(r'^brakes_fr/$', brakes_fr, name='brakes_fr'),
     url(r'^brakes_handbrake/$', brakes_handbrake, name='brakes_handbrake'),
     url(r'^bumpers/$', bumpers, name='bumpers'),
+    url(r'^chassis/$', chassis, name='chassis'),
     url(r'^clutch/$', clutch, name='clutch'),
     url(r'^cooling/$', cooling, name='cooling'),
     url(r'^crankshaft/$', crankshaft, name='crankshaft'),
@@ -35,6 +37,7 @@ urlpatterns = [
     url(r'^heating/$', heating, name='heating'),
     url(r'^hood/$',hood, name='hood'),
     url(r'^ignition/$', ignition, name='ignition'),
+    url(r'^inner_body/$', inner_body, name='inner_body'),
     url(r'^inst_sw/$', inst_sw, name='inst_sw'),
     url(r'^interior/$', interior, name='interior'),
     url(r'^lamps/$', lamps, name='lamps'),
@@ -42,8 +45,9 @@ urlpatterns = [
     url(r'^oilsump/$', oilsump, name='oilsump'),
     url(r'^overdrive/$', overdrive, name='overdrive'),
     url(r'^overdrive_j/$', overdrive_j, name='overdrive_j'),
-    url(r'^radgrill/$', radgrill, name='radgrill'),
-    url(r'^roadwheels/$', roadwheels, name='roadwheels'),
+    url(r'^outer_body/$', outer_body, name='outer_body'),
+    url(r'^rad_grill/$', rad_grill, name='rad_grill'),
+    url(r'^road_wheels/$', road_wheels, name='road_wheels'),
     url(r'^seats/$', seats, name='seats'),
     url(r'^steering/$', steering, name='steering'),
     url(r'^suspension/$', suspension, name='suspension'),
