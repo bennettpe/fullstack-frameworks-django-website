@@ -12,6 +12,3 @@ class Product(models.Model):
     image = models.ImageField(upload_to='images/')
     price = models.DecimalField(max_digits=6, decimal_places=2)
    
-    #def __str__(self):
-        #return self.part_name
-        #return '%s, %s, %s' % (self.category, self.part_name, self.part_number)

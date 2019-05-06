@@ -2,4 +2,5 @@
 __pycache__
 .~c9*
 env.py
+secrets.sh
 *.png

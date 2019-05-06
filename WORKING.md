@@ -1897,4 +1897,9 @@ This section is for setting up an **customer payment mechanism** to allow users 
     ```
 
 #### Travis error 
-1. Travis failed withe the following error message `ImportError: No module named 'env'` added the following to the `settings.py` file
+1. Travis failed with the following error message `ImportError: No module named 'env'` added the following to the `settings.py` file
+    ```python
+    # Used locally and not in Heroku
+    if os.path.exists('env.py'):
+    import env
+    ```

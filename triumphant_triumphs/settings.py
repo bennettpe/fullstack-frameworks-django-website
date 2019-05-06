@@ -17,8 +17,11 @@ import os
 import dj_database_url
 
 # Used locally and not in Heroku
-if os.path.exists('env.py'):
+if os.environ.get('DEVELOPMENT'):
     import env
+    development = True
+else:
+    development = False
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -36,7 +39,7 @@ DEBUG = True
 
 
 # A list of strings representing the host/domain names that this Django site can serve
-ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME')]
+ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'),  'fullstack-frameworks-project.herokuapp.com']
 
 
 # Application definition
@@ -190,7 +193,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_PORT = 587
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # A list of authentication backend classes (as strings) to use when attempting to authenticate a user
