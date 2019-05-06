@@ -15,8 +15,10 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import dj_database_url
+
 # Used locally and not in Heroku
-import env
+if os.path.exists('env.py'):
+    import env
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -25,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # A secret key for a particular Django installation
-SECRET_KEY = 'xi@wniybq4x6i7r7&3)3sgv@f7z(g1-+wd9t8o9bcb*i_0n81^'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!

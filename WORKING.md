@@ -1850,3 +1850,51 @@ This section is for setting up an **customer payment mechanism** to allow users 
 8. Create templates folder in **fullstack-frameworks-django-project/about** 
 8. Create **about.html** in templates folder
 9. Create **urls.py** **fullstack-frameworks-django-project/about** 
+10. 
+
+
+#### Github vulnerablility message
+
+1. I just pushed my changes to git hub and got a message saying github had found a vulnerability which was `urllib3`  
+   needs to be upgraded to 1.24.2 or later, `urllib3` is downloaded when you `pip3 install stripe` should I just reinstall `stripe` ?
+
+2. Upgrade  Urllib3 to 1.24.2
+    ```python
+    bennettpe:~/workspace (master) $ sudo pip3 install urllib3==1.24.2                                                                                                                       
+    Downloading/unpacking urllib3==1.24.2
+    Downloading urllib3-1.24.2-py2.py3-none-any.whl (131kB): 131kB downloaded
+    Installing collected packages: urllib3
+    Found existing installation: urllib3 1.24.1
+    Uninstalling urllib3:
+    Successfully uninstalled urllib3
+    Successfully installed urllib3
+    Cleaning up...
+    ```
+
+3.  Update `requirements.txt` file <br>
+    ```python
+    sudo pip3 freeze --local > requirements.txt
+    ```
+
+4. 'requirements.txt' now updated to urllib3 1.24.2
+    ```python
+    Babel==2.6.0
+    Django==1.11.20
+    Pillow==5.4.1
+    certifi==2019.3.9
+    chardet==3.0.4
+    dj-database-url==0.5.0
+    django-forms-bootstrap==3.1.0
+    django-phonenumber-field==2.3.1
+    gunicorn==19.9.0
+    idna==2.8
+    phonenumbers==8.10.10
+    psycopg2==2.8
+    pytz==2018.9
+    requests==2.21.0
+    stripe==2.24.1
+    urllib3==1.24.2
+    ```
+
+#### Travis error 
+1. Travis failed withe the following error message `ImportError: No module named 'env'` added the following to the `settings.py` file
