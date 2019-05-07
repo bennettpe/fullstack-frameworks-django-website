@@ -17,11 +17,8 @@ import os
 import dj_database_url
 
 # Used locally and not in Heroku
-if os.environ.get('DEVELOPMENT'):
+if os.path.exists('env.py'):
     import env
-    development = True
-else:
-    development = False
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -35,7 +32,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # A boolean that turns on/off debug mode
-DEBUG = True
+# Used locally and not in Heroku
+if os.path.exists('env.py'):
+    DEBUG = True
+else:  
+    DEBUG = False
 
 
 # A list of strings representing the host/domain names that this Django site can serve

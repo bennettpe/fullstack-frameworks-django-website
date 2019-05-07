@@ -1903,3 +1903,17 @@ This section is for setting up an **customer payment mechanism** to allow users 
     if os.path.exists('env.py'):
     import env
     ```
+
+#### Email autentication error
+1. DO the following
+    go to the console
+    1. touch secrets.sh
+    2. chmod +x secrets.sh
+    3. open secrets.sh
+    4. add `export EMAIL_ADDRESS="xxxxxxxxxxxxx" and `export EMAIL_PASSWORD="xxxxxxx"`
+
+2. So I have added my email address and email password as follows for my django project , but am still getting the following error message `SMTPSenderRefused at /accounts/password-reset/
+(530, b'5.5.1 Authentication Required. Learn more at\n5.5.1  https://support.google.com/mail/?p=WantAuthError u11sm19169248wmu.15 - gsmtp', 'webmaster@localhost')` ?
+
+#### Stripe api key none
+1.
