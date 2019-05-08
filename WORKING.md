@@ -2061,3 +2061,22 @@ This section is for setting up an **customer payment mechanism** to allow users 
     ```
 
     Added `AWS_DEFAULT_ACL = 'public-read'` to settings.py file to stop warning message.
+    
+#### 403 issue with Background issue 
+1.  ```css
+    /* ----- Changes to Header ----- */
+    /* ADD background */
+    .masthead {
+    width:100%; 
+    height: 100%; 
+    background: url("/static/img/vehicles/Triumph_Spitfire_MKIV_colors.svg") no-repeat center; 
+    background-attachment: scroll; 
+    background-size: cover; 
+   
+    }
+    ```
+    
+    issue was due to background url not being correct , shoild have been 
+    ```css
+    background: url("../img/vehicles/Triumph_Spitfire_MKIV_colors.svg") no-repeat center; 
+    ```
