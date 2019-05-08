@@ -1915,5 +1915,149 @@ This section is for setting up an **customer payment mechanism** to allow users 
 2. So I have added my email address and email password as follows for my django project , but am still getting the following error message `SMTPSenderRefused at /accounts/password-reset/
 (530, b'5.5.1 Authentication Required. Learn more at\n5.5.1  https://support.google.com/mail/?p=WantAuthError u11sm19169248wmu.15 - gsmtp', 'webmaster@localhost')` ?
 
+3. decided to remove `secrets.sh` file and added email address and password to `env.py` and it all works ok.
+
 #### Stripe api key none
-1.
+1. problem due to settings.py file where it was not picking up `import env` 
+
+#### Setting up AWS Buckets
+1. see word document `Create new S3 Bucket.docx`
+
+#### Adding S3 to django
+1. see word document `Create new S3 Bucket.docx` Adding S3 to Django section.
+
+2. Install django-storages
+    
+    ```python
+    sudo pip3 install django-storages
+    ```
+    
+    This installs **django-storages** 
+
+    ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ sudo pip3 install django-storages
+    Downloading/unpacking django-storages
+    Downloading django_storages-1.7.1-py2.py3-none-any.whl (44kB): 44kB downloaded
+    Requirement already satisfied (use --upgrade to upgrade): Django>=1.11 in /usr/local/lib/python3.4/dist-packages (from django-storages)
+    Installing collected packages: django-storages
+    Successfully installed django-storages
+    Cleaning up...
+    ```
+    
+3. Update `requirements.txt` file <br>
+    ```python
+    sudo pip3 freeze --local > requirements.txt
+    ```
+
+4. Install boto3
+
+     ```python
+    sudo pip3 install boto3
+    ```
+    
+    This installs **boto3** 
+
+    ouput from bash terminal
+    
+    ```python
+    bennettpe:~/workspace (master) $ sudo pip3 install boto3
+    Downloading/unpacking boto3
+    Downloading boto3-1.9.144-py2.py3-none-any.whl (128kB): 128kB downloaded
+    Downloading/unpacking botocore>=1.12.144,<1.13.0 (from boto3)
+    Downloading botocore-1.12.144-py2.py3-none-any.whl (5.4MB): 5.4MB downloaded
+    Downloading/unpacking jmespath>=0.7.1,<1.0.0 (from boto3)
+    Downloading jmespath-0.9.4-py2.py3-none-any.whl
+    Downloading/unpacking s3transfer>=0.2.0,<0.3.0 (from boto3)
+    Downloading s3transfer-0.2.0-py2.py3-none-any.whl (69kB): 69kB downloaded
+    Downloading/unpacking python-dateutil>=2.1,<3.0.0 (from botocore>=1.12.144,<1.13.0->boto3)
+    Downloading python_dateutil-2.8.0-py2.py3-none-any.whl (226kB): 226kB downloaded
+    Downloading/unpacking docutils>=0.10 (from botocore>=1.12.144,<1.13.0->boto3)
+    Downloading docutils-0.14-py3-none-any.whl (543kB): 543kB downloaded
+    Requirement already satisfied (use --upgrade to upgrade): urllib3>=1.20,<1.25 in /usr/local/lib/python3.4/dist-packages (from botocore>=1.12.144,<1.13.0->boto3)
+    Requirement already satisfied (use --upgrade to upgrade): six>=1.5 in /usr/lib/python3/dist-packages (from python-dateutil>=2.1,<3.0.0->botocore>=1.12.144,<1.13.0->boto3)
+    Installing collected packages: boto3, botocore, jmespath, s3transfer, python-dateutil, docutils
+    Successfully installed boto3 botocore jmespath s3transfer python-dateutil docutils
+    Cleaning up...
+    ```
+    
+5. Update `requirements.txt` file <br>
+    ```python
+    sudo pip3 freeze --local > requirements.txt
+    ``` 
+
+6. In **setting.py** 
+   go to **INSTALLED_APPS** section and add line containing **storages** 
+   ```python
+   # Application definition
+
+   INSTALLED_APPS = [
+    'storages',     <== this line added.
+    ]
+   ```
+7. Make changes to `settings.py` to connect to AWS
+   go to **Static files**  and add the following lines  
+    ```python
+    AWS_S3_OBJECT_PARAMETERS = {
+    'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+    'CacheControl': 'max-age=94608000',
+    }
+
+    AWS_STORAGE_BUCKET_NAME = 'pauls-fullstack-frameworks-django-project'
+    AWS_S3_REGION_NAME = 'eu-west-1'
+    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+    AWS_S3_CUSTOM_DOMAIN = "%s.s3.amazonaws.com" % AWS_STORAGE_BUCKET_NAME
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    ```
+8. Then do a collectstatic
+    ```python
+    python3 manage.py collectstatic
+    ```
+
+    This uploads the static files
+
+    ouput from bash terminal
+    
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py collectstatic
+    Database URL not found. Using SQLite instead
+    /usr/local/lib/python3.4/dist-packages/storages/backends/s3boto3.py:282: UserWarning: The default behavior of S3Boto3Storage is insecure and will change in django-storages 2.0. By default files and new buckets are saved with an ACL of 'public-read' (globally publicly readable). Version 2.0 will default to using the bucket's ACL. To opt into the new behavior set AWS_DEFAULT_ACL = None, otherwise to silence this warning explicitly set AWS_DEFAULT_ACL.
+    "The default behavior of S3Boto3Storage is insecure and will change "
+
+    You have requested to collect static files at the destination
+    location as specified in your settings.
+
+    This will overwrite existing files!
+    Are you sure you want to do this?
+
+    Type 'yes' to continue, or 'no' to cancel: yes
+    Copying '/home/ubuntu/workspace/static/js/stripe.js'
+    Copying '/home/ubuntu/workspace/static/js/custom.js'
+    Copying '/home/ubuntu/workspace/static/js/bootstrap-magnify.js'
+    Copying '/home/ubuntu/workspace/static/font-awesome/css/all.css'
+    Copying '/home/ubuntu/workspace/static/font-awesome/css/all.min.css'
+    ....
+    Copying '/usr/local/lib/python3.4/dist-packages/django/contrib/admin/static/admin/img/icon-deletelink.svg'
+    Copying '/usr/local/lib/python3.4/dist-packages/django/contrib/admin/static/admin/img/icon-changelink.svg'
+    Copying '/usr/local/lib/python3.4/dist-packages/django/contrib/admin/static/admin/img/gis/move_vertex_on.svg'
+    Copying '/usr/local/lib/python3.4/dist-packages/django/contrib/admin/static/admin/img/gis/move_vertex_off.svg'
+    Copying '/usr/local/lib/python3.4/dist-packages/django/contrib/admin/static/admin/fonts/Roboto-Light-webfont.woff'
+    Copying '/usr/local/lib/python3.4/dist-packages/django/contrib/admin/static/admin/fonts/README.txt'
+    Copying '/usr/local/lib/python3.4/dist-packages/django/contrib/admin/static/admin/fonts/Roboto-Bold-webfont.woff'
+    Copying '/usr/local/lib/python3.4/dist-packages/django/contrib/admin/static/admin/fonts/LICENSE.txt'
+    Copying '/usr/local/lib/python3.4/dist-packages/django/contrib/admin/static/admin/fonts/Roboto-Regular-webfont.woff'
+
+    252 static files copied.
+    ```
+9. When I did a run to check everything was working get the following UserWarning message
+    ```python
+    /usr/local/lib/python3.4/dist-packages/storages/backends/s3boto3.py:282: UserWarning: 
+    The default behavior of S3Boto3Storage is insecure and will change in django-storages 2.0. 
+    By default files and new buckets are saved with an ACL of 'public-read' (globally publicly readable). 
+    Version 2.0 will default to using the bucket's ACL. 
+    To opt into the new behavior set AWS_DEFAULT_ACL = None, otherwise to silence this warning explicitly set AWS_DEFAULT_ACL.
+    "The default behavior of S3Boto3Storage is insecure and will change "
+    ```
+
+    Added `AWS_DEFAULT_ACL = 'public-read'` to settings.py file to stop warning message.

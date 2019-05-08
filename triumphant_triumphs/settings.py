@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'contact',
     'products',
     'phonenumber_field',
+    'storages',
 ]
 
 
@@ -160,11 +161,33 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 #-----------------------------------------------------------
+# AWS_DEFAULT_ACL = To stop UserWarning message
+# AWS_S3_OBJECT_PARAMETERS = set object parameters on your object
+# AWS_STORAGE_BUCKET_NAME = Your Amazon Web Services storage bucket name
+# AWS_ACCESS_KEY_ID = Your Amazon Web Services access key
+# AWS_SECRET_ACCESS_KEY = Your Amazon Web Services secret access key
+# AWS_S3_CUSTOM_DOMAIN =
+# STATICFILES_STORAGE = The file storage engine to use when collecting static files with the collectstatic management command.
+AWS_S3_OBJECT_PARAMETERS = {
+    'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+    'CacheControl': 'max-age=94608000',
+}
+AWS_DEFAULT_ACL = 'public-read'
+AWS_STORAGE_BUCKET_NAME = "pauls-fullstack-frameworks-django-project"
+AWS_S3_REGION_NAME = "eu-west-1"
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+AWS_S3_CUSTOM_DOMAIN = "%s.s3.amazonaws.com" % AWS_STORAGE_BUCKET_NAME
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+
 # STATIC_ROOT     = Absolute Path to the directory where collectstatic will collect static files for deployment
 # STATIC_URL      = URL to use when referring to static files located in STATIC ROOT
 # STATICFILE_DIRS = # Look for static files here
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')    
-STATIC_URL = '/static/'                                   
+STATIC_URL = '/static/'  
+#STATICFILES_LOCATION = 'static'
+#STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 
