@@ -25,7 +25,7 @@ html {
 
 body {
     background: #98c1d9; /* pale cerulean */
-    padding:70px 10px 0 10px; /*(top,right,bottom,Left) */
+    padding:70px 0 0 0; /*(top,right,bottom,Left) */
 }
 
 /* ----- Changes to Padding for Messages ----- */ 
@@ -468,21 +468,26 @@ p.card-text {
    left: 0;
    width: 100%;
    text-align: center;
+   padding: 0;
 }
 
 /* Change color of links */
 .footer-link, 
 .footer-link:hover {
     color: #ee6c4d;
+    text-decoration: none;
 }
 
 /* Change color */
-.href-link,
-.href-link:hover {
-	color: #ee6c4d; 
+.href-link {
+	color: #b22222; 
 	text-decoration: none;
 }
 
+.href-link:hover {
+	color: red; 
+	text-decoration: none;
+}
 
 
 /* ----- Changes to checkout.html ----- */
@@ -557,4 +562,11 @@ fieldset {
 /* Center text */
 .center {
     padding: 10% 0;
+}
+
+/* ----- Changes to form error messages ----- */
+/* Add new line after each message */
+.error-msg:after {
+    content: '\A';
+    white-space: pre;
 }
