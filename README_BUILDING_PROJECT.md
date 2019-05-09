@@ -1,6 +1,6 @@
 # Fullstack Frameworks with Django Milestone 5 Project
 
-## Classic Car Parts Webshop
+## Classic Car Parts Webshop Triumphant Triumphs
 Heroku App:  <br>
 Heroku git:  <br>
 GitHub:      <br>
@@ -2063,7 +2063,8 @@ This section is for setting up an **customer payment mechanism** to allow users 
     Added `AWS_DEFAULT_ACL = 'public-read'` to settings.py file to stop warning message.
     
 #### 403 issue with Background issue 
-1.  ```css
+1.
+    ```css
     /* ----- Changes to Header ----- */
     /* ADD background */
     .masthead {
@@ -2080,3 +2081,5 @@ This section is for setting up an **customer payment mechanism** to allow users 
     ```css
     background: url("../img/vehicles/Triumph_Spitfire_MKIV_colors.svg") no-repeat center; 
     ```
+    
+#### 

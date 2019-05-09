@@ -28,12 +28,13 @@ body {
     padding:70px 0 0 0; /*(top,right,bottom,Left) */
 }
 
+
 /* ----- Changes to Padding for Messages ----- */ 
 
 /* iPhone 5 & 5S in portrait & landscape */
 @media (min-width: 320px) and (max-width: 568px) {
-body { 
-    padding:100px 0 0 0; /*(top,right,bottom,Left) */
+    body { 
+     padding:100px 0 0 0; 
 }
     
 /* ADD fixed, scrollable navbar */
@@ -43,35 +44,24 @@ body {
   overflow-y: auto;}    
 }
 
-/* iPhone 6, 7, & 8 in portrait & landscape */
-@media (min-width: 375px) and (max-width: 667px)  {
-body { 
-    padding:75px 0 0 0; /*(top,right,bottom,Left) */
+/* If larger footer */
+@media (max-width: 767px) {
+    body { 
+     padding:70px 0 0 0; /*(top,right,bottom,Left) */
     }
+    .about-container {
+     min-height: calc(100vh - 184px); /* navbar 50px, footer 134px */
+    }   
 }
-/* iPhone X in portrait & landscape */
-@media (min-width: 375px) and (max-width: 812px)  {
-body { 
-     padding:75px 0 0 0; /*(top,right,bottom,Left) */
+
+/* If Smaller footer */
+@media (min-width: 768px) {
+    body { 
+     padding:70px 0 0 0;
     }
-}
-/* iPhone 6, 7, & 8 Plus in portrait & landscape */
-@media (min-width: 414px) and (max-width: 736px)  {
-body { 
-     padding:75px 0 0 0; /*(top,right,bottom,Left) */
-    }
-}
-/* iPad in portrait & landscape */
-@media (min-width: 768px) and (max-width: 1024px)  {
-body { 
-    padding:75px 0 0 0; /*(top,right,bottom,Left) */
-    }
-}
-/* iPad Pro in portrait & landscape */
-@media (min-width: 1024px) and (max-width: 1366px)  {
-body { 
-   padding:85px 0 0 0; /*(top,right,bottom,Left) */
-    }
+    .about-container {
+     min-height: calc(100vh - 100px); /* navbar 50px, footer 50px */
+    }   
 }
 
 p.card-body {

@@ -31,7 +31,7 @@ def contact(request):
                 "Your contact form enquiry",
                 content,
                 "Triumphant Triumphs" + '',
-                ['testing@gmail.com'],
+                ['pauledwardbennett1961@gmail.com'],
                 headers = {'Reply To': contact_email}
             )
             email.send()
