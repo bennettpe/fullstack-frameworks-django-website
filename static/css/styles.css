@@ -358,16 +358,14 @@ p.card-footer {
   font-size: 1.5em;
 }
 
-/* ADD border & color for Card footer */
+/* ADD padding for Card footer */
 .card-footer {
-  border-left: 1px solid #9b9797;
-  border-right: 1px solid #9b9797;
-  border-bottom: 1px solid #9b9797;
-  border-top: none;
+  padding: 0.75rem 0.75rem;
+}
+
+/* ADD border for Card footer */
+.card-footer:last-child {
   border-radius: 0 0 10px 10px ;
-  background-color: #ddd; 
-  padding: 0;
-  margin: 0;
 }
 
 /* ADD border & color for Card header */
@@ -384,11 +382,6 @@ p.card-footer {
     border-radius: 10px;  
 }
 
-/* Add border to top of parts diagram */
-.parts-diagram-footer {
-    border: 1px solid #9b9797;
-    border-radius: 10px 10px 0 0; 
-}
 
 
 /* ----- Changes to cart.html ----- */

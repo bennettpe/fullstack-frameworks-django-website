@@ -15,7 +15,8 @@
                 <p class="card-text text-wrap"> <strong> Product description: </strong>
                     <br> {{ product.description }} </p>
                 <p class="card-text"> <strong> £ {{ product.price }} </strong> </p>
-
+            </div>
+            <div class="card-footer text-center">
                 <form method="post" action="{% url 'add_to_cart' product.id %}">
                     {% csrf_token %}
                     <div class="input-group p-3">
