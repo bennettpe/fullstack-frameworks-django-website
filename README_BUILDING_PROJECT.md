@@ -2082,4 +2082,38 @@ This section is for setting up an **customer payment mechanism** to allow users 
     background: url("../img/vehicles/Triumph_Spitfire_MKIV_colors.svg") no-repeat center; 
     ```
     
-#### 
+#### 404 issue with media images
+1. have added images for fuel_pipes and fuel-tank but am getting 404's as they dont seem to be added to media folder, 
+   have changed static folder to be on S3 so not sure if thats causing the issue.
+   problem was due to having the following line in my **setting.py** file 
+   ```python
+   DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+   ```
+   so removed this and the media file are now created ok.
+
+#### Create app charts
+1. **Create** Django app called **charts** 
+    ```python
+    python3 manage.py startapp charts
+    ```
+ 
+     ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py startapp chart
+    ```
+    
+    The following django files have been **created**
+    ```
+    fullstack-frameworks-django-project
+    │
+    └── chart
+        ├── migrations
+        │   └── __init__.py # Python file to allow app packages to be imported from other directories.  
+        │
+        ├── __init__.py     # Python file to allow app packages to be imported from other directories. 
+        ├── admin.py        # File with admin definitions for the app. 
+        ├── apps.py         # File with configuration parameters for the app.
+        ├── models.py       # File with database definitions (i.e., model classes) for the app.
+        ├── tests.py        # File with test definitions for the app.
+        └── views.py        # File with view definitions (i.e., controller methods) for the app.
+    ```

@@ -258,14 +258,22 @@ p.card-footer {
 }
 
 .btn-success {
-    border: 1px solid #9b9797;
+   border: 1px solid #9b9797; 
+}
+.btn-warning {
+   border: 1px solid #9b9797;
 }
 
 /* CHANGE color on button hover */
 .btn-success:hover {
   border: 1px solid #9b9797; 
   color: black;
+}  
+.btn-warning:hover {
+  border: 1px solid #9b9797; 
+  color: black;
 }
+
 
 
 
@@ -381,6 +389,7 @@ p.card-footer {
     border: 1px solid #9b9797;
     border-radius: 10px;  
 }
+
 
 
 
