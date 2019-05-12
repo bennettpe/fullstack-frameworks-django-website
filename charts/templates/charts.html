@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- CHARTS -->
+<div id="container" class="charts-container"> </div>
+<script src="https://code.highcharts.com/highcharts.src.js"></script>
+<script>
+  Highcharts.chart('container', {{ chart|safe }});
+</script>
+</div>
+
+<!-- BACK TO TOP -->
+{% include 'bttop.html' %} 
+{% endblock %}   

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- CHARTS -->
+<div class="container charts-container">
+    <canvas id="myChart"> </canvas>
+<div>
+
+<script type="text/javascript"> 
+var ctx = document.getElementById('myChart').getContext('2d');
+
+var category_bar = new Chart(ctx, { 
+        type: 'bar', // bar,horizontalBar, pie, line, doughnut, radar, polarArea
+        data: {
+        labels: ['By Categories'],
+        datasets: [{
+             label: 'Categories',
+             data: {{ count_series }},      
+             backgroundColor: [
+                'rgba(255, 99, 132, 0.2)'
+             ],
+             borderWidth: 1
+        }]
+    },
+    options:{}
+    });
+</script> 
+
+</div>
+<!-- BACK TO TOP -->
+{% include 'bttop.html' %} 
+{% endblock %}   

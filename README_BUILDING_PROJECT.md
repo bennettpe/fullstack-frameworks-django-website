@@ -2117,3 +2117,21 @@ This section is for setting up an **customer payment mechanism** to allow users 
         ├── tests.py        # File with test definitions for the app.
         └── views.py        # File with view definitions (i.e., controller methods) for the app.
     ```
+
+2. In **setting.py** 
+   go to **INSTALLED_APPS** section and add line containing **charts** 
+   ```python
+   # Application definition
+
+   INSTALLED_APPS = [
+    'charts',             <== this line added.
+    ]
+   ```
+4. Add chart.js cdnjs 
+   <!-- Chart.js minified JavaScript minified file (v2.8.0) --> <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"> </script>
+   <!-- CHARTS.JS minified CSS file (v2.8.0)                --> <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
+5.
+6.
+7. Update root **urls.py** in 
+8. 
+9. Create **urls.py** **fullstack-frameworks-django-project/charts** 
