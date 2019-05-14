@@ -2135,3 +2135,16 @@ This section is for setting up an **customer payment mechanism** to allow users 
 7. Update root **urls.py** in 
 8. 
 9. Create **urls.py** **fullstack-frameworks-django-project/charts** 
+
+#### TypeError: datetime.datetime(...) is not JSON serializable
+1. created data for orders by date chart and had the following error as the datetimes need to be converted to a string.
+2. used the following https://reviews.reviewboard.org/r/5038/diff/2/ and adapted code.
+    ```python
+    from django.core.serializers.json import DjangoJSONEncoder
+    
+    class LazyEncoder(DjangoJSONEncoder):
+    def default(self, obj):
+        return super(LazyEncoder, self).default(obj)
+        
+    dump3 = json.dumps(chart3, cls=LazyEncoder)   
+    ```
