@@ -4,9 +4,11 @@
 
 {% block content %}
 <!-- CATEGORIES -->
-<section class="container mx-auto">
+<section class="container categories-container mx-auto">
     <ol class="breadcrumb bcrumb-margins">
-        <li class="breadcrumb-item"> <a href="{% url 'index' %}"> Home </a> </li>
+        <li class="breadcrumb-item"> 
+            <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a> 
+        </li>
         <li class="breadcrumb-item active"> Products </li>
     </ol>
     <h2> Part Categories </h2>

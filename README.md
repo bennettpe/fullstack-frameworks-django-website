@@ -38,7 +38,7 @@ A web application for classic car parts , parts for the webshop have been gather
 ### What is it they want to achieve ?
 To provide a online eCommerce wbsite that users must be able to do the following
     
-* Add products to use Stripe shopping cart checkout.
+* Add products to use Stripe shopping cart checkout (only if Logged in).
 * Adjust quantity in Shopping cart
 * Add User via registration and authentication processes.
 * Users to vote to like or diskliked products.
@@ -66,29 +66,28 @@ For planning see [Planning documentation](static/wireframe/My Full Stack Framewo
 For wireframe see [Wireframe documentation](static/wireframe/My Full Stack Frameworks with django wireframe.pdf)
 
 ### Database Schema
-My SQLite3 / Postgres database consists of the following tabels
-* allergens
-* categories
-* cuisines
-* difficulties
-* main_ingredients
-* recipes
-* users
+My SQLite3 / Postgres database consists of the following tables
+* accounts_userprofile
+* checkout_order
+* checkout_orderlineitem
+* products_product
+* products_userting
 
 ![Database schema](static/wireframe/Fullstack Frameworks with Django Database Schema Diagram.gif)   
 Diagram of website database schema
 
 
 ### Functional Flow
-Users will access website via **/base**     
-On the navbar there are the following four icons (Home, All recipes, Sign in & register) and on the page there are Register and sign in buttons.    
-Unregistered users can search recipes by allergens, category, difficulty, main ingredient and 16 cuisine cards where they can view cuisine recipes and also like, 
-dislike recipes.    
+Users will access website via **{% url 'index' %}**     
+On the navbar there are the following eight icons (Home, About, Parts, Register, Log in, Cart, Contact, Charts) and on the page there are Register and log in buttons.    
+Unregistered users can search parts by, clicking on parts which then shows a parts category dropdown.
 register button allows uses to register username and password.   
-sign in button allows users to sign in
-once signed in the additional icons are shown in the navbar for add recipes, my recipes and sign out, also buttons add recipes and my recipes are shown on the page.   
+sign in button allows users to sign in.
+once signed in the login and register icon are removed and a Log out icon is shown with userid.
+when logging out a message is daisplayed saying "You have successfully been logged out".
+when logging in as "admin" a icon is shown to access the django admin panel.
 
-![Functional flow](static/wireframe/functional_flow.png)   
+![Functional flow](static/wireframe/FULL STACK FRAMEWORK WITH DJANGO PROJECT BRIEF.pdf)   
 Diagram of website functional flow  
 
 ### Technologies Used
