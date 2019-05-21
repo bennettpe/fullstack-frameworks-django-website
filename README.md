@@ -92,33 +92,50 @@ Diagram of website functional flow
 
 ### Technologies Used
 Technologies used in the construction of this project include,  
-* [Atom](https://atom.io/) A hackable text editor for the 21st Century.
+* [Badel](https://pypi.org/project/Babel/) is a collection of tools for internationalizing Python applications.
 * [Bootstrap](https://getbootstrap.com/) is a framework for building responsive, mobile-first websites.
-* [Bson](http://bsonspec.org/) is a computer data interchange format used mainly as a data storage and network transfer format in the MongoDB database.
+* [Bootstrap-Magnify](https://github.com/marcaube/bootstrap-magnify) is a small js plugin to enhance porte-folios and image galleries.
+* [Bootswatch](https://bootswatch.com/sandstone/) is a free bootstrap theme.
+* [Boto3](https://pypi.org/project/boto3/) is a software development kit (SDK) designed to improve the use of the Python programming language in Amazon Web Services.
+* [Botocore](https://pypi.org/project/botocore/) is a Low-level, data-driven core of boto 3.
+* [Certifi](https://pypi.org/project/certifi/) is a Python package for providing Mozilla's CA Bundle.
+* [Chardet](https://pypi.org/project/chardet/) is a Universal encoding detector for Python 2 and 3
 * [Chrome Developer Tools]() is a set of web developer tools built directly into the Google Chrome browser.
 * [Cloud9 IDE](https://aws.amazon.com/cloud9/) is a cloud-based integrated development environment (IDE) used as development environment workspace.
 * [CSS3](https://www.w3.org/Style/CSS/Overview.en.html) is a simple mechanism for adding style (e.g., fonts, colors, spacing) to Web documents.
-* [Flask](https://flask-bcrypt.readthedocs.io/en/latest/) a microframework for Python based on Werkzeug, Jinja 2.
-* [Flask Bcrypt](https://flask-bcrypt.readthedocs.io/en/latest/) is a Flask extension that provides bcrypt hashing utilities for your application.
-* [Flask Microframework](http://flask.pocoo.org/) is a microframework for Python.
-* [Flask PyMongo](https://flask-pymongo.readthedocs.io/en/latest/) Bridges between Flask and PyMongo.
-* [Flask Session](http://flask.pocoo.org/docs/1.0/api/#flask.session) Flask-Session is an extension for Flask that adds support for Server-side Session to your application.
-* [Flask WTF](https://flask-wtf.readthedocs.io/en/stable/) Simple integration of Flask and WTForms, including CSRF, file upload, and reCAPTCHA..
+* [Docutils](https://pypi.org/project/docutils/) is a Python Documentation Utilities
+* [Django](https://www.djangoproject.com/download/) is a Python-based free and open-source web framework, which follows the model-template-view architectural pattern.
+* [Django-Forms-Bootstrap](https://github.com/pinax/django-forms-bootstrap) is a simple bootstrap filter for Django forms.
+* [Django-Storages](https://pypi.org/project/django-storages/) is a collection of custom storage backends for Django.
+* [Django-Phonenumber-Field](https://pypi.org/project/django-phonenumber-field/) is a  Django library which interfaces with python-phonenumbers to validate, pretty print and convert phone numbers.
+* [Phonenumbers](https://github.com/daviddrysdale/python-phonenumbers) is a Python port of Google's libphonenumber library 
+* [Dj-database-url](https://pypi.org/project/dj-database-url/)is a Django utility allows you to utilize the 12factor inspired DATABASE_URL environment variable to configure your Django application.
 * [Font Awesome](https://fontawesome.com/) is a font and icon toolkit.
 * [Git](https://git-scm.com/) open source distributed version control system.
 * [GitHub](https://github.com/) is a Web-based hosting service for version control using Git.
 * [GitIgnore](https://www.gitignore.io/) is a web service designed to help you create .gitignore files for your Git repositories.
+* [Gunicorn]() is a Python WSGI HTTP Server for UNIX.
 * [Heroku](https://www.heroku.com/) lets you deploy, run and manage applications written in Ruby, Node.js, Java, Python, Clojure, Scala, Go and PHP.
+* [Highcharts](https://www.highcharts.com/) is a software library for charting written in pure JavaScript.
 * [HTML5](https://www.w3.org/TR/html52/): is code that describes web pages.
+* [Idna](https://pypi.org/project/idna/) is a Internationalized Domain Names in Applications (IDNA)
 * [JavaScript](https://www.javascript.com/) JavaScript is a dynamic computer programming language. And most commonly used as a part of web pages.
 * [Jinga2](http://jinja.pocoo.org/) a full featured template engine for Python.
+* [Jmespath](http://jmespath.org/) is a query language for JSON.
 * [Pencil](https://pencil.evolus.vn/) is an open-source GUI prototyping tool used to create Wireframe mockup.
+* [Pillow](https://pypi.org/project/Pillow/) is a Pillow is the friendly PIL fork.
+* [Psycopg2](http://initd.org/psycopg/) is a popular PostgreSQL adapter for the Python. 
 * [Python 3.4.3](https://www.python.org/) is a scripting language.
-* [PyMongo]() is a MongoDB driver for Python used to access the MongoDB database.
-* [Slack](https://code-institute-room.slack.com/messages) is a collaboration hub that connects your organization
-* [StartBootstrap](https://startbootstrap.com/) Free Bootstrap themes and templates.
-* [Werkzeug](http://werkzeug.pocoo.org/) a WSGI utility library for Python.
-* [WTforms](https://pypi.org/project/WTForms/) a framework agnostic library handling web forms in python.
+* [Pytz](https://pypi.org/project/pytz/) is a World timezone definitions, modern and historical.
+* [Requests]() is a Python HTTP for Humans.
+* [S3transfer](https://pypi.org/project/s3transfer/) is a An Amazon S3 Transfer Manager
+* [Slack](https://code-institute-room.slack.com/messages) is a collaboration hub that connects your organization.
+* [Python-dateutil]() is a Extensions to the standard Python datetime module.
+* [Sqlite3](https://www.sqlite.org/index.html) is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine.
+* [Sql Postgres](https://www.postgresql.org/)is a powerful, open source object-relational database system
+* [Stripe](https://stripe.com/gb) is a powerful and flexible tools for internet commerce.
+* [Travis](https://travis-ci.com/) is a hosted continuous integration service used to build and test software projects hosted at GitHub.
+* [Urllib3](https://pypi.org/project/urllib3/) is a HTTP library with thread-safe connection pooling, file post, and more.
 
 ### Git
 Make sure once the workspace has been created in Cloud9 you create the following for git by typing the following commands,  
