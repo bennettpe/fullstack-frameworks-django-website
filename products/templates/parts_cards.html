@@ -18,6 +18,9 @@
                             
             </div>
             <div class="card-footer text-center">
+                <div class="text-center">
+                    <button class="btn btn-warning"> Rate quality </button>
+                </div>  
                 <form method="post" action="{% url 'add_to_cart' product.id %}">
                     {% csrf_token %}
                     <div class="input-group p-3">

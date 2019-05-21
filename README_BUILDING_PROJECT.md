@@ -2148,3 +2148,8 @@ This section is for setting up an **customer payment mechanism** to allow users 
         
     dump3 = json.dumps(chart3, cls=LazyEncoder)   
     ```
+
+#### Creating Rating for products
+1. Need to add `Rating for products` so my mentor has said I need to `Extend User Model` in django 
+2. Have been advised to create another development enviroment before doint the required changes as would be easier then trying to backout changes.
+3. Need to workoit how I take a clone of my enviroment ?
