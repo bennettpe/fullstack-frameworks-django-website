@@ -96,7 +96,7 @@ Technologies used in the construction of this project include,
 * [Bootstrap](https://getbootstrap.com/) is a framework for building responsive, mobile-first websites.
 * [Bootstrap-Magnify](https://github.com/marcaube/bootstrap-magnify) is a small js plugin to enhance porte-folios and image galleries.
 * [Bootswatch](https://bootswatch.com/sandstone/) is a free bootstrap theme.
-* [Boto3](https://pypi.org/project/boto3/) is a software development kit (SDK) designed to improve the use of the Python programming language in Amazon Web Services.
+* [Boto3](https://pypi.org/project/boto3/) is a software development kit (SDK) designed to improve the use of the Python programming language in AWS.
 * [Botocore](https://pypi.org/project/botocore/) is a Low-level, data-driven core of boto 3.
 * [Certifi](https://pypi.org/project/certifi/) is a Python package for providing Mozilla's CA Bundle.
 * [Chardet](https://pypi.org/project/chardet/) is a Universal encoding detector for Python 2 and 3
@@ -104,12 +104,12 @@ Technologies used in the construction of this project include,
 * [Cloud9 IDE](https://aws.amazon.com/cloud9/) is a cloud-based integrated development environment (IDE) used as development environment workspace.
 * [CSS3](https://www.w3.org/Style/CSS/Overview.en.html) is a simple mechanism for adding style (e.g., fonts, colors, spacing) to Web documents.
 * [Docutils](https://pypi.org/project/docutils/) is a Python Documentation Utilities
-* [Django](https://www.djangoproject.com/download/) is a Python-based free and open-source web framework, which follows the model-template-view architectural pattern.
+* [Django](https://www.djangoproject.com/download/) is a Python-based open-source web framework, which follows the model-template-view architectural pattern.
 * [Django-Forms-Bootstrap](https://github.com/pinax/django-forms-bootstrap) is a simple bootstrap filter for Django forms.
 * [Django-Storages](https://pypi.org/project/django-storages/) is a collection of custom storage backends for Django.
-* [Django-Phonenumber-Field](https://pypi.org/project/django-phonenumber-field/) is a  Django library which interfaces with python-phonenumbers to validate, pretty print and convert phone numbers.
+* [Django-Phonenumber-Field](https://pypi.org/project/django-phonenumber-field/) is a Django library which interfaces with phonenumbers to validate, convert phone numbers.
 * [Phonenumbers](https://github.com/daviddrysdale/python-phonenumbers) is a Python port of Google's libphonenumber library 
-* [Dj-database-url](https://pypi.org/project/dj-database-url/)is a Django utility allows you to utilize the 12factor inspired DATABASE_URL environment variable to configure your Django application.
+* [Dj-database-url](https://pypi.org/project/dj-database-url/) is a Django utility to utilize the 12factor inspired DATABASE_URL env va to configure your Django app.
 * [Font Awesome](https://fontawesome.com/) is a font and icon toolkit.
 * [Git](https://git-scm.com/) open source distributed version control system.
 * [GitHub](https://github.com/) is a Web-based hosting service for version control using Git.
@@ -131,7 +131,7 @@ Technologies used in the construction of this project include,
 * [S3transfer](https://pypi.org/project/s3transfer/) is a An Amazon S3 Transfer Manager
 * [Slack](https://code-institute-room.slack.com/messages) is a collaboration hub that connects your organization.
 * [Python-dateutil]() is a Extensions to the standard Python datetime module.
-* [Sqlite3](https://www.sqlite.org/index.html) is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine.
+* [Sqlite3](https://www.sqlite.org/index.html) is a C-language library that implements a SQL database engine.
 * [Sql Postgres](https://www.postgresql.org/)is a powerful, open source object-relational database system
 * [Stripe](https://stripe.com/gb) is a powerful and flexible tools for internet commerce.
 * [Travis](https://travis-ci.com/) is a hosted continuous integration service used to build and test software projects hosted at GitHub.
@@ -141,232 +141,687 @@ Technologies used in the construction of this project include,
 Make sure once the workspace has been created in Cloud9 you create the following for git by typing the following commands,  
 * `git init` to create a empty Git repository. <br>
 * Create `.gitignore` which specifies intentionally untracked files to ignore <br>
-* Add to `.gitignore` file the ignore file(s) for the environments you are using in your workspace i.e. `Cloud9`, `Flask`, `Python` by copying ignore files from [GitIgnore](https://www.gitignore.io/) <br>
-* Also make sure you add your own personal non environmental file you would like to be excluded as well.
+* Add to `.gitignore` file the ignore file(s) for the environments you are using in your workspace i.e. `Cloud9`, `Django`, `Python` by copying ignore files from [GitIgnore](https://www.gitignore.io/) <br>
+* Also make sure you add your own personal non environmental file you would like to be excluded as well at the top of the file.
 
-### Install Flask
-Install Flask Framework into your workspace in Cloud9 by typing the following command     
-    `sudo pip3 install Flask`  
-* Once installed you will see the following message in the Terminal Window.  
-    `Successfully installed Flask Jinja2 itsdangerous click Werkzeug MarkupSafe`  
-* Then Type in the following command     
-    `sudo pip3 freeze --local`  
-* This will show the packages and Versions that Flask has installed,   
-    `Click==7.0`   
-    `Jinja2==2.10`   
-    `MarkupSafe==1.1.0`   
-    `Werkzeug==0.14.1`   
-    `itsdangerous==1.1.0`
+<details>
+<summary>
+<a> Step1 Creating Django Project Enviroment </a>
+</summary>
+<p></p>
 
-### Create run.py file
+## Step1 Creating Django Project Enviroment 
+1. Create the project Clould9 Workspace **fullstack-frameworks-django-project** <br>
 
-The following basic Flask application file (run.py) was created in the Cloud9 environment.
-```python
-import os                  # Using operating system dependent functionality.
-from flask import Flask    # From module flask import class Flask.
-
-app = Flask(__name__)      # Construct an instance of Flask class for our webapp.
-
-# Route Decorator
-@app.route('/')            # URL '/' to be handled by main() route handler.
-                           # '/' navigates to localhost:5000.
-def hello():               # define function that returns "Hello World".
-    return "Hello Flask"
-if __name__ == '__main__': # __name__ will be equal to "__main__"
-
-# If conditional statement is satisfied
-    app.run(host=os.environ.get('IP'),        # launches the Flask's built-in development web server.  
-                                              # host=os.environ.get('IP') gets IP Adress from operating system.
-            port=int(os.environ.get('PORT')), # os.environ.get('PORT') gets PORT we want to open.
-            debug=True)                       # # Enable reloader and debugger.
-```
-
-* Run **run.py** to check that setup and minimal flask application runs ok in Clould9 environment.  
-* Click **Run** button and your see the following in the terminal window.  
-Note: That Warning message is due to debug=True
-
-```
-Your code is running at https://practical-python-project-bennettpe.c9users.io.
-Important: use os.getenv(PORT, 8080) as the port and os.getenv(IP, 0.0.0.0) as the host in your scripts!
-
-* Serving Flask app "run" (lazy loading)
-* Environment: production
-  WARNING: Do not use the development server in a production environment.
-  Use a production WSGI server instead.
-* Debug mode: on
-* Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
-* Restarting with stat
-* Debugger is active!
-* Debugger PIN: 381-125-642
-```
-
-Click on the https://data-centric-development-project-bennettpe.c9users.io. and your should see the following in your browser which confirms everything is running OK.   
-
-```
-Hello Flask
-```
-
-### Upgrade MongoDB
-* Clould9 comes with Mongo support built-in but is currently an old version so needs to be upgraded to the newest version (currently 3.4.18) by typing the following command,     
-   `wget -q https://git.io/vFb1J -O /tmp/setupmongodb.sh && source /tmp/setupmongodb.sh`
-
-   Messages from terminal
-
-```
-  The following extra packages will be installed:
-  mongodb-org-mongos mongodb-org-shell mongodb-org-tools
-  The following NEW packages will be installed:
-  mongodb-org mongodb-org-mongos mongodb-org-server mongodb-org-shell
-  mongodb-org-tools
-  0 upgraded, 5 newly installed, 0 to remove and 298 not upgraded.
-```
-
-### Install Flask-PyMongo
-* To connect your MongoDB database with Flask application which will  allow your application to programmatically perform CRUD operations you need to install **flask-pymongo**, This  will install the Python 3 version of Flask-PyMongo.   
-
-  by typing the following command,
-
-  `sudo pip3 install flask_pymongo`
-
-```
-  Successfully installed flask-pymongo
-  Cleaning up...
-```
-
-* Add a Bson and PyMongo to your code:
-
-```python
-  from bson.objectid import ObjectId
-  from flask_pymongo import PyMongo
-```
-
-### Install PyMongo
-* To work with MongoDB programmatically using Python we need to install **PyMongo** which is a driver for Python to access the MongoDB database, First we need to install some additional libraries.
-
-    by typing the following command,     
-    `sudo apt-get install build-essential python-dev`
-
-  Messages from terminal
-
-```
-  The following NEW packages will be installed:
-  libpython-dev libpython2.7-dev python-dev python2.7-dev
-  The following packages will be upgraded:
-  libpython2.7 libpython2.7-minimal libpython2.7-stdlib python2.7
-  python2.7-minimal
-  5 upgraded, 4 newly installed, 0 to remove and 293 not upgraded.
-```
-
-  Then we can install **PyMongo** ,This will install the Python 3 version of PyMongo     
-
-  by typing the following command,   
-  `sudo pip3 install pymongo`
-
-  Messages from terminal
-  
-```
-  Successfully installed pymongo
-  Cleaning up...
-```
-
-### Install Flask-Bcrypt
-To create bBcrypt hashing facility , I decided to use Flask-Bcrypt as per pretty you tube videos.
-
-  by typing the following command, `sudo pip3 install bcrypt --user`
-
-  Messages from terminal
-  
-```
-  Successfully installed bcrypt cffi pycparser
-  Cleaning up...
-```
-  
-  * Add a Bcrypt to your code:
-```python
-  from flask_bcrypt import Bcrypt
-  bcrypt = Bcrypt(app)
-```
-
-### Install Flask-WTF
-To create the Register and Sign in user forms , I decided to use Flask-WTF which is a Python visualization package as it seems easy to integrate into the application <br>
-
-by typing the following command   
-`sudo pip3 install flask-wtf`   
+2. Install Django 1.11.20 <br>
+    ```python 
+    sudo pip3 install django==1.11.20 
+    ``` 
+    This installs **django 1.11.20** and **pytz 2018.9** 
     
-  Messages from terminal
-    
-```
-    Successfully installed flask-wtf WTForms
+    output from bash terminal 
+    ```python
+    bennettpe:~/workspace $ sudo pip3 install django==1.11.20
+    Downloading/unpacking django==1.11.20
+    Downloading Django-1.11.20-py2.py3-none-any.whl (6.9MB): 6.9MB downloaded
+    Downloading/unpacking pytz (from django==1.11.20)
+    Downloading pytz-2018.9-py2.py3-none-any.whl (510kB): 510kB downloaded
+    Installing collected packages: django, pytz
+    Successfully installed django pytz
     Cleaning up...
-```
+    ```
 
-### MongoDB Database Creation
-To create a new database we need to    
-  * log in to mLab https://mlab.com/welcome/using using your log in credentials.     
-  * or create your account if you don't have a log in.   
+3. Initalise Git repository <br>
+    ```python
+    git init
+    ```
+    output from bash terminal
+    ```python
+    bennettpe:~/workspace $ git init
+    Initialized empty Git repository in /home/ubuntu/workspace/.git/
+    ```
+    
+4. Create `.gitignore` and `README.md` files 
+
+5. Create `requirements.txt` file <br>
+   ```python
+   sudo pip freeze --local > requirements.txt
+   ```
+   output from bash terminal
+   ```python
+   bennettpe:~/workspace (master) $ sudo pip freeze --local > requirements.txt
+   ```
+6. Go to Github https://github.com and Create new repository called `fullstack-frameworks-django-website` 
+   output from bash terminal
+   ```python
+   bennettpe:~/workspace (master) $ git add .
+   bennettpe:~/workspace (master) $ git commit -m "first commit"
+   [master (root-commit) 7fd944a] first commit
+    4 files changed, 71 insertions(+)
+    create mode 100644 .gitignore
+    create mode 100644 README.md
+    create mode 100644 WORKING.md
+    create mode 100644 requirements.txt
+   bennettpe:~/workspace (master) $ git remote add origin https://github.com/bennettpe/fullstack-frameworks-django-website.git
+   bennettpe:~/workspace (master) $ git push -u origin master
+   Username for 'https://github.com': bennettpe
+   Password for 'https://bennettpe@github.com': 
+   Counting objects: 5, done.
+   Delta compression using up to 8 threads.
+   Compressing objects: 100% (4/4), done.
+   Writing objects: 100% (5/5), 1.40 KiB | 1.40 MiB/s, done.
+   Total 5 (delta 0), reused 0 (delta 0)
+   To https://github.com/bennettpe/fullstack-frameworks-django-website.git
+    * [new branch]      master -> master
+   Branch master set up to track remote branch master from origin.
+   ```
+   Heroku Git URL https://git.heroku.com/fullstack-frameworks-project.git
+
+7. Go to Heroku https://dashboard.heroku.com/apps and <br> Create new app called `fullstack-frameworks-project` <br>
+   Click on `Create New App` fill in `App name`   
+   Click on `Choose a region` and select `Europe`   
+   Click on `Create app` button
+
+8. Install Gunicorn
+   ```python
+   sudo pip3 install gunicorn
+   ```
+   This installs **gunicorn 19.9.0** 
+   
+   output from bash terminal
+   ```python
+   bennettpe:~/workspace (master) $ sudo pip3 install gunicorn
+   Downloading/unpacking gunicorn
+   Downloading gunicorn-19.9.0-py2.py3-none-any.whl (112kB): 112kB downloaded
+   Installing collected packages: gunicorn
+   Successfully installed gunicorn
+   Cleaning up...
+   ```
+
+9. Install Psycopg2
+   ```python
+   sudo pip3 install psycopg2
+   ```
+   This installs **psycopg2 2.8**  
+
+   output from bash terminal
+   ```python
+   bennettpe:~/workspace (master) $ sudo pip3 install psycopg2
+   Downloading/unpacking psycopg2
+   Downloading psycopg2-2.8.tar.gz (367kB): 367kB downloaded
+   Running setup.py (path:/tmp/pip_build_root/psycopg2/setup.py) egg_info for package psycopg2
+     /usr/lib/python3.4/distutils/dist.py:260: UserWarning: Unknown distribution option: 'project_urls'
+       warnings.warn(msg)
+     /usr/lib/python3.4/distutils/dist.py:260: UserWarning: Unknown distribution option: 'python_requires'
+       warnings.warn(msg)
+    
+   Installing collected packages: psycopg2
+   Running setup.py install for psycopg2
+     building 'psycopg2._psycopg' extension
+     
+   ....    
+   Successfully installed psycopg2
+   Cleaning up...    
+   ```
+10.  Create `requirements.txt` file <br>
+   ```python
+   sudo pip freeze --local > requirements.txt
+   ```
+   output from bash terminal
+   ```python
+   bennettpe:~/workspace (master) $ sudo pip freeze --local > requirements.txt
+   ``` 
+
+11. Create a new PostgreSQL database on Heroku
+    Click on `Resources`   
+    Scroll down to `Add-ons` type `Postgres` select `Heroku Postgres` select `Hobby Dev - Free plan` click on `Provision` button
+    This creates a empty database
+
+12. Install dj-database-url
+    ```python
+    sudo pip3 install dj-database-url
+    ```
+    This installs **dj-database-url 0.5.0** 
+
+    ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ sudo pip3 install dj-database-url
+    Downloading/unpacking dj-database-url
+    Downloading dj_database_url-0.5.0-py2.py3-none-any.whl
+    Installing collected packages: dj-database-url
+    Successfully installed dj-database-url
+    Cleaning up...
+    ```
+
+13. Create Django project called `Triumphant-Triumphs` in the root directory by adding .
+    ```python
+    django-admin startproject triumphant_triumphs .
+    ```
+ 
+     ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ django-admin startproject triumphant_triumphs .  
+    ```
+    
+    The following django files have been created
+    ```
+    fullstack-frameworks-django-project
+    │
+    ├── triumphant_triumphs
+    │   │
+    │   ├── __init__.py   # An empty file that tells Python that this directory should be considered a Python package. 
+    │   ├── settings.py   # Settings/configuration for this Django project.
+    │   ├── urls.py       # The URL declarations for this Django project; a “table of contents” of your Django-powered site.
+    │   └── wsgi.py       # An entry-point for WSGI-compatible web servers to serve your project.
+    │
+    └── manage.py         # A command-line utility that lets you interact with this Django project in various ways.
+    ```
+
+14. Open `settings.py` and add the following to `ALLOWED_HOSTS` to allow Cloud9 as allowed host
+    ```python
+    ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME')]
+    ```
+
+15. Run the following command to check running server is ok
+    ```python
+    python3 manage.py runserver SIP:$C9_PORT
+    ```
+
+    output from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py runserver $IP:$C9_PORT
+    Performing system checks...
+
+    System check identified no issues (0 silenced).
+
+    You have 13 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+    Run 'python manage.py migrate' to apply them.
+
+    April 06, 2019 - 08:18:51
+    Django version 1.11.20, using settings 'triumphant_triumphs.settings'
+    Starting development server at http://0.0.0.0:8080/
+    Quit the server with CONTROL-C.
+    ```
+    
+    Click on link `your code is running at  https://fullstack-frameworks-django-project-bennettpe.c9users.io`
+    and you see the following 
+    ```python
+    It worked!
+    Congratulations on your first Django-powered page.
+    Next, start your first app by running python manage.py startapp [app_label].
+
+    You're seeing this message because you have DEBUG = True in your Django settings file and you haven't configured any URLs. Get to work!
+    ```
+    
+    output from bash terminal
+    ```python
+    Not Found: /favicon.ico
+    [06/Apr/2019 08:21:15] "GET /favicon.ico HTTP/1.1" 404 2017
+    [06/Apr/2019 08:21:17] "GET / HTTP/1.1" 200 1716
+    ```
+16. Click on COG in workspace and click on `Show home in Favourites` 
+    In workspace folder open up `.bash_aliases` file and add the following new alias to the bottom of the file.
+    ```python
+    alias run="python3 ~/workspace/manage.py runserver $IP:$C9_PORT"
+    ```
+    Close the bash terminal and reopen it to make the alias avaliable or Type `. ~/.bash_aliases`
+    Type `run` to look at app.
+
+17. Add `*.sqlite3 .~c9*files` files to ignore in `.gitignore`
+
+18. Run `git status` to check which files will be added and commited to Git. 
+
+19. Run the following command to initialize our databases and get table ready.
+    ```python
+    python3 manage.py migrate
+    ```
+    
+    output from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py migrate
+    Operations to perform:
+    Apply all migrations: admin, auth, contenttypes, sessions
+    Running migrations:
+    Applying contenttypes.0001_initial... OK
+    Applying auth.0001_initial... OK
+    Applying admin.0001_initial... OK
+    Applying admin.0002_logentry_remove_auto_add... OK
+    Applying contenttypes.0002_remove_content_type_name... OK
+    Applying auth.0002_alter_permission_name_max_length... OK
+    Applying auth.0003_alter_user_email_max_length... OK
+    Applying auth.0004_alter_user_username_opts... OK
+    Applying auth.0005_alter_user_last_login_null... OK
+    Applying auth.0006_require_contenttypes_0002... OK
+    Applying auth.0007_alter_validators_add_error_messages... OK
+    Applying auth.0008_alter_user_username_max_length... OK
+    Applying sessions.0001_initial... OK
+    ```
+
+20. Run the following commands to Commit changes to git.
+    ```python
+    git add .
+    git commit -m "git commit -m "Initial commit for django project"
+    ```
+
+    output from bash terminal
+    ```python
+    [master 5dfdc88] Initial commit for django project
+    8 files changed, 392 insertions(+), 4 deletions(-)
+    create mode 100755 manage.py
+    create mode 100644 triumphant_triumphs/__init__.py
+    create mode 100644 triumphant_triumphs/settings.py
+    create mode 100644 triumphant_triumphs/urls.py
+    create mode 100644 triumphant_triumphs/wsgi.py
+    ```
+</details>
+
+<details>
+<summary>
+Step2 Authentication App - Authentication and Authorisation 
+</summary>
+<p>
+    
+## Step2 Authentication App - Authentication and Authorisation 
+
+This section is for setting up an **authentication mechanism** to allow users to register and log in.
+
+1. **Create** Django app called **account** 
+    ```python
+    django-admin startproject accounts
+    ```
+ 
+     ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ django-admin startapp accounts 
+    ```
+    
+    The following django files have been **created**
+    ```
+    fullstack-frameworks-django-project
+    │
+    └── accounts
+        ├── migrations
+        │   └── __init__.py # Python file to allow app packages to be imported from other directories.  
+        │
+        ├── __init__.py     # Python file to allow app packages to be imported from other directories. 
+        ├── admin.py        # File with admin definitions for the app. 
+        ├── apps.py         # File with configuration parameters for the app.
+        ├── models.py       # File with database definitions (i.e., model classes) for the app.
+        ├── tests.py        # File with test definitions for the app.
+        └── views.py        # File with view definitions (i.e., controller methods) for the app.
+    ```    
+2. In **setting.py** 
+   go to **INSTALLED_APPS** section and add line containing **accounts** 
+   ```python
+   # Application definition
+
+   INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'accounts',                   <== this line added.
+    ]
+   ```
+
+3. **Create** admin superuser
+   ```python
+   python3 manage.py createsuperuser
+   ```
+
+   ouput from bash terminal
+   ```python
+   bennettpe:~/workspace (master) $ python3 manage.py createsuperuser
+   Username (leave blank to use 'ubuntu'): admin
+   Email address: admin@gmail.com
+   Password: 
+   Password (again): 
+   Superuser created successfully.
+   ```
+   
+4. Log into Django admin 
+   **Go to** https://fullstack-frameworks-django-project-bennettpe.c9users.io/admin <br>
+   Enter **Username** and **Password** created in admin superuser. <br>
+   Your now have access to the Django admin panel.
+
+5. Create a **templates** folder in the **accounts** app <br>
+   Create a new file called **index.html**
+   ```python
+   <!DOCTYPE html>
+    <html>
+        <head>
+            <title> Django Auth </title>
+        </head>
+        <body>
+            <nav>
+               <ul>
+                <li> <a href="#"> Login </a></li>
+                <li> <a href="#"> Logout </a></li>
+                <li> <a href="#"> Register </a></li>
+                <li> <a href="#"> Profile </a></li>
+               </ul>
+            </nav>
+        </body>
+     </html>
+   ```
+
+6. Create a view function called **index** in **views.py**
+   ```python
+   def index(request):
+    """Return the index.html file"""
+    return render(request, 'index.html')
+   ```
+
+7. Create a url pattern in **triumphant_triumphs/urls.py**
+   ```python
+   from accounts.views import index   
+   url(r'^$', index),
+   ```
+
+8. Linking hrefs to URLs
+   update file called **index.html**
+   ```python
+    <li> <a href="#"> Logout </a></li>
+   ```
+   change to
+   ```python
+    <li> <a href="{% url 'logout' %}"> Logout </a></li>
+   ```
+
+9. Create a view function called **logout** in **views.py**
+   ```python
+   from django.shortcuts import render, redirect, reverse <== add redirect, reverse
+   from django.contrib import auth                        <== add this line
+   # The 'logout' view allows users to logout
+     def logout(request):
+     """Log the user out"""
+     auth.logout(request)
+     return redirect(reverse('index'))
+   ```
+
+10. Create a url pattern in **triumphant_triumphs/urls.py**
+    ```python
+    from accounts.views import index, logout <== add logout
+    url(r'^accounts/logout/$', logout, name="logout")
+    ```
+    
+    amend
+    ```python
+    url(r'^$', index),               <== change from 
+    url(r'^$', index, name="index"), <== change to
+    ``` 
+
+11. Add Django messages 
+    in **accounts/views.py**
+    amend
+    ```python
+    from django.contrib import auth            <== change from
+    from django.contrib import auth, messages  <== change to
+    ```
+    add
+    ```python
+     messages.success(request, "You have successfully been logged out!")
+    ```
+
+    in **accounts/templates/index.html**
+    add
+    ```html
+    {% if messages %}
+    <div>
+         {% for message in messages %}
+             {{ messages }}
+         {% endfor %}
+    </div>
+        {% endif %}
+    ```
+    
+    Update **settings.py** file
+    ```python
+    MESSAGE_STORAGE ="django.contrib.messages.storage.session.SessionStroage"
+    ```
+
+12. Create a view function called **login** in **accounts/views.py**
+    ```python
+    # The 'logoin' view allows users to login 
+    def login(request):
+    """Log the user in"""
+    return render(request, 'login.html')
+    ```
+
+13. Linking hrefs to URLs
+    update **accounts/template/index.html**
+    ```python
+     <li> <a href="#"> Logoin </a></li>                   <== change from
+     <li> <a href="{% url 'logoin' %}"> Logoin </a></li>  <== change to
+    ```
+
+14. Copy contents of **accounts/templates/index.html**   
+    Create           **accounts/templates/login.html**   
+    Amend H1 heading to `User Login`
+
+15. Create a url pattern in **triumphant_triumphs/urls.py**
+    ```python
+    from accounts.views import index, logout, login <== add login
+    url(r'^accounts/login/$', login, name="login")
+    ```
+
+16. Create login form in **accounts**
+    ```python
+    from django import forms
+
+    class UserLoginForm(forms.Form):
+    """Form to be used to log users in """
+    
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+    ```
+
+17. Update **accounts/view.py**
+    Add 
+    ```python
+    from accounts.forms import UserLoginForm
+    ```
+    Amend in view function called **login**
+    ```python
+     login_form = UserLoginForm() <== add this line
+     return render(request, 'login.html') <== change from 
+     return render(request, 'login.html', {"login_form": login_form}) <== change to
+    ```
   
-New database created called `online_cookbook`  
-  
-To connect using mongo shell       
-  `mongo ds229790.mlab.com:29790/online_cookbook -u <dbuser> -p <dbpassword>`   
-  
-To connect using driver via the standard MongoDB URI    
-  `app.config["MONGO_URI"] = 'mongodb://<dbuser>:<dbpassword>@ds213665.mlab.com:13665/online_cookbook'`
+18. Update **accounts/templates/login.html
+    Add
+    ```python
+    <form method="POST">
+            {% csrf_token %}
+            {{ login_form.as_p }}
+            <button type="submit"> Login </button>
+        </form> 
+        
+        {% if messages %}
+            <div>
+                {% for messages in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        {% endif %}
+    ```
 
-### Connect Flask To MongoDB
-To connect MongoDB database `online_cookbook` via flask application we need to do the following.   
-In your https://mlab.com/home your see **MongoDB Deployments**   
-* Click on **deployment** for online_cookbook   
-* Click on **Users**   
-* Click on  **Add database user**   
-* Add  Database username, Database password, Confirm password and click **create**   
-In Flask add the following configuration code after the `app = Flask(__name__)` line.
+19. Backend logic to authenticate user in **accounts/views.py**
+    Add
+    ```python
+    # The 'logoin' view allows users to login 
+    def login(request):
+    """Log the user in"""
+    if request.method == "POST":
+        login_form = UserLoginForm(request.POST)
+        
+        if login_form.is_valid():
+            user = auth.authenticate(username=request.POST['username'],
+                                     password=request.POST['password'])
+            if user:
+                auth.login(user=user, request=request)
+                messages.success(request, "You have successfully logged in!") 
+            else:
+                login_form.add_error(None, "Your username or password is incorrect")
+                
+    else:
+        login_form = UserLoginForm()
+    return render(request, 'login.html', {"login_form": login_form})
+    ```
 
-```python
-app.config["MONGO_DBNAME"] = 'task_manager'
-app.config["MONGO_URI"] = 'mongodb://<dbuser>:<dbpassword>@ds213665.mlab.com:13665/online_cookbook'
-mongo = PyMongo(app)
-```
+20. Apply template inheritance
+    Create **template** folder in fullstack-frameworks_dgango-project
+    Create **base.html** file  in fullstack-frameworks-django-project/templates
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title> {% block page_title %} {% endblock %} </title>
+    </head>
+    
+    <body>
+        <h1> {% block page_heading %} {% endblock %} </h1>
+        <nav>
+            <ul>
+              <li> <a href="{% url 'login' %}" > Login </a></li>
+              <li> <a href="{% url 'logout' %}"> Logout </a></li>
+              <li> <a href="#"> Register </a></li>
+              <li> <a href="#"> Profile </a></li>
+            </ul>
+        </nav>
+        <hr>
+        {% if messages %}
+        <div>
+            {% for messages in messages %}
+                {{ messages }}
+            {% endfor %}
+        </div>
+            {% endif %}
+            {% block content %} {% endblock %}
+    </body>
+    </html>
+    ```
 
-### MongoDB Collections Creation
-So once the **database user** has been created in "Connect Flask To MongoDB section" you can create the Collection(s) as follows   
-* Click on **Collections**   
-* Add Collection name and click **create**
+    Update **index.html** in **fullstack-frameworks-django-project/templates**
+    ```html
+    {% extends 'base.html' %}
 
-### Downloading Bootstrap Theme
-I decide to download and use the following free one page boostrap theme (Agency) from [StartBootstrap](https://startbootstrap.com/template-overviews/agency/)
+    {% block page_title %} Home Page {% endblock %}
+    {% block page_heading %} Home    {% endblock %} 
+    ```
+    
+    Update DIRS= in **settings.py** 
+    ```python
+    'DIRS': [os.path.join(BASE_DIR, 'templates')],
+    ```
+    
+    Update **login.html** in **fullstack-frameworks-django-project/templates**
+    ```html
+    {% extends 'base.html' %}
 
-* Right click on the **Download** Button   
-* Click on **Copy link address**   
-* In Cloud9 environment Create a folder called **static**  
-* In terminal window type `cd static/`   
-* Then type **wget** and then paste copied Copy link address as below
+    {% block page_title %} Login Page {% endblock %}
+    {% block page_heading %} User Login {% endblock %} 
 
-```python
- wget https://github.com/BlackrockDigital/startbootstrap-agency/archive/gh-pages.zip
-```
+    {% block content %}
+    <form method="POST">
+     {% csrf_token %}
+        {{ login_form.as_p }}
+        <button type="submit"> Login </button>
+    </form> 
+    {% endblock %}
+    ```
+    
+21. Apply If user is not logged in show Register / Login options
+    update **base.html** in **fullstack-frameworks-django-project/templates**
+    ```html
+    <ul>
+        {% if user.is_authenticated %}  
+            <li> <a href="#"> Profile </a></li>
+            <li> <a href="{% url 'logout' %}"> Logout </a></li>
+        {% else %}
+            <li> <a href="#"> Register </a></li>
+            <li> <a href="{% url 'login' %}" > Login </a></li>
+        {% endif %}      
+    </ul>
+    ```
 
-The following zipped file will be saved in the static directory.   
-* Type **unzip gh-pages.zip** which will UnZip the file.   
-The following directory will be created **startbootstrap-agency-gh-pages**   
-* Type `mv startbootstrap-agency-gh-pages/css startbootstrap-agency-gh-pages/img startbootstrap-agency-gh-pages/js startbootstrap-agency-gh-pages/scss startbootstrap-agency-gh-pages/vendor`   
-  which will Move the files needed into the following file directories CSS,IMG,JS,SCSS,VENDOR   
-* Type `rm -rf startbootstrap-agency-gh-pages/` to delete unwanted files etc.   
-* Type ` rm gh-pages.zip ` to deleted unwanted zip file.
+22. Allow logging out of users to only logged in users 
+    Update **views.py** in **fullstack-frameworks-django-project/accounts**
+    add if request.user_is_authenticated:
+    ```python
+    def login(request):
+    """Log the user in"""
+    if request.user.is_authenticated:
+         return redirect(reverse('index')) #Redirect to index page
+    if request.method == "POST":
+        login_form = UserLoginForm(request.POST)
+    ```
 
-### Styling My Templates
-Once the Bootstrap theme has been down loaded I needed to edit my templates so it picked up the downloaded theme correctly.
+    add
+    ```python
+    from django.contrib.auth.decorators import login_required
+    
+    @login_required <== add this line
+    def logout(request):
+    ```
 
-* Go to the github page of the theme (Creative) https://github.com/BlackrockDigital/startbootstrap-creative  
-* Copy the **link** and **script** lines from **index.html** into **base.html** and amend directory locations.   
-* Copied rest of **index.html** code into **base.html**   
-* Created **index.htm** and added the following code
 
-```html
-{% extends 'base.html' %}
-{% block content %}
-{% endblock %}
-```
+## Password Reset
+
+1. Create new file **url_reset.py** in **fullstack-frameworks-django-project/accounts/**
+   ```python
+   # Reset Password
+
+   from django.urls.conf import url
+   from django.core.urlresolvers import reverse_lazy
+   from django.contrib.auth.views import password_reset, password_reset_done,\
+     password_reset_confirm, password_reset_complete
+
+   urlpatterns = [
+    url(r'^$', password_reset,
+        {'post_reset_redirect': reverse_lazy('password_reset_done')}, name='password_reset'),
+    url(r'done/$', password_reset_done, name='password_reset_done'),
+    url(r'^(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', password_reset_confirm,
+        {'post_reset_redirect': reverse_lazy('password_reset_complete')}, name='password_reset_confirm'),
+    url(r'^complete/$', password_reset_complete, name='password_reset_complete')
+   ]
+   ```
+
+2. Create new file **urls.py** in **fullstack-frameworks-django-project/accounts/**
+   Cut urls for accounts from **urls.py** in **fullstack-frameworks-django-project**
+   Add `include` 
+   ```python
+   # Accounts related urls
+
+   from django.conf.urls import url, include                                    
+   from accounts.views import index, logout, login, registration, user_profile
+   import url_reset
+
+   urlpatterns = [
+       url(r'^logout/$', logout, name="logout"),
+       url(r'^login/$', login, name="login"),
+       url(r'^register/$', registration, name="registration"),
+       url(r'^profile/$', user_profile, name="profile"),
+       url(r'^password-reset/', include(url_reset)) <== remove $
+   ]    
+   ```
+3. Update file **urls.py** in **fullstack-frameworks-django-project**
+   Remove accounts urls
+   ```python
+   from django.conf.urls import url, include  <== add include
+   from django.contrib import admin
+   from accounts.views import index           <== add this line
+   from accounts import urls as accounts_urls <== add this line
+
+   urlpatterns = [
+      url(r'^admin/', admin.site.urls),
+      url(r'^$', index, name="index"),
+      url(r'^accounts/', include(accounts_urls)) <== add this line
+   ]
+   ```
+</details>
 
 ### Clould9 File directory structure
 The following file directory structure was created in the Clould9 environment.
@@ -414,112 +869,7 @@ The following file directory structure was created in the Clould9 environment.
 ├── README.md                       # Readme file
 ├── requirements.txt                # python packages file
 └── secretkey.py                    # Create secretkey
-```
-
-### Create Json file(s)
-The build data to be loaded into MongoDB were created in **.json** file(s) in the **data** directory folder
-
-```
-data-centric-development-project
-└── static
-    └── data
-        └── json
-            ├── allergens.json          # Allergen File
-            ├── categories.json         # Category File
-            ├── cuisines.json           # Cuisine File
-            ├── difficulties.json       # Difficulty File
-            ├── main_ingredients.json   # Main ingredient File
-            └── recipes.json            # Sample Recipes File
-```
-
-### Connect Flask To MongoDB to load .json files
-Connect MongoDB database `online_cookbook` via flask application. <br>
-
-    by typing the following command which imports the .json file,     
-    `mongoimport -h ds213665.mlab.com:13665 -d online_cookbook -c cuisines -u <user> -p <password> --file ./static/data/json/cuisines.json` 
-    Messages from terminal <br>
-    if you get this message
-    
-```python
-Failed: error unmarshaling bytes on document #0: JSON decoder out of sync - data changing underfoot?
-```
-
-Then the file is an array and you need to add `--jsonArray` to end of command.
-
- ```python
- connected to: ds213665.mlab.com:13665
- imported 14 documents
- ```
-
-The **.json** file(s) were created as follows,
-
-With the following Column variables
-
-**allergens.json**
-```json
-{"allergen_name":"Celery"}
-```
-
-**categories.json**
-```json
-{"category_name":"Afternoon tea"}
-```
-
-**cuisines.json**
-```json
-[{"cuisine_name":"American",
- "cuisine_image":"https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/buffalo-wings.jpg"}]
-```
-
-**difficulties.json**
-```json
-{"difficulty_name":"Easy"}
-```
-
-**main_ingredients.json**
-```json
-{"main_ingredient":"Bacon"}
-```
-
-**recipe.json**
-```json
-{"allergen_name": "Peanuts",
- "author_name": "Elena Silcock",
- "category_name": ["Vegetarian", "Vegan", "Gluten-free"],
- "cooking_time": "45 Minutes",
- "cuisine_name": "Indian",
- "difficulty_name": "Easy",
- "main_ingredient": "Potatoes",
- "preparation_time": "15 Minutes",
- "recipe_description": ["Cook this tasty vegan curry for an exotic yet easy family dinner.",
-                        "With spinach and sweet potato, it boasts two of your five-a-day and it,s under 400 calories"],
- "recipe_image": "https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe/recipe-image/2017/07/satay-sweet-potato-curry.jpg?itok=bl5QzsfL",                        
- "recipe_ingredents": ["1 tbsp coconut oil",
-                       "1 onion, chopped",
-					   "2 garlic cloves, grated",
-					   "thumb-sized piece ginger, grated",
-					   "3 tbsp Thai red curry paste",
-					   "1 tbsp smooth peanut butter",
-					   "500g sweet potato",
-					   "Sweet potatoes",
-					   "peeled and cut into chunks,400ml can coconut milk",
-					   "Coconut milk in a glass",
-					   "with half a coconut",
-					   "200g bag spinach",
-					   "1 lime, juiced",
-					   "cooked rice, to serve (optional)",
-					   "dry roasted peanuts, to serve (optional)"],
- "recipe_method": ["1. Melt 1 tbsp coconut oil in a saucepan over a medium heat and soften 1 chopped onion for 5 mins. Add 2 grated garlic cloves and a grated thumb-sized piece of ginger, and cook for 1 min until fragrant.",
-                   "2. Stir in 3 tbsp Thai red curry paste, 1 tbsp smooth peanut butter and 500g sweet potato, peeled and cut into chunks, then add 400ml coconut milk and 200ml water.",
-				   "3. Bring to the boil, turn down the heat and simmer, uncovered, for 25-30 mins or until the sweet potato is soft.",
-				   "4. Stir through 200g spinach and the juice of 1 lime, and season well. Serve with cooked rice, and if you want some crunch, sprinkle over a few dry roasted peanuts."],
- "recipe_name": "Satay sweet potato curry",
- "ratings_score": 106,
- "servings_num": 4,
- "username": "tiggerbloggs"}
-```
-
-These files(s) were validated using the following tool [CsvJson](https://www.csvjson.com/csv2json) before loading into mongodb using `mongoimport` command.  
+```  
 
 ### Testing
 The project guidelines stated that a Test Driven Development (TDD) approach should be taken to developing the game, But all of my testing / bug fixes was done from a manual testing approach using print() method ,Building some test* python code when I wanted to create a new piece of logic / functionality or had a issue.

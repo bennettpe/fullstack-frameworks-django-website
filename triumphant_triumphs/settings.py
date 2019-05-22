@@ -179,15 +179,16 @@ AWS_S3_REGION_NAME = "eu-west-1"
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 AWS_S3_CUSTOM_DOMAIN = "%s.s3.amazonaws.com" % AWS_STORAGE_BUCKET_NAME
-STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+STATICFILES_STORAGE = "custom_storages.StaticStorage"
 
 # STATIC_ROOT     = Absolute Path to the directory where collectstatic will collect static files for deployment
 # STATIC_URL      = URL to use when referring to static files located in STATIC ROOT
 # STATICFILE_DIRS = # Look for static files here
+# STATICFILES_DIRS =
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')    
-STATIC_URL = '/static/'  
-#STATICFILES_LOCATION = 'static'
-#STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+#STATIC_URL = '/static/'  
+STATICFILES_LOCATION = 'static'
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 
@@ -196,8 +197,10 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 # MEDIA_URL  = URL that handles media servered from MEDIA_ROOT
 # MEDIA_ROOT = Absolute Path to the directory that will hold user-upload files
 # Comment out for media hosting in production
-MEDIA_URL = '/media/'                                                      
+#MEDIA_URL = '/media/'                                                      
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+MEDIAFILES_LOCATION = 'media'
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
 
 # Controls where Django stores message data
