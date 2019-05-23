@@ -168,7 +168,6 @@ USE_TZ = True
 # AWS_ACCESS_KEY_ID = Your Amazon Web Services access key
 # AWS_SECRET_ACCESS_KEY = Your Amazon Web Services secret access key
 # AWS_S3_CUSTOM_DOMAIN =
-# STATICFILES_STORAGE = The file storage engine to use when collecting static files with the collectstatic management command.
 AWS_S3_OBJECT_PARAMETERS = {
     'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
     'CacheControl': 'max-age=94608000',
@@ -179,27 +178,28 @@ AWS_S3_REGION_NAME = "eu-west-1"
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 AWS_S3_CUSTOM_DOMAIN = "%s.s3.amazonaws.com" % AWS_STORAGE_BUCKET_NAME
-STATICFILES_STORAGE = "custom_storages.StaticStorage"
 
+# Static files
+#-----------------------------------------------------------
 # STATIC_ROOT     = Absolute Path to the directory where collectstatic will collect static files for deployment
 # STATIC_URL      = URL to use when referring to static files located in STATIC ROOT
-# STATICFILE_DIRS = # Look for static files here
-# STATICFILES_DIRS =
+# STATICFILES_DIRS = # Look for static files here
+# STATICFILES_STORAGE = The file storage engine to use when collecting static files with the collectstatic management command.
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')    
 #STATIC_URL = '/static/'  
 STATICFILES_LOCATION = 'static'
 STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-
+STATICFILES_STORAGE = "custom_storages.StaticStorage"
 
 # Media files
 #-----------------------------------------------------------
 # MEDIA_URL  = URL that handles media servered from MEDIA_ROOT
 # MEDIA_ROOT = Absolute Path to the directory that will hold user-upload files
 # Comment out for media hosting in production
-#MEDIA_URL = '/media/'                                                      
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 MEDIAFILES_LOCATION = 'media'
+#MEDIA_URL = '/media/'  
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
 
