@@ -1,1 +1,1 @@
-web: gunicorn fullstack-frameworks-django-project.wsgi:application
+web: gunicorn triumphant_triumphs.wsgi:application
