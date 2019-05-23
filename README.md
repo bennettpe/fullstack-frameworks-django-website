@@ -66,26 +66,25 @@ For planning see [Planning documentation](static/wireframe/My Full Stack Framewo
 For wireframe see [Wireframe documentation](static/wireframe/My Full Stack Frameworks with django wireframe.pdf)
 
 ### Database Schema
-My SQLite3 / Postgres database consists of the following tables
+My SQLite3 (Development) / Postgres (Production) database consists of the following tables
 * accounts_userprofile
 * checkout_order
 * checkout_orderlineitem
 * products_product
-* products_userting
+* products_userating
 
 ![Database schema](static/wireframe/Fullstack Frameworks with Django Database Schema Diagram.gif)   
 Diagram of website database schema
 
 
-### Functional Flow
-Users will access website via **{% url 'index' %}**     
-On the navbar there are the following eight icons (Home, About, Parts, Register, Log in, Cart, Contact, Charts) and on the page there are Register and log in buttons.    
-Unregistered users can search parts by, clicking on parts which then shows a parts category dropdown.
-register button allows uses to register username and password.   
-sign in button allows users to sign in.
-once signed in the login and register icon are removed and a Log out icon is shown with userid.
-when logging out a message is daisplayed saying "You have successfully been logged out".
-when logging in as "admin" a icon is shown to access the django admin panel.
+### Functional Flow    
+On the **navbar** there are the following eight icons (Home, About, Parts, Register, Log in, Cart, Contact, Charts) <br> and on the page there are Register and log in buttons.    
+Unregistered users can search parts by, clicking on parts which then shows a parts category dropdown. <br>
+The **Register** button allows uses to register username and password.   
+The **sign in** button allows users to sign in.
+once signed in the login and register icon are removed and a Log out icon is shown with userid. <br>
+When logging out a message is displayed saying **You have successfully been logged out**. <br>
+When logging in as **admin** a icon is shown on the navbar to access the django admin panel.
 
 ![Functional flow](static/wireframe/FULL STACK FRAMEWORK WITH DJANGO PROJECT BRIEF.pdf)   
 Diagram of website functional flow  
@@ -132,25 +131,27 @@ Technologies used in the construction of this project include,
 * [Slack](https://code-institute-room.slack.com/messages) is a collaboration hub that connects your organization.
 * [Python-dateutil]() is a Extensions to the standard Python datetime module.
 * [Sqlite3](https://www.sqlite.org/index.html) is a C-language library that implements a SQL database engine.
+* [SQLite Maestro](https://www.sqlmaestro.com/products/sqlite/maestro/) is a admin tool for database management, control and development. 
 * [Sql Postgres](https://www.postgresql.org/)is a powerful, open source object-relational database system
 * [Stripe](https://stripe.com/gb) is a powerful and flexible tools for internet commerce.
 * [Travis](https://travis-ci.com/) is a hosted continuous integration service used to build and test software projects hosted at GitHub.
 * [Urllib3](https://pypi.org/project/urllib3/) is a HTTP library with thread-safe connection pooling, file post, and more.
 
-### Git
+## Setting up Project Enviroment
+<details>
+<summary>
+Step 01 - Django Product Enviroment
+</summary>
+<p>
+
+## Git
 Make sure once the workspace has been created in Cloud9 you create the following for git by typing the following commands,  
 * `git init` to create a empty Git repository. <br>
 * Create `.gitignore` which specifies intentionally untracked files to ignore <br>
 * Add to `.gitignore` file the ignore file(s) for the environments you are using in your workspace i.e. `Cloud9`, `Django`, `Python` by copying ignore files from [GitIgnore](https://www.gitignore.io/) <br>
 * Also make sure you add your own personal non environmental file you would like to be excluded as well at the top of the file.
 
-<details>
-<summary>
-<a> Step1 Creating Django Project Enviroment </a>
-</summary>
-<p></p>
-
-## Step1 Creating Django Project Enviroment 
+## Step1 Create Django Project Enviroment
 1. Create the project Clould9 Workspace **fullstack-frameworks-django-project** <br>
 
 2. Install Django 1.11.20 <br>
@@ -191,7 +192,7 @@ Make sure once the workspace has been created in Cloud9 you create the following
    ```python
    bennettpe:~/workspace (master) $ sudo pip freeze --local > requirements.txt
    ```
-6. Go to Github https://github.com and Create new repository called `fullstack-frameworks-django-website` 
+6. Go to Github https://github.com and Create new repository called `fullstack-frameworks-django-website` <br>
    output from bash terminal
    ```python
    bennettpe:~/workspace (master) $ git add .
@@ -274,7 +275,7 @@ Make sure once the workspace has been created in Cloud9 you create the following
 
 11. Create a new PostgreSQL database on Heroku
     Click on `Resources`   
-    Scroll down to `Add-ons` type `Postgres` select `Heroku Postgres` select `Hobby Dev - Free plan` click on `Provision` button
+    Scroll down to `Add-ons` type `Postgres` <br> select `Heroku Postgres` <br> select `Hobby Dev - Free plan` <br> click on `Provision` button <br>
     This creates a empty database
 
 12. Install dj-database-url
@@ -417,7 +418,7 @@ Make sure once the workspace has been created in Cloud9 you create the following
 
 <details>
 <summary>
-Step2 Authentication App - Authentication and Authorisation 
+Step 02 - AUTHENTICATION App
 </summary>
 <p>
     
@@ -789,7 +790,7 @@ This section is for setting up an **authentication mechanism** to allow users to
    ]
    ```
 
-2. Create new file **urls.py** in **fullstack-frameworks-django-project/accounts/**
+2. Create new file **urls.py** in **fullstack-frameworks-django-project/accounts/** <br>
    Cut urls for accounts from **urls.py** in **fullstack-frameworks-django-project**
    Add `include` 
    ```python
@@ -821,10 +822,1540 @@ This section is for setting up an **authentication mechanism** to allow users to
       url(r'^accounts/', include(accounts_urls)) <== add this line
    ]
    ```
+   
+#### Sending email to Console
+1.  Add to **settings.py**
+    ```python
+    EMAIL_BACKEND ="django.core.mail.backends.console.EmailBackend"
+    ```
+
+#### Password Reset Templates
+1.  Create new folder **registration** in **fullstack-frameworks-django-project/templates/** <br>
+    Create new file   **password_reset_form.html** in **fullstack-frameworks-django-project/templates/registration**
+    ```python
+     <!--Password Reset Form --> 
+
+    {% extends 'base.html' %}
+    {% block page_title %} Password reset page {% endblock %}
+    {% block page_heading %} Reset Password {% endblock %}
+
+    {% block content %}
+    <form method="POST">
+    <p> Please enter your email address </p>
+    
+    {% csrf_token %}
+    {{ form.email.errors }}
+    <p>
+        <label for="id_email"> Email address: </label>
+        {{ form.email }}
+        
+        <buttton> Reset Password </buttton>
+    </p>
+    </form>
+    {% endblock %}
+    ```
+
+    Update file **login.html** in **fullstack-frameworks-django-project/templates**
+    Add
+    ```python
+    <p><a href="{% url 'password_reset' %}"> Reset Password </a></p>
+    ```
+
+#### Sending a Real Email  
+1.  Add the following to **settings.py** in **fullstack-frameworks-django-project/triumphant_triumphs** 
+    ```python
+    EMAIL_USE_TLS = True
+    EMAIL_HOST = 'smtp.gmail.com' 
+    EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
+    EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
+    EMAIL_PORT = 587
+    ```
+
+#### Email Authentication
+1. Add the following to **settings.py** in **fullstack-frameworks-django-project/triumphant_triumphs**    
+    ```python
+    AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.EmailAuth'
+    ]
+    ```
+2.  Create new file   **backends.py** in **fullstack-frameworks-django-project/accounts**
+    ```python
+    # Email Authentication 
+
+    from django.contrib.auth.models import User
+
+    class EmailAuth:
+    """Authenticate a user by an exact match on the email and password"""
+    
+    def authenticate(self, username=None, password=None):
+        """ Get an instance of `User` based off the email and verify the password """
+        
+        try:
+            user = User.objects.get(email=username)
+            
+            if user.check_password(password):
+                return user
+            return None
+        except User.DoesNotExist:
+            return None
+            
+    def get_user(self, user_id):
+        """ Used by the Django authentication sysytem to receive a user instance """
+        
+        try:
+            user = User.objects.get(pk=user_id)
+            
+            if user.is_active:
+                return user
+            return None
+        except User.DoesNotExist:
+            return None
+    ```  
 </details>
 
-### Clould9 File directory structure
-The following file directory structure was created in the Clould9 environment.
+<details>
+<summary>
+Step 03 - Django-forms-bootstrap, Static files, Install Travis, Stripe.
+</summary>
+<p>
+    
+#### Adding Bootstrap Styling
+1. Add bootstrap cdn links to **base.html** **fullstack-frameworks-django-project/templates**
+
+#### Adding Django-forms-bootstrap
+1.Install django-forms-bootstrap
+    ```python
+    sudo pip3 install django-forms-bootstrap
+    ```
+    This installs **dj-forms-bootstrap 3.1.0** 
+
+    ouput from bash terminal
+    ```python
+    Downloading/unpacking django-forms-bootstrap
+    Downloading django_forms_bootstrap-3.1.0-py2.py3-none-any.whl
+    Installing collected packages: django-forms-bootstrap
+    Successfully installed django-forms-bootstrap
+    Cleaning up...
+    ```
+    
+2. In **setting.py** 
+   go to **INSTALLED_APPS** section and add line containing **django_forms_bootstrap** 
+   ```python
+   # Application definition
+
+   INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django_forms_bootstrap',     <== this line added.
+    'accounts',                  
+    ]
+   ```
+
+3.  Update `requirements.txt` file <br>
+   ```python
+   sudo pip freeze --local > requirements.txt
+   ```
+   output from bash terminal
+   ```python
+   bennettpe:~/workspace (master) $ sudo pip3 freeze --local > requirements.txt
+   ``` 
+
+4. in **registration.html** <br>
+
+    Add
+    ```python
+    {% load bootstrap_tags %}
+    ```
+
+    Amend to
+    ```python
+    {{ registration_form | as_bootstrap }}
+    ```
+    
+5. in **login.html** 
+    Add
+    ```python
+    {% load bootstrap_tags %}
+`   ```
+
+    Amend to
+    ```python
+    {{ login_form | as_bootstrap }}
+    ```
+
+#### Adding Static Files
+1. Create new folder **static**     in **fullstack-frameworks-django-project**
+2. Create new folder **css**        in **fullstack-frameworks-django-project/static**
+3. Create new file   **styles.css** in **fullstack-frameworks-django-project/static/css**
+4. Add to file **base.html**        in **fullstack-frameworks-django-project/templates**
+    ```python
+    {% load staticfiles %}
+    ```
+    
+5. Add to file *settings.py**       in **fullstack-frameworks-django-project/triumphant_triumphs**
+    ```python
+    STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+    )
+    ```
+    
+6. Add to file **styles.css** in **fullstack-frameworks-django-project/static/css**
+    ```html
+    form {
+    width: 50%;
+    }
+    ```
+
+#### Install Travis
+1. Go to https://travis-ci.org/
+2. Go to https://travis-ci.org/account/repositories and click toggle switch for required repository <br> **fullstack-frameworks-django-project**
+3. Click on repository name
+4. Click on Build Unknown
+5. Click on Image URL dropdown box
+6. Choose Markdown
+7. Copy Code that appears
+8. Paste Code into top of README.md file
+9. Create new file **.travis.yml** 
+10. Add the following to **.travis.yml**
+
+    ```python
+    language: python
+    python:
+         - "3.4"
+    install: "pip install -r requirements.txt"
+    script:
+    - SECRET_KEY="blah" ./manage.py test
+    ```
+11. Git commit changes
+
+12. Push changes to github
+
+    ```python
+    bennettpe:~/workspace (master) $ git add .
+    bennettpe:~/workspace (master) $ git commit -m "Commit Travis changes"
+    [master 7991b24] Commit Travis changes
+    11 files changed, 199 insertions(+), 48 deletions(-)
+    create mode 100644 .travis.yml
+    create mode 100644 static/css/styles.css
+    create mode 100644 templates/footer.html
+    create mode 100644 templates/navbar.html
+    rewrite templates/registration/password_reset_form.html (65%)
+    bennettpe:~/workspace (master) $ git push
+    Username for 'https://github.com': bennettpe
+    Password for 'https://bennettpe@github.com': 
+    Counting objects: 84, done.
+    Delta compression using up to 8 threads.
+    Compressing objects: 100% (79/79), done.
+    Writing objects: 100% (84/84), 23.61 KiB | 1.82 MiB/s, done.
+    Total 84 (delta 30), reused 0 (delta 0)
+    remote: Resolving deltas: 100% (30/30), completed with 1 local object.
+    To https://github.com/bennettpe/fullstack-frameworks-django-website.git
+    7fd944a..7991b24  master -> master
+    ```
+
+#### Install Stripe
+1.  Install stripe
+    ```python
+    sudo pip3 install stripe
+    ```
+    This installs **stripe 2.24.1** 
+                  **requests-2.21.0**
+                  **chardet-3.0.4**
+                  **urllib3-1.24.1**
+                  **idna-2.8**
+                  **certifi-2019.3.9**
+
+    ouput from bash terminal
+    ```python
+    Downloading/unpacking stripe
+    Downloading stripe-2.24.1-py2.py3-none-any.whl (194kB): 194kB downloaded
+    Downloading/unpacking requests>=2.20 (from stripe)
+    Downloading requests-2.21.0-py2.py3-none-any.whl (57kB): 57kB downloaded
+    Downloading/unpacking chardet>=3.0.2,<3.1.0 (from requests>=2.20->stripe)
+    Downloading chardet-3.0.4-py2.py3-none-any.whl (133kB): 133kB downloaded
+    Downloading/unpacking urllib3>=1.21.1,<1.25 (from requests>=2.20->stripe)
+    Downloading urllib3-1.24.1-py2.py3-none-any.whl (118kB): 118kB downloaded
+    Downloading/unpacking idna>=2.5,<2.9 (from requests>=2.20->stripe)
+    Downloading idna-2.8-py2.py3-none-any.whl (58kB): 58kB downloaded
+    Downloading/unpacking certifi>=2017.4.17 (from requests>=2.20->stripe)
+    Downloading certifi-2019.3.9-py2.py3-none-any.whl (158kB): 158kB downloaded
+    Installing collected packages: stripe, requests, chardet, urllib3, idna, certifi
+    Found existing installation: requests 2.2.1
+    Not uninstalling requests at /usr/lib/python3/dist-packages, owned by OS
+    Found existing installation: chardet 2.2.1
+    Not uninstalling chardet at /usr/lib/python3/dist-packages, owned by OS
+    Found existing installation: urllib3 1.7.1
+    Not uninstalling urllib3 at /usr/lib/python3/dist-packages, owned by OS
+    Successfully installed stripe requests chardet urllib3 idna certifi
+    Cleaning up...
+    ```
+    
+2.  Update `requirements.txt` file <br>
+   ```python
+   sudo pip3 freeze --local > requirements.txt
+   ```
+   output from bash terminal
+   ```python
+   bennettpe:~/workspace (master) $ sudo pip3 freeze --local > requirements.txt
+   ``` 
+
+1. Go to https://dashboard.stripe.com and either login or create an account
+2. Add to file **settings.py** in **fullstack-frameworks-django-project/triumphant_triumphs**
+    ```python
+    STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
+    STRIPE_SECRET = os.getenv('STRIPE_SECRET')
+    ```
+3. Create file **env.py** in **fullstack-frameworks-django-project/triumphant_triumphs**
+   Copy Publishable key and Secret key from your stripe dashboard
+   NB Do not push these keys to github as anyone thats gets these keys can hack into your account
+   Make sure you add env.py to your .gitignore file
+   
+   ```python
+   import os
+
+   os.environ.setdefault("STRIPE_PUBLISHABLE", "add key here")
+   os.environ.setdefault("STRIPE_SECRET", "add key here")
+   ```
+4. Add to file **.gitignore** in **fullstack-frameworks-django-project/triumphant_triumphs**   
+   eny.py
+5. Do a `git status` to make sure **eny.py** is exclude
+6. Add to file **settings.py** in **fullstack-frameworks-django-project/triumphant_triumphs**   
+   import env
+7. git commit changes
+</details>
+
+<details>
+<summary>
+Step 04 - PRODUCTS App
+</summary>
+<p>
+    
+## Products App 
+
+This section is for setting up an **products** to allow users ability to select products.
+
+1. **Create** Django app called **products** 
+    ```python
+    python3 manage.py startapp products
+    ```
+
+    ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py startapp products 
+    ```
+    
+     The following django files have been **created**
+    ```
+    fullstack-frameworks-django-project
+    │
+    └── products
+        ├── migrations
+        │   └── __init__.py # Python file to allow app packages to be imported from other directories.  
+        │
+        ├── __init__.py     # Python file to allow app packages to be imported from other directories. 
+        ├── admin.py        # File with admin definitions for the app. 
+        ├── apps.py         # File with configuration parameters for the app.
+        ├── models.py       # File with database definitions (i.e., model classes) for the app.
+        ├── tests.py        # File with test definitions for the app.
+        └── views.py        # File with view definitions (i.e., controller methods) for the app.
+    ```  
+    
+2. Add to **models.py** in **fullstack-frameworks-django-project/products** 
+    ```python
+    from django.db import models
+
+    # Create your models here.
+    class Product(models.Model):
+    category = models.CharField(max_length=254)
+    part_name = models.CharField(max_length=100)
+    part_number = models.CharField(max_length=30)
+    vehicle_model = models.CharField(max_length=25)
+    required = models.DecimalField(max_digits=3, decimal_places=0)
+    diagram_number = models.DecimalField(max_digits=3, decimal_places=0)
+    description = models.TextField()
+    image = models.ImageField(upload_to='images')
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+   
+    def __str__(self):
+        return self.part_name
+    ```
+
+3. Add to **admin.py** in **fullstack-frameworks-django-project/products**      
+   To allow products to be added through the admin panel
+   ```python
+   from django.contrib import admin
+   from .models import Product
+
+   # Register your models here.
+   admin.site.register(Product)
+   ```
+
+4. In **setting.py** 
+   go to **INSTALLED_APPS** section and add line containing **products** 
+   ```python
+   # Application definition
+
+   INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django_forms_bootstrap',     
+    'accounts',  
+    'products',               <== this line added.
+    ]
+   ```
+
+5. Install pillow
+    Have to install pillow 5.4.1 as clould9 uses python3.4
+    
+    Backwards Incompatible Changes
+    Python 3.4 dropped
+    Python 3.4 is EOL since 2019-03-16 and no longer supported.    
+    We will not be creating binaries, testing, or retaining compatibility with this version.   
+    The final version of Pillow for Python 3.4 is 5.4.1.
+    
+    ```python
+    sudo pip3 install pillow==5.4.1 
+    ```
+    
+    This installs **pillow 5.4.1** 
+
+    ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ sudo pip3 install pillow==5.4.1 
+    Downloading/unpacking pillow==5.4.1
+    Downloading Pillow-5.4.1.tar.gz (16.0MB): 16.0MB downloaded
+    Running setup.py (path:/tmp/pip_build_root/pillow/setup.py) egg_info for package pillow
+    /usr/lib/python3.4/distutils/dist.py:260: UserWarning: Unknown distribution option: 'python_requires'
+      warnings.warn(msg)
+    ....
+    --------------------------------------------------------------------
+    PIL SETUP SUMMARY
+    --------------------------------------------------------------------
+    version      Pillow 5.4.1
+    platform     linux 3.4.3 (default, Nov 17 2016, 01:08:31)
+                 [GCC 4.8.4]
+    --------------------------------------------------------------------
+    --- JPEG support available
+    *** OPENJPEG (JPEG2000) support not available
+    --- ZLIB (PNG/ZIP) support available
+    *** LIBIMAGEQUANT support not available
+    *** LIBTIFF support not available
+    --- FREETYPE2 support available
+    *** LITTLECMS2 support not available
+    *** WEBP support not available
+    *** WEBPMUX support not available
+    --------------------------------------------------------------------
+    To add a missing option, make sure you have the required
+    library and headers.
+    See https://pillow.readthedocs.io/en/latest/installation.html#building-from-source
+    
+    To check the build, run the selftest.py script.
+    
+    Successfully installed pillow
+    Cleaning up...
+    ```
+    
+6. Update `requirements.txt` file <br>
+    ```python
+    sudo pip3 freeze --local > requirements.txt
+    ```
+
+    output from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ sudo pip3 freeze --local > requirements.txt
+    ``` 
+    
+7. Run the following command to makemigrations.
+    ```python
+    python3 manage.py makemigrations products
+    ```
+
+    output from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py makemigrations products
+    Migrations for 'products':
+    products/migrations/0001_initial.py
+    - Create model Product
+    ```
+
+8. Run the following command to migrate and create table in our database.
+    ```python
+    python3 manage.py migrate products
+    ```
+    
+    output from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py migrate products
+    Operations to perform:
+    Apply all migrations: products
+    Running migrations:
+    Applying products.0001_initial... OK
+    ```
+    
+#### Create Produts view and urls 
+1. Create a view function called **products** in **fullstack-frameworks-django-project/products/views.py**
+   ```python
+   from django.shortcuts import render
+    from products.models import Product
+
+    # Create your views here.
+    def products(request):
+    return render(request, 'categories.html')
+
+    # Product.objects.filter() will find all the product entries in the database whose category=engine
+    # Then assign them to a 'products_list' variable and send that variable to engine.html template
+
+    #ENGINE
+    def engine(request):
+    return render(request, 'engine.html', 
+    {'products_list': Product.objects.filter(category='engine')})
+    #CLUTCH
+    def clutch(request):
+    return render(request, 'clutch.html', 
+    {'products_list': Product.objects.filter(category='clutch')})
+    #GEARBOX
+    def gearbox(request):
+    return render(request, 'gearbox.html', 
+    {'products_list': Product.objects.filter(category='gearbox')})
+    #COOLING SYSTEM
+    def cooling(request):
+    return render(request, 'cooling.html', 
+    {'products_list': Product.objects.filter(category='cooling')})
+    #FUEL SYSTEM
+    def fuel(request):
+    return render(request, 'fuel.html', 
+    {'products_list': Product.objects.filter(category='fuel')})   
+    #STEERING
+    def steering(request):
+    return render(request, 'steering.html', 
+    {'products_list': Product.objects.filter(category='steering')})     
+    #FRONT SUSPENSION
+    def suspfront(request):
+    return render(request, 'suspfront.html', 
+    {'products_list': Product.objects.filter(category='suspfront')})   
+    #REAR SUSPENSION
+    def susprear(request):
+    return render(request, 'susprear.html', 
+    {'products_list': Product.objects.filter(category='susprear')})  
+    #BRAKE SYSTEM
+    def brake(request):
+    return render(request, 'brake.html', 
+    {'products_list': Product.objects.filter(category='brake')})  
+    #EXHAUST SYSTEM
+    def exhaust(request):
+    return render(request, 'exhaust.html', 
+    {'products_list': Product.objects.filter(category='exhaust')}) 
+    #ELECTRICS
+    def electrics(request):
+    return render(request, 'electrics.html', 
+    {'products_list': Product.objects.filter(category='electrics')})      
+    #INTERIOR
+    def interior(request):
+    return render(request, 'interior.html', 
+    {'products_list': Product.objects.filter(category='interior')})     
+    #EXTERIOR
+    def exterior(request):
+    return render(request, 'exterior.html', 
+    {'products_list': Product.objects.filter(category='exterior')}) 
+    #BODY & CHASSIS
+    def body(request):
+    return render(request, 'body.html', 
+    {'products_list': Product.objects.filter(category='body')})    
+    ```
+
+2. Create urls **urls.py** in **fullstack-frameworks-django-project/products**
+    ```python
+    # Products related urls
+
+    from django.conf.urls import url, include
+    from products.views import products, engine, clutch, gearbox, cooling, fuel, steering, suspfront, susprear, brake, \
+                           exhaust, electrics, interior, exterior, body
+
+    urlpatterns = [
+    url(r'^categories/$', products, name='categories'),
+    url(r'^engine/$', engine, name='engine'),
+    url(r'^clutch/$', clutch, name='clutch'),
+    url(r'^gearbox/$', gearbox, name='gearbox'),
+    url(r'^cooling/$', cooling, name='cooling'),
+    url(r'^fuel/$', fuel, name='fuel'),
+    url(r'^steering/$', steering, name='steering'),
+    url(r'^suspfront/$', suspfront, name='suspfront'),
+    url(r'^susprear/$', susprear, name='susprear'),
+    url(r'^brake/$', brake, name='brake'),
+    url(r'^exhaust/$', exhaust, name='exhaust'),
+    url(r'^electrics/$', electrics, name='electrics'), 
+    url(r'^interior/$', interior, name='interior'),
+    url(r'^exterior/$', exterior, name='exterior'),
+    url(r'^body/$', body, name='body')
+    ]
+    ```
+
+3. Update file **urls.py** in **fullstack-frameworks-django-project\triumphant_triumphs**
+   Add product urls
+   ```python
+   from django.conf.urls import url, include
+   from django.contrib import admin
+   from accounts.views import index
+   from accounts import urls as accounts_urls
+   from products import urls as products_urls   <== add this line
+
+   urlpatterns = [
+       url(r'^admin/', admin.site.urls),
+       url(r'^$', index, name="index"),
+       url(r'^accounts/', include(accounts_urls)),
+       url(r'^products/', include(products_urls))  <== add this line
+   ]
+   ```
+
+4. Create html files ***.html** in **fullstack-frameworks-django-project\products\templates**
+
+5. Update **settings.py** in **fullstack-frameworks-django-project\triumphant_triumphs** <br>
+     go to **TEMPLATES** section and add the following line
+     ```python
+     TEMPLATES = [
+     {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',              <== Add this line
+                 ],
+             },
+         },
+     ]
+     ```
+
+     add the following lines
+     ```python
+     MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
+     MEDIA_URL = '/media/'
+     ```
+     
+6. Update **urls.py** in **fullstack-frameworks-django-project\triumphant_triumphs**
+     add the following line
+     ```python   
+     from django.views import static
+     from .settings import MEDIA_ROOT
+     url(r'^media/(?P<path>.*)$', static.serve,{'document_root': MEDIA_ROOT}),
+     ```
+
+7. Create Media folder in **fullstack-frameworks-django-project** <br>
+   Create Images folder in **fullstack-frameworks-django-project** 
+   
+### Creating Rating for products (Clone C9 Workspace)
+1. Need to add `Rating for products` so my mentor has said I need to `Extend User Model` in django 
+2. Have been advised to create another development enviroment before doint the required changes as would be easier then trying to backout changes.
+3. Need to workout how I take a clone of my enviroment ? , you can clone c9 workspace by clicking on the workspace in your dashboard and then click the `cloned` button 
+   Remember to delete `.git` folder
+4. Then create a new github repository and commit changes.
+5. Remove S3 links to `static` files, by changing `settings.py` file
+   Remove `storages,`
+   Remove `AWS_* parameters
+   Remove `STATICFILES_STORAGE` Parameter
+   Remove `AWS` keys from `env.py` file
+6. Create new django secret key using https://www.miniwebtool.com/django-secret-key-generator/
+
+#### Creating Rating for products (part1)
+1. need to create two new models one for `UserProfile` and one for `UserRatings`
+   Relationship will be as follows 
+   Each User Profile can have many ratings , But each rating can only be associated with one User Profile and one Product item so to prevent a user from having 
+   two ratings for the same product item.
+   
+2. `python3 manage.py makemigrations accounts`
+    ouput from bash terminal
+    ```python
+   ^Cbennettpe:~/workspace (master) $ python3 manage.py makemigrations accounts
+    Database URL not found. Using SQLite instead
+    Migrations for 'accounts':
+    accounts/migrations/0001_initial.py
+    - Create model UserProfile
+    ```
+    
+3. `python3 manage.py migrate accounts`
+     ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py migrate accounts
+    Database URL not found. Using SQLite instead
+    Operations to perform:
+    Apply all migrations: accounts
+    Running migrations:
+     Applying accounts.0001_initial... OK
+    ```
+    
+4. `python3 manage.py makemigrations products`
+    ouput from bash terminal
+    ```python
+    ^Cbennettpe:~/workspace (master) $ python3 manage.py makemigrations products
+    Database URL not found. Using SQLite instead
+    Migrations for 'products':
+    products/migrations/0002_auto_20190515_1415.py
+    - Create model UserRating
+    - Alter field category on product
+    - Alter field image on product
+    - Alter field vehicle_model on product
+    - Add field product to userrating
+    - Add field user_profile to userrating
+    - Add field user_ratings to product
+    - Alter unique_together for userrating (1 constraint(s))
+    ```
+    
+5. `python3 manage.py migrate products`
+     ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py migrate products
+    Database URL not found. Using SQLite instead
+    Operations to perform:
+    Apply all migrations: products
+    Running migrations:
+    Applying products.0002_auto_20190515_1415... OK
+    ```
+
+#### Error User has no userprofile.
+1.  Tried logging into `admin` but got the following error message `User has no userprofile.` , problem is due to not having an user profile for existing users
+    so need to create manual for `admin` and then can login and fix other existing users thru the admin panel.
+    
+2.  This coild be done via the python shell as follows <br>
+    But anyway, to make the initial profile, just use `python manage.py shell` <br>
+    And do `from django.contrib.auth.models import User, from accounts.models import UserProfile,` <br>
+    and then grab the admin user using `User.objects.get()` <br>
+    and make a profile using it using `UserProfile.objects.create()` <br>
+    You need to import the default user model, use it to get the admin user by their username and store that user in a variable, 
+    then use the variable to create the profile <br>
+    Once you do that you can log in with the admin user and use it to create profiles for the rest of the accounts.
+    
+3.  Another obvious option would be to just make another `superuser` and let your receiver create its profile  <br> Then you can login to the `admin`
+    with it and create the other profiles <br> Then just delete the temporary superuser when you're done
+    
+4.  Created superuser
+     ouput from bash terminal
+    ```python
+    ^Cbennettpe:~/workspace (master) $ python3 manage.py createsuperuser
+    Database URL not found. Using SQLite instead
+    Username (leave blank to use 'ubuntu'): admintemp
+    Email address: admintep@example.com
+    Password: 
+    Password (again): 
+    Superuser created successfully.
+    ```
+5.  Logging in using `admintemp` and added userprofile to existing users and the deleted `admintemp` userid.
+
+### Creating Rating for products (part2)
+1. Changes where made to the following files <br>
+    in **accounts app**
+    `admin.py`
+    `model.py`
+    in **products app**
+    `admin.py`
+    `model.py`
+
+    three things to test to make sure it's working as expected:
+
+    1) Can the same profile create ratings for two different products (should be yes) (DONE) <br>
+    2) Can you create multiple ratings on the same product using different user profiles (should be yes) (DONE) <br>
+    3) Can the same profile create two identical or different ratings on the same product (should be no) (DONE)
+
+2. Now need to figure out how to link this all together using buttons !!
+   going to setup a like and disliked icons for rating. <br>
+   
+    in **products app**
+    `parts_cards.html`
+    `views.py`
+    'templatetags' new folder
+
+    in **static**
+    `styles.css`
+    
+    in **static\js**
+    `ratings.js` new 
+    
+#### Creating Disked/Liked on Parts_cards.html
+1. I was looking for a solution to add the number of Disliked/Liked on the parts cards , my mentor helped me with finding a solution. <br>
+   A template tag was created as follows, <br>
+   
+   Created a `templatetags` folder in the **products app** called **templatetags** <br> with a `product_tools.py` and an `__init__.py` to register it as a directory to look for stuff in. <br>
+   Then in `product_tools.py` there are two functions, called template tags (like `{% load static %}`) they take in a product id 
+   (the ID auto-generated by django when you create a product ... you could use part_number too but a primary key is always better cause it's unique). <br>
+   Each function grabs the product from the database by its **id**, then searches user ratings for ratings on that product with the relevant status 
+   **(liked/disliked)** and returns the length of the queryset. <br>
+   To use it in the template you add `{% get_liked product.id %}` or `{% get_disliked product.id %}` after loading them with `{% load product_tools %}`
+   
+   ```
+   fullstack-frameworks-django-project
+    └── products
+            └── templatetags  
+                     ├── __init__.py        # Python file to allow app packages 
+                     |                        to be imported from other directories. 
+                     └── product_tools.py   # File with template tag functions.
+    ``` 
+    
+    product_tools.py
+    
+    ```python
+    from django import template
+    from products.models import Product, UserRating
+
+    # Tags for getting likes/dislikes on product IDs
+
+    register = template.Library()
+
+    # LIKED TAGS
+    @register.simple_tag
+    def get_liked(prod_id):
+	   try:
+		  product = Product.objects.get(id=prod_id)
+	   except Product.DoesNotExist:
+		  return None
+	   liked = UserRating.objects.filter(product=product, rating='liked')
+	   return str(len(liked))
+
+    # DISLIKED TAGS	
+    @register.simple_tag
+    def get_disliked(prod_id):
+	   try:
+		  product = Product.objects.get(id=prod_id)
+	   except Product.DoesNotExist:
+		  return None
+	   disliked = UserRating.objects.filter(product=product, rating='liked')
+	   return str(len(disliked))
+    ```
+    
+    parts_card.html
+    ```html
+    {% load product_tools %}
+
+    <button data-part-number={{ product.part_number }} data-token="{{ csrf_token }}"
+    class="disliked-button btn btn-outline-danger" data-toggle="tooltip" title="Vote disliked">
+        <!-- Diskliked votes ---> 
+        <span>
+            {% get_disliked product.id %}
+        </span>
+        <i class="fas fa-thumbs-down fa-2x"></i>
+    </button>
+    ```
+    There is also another could do this, by creating a method on the model itself for get_liked() which would return essentially
+    `len(self.user_ratings.filter(rating='liked'))` then in your template tag you could just <br> `return product.get_liked()`
+</details>
+
+<details>
+<summary>
+Step 05 - CHECKOUT App
+</summary>
+<p>
+    
+## Checkout App - using Stripe
+
+This section is for setting up an **customer payment mechanism** to allow users ability to pay.
+
+1. **Create** Django app called **cart** 
+    ```python
+    python3 manage.py startapp cart
+    ```
+ 
+     ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py startapp cart 
+    ```
+    
+    The following django files have been **created**
+    ```
+    fullstack-frameworks-django-project
+    │
+    └── cart
+        ├── migrations
+        │   └── __init__.py # Python file to allow app packages to be imported from other directories.  
+        │
+        ├── __init__.py     # Python file to allow app packages to be imported from other directories. 
+        ├── admin.py        # File with admin definitions for the app. 
+        ├── apps.py         # File with configuration parameters for the app.
+        ├── models.py       # File with database definitions (i.e., model classes) for the app.
+        ├── tests.py        # File with test definitions for the app.
+        └── views.py        # File with view definitions (i.e., controller methods) for the app.
+    ```
+
+2. In **setting.py** 
+   go to **INSTALLED_APPS** section and add line containing **cart** 
+   ```python
+   # Application definition
+
+   INSTALLED_APPS = [
+    'cart',             <== this line added.
+    ]
+   ```
+
+3. Create file **contexts.py** in <i>fullstack-frameworks-django-project/checkout/cart</i>
+
+4. In **setting.py** 
+   go to **TEMPLATES** section and add line containing **'cart.contexts.cart_contents',** 
+   ```python
+
+   TEMPLATES = [
+    {
+            'context_processors': [
+                'cart.contexts.cart_contents', <== Add this line
+                ],
+            },
+        },
+    ]
+   ```
+
+5. Create **urls.py** in <i>fullstack-frameworks-django-project/cart</i>  
+    ```python
+    from django.conf.urls import url
+    from .views import view_cart, add_to_cart, adjust_cart, remove_from_cart
+
+
+    urlpatterns = [
+        url(r'^$', view_cart, name="view_cart"),
+        url(r'^add/(?P<id>\d+)', add_to_cart, name='add_to_cart'),
+        url(r'^adjust/(?P<id>\d+)', adjust_cart, name='adjust_cart'),
+        url(r'^remove/(?P<id>\d+)', remove_from_cart, name='remove_from_cart'),
+    ]
+    ```
+
+6. Update **views.py** in <i>fullstack-frameworks-django-project/cart</i>  
+
+7. Update file **urls.py** in <i>fullstack-frameworks-django-project\triumphant_triumphs</i> <br>
+   Add cart urls
+   ```python
+    from cart import urls as cart_urls  <== Add this line
+    url(r'^cart/', include(cart_urls)), <== Add this line
+   ```
+
+8. Run the following command to makemigrations.
+    ```python
+    python3 manage.py makemigrations cart
+    ```
+    
+    output from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py makemigrations cart
+    No changes detected in app 'cart'
+    ```
+
+9.  Run the following command to migrate.
+    ```python
+    python3 manage.py migrate cart
+    ```
+    
+    output from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py migrate cart
+    Operations to perform:
+    Apply all migrations: (none)
+    Running migrations:
+    No migrations to apply.
+    ```
+
+10. Create folder **templates** in <i>fullstack-frameworks-django-project/cart/</i> 
+11. Create file **cart.html** in <i>fullstack-frameworks-django-project/cart/template</i> 
+
+#### Create Checkout Models
+1. In **models.py** in <i>fullstack-frameworks-django-project/checkout</i>     
+    Add   
+    ```python
+    from django.db import models
+    from products.models import Product
+
+    # Create your models here.
+    class Order(models.Model):
+    full_name = models.CharField(max_length=50, blank=False)
+    phone_number = models.CharField(max_length=20, blank=False)
+    country = models.CharField(max_length=40, blank=False)
+    postcode = models.CharField(max_length=20, blank=True) #Can be left blank
+    town_or_city = models.CharField(max_length=40, blank=False)
+    street_address1 = models.CharField(max_length=40, blank=False)
+    street_address2 = models.CharField(max_length=40, blank=False)
+    county = models.CharField(max_length=40, blank=False)
+    date = models.DateField()
+
+    def __str__(self):
+        return "{0}-{1}-{2}".format(self.id, self.date, self.full_name)
+
+    class OrderLineItem(models.Model):
+    order = models.ForeignKey(Order, null=False)
+    product = models.ForeignKey(Product, null=False)
+    quantity = models.IntegerField(blank=False)
+
+    def __str__(self):
+        return "{0} {1} {2} @ {3}".format(self.quantity, self.product.part_name, self.product.part_number, self.product.price)
+    ```
+
+2. Add Models to Admin
+   In **admin.py** in <i>fullstack-frameworks-django-project/checkout</i> 
+   Add
+   ```python
+   from django.contrib import admin
+   from .models import Order, OrderLineItem
+
+   # Register your models here.
+   class OrderLineAdminInline(admin.TabularInline):
+     model = OrderLineItem
+
+   class OrderAdmin(admin.ModelAdmin):
+    inlines = (OrderLineAdminInline,)
+
+   admin.site.register(Order, OrderAdmin)
+   ```
+
+3. Run the following command to makemigrations.
+    ```python
+    python3 manage.py startapp checkout
+    ```
+
+4. Run the following command to migrate.
+    ```python
+    python3 manage.py makemigrations checkout
+    ```
+
+   ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py makemigrations checkout
+    Migrations for 'checkout':
+    checkout/migrations/0001_initial.py
+    - Create model Order
+    - Create model OrderLineItem
+    ```
+
+5. Run the following command to migrate.
+    ```python
+    python3 manage.py migrate checkout
+    ```
+
+    output from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $  python3 manage.py migrate checkout
+    Operations to perform:
+    Apply all migrations: checkout
+    Running migrations:
+    Applying checkout.0001_initial... OK
+    ```
+    
+#### Create Checkout Forms
+1. Create **forms.py** in <i>fullstack-frameworks-django-project/checkout</i>    
+    ```python
+   from django import forms
+   from .models import Order
+
+   class MakePaymentForm(forms.Form):
+
+    MONTH_CHOICES = [(i, i) for i in range(1, 12)]
+    YEAR_CHOICES = [(i, i) for i in range(2019, 2036)]
+
+    credit_card_number = forms.CharField(label='Credit card number', required=False)
+    cvv = forms.CharField(label='Security code (CVV)', required=False)
+    expiry_month = forms.ChoiceField(label='Month', choices=MONTH_CHOICES, required=False)
+    expiry_year = forms.ChoiceField(label='Year', choices=YEAR_CHOICES, required=False)
+    stripe_id = forms.CharField(widget=forms.HiddenInput)
+
+    class OrderForm(forms.ModelForm):
+
+    class Meta:
+        model = Order
+        fields = (
+            'full_name', 'phone_number', 'country', 'postcode',
+            'town_or_city', 'street_address1', 'street_address2',
+            'county'
+        ) 
+    ```
+#### Create Checkout Forms
+1. Create **Views.py** in <i>fullstack-frameworks-django-project/checkout</i> 
+
+#### Create Checkout html
+1. Create **urls.py** in <i>fullstack-frameworks-django-project/checkout</i>  
+    ```python
+    from django.conf.urls import url
+    from .views import checkout
+
+    urlpatterns = [
+    url(r'^$', checkout, name='checkout'),
+    ]
+    ```
+    
+2. Update file **urls.py** in <i>fullstack-frameworks-django-project\triumphant_triumphs</i> <br>
+   Add checkout urls
+   ```python
+    from checkout import urls as checkout_urls  <== Add this line
+    url(r'^checkout/', include(checkout_urls)), <== Add this line
+   ```
+
+3. Create **checkout.html** in <i>fullstack-frameworks-django-project/checkout/templates</i> 
+
+4. Update file **base.html** in <i>fullstack-frameworks-django-project/checkout/templates</i> <br>
+   to include stripe js in head section
+    ```python 
+    <!-- STRIPE -->          <== add this section
+    {% block head_js %}
+    {% endblock head_js %}
+    </head>
+    ```
+
+#### Create javascript for Stripe
+1. Create folder **js** in <i>fullstack-frameworks-django-project/checkout/static</i> <br>
+2. Create file **stripe.js** in <i>fullstack-frameworks-django-project/checkout/static/js</i> 
+3. Test Stripe using Test Credit Card details as follows 
+    ```
+    Name:   Test Customer
+    Credit card number: 4242424242424242
+    Security code(CVV): 111
+    Month:  1
+    Year: 2020
+    ```
+</details>
+
+<details>
+<summary>
+Step 06 - CONTACT App
+</summary>
+<p>
+    
+#### Create CONTACT app
+1. **Create** Django app called **contact** 
+    ```python
+    python3 manage.py startapp contact
+    ```
+ 
+     ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py startapp contact 
+    ```
+    
+    The following django files have been **created**
+    ```
+    fullstack-frameworks-django-project
+    │
+    └── contact
+        ├── migrations
+        │   └── __init__.py # Python file to allow app packages to be imported from other directories.  
+        │
+        ├── __init__.py     # Python file to allow app packages to be imported from other directories. 
+        ├── admin.py        # File with admin definitions for the app. 
+        ├── apps.py         # File with configuration parameters for the app.
+        ├── models.py       # File with database definitions (i.e., model classes) for the app.
+        ├── tests.py        # File with test definitions for the app.
+        └── views.py        # File with view definitions (i.e., controller methods) for the app.
+    ```
+
+2. In **setting.py** 
+   go to **INSTALLED_APPS** section and add line containing **contact** 
+   ```python
+   # Application definition
+
+   INSTALLED_APPS = [
+    'contact',             <== this line added.
+    ]
+   ```
+3. Install django-phonenumber-field
+    Have to install pillow 5.4.1 as clould9 uses python3.4
+    
+    ```python
+    sudo pip3 install django-phonenumber-field
+    ```
+    
+    This installs **phonenumberfield** 
+
+    ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ sudo pip3 install django-phonenumber-field                                                                                                              
+    Downloading/unpacking django-phonenumber-field
+    Downloading django_phonenumber_field-2.3.1-py2.py3-none-any.whl (45kB): 45kB downloaded
+    Downloading/unpacking babel (from django-phonenumber-field)
+    Downloading Babel-2.6.0-py2.py3-none-any.whl (8.1MB): 8.1MB downloaded
+    Requirement already satisfied (use --upgrade to upgrade): Django>=1.11.3 in /usr/local/lib/python3.4/dist-packages (from django-phonenumber-field)
+    Requirement already satisfied (use --upgrade to upgrade): pytz>=0a in /usr/local/lib/python3.4/dist-packages (from babel->django-phonenumber-field)
+    Installing collected packages: django-phonenumber-field, babel
+    Successfully installed django-phonenumber-field babel
+    Cleaning up...
+    ```
+    
+4. Update `requirements.txt` file <br>
+    ```python
+    sudo pip3 freeze --local > requirements.txt
+    ```
+
+    output from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ sudo pip3 freeze --local > requirements.txt
+    ```    
+
+5. In **setting.py** 
+   go to **INSTALLED_APPS** section and add line containing **phonenumber_field** 
+   ```python
+   # Application definition
+
+   INSTALLED_APPS = [
+    'phonenumber_field',     <== this line added.
+    ]
+   ```   
+
+   Also add the following lines 
+   ```python
+   # PhoneNumberField Django library; allowing the use of GB numbers for contact app
+     PHONENUMBER_DB_FORMAT = 'NATIONAL'
+     PHONENUMBER_DEFAULT_REGION = 'GB'
+   ```
+   
+6. Create **forms.py** in **fullstack-frameworks-django-project/contact** 
+7. Add to **views.py** in **fullstack-frameworks-django-project/contact** 
+8. Create **templates** in **fullstack-frameworks-django-project/contact** 
+9. Update root **urls.py** in 
+10. Create templates folder in **fullstack-frameworks-django-project/contact** 
+11. Create **contact.html** in templates folder
+12. Create **urls.py** **fullstack-frameworks-django-project/contact** 
+</details>
+ 
+<details>
+<summary>
+Step 07 - ABOUT App
+</summary>
+<p>
+    
+#### Create ABOUT App
+1. **Create** Django app called **about** 
+    ```python
+    python3 manage.py startapp about
+    ```
+ 
+     ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py startapp about 
+    ```
+    
+    The following django files have been **created**
+    ```
+    fullstack-frameworks-django-project
+    │
+    └── about
+        ├── migrations
+        │   └── __init__.py # Python file to allow app packages to be imported from other directories.  
+        │
+        ├── __init__.py     # Python file to allow app packages to be imported from other directories. 
+        ├── admin.py        # File with admin definitions for the app. 
+        ├── apps.py         # File with configuration parameters for the app.
+        ├── models.py       # File with database definitions (i.e., model classes) for the app.
+        ├── tests.py        # File with test definitions for the app.
+        └── views.py        # File with view definitions (i.e., controller methods) for the app.
+    ```
+
+5. Add to **views.py** in **fullstack-frameworks-django-project/about** 
+6. Create **templates** in **fullstack-frameworks-django-project/about** 
+7. Update root **urls.py** in 
+8. Create templates folder in **fullstack-frameworks-django-project/about** 
+8. Create **about.html** in templates folder
+9. Create **urls.py** **fullstack-frameworks-django-project/about** 
+</details>
+
+<details>
+<summary>
+Step 08 - New S3 Bucket
+</summary>
+<p>
+    
+![Create New S3 Bucket](static/wireframe/Create new S3 Bucket.pdf)   
+How to create S3 Bucket in AWS.   
+</details>  
+
+<details>  
+<summary>
+Step 09 - Adding S3 to Django
+</summary>
+<p>
+    
+#### Adding S3 to django
+1. Install django-storages
+    
+    ```python
+    sudo pip3 install django-storages
+    ```
+    
+    This installs **django-storages** 
+
+    ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ sudo pip3 install django-storages
+    Downloading/unpacking django-storages
+    Downloading django_storages-1.7.1-py2.py3-none-any.whl (44kB): 44kB downloaded
+    Requirement already satisfied (use --upgrade to upgrade): Django>=1.11 in /usr/local/lib/python3.4/dist-packages (from django-storages)
+    Installing collected packages: django-storages
+    Successfully installed django-storages
+    Cleaning up...
+    ```
+    
+2. Update `requirements.txt` file <br>
+    ```python
+    sudo pip3 freeze --local > requirements.txt
+    ```
+
+3. Install boto3
+
+     ```python
+    sudo pip3 install boto3
+    ```
+    
+    This installs **boto3** 
+
+    ouput from bash terminal
+    
+    ```python
+    bennettpe:~/workspace (master) $ sudo pip3 install boto3
+    Downloading/unpacking boto3
+    Downloading boto3-1.9.144-py2.py3-none-any.whl (128kB): 128kB downloaded
+    Downloading/unpacking botocore>=1.12.144,<1.13.0 (from boto3)
+    Downloading botocore-1.12.144-py2.py3-none-any.whl (5.4MB): 5.4MB downloaded
+    Downloading/unpacking jmespath>=0.7.1,<1.0.0 (from boto3)
+    Downloading jmespath-0.9.4-py2.py3-none-any.whl
+    Downloading/unpacking s3transfer>=0.2.0,<0.3.0 (from boto3)
+    Downloading s3transfer-0.2.0-py2.py3-none-any.whl (69kB): 69kB downloaded
+    Downloading/unpacking python-dateutil>=2.1,<3.0.0 (from botocore>=1.12.144,<1.13.0->boto3)
+    Downloading python_dateutil-2.8.0-py2.py3-none-any.whl (226kB): 226kB downloaded
+    Downloading/unpacking docutils>=0.10 (from botocore>=1.12.144,<1.13.0->boto3)
+    Downloading docutils-0.14-py3-none-any.whl (543kB): 543kB downloaded
+    Requirement already satisfied (use --upgrade to upgrade): urllib3>=1.20,<1.25 in /usr/local/lib/python3.4/dist-packages (from botocore>=1.12.144,<1.13.0->boto3)
+    Requirement already satisfied (use --upgrade to upgrade): six>=1.5 in /usr/lib/python3/dist-packages (from python-dateutil>=2.1,<3.0.0->botocore>=1.12.144,<1.13.0->boto3)
+    Installing collected packages: boto3, botocore, jmespath, s3transfer, python-dateutil, docutils
+    Successfully installed boto3 botocore jmespath s3transfer python-dateutil docutils
+    Cleaning up...
+    ```
+    
+4. Update `requirements.txt` file <br>
+    ```python
+    sudo pip3 freeze --local > requirements.txt
+    ``` 
+
+5. In **setting.py** 
+   go to **INSTALLED_APPS** section and add line containing **storages** 
+   ```python
+   # Application definition
+
+   INSTALLED_APPS = [
+    'storages',     <== this line added.
+    ]
+   ```
+6. Make changes to `settings.py` to connect to AWS
+   go to **Static files**  and add the following lines  
+    ```python
+    AWS_S3_OBJECT_PARAMETERS = {
+    'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+    'CacheControl': 'max-age=94608000',
+    }
+
+    AWS_STORAGE_BUCKET_NAME = 'pauls-fullstack-frameworks-django-project'
+    AWS_S3_REGION_NAME = 'eu-west-1'
+    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+    AWS_S3_CUSTOM_DOMAIN = "%s.s3.amazonaws.com" % AWS_STORAGE_BUCKET_NAME
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    ```
+7. Then do a collectstatic
+    ```python
+    python3 manage.py collectstatic
+    ```
+
+    This uploads the static files
+
+    ouput from bash terminal
+    
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py collectstatic
+    Database URL not found. Using SQLite instead
+    /usr/local/lib/python3.4/dist-packages/storages/backends/s3boto3.py:282: UserWarning: The default behavior of S3Boto3Storage is insecure and will change in django-storages 2.0. By default files and new buckets are saved with an ACL of 'public-read' (globally publicly readable). Version 2.0 will default to using the bucket's ACL. To opt into the new behavior set AWS_DEFAULT_ACL = None, otherwise to silence this warning explicitly set AWS_DEFAULT_ACL.
+    "The default behavior of S3Boto3Storage is insecure and will change "
+
+    You have requested to collect static files at the destination
+    location as specified in your settings.
+
+    This will overwrite existing files!
+    Are you sure you want to do this?
+
+    Type 'yes' to continue, or 'no' to cancel: yes
+    Copying '/home/ubuntu/workspace/static/js/stripe.js'
+    Copying '/home/ubuntu/workspace/static/js/custom.js'
+    Copying '/home/ubuntu/workspace/static/js/bootstrap-magnify.js'
+    Copying '/home/ubuntu/workspace/static/font-awesome/css/all.css'
+    Copying '/home/ubuntu/workspace/static/font-awesome/css/all.min.css'
+    ....
+    Copying '/usr/local/lib/python3.4/dist-packages/django/contrib/admin/static/admin/img/icon-deletelink.svg'
+    Copying '/usr/local/lib/python3.4/dist-packages/django/contrib/admin/static/admin/img/icon-changelink.svg'
+    Copying '/usr/local/lib/python3.4/dist-packages/django/contrib/admin/static/admin/img/gis/move_vertex_on.svg'
+    Copying '/usr/local/lib/python3.4/dist-packages/django/contrib/admin/static/admin/img/gis/move_vertex_off.svg'
+    Copying '/usr/local/lib/python3.4/dist-packages/django/contrib/admin/static/admin/fonts/Roboto-Light-webfont.woff'
+    Copying '/usr/local/lib/python3.4/dist-packages/django/contrib/admin/static/admin/fonts/README.txt'
+    Copying '/usr/local/lib/python3.4/dist-packages/django/contrib/admin/static/admin/fonts/Roboto-Bold-webfont.woff'
+    Copying '/usr/local/lib/python3.4/dist-packages/django/contrib/admin/static/admin/fonts/LICENSE.txt'
+    Copying '/usr/local/lib/python3.4/dist-packages/django/contrib/admin/static/admin/fonts/Roboto-Regular-webfont.woff'
+
+    252 static files copied.
+    ```
+8. When I did a run to check everything was working get the following UserWarning message
+    ```python
+    /usr/local/lib/python3.4/dist-packages/storages/backends/s3boto3.py:282: UserWarning: 
+    The default behavior of S3Boto3Storage is insecure and will change in django-storages 2.0. 
+    By default files and new buckets are saved with an ACL of 'public-read' (globally publicly readable). 
+    Version 2.0 will default to using the bucket's ACL. 
+    To opt into the new behavior set AWS_DEFAULT_ACL = None, otherwise to silence this warning explicitly set AWS_DEFAULT_ACL.
+    "The default behavior of S3Boto3Storage is insecure and will change "
+    ```
+
+    Added `AWS_DEFAULT_ACL = 'public-read'` to settings.py file to stop warning message.
+#### Adding Media to S3
+1. Create a new file called **custom_storages.py** at the top level
+2. Add the follow to the new file.
+    ```python
+    from django.conf import settings
+    from storages.backends.s3boto3 import S3Boto3Storage
+
+    class StaticStorage(S3Boto3Storage):
+    location = settings.STATICFILES_LOCATION
+    ```
+    
+    At the moment, our static files are on S3. However, if we added media, we would be adding products to the same directory. <br>
+    And we would be at risk of overwriting one of our static files, which would not ideal.
+    So this is a technique of separating folders, So having **static** in one directory in S3 and **media** in another. <br>
+    So within this `custom_storages.py` file, we import settings. And from Boto, we import Boto storages.
+    We create a class called **StaticStorage** in **settings.py**.
+    
+3. Add the following to **settings.py**
+    ```python
+    STATICFILES_LOCATION = 'static' 
+    STATIC_URL = '/static/'                                                      for when in development
+    STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION) for when in production
+    ```
+    
+4. Change the following in **settings.py**
+    ```python
+    STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+    ```
+    to
+    ```python
+    STATICFILES_STORAGE = "custom_storages.StaticStorage"
+    ```
+    
+5. We have changed our STATICFILES_STORAGE to **custom_storages.StaticStorage**, which is a new class we've created in our **custom_storages.py** file
+
+6. So now if we run `python3 manage.py collectstatic`, we will see that it will collect all the static again.
+   But this time, it's going to put it into a **static** directory within S3.
+   ```python
+    bennettpe:~/workspace (master) $ python3 manage.py collectstatic
+    Database URL not found. Using SQLite instead
+
+    You have requested to collect static files at the destination
+    location as specified in your settings.
+
+    This will overwrite existing files!
+    Are you sure you want to do this?
+
+    Type 'yes' to continue, or 'no' to cancel: yes
+        Copying '/home/ubuntu/workspace/static/js/stripe.js'
+        Copying '/home/ubuntu/workspace/static/js/custom.js' 
+   ```
+   
+7. So now we can add our **media** files
+
+8. Add the follow to the **custom_storage.py file
+    ```python
+    class MediaStorage(S3Boto3Storage):
+    location = settings.MEDIAFILES_LOCATION
+    ```
+    
+9. Add the following to the **settings.py** file
+    ```python
+    MEDIAFILES_LOCATION = 'media'
+    MEDIA_URL = '/media/'                                                      for when in development
+    MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION) for when in production
+    ```
+    
+10. In S3 create **Media** folder
+11. Manually upload media files to S3
+</details>
+
+<details>  
+<summary>
+Step 10 - Adding CHARTS App
+</summary>
+<p>
+   
+#### Create charts app
+1. **Create** Django app called **charts** 
+    ```python
+    python3 manage.py startapp charts
+    ```
+ 
+     ouput from bash terminal
+    ```python
+    bennettpe:~/workspace (master) $ python3 manage.py startapp chart
+    ```
+    
+    The following django files have been **created**
+    ```
+    fullstack-frameworks-django-project
+    │
+    └── chart
+        ├── migrations
+        │   └── __init__.py # Python file to allow app packages to be imported from other directories.  
+        │
+        ├── __init__.py     # Python file to allow app packages to be imported from other directories. 
+        ├── admin.py        # File with admin definitions for the app. 
+        ├── apps.py         # File with configuration parameters for the app.
+        ├── models.py       # File with database definitions (i.e., model classes) for the app.
+        ├── tests.py        # File with test definitions for the app.
+        └── views.py        # File with view definitions (i.e., controller methods) for the app.
+    ```
+
+2. In **setting.py** 
+   go to **INSTALLED_APPS** section and add line containing **charts** 
+   ```python
+   # Application definition
+
+   INSTALLED_APPS = [
+    'charts',             <== this line added.
+    ]
+   ```
+4. Add chart.js cdnjs 
+   <!-- Chart.js minified JavaScript minified file (v2.8.0) --> <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"> </script>
+   <!-- CHARTS.JS minified CSS file (v2.8.0)                --> <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
+5.
+6.
+7. Update root **urls.py** in 
+8. 
+9. Create **urls.py** **fullstack-frameworks-django-project/charts** 
+
+
+#### TypeError: datetime.datetime(...) is not JSON serializable
+1. created data for orders by date chart and had the following error as the datetimes need to be converted to a string.
+2. used the following https://reviews.reviewboard.org/r/5038/diff/2/ and adapted code.
+    ```python
+    from django.core.serializers.json import DjangoJSONEncoder
+    
+    class LazyEncoder(DjangoJSONEncoder):
+    def default(self, obj):
+        return super(LazyEncoder, self).default(obj)
+        
+    dump3 = json.dumps(chart3, cls=LazyEncoder)   
+    ```
+    
+</details>
+
+<details>
+<summary>
+Step 11 - Cloud9 File Directory Structure
+</summary>
+<p>
+   
+### Cloud9 File directory structure
+The following file directory structure was created in the Cloud9 environment.
 ```
 ├── static
 │   ├── css                         # Bootstrap files
@@ -870,9 +2401,16 @@ The following file directory structure was created in the Clould9 environment.
 ├── requirements.txt                # python packages file
 └── secretkey.py                    # Create secretkey
 ```  
+</details>
+
+<details>
+<summary>
+Step 12 - Testing
+</summary>
+<p>
 
 ### Testing
-The project guidelines stated that a Test Driven Development (TDD) approach should be taken to developing the game, But all of my testing / bug fixes was done from a manual testing approach using print() method ,Building some test* python code when I wanted to create a new piece of logic / functionality or had a issue.
+The project guidelines stated that a Test Driven Development (TDD) approach should be taken to developing the game, But all of my testing / bug fixes was done from a manual testing approach using print() method ,Building some test* python code when I wanted to create a new piece of logic / functionality or had a issue.   
 
 ### Manual Testing
 
@@ -1118,101 +2656,154 @@ I used open source Bootstrap theme (Creative) by [Start Bootstrap](https://start
 
 I inspected via google chrome developer each html page on the following devices <br>(Responsive, iphone 5/se, iphone 6/7/8/plus, iphone x, ipad, ipad pro) and made any corretions as required.
 
-#### Bugs and Issues
-Listed below are some of the issues I have had building the website , but they have all been resolved.
-* Bootstrap dropdown button issue where all dropdown lists are below the button, but the main ingredient on was above the button , issue was fixed by adding the following to the button `data-display="static"`.
-
-* I am building the view detailed recipe in a card , tried to create a list for the recipe allergens but got the message `TypeError: string indices must be integers` so how do i just show `Eggs, Milk` in the card ?
-fixed by coding the following
-
-```python
-<span> <strong> Allergens: </strong>
- {% for allergen_name in recipes_document_by_recipe.allergen_name %}
- {{ allergen_name }}, </span>
- {% endfor %}
-```
-
-* I am building the Add recipe html page and would like to be able to click the add new buttons to add more input fields if needed for a recipe.
-fixed by adding the following javascript code
-
-```javascript
-    //Add ingredients form
-    $('.more-ingredients').click(function () {
-        addIngredients();
-        return false; //Stops page jumping back to top
-    })
-
-    function addIngredients() {
-        var option = `<div class="ing-del">
-                        <input type="text" class="form-control mb-2 mr-2" id="ingredient" name="recipe_ingredient" placeholder="Input ingredient" />
-                        <span class="delete">
-                            <i class="fas fa-times-circle"></i> Del
-                        </span>
-                    </div>`;
-        $(option).insertBefore('.list-more-ingredients');
-    }
-
-    // Remove ingredients form
-    $('.ingredients-list').on('click', 'span', function () {
-        var rem = $(this).closest('div.ing-del');
-        $(rem).remove();
-    });
-```
-
-* I also had an issue with scrollspy `Uncaught TypeError: $(...).scrollspy is not a function` this was due to moving `bootstrap.bundle.js` to bottom of script to fix my form issue, i resolved both issues by downloading v4.3.1 of bootstrap.
-
-* I have this code which I want to be able to select multi allergens. I can select multi allergens , but it only seems to print out a single allergen.
-
-    changed from this
-
-```html
-    <!--EDIT ALLERGEN SELECTION-->
-    <div class="form-group col-md-4">
-      <label for="edit_allergen_name" class="recipe-label ml-2"> <i class="fas fa-allergies mr-2"></i> Allergen </label>
-        <select multiple class="custom-select" id="edit_allergen_name" name="allergen_name" required>
-          <option disabled selected> Select Allergen(s) </option>
-          {% for allergen_recipe in allergens_recipe: %}
-          <!-- {% if loop.first %} -->
-              {% for allergen in allergens_list: %}
-                {% if allergen == allergen_recipe %}
-                  <option selected value="{{ allergen }}"> {{ allergen }} </option>
-                {% else %}  
-                  <option value="{{ allergen }}"> {{ allergen }} </option>
-                {% endif %}
-              {% endfor %}
-           <!--{% endif %}-->
-          {% endfor %}
-        </select>
-    </div> 
-```
-
-to this
-
-```html
-    <!--EDIT ALLERGEN SELECTION(s)-->
-    <div class="form-group col-md-4">
-      <label for="edit_allergen_name" class="recipe-label ml-2"> <i class="fas fa-allergies mr-2"></i> Allergen </label>
-       <select multiple class="custom-select" id="edit_allergen_name" name="allergen_name" required>
-         <option disabled selected> Select Allergen(s) </option>
-         {% for allergen in allergens_list: %}
-           <option
-           {% if allergen in allergens_recipe %}
-             selected
-           {% endif %}
-             value="{{ allergen }}"> {{ allergen }}
-           </option>
-         {% endfor %}
-       </select>
-    </div>
-  </div> 
-``` 
- 
 ### Development Testing
 Testing for this project was implemented manually and the majority of the testing was covered by building and developing flask routes.
 
 ### Refactoring
 Refactoring was implemented while developing this project and I am sure there are things that can be done to streamline code even more, in an additional phase of this project.
+1. Creating dynamic product templates.
+2. Class based views 
+</details>
 
+<details>
+<summary>
+Step 13 - Bugs and Issues
+</summary>
+<p>
+    
+### Bugs and Issues
+Listed below are some of the issues I have had building the website , but they have all been resolved.
+
+#### Pillow error message
+1. Install pillow
+    Have to install pillow 5.4.1 as clould9 uses python3.4
+    
+    Backwards Incompatible Changes
+    Python 3.4 dropped
+    Python 3.4 is EOL since 2019-03-16 and no longer supported.    
+    We will not be creating binaries, testing, or retaining compatibility with this version.   
+    The final version of Pillow for Python 3.4 is 5.4.1.
+
+#### Github vulnerablility message
+
+1. I just pushed my changes to git hub and got a message saying github had found a vulnerability which was `urllib3`  
+   needs to be upgraded to 1.24.2 or later, `urllib3` is downloaded when you `pip3 install stripe` should I just reinstall `stripe` ?
+
+2. Upgrade  Urllib3 to 1.24.2
+    ```python
+    bennettpe:~/workspace (master) $ sudo pip3 install urllib3==1.24.2                                                                                                                       
+    Downloading/unpacking urllib3==1.24.2
+    Downloading urllib3-1.24.2-py2.py3-none-any.whl (131kB): 131kB downloaded
+    Installing collected packages: urllib3
+    Found existing installation: urllib3 1.24.1
+    Uninstalling urllib3:
+    Successfully uninstalled urllib3
+    Successfully installed urllib3
+    Cleaning up...
+    ```
+
+3.  Update `requirements.txt` file <br>
+    ```python
+    sudo pip3 freeze --local > requirements.txt
+    ```
+
+4. 'requirements.txt' now updated to urllib3 1.24.2
+    ```python
+    Babel==2.6.0
+    Django==1.11.20
+    Pillow==5.4.1
+    certifi==2019.3.9
+    chardet==3.0.4
+    dj-database-url==0.5.0
+    django-forms-bootstrap==3.1.0
+    django-phonenumber-field==2.3.1
+    gunicorn==19.9.0
+    idna==2.8
+    phonenumbers==8.10.10
+    psycopg2==2.8
+    pytz==2018.9
+    requests==2.21.0
+    stripe==2.24.1
+    urllib3==1.24.2
+    ```
+    
+#### Travis error 
+1. Travis failed with the following error message `ImportError: No module named 'env'` added the following to the `settings.py` file
+    ```python
+    # Used locally and not in Heroku
+    if os.path.exists('env.py'):
+    import env
+    ```
+
+#### Email autentication error
+1. DO the following
+    go to the console
+    1. touch secrets.sh
+    2. chmod +x secrets.sh
+    3. open secrets.sh
+    4. add `export EMAIL_ADDRESS="xxxxxxxxxxxxx" and `export EMAIL_PASSWORD="xxxxxxx"
+
+2. So I have added my email address and email password as follows for my django project , but am still getting the following error message <br> `SMTPSenderRefused at /accounts/password-reset/
+(530, b'5.5.1 Authentication Required. Learn more at\n5.5.1  https://support.google.com/mail/?p=WantAuthError u11sm19169248wmu.15 - gsmtp', 'webmaster@localhost')` ?
+
+3. Decided to remove `secrets.sh` file and added email address and password to `env.py` and it all works ok.
+
+#### Stripe api key none
+1. problem due to settings.py file where it was not picking up `import env` 
+
+#### 403 issue with Background issue 
+```css
+    /* ----- Changes to Header ----- */
+    /* ADD background */
+    .masthead {
+    width:100%; 
+    height: 100%; 
+    background: url("/static/img/vehicles/Triumph_Spitfire_MKIV_colors.svg") no-repeat center; 
+    background-attachment: scroll; 
+    background-size: cover; 
+   
+    }
+```
+    
+issue was due to background url not being correct , should have been 
+
+```css
+    background: url("../img/vehicles/Triumph_Spitfire_MKIV_colors.svg") no-repeat center; 
+```
+
+#### 404 issue with media images
+Have added images for **fuel_pipes** and **fuel-tank** but am getting 404's as they dont seem to be added to media folder, 
+have changed static folder to be on S3 so not sure if thats causing the issue.
+problem was due to having the following line in my **setting.py** file 
+   ```python
+   DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+   ```
+   so removed this and the media file are now created ok.
+
+#### TypeError: datetime.datetime(...) is not JSON serializable
+1. created data for orders by date chart and had the following error as the datetimes need to be converted to a string.
+2. used the following https://reviews.reviewboard.org/r/5038/diff/2/ and adapted code.
+    ```python
+    from django.core.serializers.json import DjangoJSONEncoder
+    
+    class LazyEncoder(DjangoJSONEncoder):
+    def default(self, obj):
+        return super(LazyEncoder, self).default(obj)
+        
+    dump3 = json.dumps(chart3, cls=LazyEncoder)   
+    ```
+    
+#### Issue with only rating working on first card
+1. problem in **Static/js/ratings.js** was due to using `id=` which would only pick up one element , so slack to the rescue and changed to `class=` and 
+   `#` to `.` in my javascript buttons and seems to work ok now.     
+</details>
+
+<details>
+<summary>
+Step 14 -  Deployment Instructions
+</summary>
+<p>
+    
 ## Deployment Instructions
 
 ##### Instructions for setting up Github Remote repository
@@ -1221,45 +2812,45 @@ Connecting your local repository to your remote repository and pushing the code 
 **Create new remote repository**  
 * **Sign into** [GitHub](https://github.com/)  
 * **Click** on **new** button  
-* **Enter** Repository Name `data-centric-dev-website`  
-* **Enter** Description (optional) `My Data Centric Development Project Repository`  
+* **Enter** Repository Name `fullstack-frameworks-django-website`  
+* **Enter** Description (optional) `My Fullstack Frameworks with Django Project Repository`  
 * **Click** on Create repository button
 
 
 **From Clould9**  
 from local repository enter the following command which can be cut and pasted from the website as below:     
     …or push an existing repository from the command line   
-    
-    `git remote add origin https://github.com/bennettpe/data-centric-dev-website.git`   
-    `git push -u origin master`
+```   
+    git remote add origin https://github.com/bennettpe/fullstack-frameworks-django-website.git
+    git push -u origin master
+```
 
 After entering these commands you will be asked for your github **Username** and **Password** and your local repository will be pushed to your remote repository
 ```
-    bennettpe:~/workspace (master) $ git remote add origin https://github.com/bennettpe/data-centric-dev-website.git
+    bennettpe:~/workspace (master) $ git remote add origin https://github.com/bennettpe/fullstack-frameworks-django-website.git
     bennettpe:~/workspace (master) $ git push -u origin master
     Username for 'https://github.com': bennettpe
-    Password for 'https://bennettpe@github.com':
-    Counting objects: 2200, done.
+    Password for 'https://bennettpe@github.com': 
+    Counting objects: 5, done.
     Delta compression using up to 8 threads.
-    Compressing objects: 100% (2183/2183), done.
-    Writing objects: 100% (2200/2200), 15.36 MiB | 586.00 KiB/s, done.
-    Total 2200 (delta 453), reused 0 (delta 0)
-    remote: Resolving deltas: 100% (453/453), done.
-    To https://github.com/bennettpe/data-centric-dev-website.git
-     - [new branch]      master -> master
+    Compressing objects: 100% (4/4), done.
+    Writing objects: 100% (5/5), 1.40 KiB | 1.40 MiB/s, done.
+    Total 5 (delta 0), reused 0 (delta 0)
+    To https://github.com/bennettpe/fullstack-frameworks-django-website.git
+    * [new branch]      master -> master
     Branch master set up to track remote branch master from origin.
 ```
 
-##### Instructions for deploying Python app onto a hosing site: [Heroku](https://www.heroku.com/) hosing site
+#### Instructions for deploying Python app onto a hosing site: [Heroku](https://www.heroku.com/) hosing site
 
-If you have not Signed up to Heroku then you need to start from **Signing Up To Heroku** , otherwise start from **In Heroku (Part One)**
+If you have not Signed up to Heroku then you need to start from **Signing Up To Heroku** , <br> otherwise start from **In Heroku (Part One)**
 
 **Signing Up To Heroku**
 * Sign up to [Heroku](https://id.heroku.com/login)   
 * Click on New to Heroku? `Sign Up` at the bottom of the Log in to your account panel.   
 * Complete the Form by entering your details as required and in 'Primary Development Language Box' Enter `Python`.  
 * After completing the Form your will receive a 'Verification Email', which can take up to 15 minutes to receive.  
-* Open the 'Verification Email' and click on the link and you will be prompted to Enter a password and click `Here To Proceed button`.  
+* Open the 'Verification Email' and click on the link and you will be prompted to Enter a password and  <br> click `Here To Proceed button`.  
 
 
 **Heroku Checklist**
@@ -1268,7 +2859,8 @@ The following needs to be created
 Create a requirements.txt file.  
 Create a Procfile file.  
 Create a new Heroku app.  
-Create any Config variables.  
+Create any Config variables. 
+Create Postgres database.
 Push the code to Heroku.
 
 
@@ -1279,72 +2871,87 @@ Push the code to Heroku.
 
 
 **From Cloud9 (Readying for deployment)**   
-Making the **app.py** file ready for deployment  
+Making the **setting.py** file ready for deployment 
 
-* We need to make the secret key an environment variable and its going to look for a variable called `SECRET` , the 2nd argument is the default value if Flask cannot find the variable called SECRET, so we apply the following changes in the app.secret_key method.
+#### Adding the Database
+1. Converting from Sqlite3 database (Development) to Postgres database (Production).
+2. In Heroku click on the **Resources** tab, scroll down to the Add-ons and type **Postgres** and choose **Hobby Dev - Free one** as the plan name.
+3. Then click on the **settings** tab and click on the **reveal config vars**.
+4. Find the **database_url** and copy the key into your *env.py*
+5. Install `dj-database-url` if not already installed by running `sudo pip3 install dj-database-url` this package allows us to connect to a database URL.
+6. Install `psycopg2` if not already installed by running `sudo pip3 install psycop2` this package allows us to connect to the Postgres database.
+7. If you have had to install any packages then make sure the **requirments.txt** file is updated accordingly.
+8. In **settings.py** and add `import dj_database_url`
+9. In **settings.py** DATABASES section add the following
+    ```python
+    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+    ```
+10. Run the following command `python3 manage.py makemigrations`
+11. Run the following command `python3 manage.py migrate` this should migrate all the existing migrations to the <br> postgres database, because this is a new 
+    database which is currently empty.
+12. Then create a superuser.
 
-```python
-    app.secret_key = os.getenv("SECRET", "5149fde2f2f15a6f77dddf0f319b20c6")
+#### Copying from sqlite3 db to Heroku Postgres db
+1.
+
+#### Pre Deployment Checks
+1. Go to settings ,Click **Reveal Config Vars** Button.
+2. We need to add all the config vars that are currently in our **env.py**
+   These are as follows:
+```
+    AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY
+    EMAIL_ADDRESS
+    EMAIL_PASSWORD    
+    STRIPE_PUBLISHABLE
+    STRIPE_SECRET
+    SECRET_KEY
 ```
 
-    We need to add these default fallback values to our IP and port in the app.run() method, so we add `0.0.0.0` for the IP and `5000` for the port and then we won't have to set these in Heroku, also we set `debug=True` to `debug=False` in production.
+3. Go to **Deploy** and click on **Github** button and search for your repro and **connect** to it. 
+4. Gunicorn is a package thats required to connet to Heroku, Install Gunicorn <br> if you have not already done so by typing `sudo pip3 install gunicorn`
+   If you have just installed Gunicorn then make sure the requirements file is updated by typing `sudo pip3 freeze --local > requirements.txt`
 
-```python
-    app.run(host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT","5000")), debug=false )
-```
+5. We also need to create a **Procfile** which tell Heroku what type of app is getting,
+   Type in the following command in the terminal window, which creates the **Procfile file** (Remember to use a capital P in Procfile).   
+   `echo web: gunicorn fullstack-frameworks-project.wsgi:application > Procfile` 
 
-* Type in the following command in the terminal window, which creates the **Procfile file** (Remember to use a capital P in Procfile).   
-  `echo web: python app.py > Procfile` 
-  
-* The **Procfile** file contains `web: python app.py` which tells Heroku to start a process called web and to run `python app.py` when it starts.
+6. We need to  `git add .` and  `git commit -m "Added Procfile for deployment"` `git push` 
 
-* Type in the following command in the terminanl window, which creates the pip **requirements.txt file**.   
-  `sudo pip3 freeze --local > requirements.txt`  
+7. Because we are using `Static` on S3 we need to add `DISABLE_COLLECTSTATIC to 1` in Config Vars.
 
-* The **requirements.txt** file contains a list of items to be installed, defining the modules imported to Heroku:      
+8. Before deploying branch we need to add our new host to `ALLOWED_HOSTS` in the settings.py file 
+    ```python
+    ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'),  'fullstack-frameworks-project.herokuapp.com']
+    ```
+    
+9. check git with a `git status` if theres anything to copy then do  `git add .` and  `git commit -m "blaa"` `git push` 
+ 
 
-* Type in the following command in the terminal window which adds all project files: `$ git add .`
-
-* Type in the following command in the terminal window to create a default message for the first commit to Heroku: `$ git commit -m "Added Procfile for deployment"`
-
-* Type in the following command into the terminal window to run the heroku login command `$ heroku login`
-
-* Type into the terminal window your email address and password.
-
-* Type into the terminl window `$ git remote -v` Heroku references have already been added.
-
-* Now you are logged into Heroku you need to create a new heroku app by typing the following command `$ heroku apps:create data-centric-dev-project`,once created it will also give us a git address as well.
-
-* Before we push our app to Heroku we need to set our enviroment variables `https://dashboard.heroku.comm/apps`
-
-
-**In Heroku (Config vars)**   
-* Refresh the Heroku dashboard and you should see your new heroku app `my-data-centric-dev-project` has been created, Click on that and then go to `Settings` > `Reveal Config Vars`, at the moment we don't have any config vars.   
-* So in the Key field enter `SECRET` and in the Value field enter `"5149fde2f2f15a6f77dddf0f319b20c6"` and then click on Add Button.  
-
-
-**In Cloud9 (Build the source)**   
-* Once that's gone we can Push the project to Heroku so we go back into cloud9 terminal window and type the following command  `$ git push -u heroku master` this will build the source and then install everything from the requirements.txt file, watch the installation log for error.   
-  This has now deployed our app to Heroku.
+This has now deployed our app to Heroku.
 
 
 **In Heroku (Open app)**    
 * Click Open app
-* Select new tab, [my data centric development project](https:// data-centric-dev-project.herokuapp.com/)
+* Select new tab, [My Fullstack Frameworks with Django project](https://fullstack-frameworks-project.herokuapp.com/)
+</details>
 
 ### Credits
 
 #### Content
 
 #### Media
-- Background image for Top of website taken from [pixabay](https://cdn.pixabay.com/photo/2017/06/06/22/37/italian-cuisine-2378729__340.jpg)
-- All Images for Cuisine and Recipe taken from [bbc goodfood](https://www.bbcgoodfood.com/)
+- Bootstap theme (Sandstone) taken from [bootswatch](https://bootswatch.com/sandstone/)
+- Background image for Home/Index page of website taken from [Wikimedia](https://commons.wikimedia.org/wiki/File:Triumph_Spitfire_MKIV_colors.svg)
+- All Images for Models taken from [Wikipedia](https://en.wikipedia.org/wiki/Main_Page)
+- All Images for Product parts taken from [scparts](https://www.scparts.co.uk/sc_en/british-cars/triumph/triumph-spitfire-mkiii-mkiv-and-1500-1967-1980.html)
+- All Images for Categories cards taken from [moss-europe](https://www.moss-europe.co.uk/shop-by-model/triumph/spitfire)
+- All Images for About page taken from [unsplash](https://unsplash.com/)
 
 
 #### Acknowledgements
 - I would like to thank my fellow students for their help with my (Advice, Bug fixing, Issues, Queries) via [Slack](https://code-institute-room.slack.com/messages)
-- I would also like to thank my Code Institute Mentor Chris Zielinski (Display name ckz8780_mentor)
-- Message Flashing with categories was used as framework <br>
-Pretty Printed https://youtu.be/lcVdZtVvnnk
-- 14 Allergens list from food standards agency <br> https://www.food.gov.uk/sites/default/files/media/document/top-allergy-types.pdf
-- Bootstrap card grid image sizing issue <br> https://stackoverflow.com/a/47698201/1375163
+- I would also like to thank my Code Institute Mentor **Chris Zielinski** (Display name ckz8780_mentor)
+- Django Admin Panel changes (Add columns) solution was used <br> https://www.youtube.com/watch?v=KqbvhPLGJwA&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj&index=38
+- Django Admin Panel changes (Sort order) solution was used  <br> https://www.youtube.com/watch?v=j-CCNJmZQ6c&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj&index=39
+
