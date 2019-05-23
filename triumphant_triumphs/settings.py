@@ -40,7 +40,7 @@ else:
 
 
 # A list of strings representing the host/domain names that this Django site can serve
-ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'),  'fullstack-frameworks-project.herokuapp.com']
+ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), 'fullstack-frameworks-project.herokuapp.com']
 
 
 # Application definition

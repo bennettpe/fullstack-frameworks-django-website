@@ -4,6 +4,7 @@ __pycache__
 .~c9*
 env.py
 *.png
+db.json
 
 # Created by https://www.gitignore.io/api/cloud9,django,python
 # Edit at https://www.gitignore.io/?templates=cloud9,django,python
