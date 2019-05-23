@@ -1,1 +1,1 @@
-web: gunicorn fullstack-frameworks-project.wsgi:application
+web: gunicorn fullstack-frameworks-django-project.wsgi:application
