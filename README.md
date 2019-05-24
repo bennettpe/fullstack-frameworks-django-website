@@ -12,7 +12,7 @@ This is the milestone project that I have created for the **“Full Stack Framew
 ## Project Brief
 This project will be built using knowledge which have been learnt within the Full Stack Frameworks with Django module and the other previous eight modules.
 
-For project brief see [Project Brief documentation](static/wireframe/FULL STACK FRAMEWORK WITH DJANGO PROJECT BRIEF.pdf) <br>
+For project brief see [Project Brief documentation](static/wireframe/My_Full_Stack_Frameworks_with_Django_Project_Brief.pdf) <br>
 
 ### My Project Overview
 A web application for classic car parts , parts for the webshop have been gathered from the following website [**scparts.co.uk**](https://www.scparts.co.uk/sc_en/british-cars/triumph/triumph-spitfire-mkiii-mkiv-and-1500-1967-1980.html)
@@ -62,8 +62,8 @@ To provide a online eCommerce wbsite that users must be able to do the following
 * Ensure there’s a README.md (A project submitted without a README.md file will FAIL)
 
 ### Project Planning & Wireframe Mockup 
-For planning see [Planning documentation](static/wireframe/My Full Stack Frameworks with Django Milestone Project Planning.pdf) <br>
-For wireframe see [Wireframe documentation](static/wireframe/My Full Stack Frameworks with django wireframe.pdf)
+For planning see [Planning documentation](static/wireframe/My_Full_Stack_Frameworks_with_Django_Milestone_Project_Planning.pdf) <br>
+For wireframe see [Wireframe documentation](static/wireframe/My_Full_Stack_Frameworks_with_Django_Wireframe.pdf)
 
 ### Database Schema
 My SQLite3 (Development) / Postgres (Production) database consists of the following tables
@@ -73,7 +73,7 @@ My SQLite3 (Development) / Postgres (Production) database consists of the follow
 * products_product
 * products_userating
 
-![Database schema](static/wireframe/Fullstack Frameworks with Django Database Schema Diagram.gif)   
+![Database schema](static/wireframe/My_Full_Stack_Frameworks_with_Django_Database_Schema_Diagram.gif)   
 Diagram of website database schema
 
 
@@ -86,7 +86,7 @@ once signed in the login and register icon are removed and a Log out icon is sho
 When logging out a message is displayed saying **You have successfully been logged out**. <br>
 When logging in as **admin** a icon is shown on the navbar to access the django admin panel.
 
-![Functional flow](static/wireframe/FULL STACK FRAMEWORK WITH DJANGO PROJECT BRIEF.pdf)   
+![Functional flow](static/wireframe/My_Full_stack_Frameworks_with_Django_Wireframe.pdf)   
 Diagram of website functional flow  
 
 ### Technologies Used
@@ -161,7 +161,7 @@ Make sure once the workspace has been created in Cloud9 you create the following
     This installs **django 1.11.20** and **pytz 2018.9** 
     
     output from bash terminal 
-    ```python
+    ```bash
     bennettpe:~/workspace $ sudo pip3 install django==1.11.20
     Downloading/unpacking django==1.11.20
     Downloading Django-1.11.20-py2.py3-none-any.whl (6.9MB): 6.9MB downloaded
@@ -177,7 +177,7 @@ Make sure once the workspace has been created in Cloud9 you create the following
     git init
     ```
     output from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace $ git init
     Initialized empty Git repository in /home/ubuntu/workspace/.git/
     ```
@@ -189,12 +189,12 @@ Make sure once the workspace has been created in Cloud9 you create the following
    sudo pip freeze --local > requirements.txt
    ```
    output from bash terminal
-   ```python
+   ```bash
    bennettpe:~/workspace (master) $ sudo pip freeze --local > requirements.txt
    ```
 6. Go to Github https://github.com and Create new repository called `fullstack-frameworks-django-website` <br>
    output from bash terminal
-   ```python
+   ```bash
    bennettpe:~/workspace (master) $ git add .
    bennettpe:~/workspace (master) $ git commit -m "first commit"
    [master (root-commit) 7fd944a] first commit
@@ -230,7 +230,7 @@ Make sure once the workspace has been created in Cloud9 you create the following
    This installs **gunicorn 19.9.0** 
    
    output from bash terminal
-   ```python
+   ```bash
    bennettpe:~/workspace (master) $ sudo pip3 install gunicorn
    Downloading/unpacking gunicorn
    Downloading gunicorn-19.9.0-py2.py3-none-any.whl (112kB): 112kB downloaded
@@ -246,7 +246,7 @@ Make sure once the workspace has been created in Cloud9 you create the following
    This installs **psycopg2 2.8**  
 
    output from bash terminal
-   ```python
+   ```bash
    bennettpe:~/workspace (master) $ sudo pip3 install psycopg2
    Downloading/unpacking psycopg2
    Downloading psycopg2-2.8.tar.gz (367kB): 367kB downloaded
@@ -269,7 +269,7 @@ Make sure once the workspace has been created in Cloud9 you create the following
    sudo pip freeze --local > requirements.txt
    ```
    output from bash terminal
-   ```python
+   ```bash
    bennettpe:~/workspace (master) $ sudo pip freeze --local > requirements.txt
    ``` 
 
@@ -285,7 +285,7 @@ Make sure once the workspace has been created in Cloud9 you create the following
     This installs **dj-database-url 0.5.0** 
 
     ouput from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ sudo pip3 install dj-database-url
     Downloading/unpacking dj-database-url
     Downloading dj_database_url-0.5.0-py2.py3-none-any.whl
@@ -300,7 +300,7 @@ Make sure once the workspace has been created in Cloud9 you create the following
     ```
  
      ouput from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ django-admin startproject triumphant_triumphs .  
     ```
     
@@ -324,12 +324,12 @@ Make sure once the workspace has been created in Cloud9 you create the following
     ```
 
 15. Run the following command to check running server is ok
-    ```python
+    ``` 
     python3 manage.py runserver SIP:$C9_PORT
     ```
 
     output from bash terminal
-    ```python
+    ```bash 
     bennettpe:~/workspace (master) $ python3 manage.py runserver $IP:$C9_PORT
     Performing system checks...
 
@@ -346,7 +346,7 @@ Make sure once the workspace has been created in Cloud9 you create the following
     
     Click on link `your code is running at  https://fullstack-frameworks-django-project-bennettpe.c9users.io`
     and you see the following 
-    ```python
+    ```bash
     It worked!
     Congratulations on your first Django-powered page.
     Next, start your first app by running python manage.py startapp [app_label].
@@ -355,7 +355,7 @@ Make sure once the workspace has been created in Cloud9 you create the following
     ```
     
     output from bash terminal
-    ```python
+    ```bash
     Not Found: /favicon.ico
     [06/Apr/2019 08:21:15] "GET /favicon.ico HTTP/1.1" 404 2017
     [06/Apr/2019 08:21:17] "GET / HTTP/1.1" 200 1716
@@ -378,7 +378,7 @@ Make sure once the workspace has been created in Cloud9 you create the following
     ```
     
     output from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ python3 manage.py migrate
     Operations to perform:
     Apply all migrations: admin, auth, contenttypes, sessions
@@ -405,7 +405,7 @@ Make sure once the workspace has been created in Cloud9 you create the following
     ```
 
     output from bash terminal
-    ```python
+    ```bash
     [master 5dfdc88] Initial commit for django project
     8 files changed, 392 insertions(+), 4 deletions(-)
     create mode 100755 manage.py
@@ -432,7 +432,7 @@ This section is for setting up an **authentication mechanism** to allow users to
     ```
  
      ouput from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ django-admin startapp accounts 
     ```
     
@@ -473,7 +473,7 @@ This section is for setting up an **authentication mechanism** to allow users to
    ```
 
    ouput from bash terminal
-   ```python
+   ```bash
    bennettpe:~/workspace (master) $ python3 manage.py createsuperuser
    Username (leave blank to use 'ubuntu'): admin
    Email address: admin@gmail.com
@@ -805,7 +805,7 @@ This section is for setting up an **authentication mechanism** to allow users to
        url(r'^login/$', login, name="login"),
        url(r'^register/$', registration, name="registration"),
        url(r'^profile/$', user_profile, name="profile"),
-       url(r'^password-reset/', include(url_reset)) <== remove $
+       url(r'^password-reset/', include(url_reset)) 
    ]    
    ```
 3. Update file **urls.py** in **fullstack-frameworks-django-project**
@@ -931,7 +931,7 @@ Step 03 - Django-forms-bootstrap, Static files, Install Travis, Stripe.
     This installs **dj-forms-bootstrap 3.1.0** 
 
     ouput from bash terminal
-    ```python
+    ```bash
     Downloading/unpacking django-forms-bootstrap
     Downloading django_forms_bootstrap-3.1.0-py2.py3-none-any.whl
     Installing collected packages: django-forms-bootstrap
@@ -961,7 +961,7 @@ Step 03 - Django-forms-bootstrap, Static files, Install Travis, Stripe.
    sudo pip freeze --local > requirements.txt
    ```
    output from bash terminal
-   ```python
+   ```bash
    bennettpe:~/workspace (master) $ sudo pip3 freeze --local > requirements.txt
    ``` 
 
@@ -984,6 +984,7 @@ Step 03 - Django-forms-bootstrap, Static files, Install Travis, Stripe.
 `   ```
 
     Amend to
+    
     ```python
     {{ login_form | as_bootstrap }}
     ```
@@ -1034,8 +1035,7 @@ Step 03 - Django-forms-bootstrap, Static files, Install Travis, Stripe.
 11. Git commit changes
 
 12. Push changes to github
-
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ git add .
     bennettpe:~/workspace (master) $ git commit -m "Commit Travis changes"
     [master 7991b24] Commit Travis changes
@@ -1071,7 +1071,7 @@ Step 03 - Django-forms-bootstrap, Static files, Install Travis, Stripe.
                   **certifi-2019.3.9**
 
     ouput from bash terminal
-    ```python
+    ```bash
     Downloading/unpacking stripe
     Downloading stripe-2.24.1-py2.py3-none-any.whl (194kB): 194kB downloaded
     Downloading/unpacking requests>=2.20 (from stripe)
@@ -1100,7 +1100,7 @@ Step 03 - Django-forms-bootstrap, Static files, Install Travis, Stripe.
    sudo pip3 freeze --local > requirements.txt
    ```
    output from bash terminal
-   ```python
+   ```bash
    bennettpe:~/workspace (master) $ sudo pip3 freeze --local > requirements.txt
    ``` 
 
@@ -1145,7 +1145,7 @@ This section is for setting up an **products** to allow users ability to select 
     ```
 
     ouput from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ python3 manage.py startapp products 
     ```
     
@@ -1229,7 +1229,7 @@ This section is for setting up an **products** to allow users ability to select 
     This installs **pillow 5.4.1** 
 
     ouput from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ sudo pip3 install pillow==5.4.1 
     Downloading/unpacking pillow==5.4.1
     Downloading Pillow-5.4.1.tar.gz (16.0MB): 16.0MB downloaded
@@ -1270,7 +1270,7 @@ This section is for setting up an **products** to allow users ability to select 
     ```
 
     output from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ sudo pip3 freeze --local > requirements.txt
     ``` 
     
@@ -1280,7 +1280,7 @@ This section is for setting up an **products** to allow users ability to select 
     ```
 
     output from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ python3 manage.py makemigrations products
     Migrations for 'products':
     products/migrations/0001_initial.py
@@ -1293,7 +1293,7 @@ This section is for setting up an **products** to allow users ability to select 
     ```
     
     output from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ python3 manage.py migrate products
     Operations to perform:
     Apply all migrations: products
@@ -1477,7 +1477,7 @@ This section is for setting up an **products** to allow users ability to select 
    
 2. `python3 manage.py makemigrations accounts`
     ouput from bash terminal
-    ```python
+    ```bash
    ^Cbennettpe:~/workspace (master) $ python3 manage.py makemigrations accounts
     Database URL not found. Using SQLite instead
     Migrations for 'accounts':
@@ -1487,7 +1487,7 @@ This section is for setting up an **products** to allow users ability to select 
     
 3. `python3 manage.py migrate accounts`
      ouput from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ python3 manage.py migrate accounts
     Database URL not found. Using SQLite instead
     Operations to perform:
@@ -1498,7 +1498,7 @@ This section is for setting up an **products** to allow users ability to select 
     
 4. `python3 manage.py makemigrations products`
     ouput from bash terminal
-    ```python
+    ```bash
     ^Cbennettpe:~/workspace (master) $ python3 manage.py makemigrations products
     Database URL not found. Using SQLite instead
     Migrations for 'products':
@@ -1515,7 +1515,7 @@ This section is for setting up an **products** to allow users ability to select 
     
 5. `python3 manage.py migrate products`
      ouput from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ python3 manage.py migrate products
     Database URL not found. Using SQLite instead
     Operations to perform:
@@ -1542,7 +1542,7 @@ This section is for setting up an **products** to allow users ability to select 
     
 4.  Created superuser
      ouput from bash terminal
-    ```python
+    ```bash
     ^Cbennettpe:~/workspace (master) $ python3 manage.py createsuperuser
     Database URL not found. Using SQLite instead
     Username (leave blank to use 'ubuntu'): admintemp
@@ -1666,7 +1666,7 @@ This section is for setting up an **customer payment mechanism** to allow users 
     ```
  
      ouput from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ python3 manage.py startapp cart 
     ```
     
@@ -1708,7 +1708,6 @@ This section is for setting up an **customer payment mechanism** to allow users 
                 'cart.contexts.cart_contents', <== Add this line
                 ],
             },
-        },
     ]
    ```
 
@@ -1741,7 +1740,7 @@ This section is for setting up an **customer payment mechanism** to allow users 
     ```
     
     output from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ python3 manage.py makemigrations cart
     No changes detected in app 'cart'
     ```
@@ -1752,7 +1751,7 @@ This section is for setting up an **customer payment mechanism** to allow users 
     ```
     
     output from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ python3 manage.py migrate cart
     Operations to perform:
     Apply all migrations: (none)
@@ -1822,7 +1821,7 @@ This section is for setting up an **customer payment mechanism** to allow users 
     ```
 
    ouput from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ python3 manage.py makemigrations checkout
     Migrations for 'checkout':
     checkout/migrations/0001_initial.py
@@ -1836,7 +1835,7 @@ This section is for setting up an **customer payment mechanism** to allow users 
     ```
 
     output from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $  python3 manage.py migrate checkout
     Operations to perform:
     Apply all migrations: checkout
@@ -1929,7 +1928,7 @@ Step 06 - CONTACT App
     ```
  
      ouput from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ python3 manage.py startapp contact 
     ```
     
@@ -1968,7 +1967,7 @@ Step 06 - CONTACT App
     This installs **phonenumberfield** 
 
     ouput from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ sudo pip3 install django-phonenumber-field                                                                                                              
     Downloading/unpacking django-phonenumber-field
     Downloading django_phonenumber_field-2.3.1-py2.py3-none-any.whl (45kB): 45kB downloaded
@@ -1987,7 +1986,7 @@ Step 06 - CONTACT App
     ```
 
     output from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ sudo pip3 freeze --local > requirements.txt
     ```    
 
@@ -2064,7 +2063,7 @@ Step 08 - New S3 Bucket
 </summary>
 <p>
     
-![Create New S3 Bucket](static/wireframe/Create new S3 Bucket.pdf)   
+![Create New S3 Bucket](static/wireframe/Create_new_S3_Bucket.pdf)   
 How to create S3 Bucket in AWS.   
 </details>  
 
@@ -2084,7 +2083,7 @@ Step 09 - Adding S3 to Django
     This installs **django-storages** 
 
     ouput from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ sudo pip3 install django-storages
     Downloading/unpacking django-storages
     Downloading django_storages-1.7.1-py2.py3-none-any.whl (44kB): 44kB downloaded
@@ -2109,7 +2108,7 @@ Step 09 - Adding S3 to Django
 
     ouput from bash terminal
     
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ sudo pip3 install boto3
     Downloading/unpacking boto3
     Downloading boto3-1.9.144-py2.py3-none-any.whl (128kB): 128kB downloaded
@@ -2168,7 +2167,7 @@ Step 09 - Adding S3 to Django
 
     ouput from bash terminal
     
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ python3 manage.py collectstatic
     Database URL not found. Using SQLite instead
     /usr/local/lib/python3.4/dist-packages/storages/backends/s3boto3.py:282: UserWarning: The default behavior of S3Boto3Storage is insecure and will change in django-storages 2.0. By default files and new buckets are saved with an ACL of 'public-read' (globally publicly readable). Version 2.0 will default to using the bucket's ACL. To opt into the new behavior set AWS_DEFAULT_ACL = None, otherwise to silence this warning explicitly set AWS_DEFAULT_ACL.
@@ -2247,7 +2246,7 @@ Step 09 - Adding S3 to Django
 
 6. So now if we run `python3 manage.py collectstatic`, we will see that it will collect all the static again.
    But this time, it's going to put it into a **static** directory within S3.
-   ```python
+   ```bash
     bennettpe:~/workspace (master) $ python3 manage.py collectstatic
     Database URL not found. Using SQLite instead
 
@@ -2294,7 +2293,7 @@ Step 10 - Adding CHARTS App
     ```
  
      ouput from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ python3 manage.py startapp chart
     ```
     
@@ -2690,7 +2689,7 @@ Listed below are some of the issues I have had building the website , but they h
    needs to be upgraded to 1.24.2 or later, `urllib3` is downloaded when you `pip3 install stripe` should I just reinstall `stripe` ?
 
 2. Upgrade  Urllib3 to 1.24.2
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ sudo pip3 install urllib3==1.24.2                                                                                                                       
     Downloading/unpacking urllib3==1.24.2
     Downloading urllib3-1.24.2-py2.py3-none-any.whl (131kB): 131kB downloaded
@@ -2708,7 +2707,7 @@ Listed below are some of the issues I have had building the website , but they h
     ```
 
 4. 'requirements.txt' now updated to urllib3 1.24.2
-    ```python
+    ```bash
     Babel==2.6.0
     Django==1.11.20
     Pillow==5.4.1
@@ -2749,7 +2748,7 @@ Listed below are some of the issues I have had building the website , but they h
 3. Decided to remove `secrets.sh` file and added email address and password to `env.py` and it all works ok.
 
 #### Stripe api key none
-1. problem due to settings.py file where it was not picking up `import env` 
+1. Problem due to settings.py file where it was not picking up `import env` 
 
 #### 403 issue with Background issue 
 ```css
@@ -2781,8 +2780,8 @@ problem was due to having the following line in my **setting.py** file
    so removed this and the media file are now created ok.
 
 #### TypeError: datetime.datetime(...) is not JSON serializable
-1. created data for orders by date chart and had the following error as the datetimes need to be converted to a string.
-2. used the following https://reviews.reviewboard.org/r/5038/diff/2/ and adapted code.
+1. Created data for orders by date chart and had the following error as the datetimes need to be converted to a string.
+2. Used the following https://reviews.reviewboard.org/r/5038/diff/2/ and adapted code.
     ```python
     from django.core.serializers.json import DjangoJSONEncoder
     
@@ -2794,8 +2793,11 @@ problem was due to having the following line in my **setting.py** file
     ```
     
 #### Issue with only rating working on first card
-1. problem in **Static/js/ratings.js** was due to using `id=` which would only pick up one element , so slack to the rescue and changed to `class=` and 
-   `#` to `.` in my javascript buttons and seems to work ok now.     
+1. Problem in **Static/js/ratings.js** was due to using `id=` which would only pick up one element , so slack to the rescue and changed to `class=` and 
+   `#` to `.` in my javascript buttons and seems to work ok now.
+   
+#### Issue with file links in README.MD
+1. Problem in readme.md file with not seeing linked pdf files was due to the fact I had added spaces in the filename so changed to underscores.   
 </details>
 
 <details>
@@ -2803,7 +2805,7 @@ problem was due to having the following line in my **setting.py** file
 Step 14 -  Deployment Instructions
 </summary>
 <p>
-    
+
 ## Deployment Instructions
 
 ##### Instructions for setting up Github Remote repository
@@ -2820,13 +2822,13 @@ Connecting your local repository to your remote repository and pushing the code 
 **From Clould9**  
 from local repository enter the following command which can be cut and pasted from the website as below:     
     …or push an existing repository from the command line   
-```   
+``` bash  
     git remote add origin https://github.com/bennettpe/fullstack-frameworks-django-website.git
     git push -u origin master
 ```
 
 After entering these commands you will be asked for your github **Username** and **Password** and your local repository will be pushed to your remote repository
-```
+```bash
     bennettpe:~/workspace (master) $ git remote add origin https://github.com/bennettpe/fullstack-frameworks-django-website.git
     bennettpe:~/workspace (master) $ git push -u origin master
     Username for 'https://github.com': bennettpe
@@ -2898,7 +2900,7 @@ Making the **setting.py** file ready for deployment
 1. Go to settings ,Click **Reveal Config Vars** Button.
 2. We need to add all the config vars that are currently in our **env.py**
    These are as follows:
-```
+```bash
     AWS_ACCESS_KEY_ID
     AWS_SECRET_ACCESS_KEY
     EMAIL_ADDRESS
