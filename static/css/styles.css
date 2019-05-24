@@ -149,6 +149,7 @@ p.card-footer {
 
 
 /* ----- Changes to Breadcrumb ----- */
+
 /* CHANGE color & font-size*/
 .breadcrumb {
 	background-color: #3d5a80; /* purple navy */
@@ -264,6 +265,10 @@ p.card-footer {
    border: 1px solid #9b9797;
 }
 
+.btn-vote {
+  border-color: transparent;
+}
+
 /* CHANGE color on button hover */
 .btn-success:hover {
   border: 1px solid #9b9797; 
@@ -273,6 +278,31 @@ p.card-footer {
   border: 1px solid #9b9797; 
   color: black;
 }
+
+.btn-success, .btn-warning {
+  color: #fff;
+}
+
+.disliked-button:hover,
+.liked-button:hover {   
+  color: black;
+  border-color: transparent;
+  background-color:transparent;
+}
+
+.disliked-button-clicked,
+.liked-button-clicked {
+    color: #ffbf00; /* Amber */
+    border: 1px solid #ffbf00; 
+}
+
+.disliked-button-clicked:hover,
+.liked-button-clicked:hover {
+    color: #ffbf00; /* Amber */
+    border: 1px solid #ffbf00; 
+}
+
+
 
 
 
