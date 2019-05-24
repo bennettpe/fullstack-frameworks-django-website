@@ -73,7 +73,7 @@ My SQLite3 (Development) / Postgres (Production) database consists of the follow
 * products_product
 * products_userating
 
-![Database schema](static/wireframe/My_Full_Stack_Frameworks_with_Django_Database_Schema_Diagram.gif)   
+[Database schema](static/wireframe/My_Full_Stack_Frameworks_with_Django_Database_Schema_Diagram.pdf)   
 Diagram of website database schema
 
 
@@ -86,7 +86,7 @@ once signed in the login and register icon are removed and a Log out icon is sho
 When logging out a message is displayed saying **You have successfully been logged out**. <br>
 When logging in as **admin** a icon is shown on the navbar to access the django admin panel.
 
-![Functional flow](static/wireframe/My_Full_stack_Frameworks_with_Django_Wireframe.pdf)   
+[Functional flow](static/wireframe/My_Full_Stack_Frameworks_with_Django_Functional_Flow.pdf)   
 Diagram of website functional flow  
 
 ### Technologies Used
@@ -2063,7 +2063,7 @@ Step 08 - New S3 Bucket
 </summary>
 <p>
     
-![Create New S3 Bucket](static/wireframe/Create_new_S3_Bucket.pdf)   
+[Create New S3 Bucket](static/wireframe/Create_New_S3_Bucket.pdf)   
 How to create S3 Bucket in AWS.   
 </details>  
 
