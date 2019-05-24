@@ -1,3 +1,6 @@
+{% load static %} 
+{% load product_tools %}
+
 <!-- Parts Cards -->
 <div class="row p-4">
     <!-- loop through the contents of products_list, 
@@ -8,19 +11,36 @@
             <div class="card-body">
                 <img src="{{ MEDIA_URL }}{{ product.image }}" class="card-img-top p-1" alt="scparts">
                 <h3 class="card-title text-center mt2"> <u>{{ product.part_name }}</u> </h3>
-                <p class="card-text"> <strong> Part no: </strong> {{ product.part_number}} </p>
+                <p class="card-text"> <strong> Part no: </strong> {{ product.part_number }} </p>
                 <p class="card-text"> <strong> Model: </strong> {{ product.vehicle_model }} </p>
                 <p class="card-text"> <strong> Required: </strong> {{ product.required }} </p>
                 <p class="card-text"> <strong> Diagram number: </strong> {{ product.diagram_number }} </p>
                 <p class="card-text text-wrap"> <strong> Product description: </strong>
                     <br> {{ product.description }} </p>
                 <p class="card-text"> <strong> £ {{ product.price }} </strong> </p>
-                            
             </div>
+            
+            <!-- Javascript buttons pass (product.part_number & csrf_token) ---> 
             <div class="card-footer text-center">
-                <div class="text-center">
-                    <button class="btn btn-warning"> Rate quality </button>
-                </div>  
+                
+                    <button data-part-number={{ product.part_number }} data-token="{{ csrf_token }}"
+                    class="disliked-button btn btn-outline-danger" data-toggle="tooltip" title="Vote disliked">
+                        <!-- Diskliked votes ---> 
+				        <span>
+    			            {% get_disliked product.id %}
+    			        </span>
+				        <i class="fas fa-thumbs-down fa-2x"></i>
+			        </button>
+			        
+                   <button data-part-number="{{ product.part_number }}" data-token="{{ csrf_token }}"
+                    class="liked-button btn btn-outline-success" data-toggle="tooltip" title="Vote liked">
+				        <i class="fas fa-thumbs-up fa-2x"></i>
+				        <!-- Liked votes ---> 
+				        <span>
+    			            {% get_liked product.id %}
+    			        </span>
+			        </button>
+			        
                 <form method="post" action="{% url 'add_to_cart' product.id %}">
                     {% csrf_token %}
                     <div class="input-group p-3">
@@ -32,7 +52,14 @@
                     </div>
                 </form>
             </div>
+            
         </div>
     </div>
     {% endfor %}
 </div>
+
+{% block head_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+<!-- Disliked / Liked Button Javascript -->
+<script type="text/javascript" src="{% static 'js/ratings.js' %}"></script>
+{% endblock %}

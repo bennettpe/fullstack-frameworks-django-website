@@ -1,7 +1,7 @@
 import json
 from django.core.serializers.json import DjangoJSONEncoder
 from django.shortcuts import render
-from products.models import Product
+from products.models import Product, UserProfile, UserRating
 from checkout.models import OrderLineItem, Order
 from django.db.models import Count, Sum
 
@@ -66,6 +66,7 @@ def charts(request):
 	 	],
 		'plotOptions': {
 			'series':{
+				'borderRadius': 5,
 				'colorByPoint':'true'
 			},
 		    'column':{
@@ -189,6 +190,7 @@ def charts(request):
 	 	 ],
 		 'plotOptions': {
 		 	'series':{
+		 		'borderRadius': 5,
 		 		'colorByPoint':'true'
 		 	},
 		    'column':{
@@ -201,4 +203,71 @@ def charts(request):
 	# Convert to JSON
 	dump3 = json.dumps(chart3, cls=LazyEncoder)
 
-	return render(request, 'charts.html', {'chart1': dump1, 'chart2': dump2, 'chart3': dump3})
+
+	#CREATE Chart by Ratings 
+	#Count how many rating objects per rating
+	dataset3 = \
+	UserRating.objects.values('rating')\
+	    		 .order_by('rating')\
+	             .annotate(count=Count('rating'))
+	
+	# Create lists
+	rating = list()
+	count_series3 = list()
+	# Append the values & formatting
+	for entry in dataset3:
+		rating.append(entry['rating'])
+		count_series3.append(entry['count'])
+		
+	# Highcharts Configuration
+	count_series3 = {'name': 'Ratings',
+		            'data': count_series3
+ 	}
+ 
+	chart4 = {
+		'chart': {
+			'type':'column', 
+			'borderRadius': 20,
+		    'borderWidth':2,
+		    'marginTop':50,
+		    'marginLeft':65,
+		    'marginRight':10
+		 },
+		 'colors': ['#b22222', '#75bf00'],
+		 'credits': {
+		 	'position':{
+		 	   'align':'left','x':50}
+		 },     	  
+		 'title': {
+		 	'text':'Product Ratings'
+		 },
+	     'legend': {
+	     	'enabled':'false'
+	     },
+	     'xAxis': {
+		 	'categories':rating,
+		 },
+		 'yAxis': {
+		 	'title': {
+		 		'text':'Number of ratings'}
+		 },
+	 	 'series': [
+	 	 	count_series3
+	 	 ],
+		 'plotOptions': {
+		 	'series':{
+		 		'borderRadius': 5,
+		 		'colorByPoint':'true'
+		 	},
+		    'column':{
+		    	'groupPadding':0,
+		    	'pointPadding':0.1
+		    }
+		    
+		 },
+	}
+	
+	# Convert to JSON
+	dump4 = json.dumps(chart4)
+	             
+	return render(request, 'charts.html', {'chart1': dump1, 'chart2': dump2, 'chart3': dump3, 'chart4': dump4})

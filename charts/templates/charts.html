@@ -7,16 +7,17 @@
 
 <div class="container chart-container">
     <ol class="breadcrumb bcrumb-margins">
-        <li class="breadcrumb-item"> 
-            <a href="{% url 'index' %}"> <i class="fas fa-home fa-lg"></i> </a>
-        </li>
+        <li class="breadcrumb-item"> <a href="{% url 'index' %}"> Home </a></li>
         <li class="breadcrumb-item active"> Charts </li>
     </ol>
 
     <h2 class="pl-4 pr-4"> Charts <i class="fas fa-chart-line"></i></h2>
-        <div class="row mt-4 pl-4 pr-4 text-center">
+        <div class="row  pl-4 pr-4 mt-4 text-center">
             <div class="col-md-12 col-sm-12 mb-4 pl-4 pr-4" id="chart1"> 
                 <script> Highcharts.chart('chart1', {{ chart1|safe }}); </script>
+            </div>
+            <div class="col-md-6 col-sm-6 mb-4" id="chart4" > 
+                <script> Highcharts.chart('chart4', {{ chart4|safe }}); </script>
             </div>
             <div class="col-md-6 col-sm-6 mb-4" id="chart2" > 
                 <script> Highcharts.chart('chart2', {{ chart2|safe }}); </script>
