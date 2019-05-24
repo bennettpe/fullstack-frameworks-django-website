@@ -73,7 +73,7 @@ My SQLite3 (Development) / Postgres (Production) database consists of the follow
 * products_product
 * products_userating
 
-[Database schema](static/wireframe/My_Full_Stack_Frameworks_with_Django_Database_Schema_Diagram.pdf)   
+![Database schema](static/wireframe/My_Full_Stack_Frameworks_with_Django_Database_Schema_Diagram.pdf)   
 Diagram of website database schema
 
 
@@ -86,7 +86,7 @@ once signed in the login and register icon are removed and a Log out icon is sho
 When logging out a message is displayed saying **You have successfully been logged out**. <br>
 When logging in as **admin** a icon is shown on the navbar to access the django admin panel.
 
-[Functional flow](static/wireframe/My_Full_Stack_Frameworks_with_Django_Functional_Flow.pdf)   
+![Functional flow](static/wireframe/My_Full_Stack_Frameworks_with_Django_Functional_Flow.pdf)   
 Diagram of website functional flow  
 
 ### Technologies Used
@@ -2797,7 +2797,12 @@ problem was due to having the following line in my **setting.py** file
    `#` to `.` in my javascript buttons and seems to work ok now.
    
 #### Issue with file links in README.MD
-1. Problem in readme.md file with not seeing linked pdf files was due to the fact I had added spaces in the filename so changed to underscores.   
+1. Problem in readme.md file with not seeing linked pdf files was due to the fact I had added spaces in the filename so changed to underscores.G
+
+#### Gunicorn error
+1. Had the following error when trying to open Heroku app `ModuleNotFoundError: No module named 'fullstack-frameworks-django-project'`
+   On checking had the wrong module name it should be the name of the folder that contains `wsgi.py` file , so the Procfile should have
+   been `web: gunicorn triumphant_triumphs.wsgi:application`
 </details>
 
 <details>
@@ -2894,7 +2899,79 @@ Making the **setting.py** file ready for deployment
 12. Then create a superuser.
 
 #### Copying from sqlite3 db to Heroku Postgres db
-1.
+1. I wanted to copy my data from my Sqlite3 database to my new Heroku Postgress db as did not want to re-input all the produts via Admin Panel. <br>
+
+    **Comment from Mentor** <br>
+    The trick is getting **db.json** to heroku without putting it in source control. personally I'd stick it in a S3 bucket and then use `wget` or `ssh` to get it on heroku. <br> you can use `heroku run bash` from your C9 terminal to log into a bash terminal on heroku itself and then cd/ls/whatever your way around to find the folder with **manage.py** in it (it should dump you there by default IIRC) <br>
+    or if you don't care about the data (which you probably don't, but still ...) you could just commit db.json to source control and push it. <br> Obviously in the real world dumping your entire database into a JSON file and putting it in your github repo would not be recommended though.
+    
+    I would recommend you dump the whole database and reload the whole database into postgres. <br> Reason being: your tables are interconnected with relationships so if you try to load a bunch of products into your database on heroku w/ any users it will have all sorts of integrity errors
+    then if you recreate the users on heroku they will have different ids and such so it's best to just dump everything and import everything, **except permissions and contenttypes**.
+    
+   So based on that info / advice I did the following,    
+2. Make sure you point to your Sqlite3 db (Comment out `DATABASE_URL`) key in your **env.py**
+3. Run this command on Cloud9 workspace <br> `python3 manage.py dumpdata --exclude auth.permission --exclude contenttypes > db.json` which creates a      db in json format , it does not look much as its minified, if you want to created a non-minified version then run this command <br>
+   `python3 manage.py dumpdata --exclude auth.permission --exclude contenttypes --indent 2 > db.json`. <br>
+   Or you could cut and paste the minified db.json into the follow https://jsonformatter.curiousconcept.com/ which makes it non-minified,
+   Removed first line as that was a print comment from database settings in **settings.py**
+   If you have a large database then creating a minified db.json is recommened and non-minified version in testing to make sure everything is ok.
+4. Once `db.json` was created I downloaded from C9 workspace to my laptop
+5. I then created a `temp` directory in my S3 and uploaded the file from my laptop making sure the file had public access set to Everyone.
+6. You need to make sure everything is deployed on the Heroku app as you need to make sure `manage.py` is there.
+7. Then run the following command `heroku run bash --app fullstack-frameworks-project` from C9 to log into a bash terminal on Heroku.
+   ```bash
+   ^Cbennettpe:~/workspace (master) $ heroku run bash --app fullstack-frameworks-project
+   Running bash on ⬢ fullstack-frameworks-project... up, run.6680 (Free)
+   ```
+8. Once everything is deployed run the following command `ls -la` to check the directories are there etc
+    ```bash
+    ~ $ ls -la
+    total 280
+    drwx------ 15 u9372 dyno   4096 May 24 09:22 .
+    drwxr-xr-x 15 root  root   4096 May  2 13:08 ..
+    drwx------  4 u9372 dyno   4096 May 24 08:07 about
+    drwx------  4 u9372 dyno   4096 May 24 08:07 accounts
+    drwx------  4 u9372 dyno   4096 May 24 08:07 cart
+    drwx------  4 u9372 dyno   4096 May 24 08:07 charts
+    drwx------  4 u9372 dyno   4096 May 24 08:07 checkout
+    drwx------  4 u9372 dyno   4096 May 24 08:07 contact
+    -rw-------  1 u9372 dyno    285 May 24 08:07 custom_storages.py
+    -rw-------  1 u9372 dyno   2417 May 24 08:07 .gitignore
+    drwx------  4 u9372 dyno   4096 May 24 08:08 .heroku
+    -rwx------  1 u9372 dyno    817 May 24 08:07 manage.py
+    drwx------  3 u9372 dyno   4096 May 24 08:07 media
+    -rw-------  1 u9372 dyno     50 May 24 08:07 Procfile
+    drwx------  4 u9372 dyno   4096 May 24 08:07 products
+    drwx------  2 u9372 dyno   4096 May 24 08:08 .profile.d
+    -rw-------  1 u9372 dyno  77155 May 24 08:07 README_BUILDING_PROJECT.md
+    -rw-------  1 u9372 dyno 116924 May 24 08:07 README.md
+    -rw-------  1 u9372 dyno    414 May 24 08:07 requirements.txt
+    -rw-------  1 u9372 dyno     12 May 24 08:08 runtime.txt
+    drwx------  7 u9372 dyno   4096 May 24 08:07 static
+    drwx------  3 u9372 dyno   4096 May 24 08:07 templates
+    -rw-------  1 u9372 dyno    124 May 24 08:07 .travis.yml
+    drwx------  2 u9372 dyno   4096 May 24 08:07 triumphant_triumphs
+    ```
+9. Run the following command pointing at the db.json file created on `temp` directory on S3 <br>
+    `$ wget https://s3-eu-west-1.amazonaws.com/pauls-fullstack-frameworks-django-project/temp/db.json`
+    
+    ```bash
+    ~ $ wget https://s3-eu-west-1.amazonaws.com/pauls-fullstack-frameworks-django-project/temp/db.json
+    --2019-05-23 18:53:54--  https://s3-eu-west-1.amazonaws.com/pauls-fullstack-frameworks-django-project/temp/db.json
+    Resolving s3-eu-west-1.amazonaws.com (s3-eu-west-1.amazonaws.com)... 52.218.80.20
+    Connecting to s3-eu-west-1.amazonaws.com (s3-eu-west-1.amazonaws.com)|52.218.80.20|:443... connected.
+    HTTP request sent, awaiting response... 200 OK
+    Length: 230997 (226K) [application/json]
+    Saving to: 'db.json'
+    
+    db.json                                       100%[==============================================================================================>] 225.58K  --.-KB/s    in 0.009s  
+
+    2019-05-23 18:53:54 (24.5 MB/s) - 'db.json' saved [230997/230997]
+    ```
+10. Run the following command `python manage.py loaddata db.json` which will load the db.json data into the Heroku Postgress db.
+11. Run the following command `rm -f db.json` which force deletes.
+12. Check everything is loaded and working correctly and then delete temp directory on S3 which contained the db.json file.
+13. Make sure you point to your Heroku Postgress db by  (Commenting in `DATABASE_URL`) key in your **env.py**
 
 #### Pre Deployment Checks
 1. Go to settings ,Click **Reveal Config Vars** Button.
