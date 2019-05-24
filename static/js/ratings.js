@@ -9,7 +9,6 @@ $(".disliked-button").click(function(){
         button: "disliked",
         csrfmiddlewaretoken : token
     };
-    console.log(data)
     
     $.post("/products/ratings/", data).done(function(response)  {
         // Do stuff once you get the response back, like updating the like button's CSS
@@ -28,7 +27,6 @@ $(".liked-button").click(function(){
         button: "liked",
         csrfmiddlewaretoken: token
     };
-    console.log(data)
     
     $.post("/products/ratings/", data).done(function(response)  {
         // Do stuff once you get the response back, like updating the like button's CSS

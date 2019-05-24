@@ -22,5 +22,5 @@ def get_disliked(prod_id):
 		product = Product.objects.get(id=prod_id)
 	except Product.DoesNotExist:
 		return None
-	disliked = UserRating.objects.filter(product=product, rating='liked')
+	disliked = UserRating.objects.filter(product=product, rating='disliked')
 	return str(len(disliked))
