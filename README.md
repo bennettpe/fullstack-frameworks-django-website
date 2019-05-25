@@ -73,7 +73,7 @@ My SQLite3 (Development) / Postgres (Production) database consists of the follow
 * products_product
 * products_userating
 
-![Database schema](static/wireframe/My_Full_Stack_Frameworks_with_Django_Database_Schema_Diagram.pdf)   
+![Database schema](static/wireframe/My_Full_Stack_Frameworks_with_Django_Database_Schema_Diagram.jpg)   
 Diagram of website database schema
 
 
@@ -86,7 +86,7 @@ once signed in the login and register icon are removed and a Log out icon is sho
 When logging out a message is displayed saying **You have successfully been logged out**. <br>
 When logging in as **admin** a icon is shown on the navbar to access the django admin panel.
 
-![Functional flow](static/wireframe/My_Full_Stack_Frameworks_with_Django_Functional_Flow.pdf)   
+![Functional flow](static/wireframe/My_Full_Stack_Frameworks_with_Django_Functional_Flow.jpg)   
 Diagram of website functional flow  
 
 ### Technologies Used

@@ -2,8 +2,10 @@ from django.shortcuts import render
 from products.models import Product, UserRating
 from accounts.models import UserProfile
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.contrib import messages
+
+import json
 
 # Create your views here.
 def products(request):
@@ -264,10 +266,13 @@ def ratings(request):
         
         # User has rated this product so update current rating
         try:
-            Current_rating = UserRating.objects.get(product__part_number = part_number, user_profile__user__username = request.user.username)
+            current_rating = UserRating.objects.get(product__part_number = part_number, user_profile__user__username = request.user.username)
+            product = current_rating.product
             if button_clicked in ['liked', 'disliked']:
-                Current_rating.rating = button_clicked
-                Current_rating.save()
+                current_rating.rating = button_clicked
+                current_rating.save()
+                new_liked = len(UserRating.objects.filter(product=product, rating='liked'))
+                new_disliked = len(UserRating.objects.filter(product=product, rating='disliked'))
                 success = True
         
         # User has not rated this product yet so create a user rating      
@@ -276,9 +281,20 @@ def ratings(request):
             user_profile = UserProfile.objects.get(user = request.user)
             if product and user_profile:
                 UserRating.objects.create(product=product, user_profile=user_profile, rating=button_clicked)
+                new_liked = len(UserRating.objects.filter(product=product, rating='liked'))
+                new_disliked = len(UserRating.objects.filter(product=product, rating='disliked'))
                 success = True
             
             # Handle what happens if you cannot find the product or the profile (should never happen, but just in case)
             #else:
                 #success = False
-    return HttpResponse({'success': success})
+        response = {
+            'success': success,
+            'new_liked': new_liked,
+            'new_disliked': new_disliked
+        }
+        
+        return HttpResponse(json.dumps(response), content_type="application/json")
+        
+    raise Http404('Invalid Request Method')
+    

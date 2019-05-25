@@ -269,5 +269,21 @@ def charts(request):
 	
 	# Convert to JSON
 	dump4 = json.dumps(chart4)
-	             
+	 
+	#CREATE Chart by Ratings 
+	#Count how many rating objects per rating
+	dataset4 = \
+	UserRating.objects.values('user_profile','rating', 'user_profile__user__username')\
+	    		 .order_by('rating')\
+	             .annotate(count=Count('rating'))
+	for val in dataset4:
+		keys = list(val.keys())
+		for key in keys:
+			if key == 'user_profile__user__username':
+				val['username'] = val[key]
+				del val[key]
+		
+	for item in dataset4:
+		print(item['username'])
+					
 	return render(request, 'charts.html', {'chart1': dump1, 'chart2': dump2, 'chart3': dump3, 'chart4': dump4})

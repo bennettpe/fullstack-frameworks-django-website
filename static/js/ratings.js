@@ -12,7 +12,13 @@ $(".disliked-button").click(function(){
     
     $.post("/products/ratings/", data).done(function(response)  {
         // Do stuff once you get the response back, like updating the like button's CSS
-        console.log(response);
+        if(response['success']) {
+            $('#prod-liked').text(response['new_liked']);
+            $('#prod-disliked').text(response['new_disliked']);
+        } else {
+            console.log('it failed :(')
+            console.log(response)
+        }
     });
 })
 
@@ -30,6 +36,12 @@ $(".liked-button").click(function(){
     
     $.post("/products/ratings/", data).done(function(response)  {
         // Do stuff once you get the response back, like updating the like button's CSS
-        console.log(response);
+        if(response['success']) {
+            $('#prod-liked').text(response['new_liked']);
+            $('#prod-disliked').text(response['new_disliked']);
+        } else {
+            console.log('it failed :(')
+            console.log(response)
+        }
     });
 })
