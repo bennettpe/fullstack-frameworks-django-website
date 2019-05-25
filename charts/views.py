@@ -5,6 +5,7 @@ from products.models import Product, UserProfile, UserRating
 from checkout.models import OrderLineItem, Order
 from django.db.models import Count, Sum
 
+
 # Create your views here.
 
 #Convert datetimes into str for JSON Dump
@@ -14,7 +15,9 @@ class LazyEncoder(DjangoJSONEncoder):
 
 def charts(request):
 	
+	#--------------------------------------------
 	#CREATE Chart for number of category products
+	#--------------------------------------------
 	#Count how many category objects per distinct category
 	dataset = \
 	Product.objects.values('category')\
@@ -79,8 +82,9 @@ def charts(request):
 	# Convert to JSON
 	dump1 = json.dumps(chart1)
 	
-	
+	#----------------------------------------
 	#CREATE Chart for number of products sold
+	#----------------------------------------
 	dataset1 = \
 	OrderLineItem.objects.values('quantity')\
 	    		 .order_by('quantity')\
@@ -138,8 +142,9 @@ def charts(request):
 	# Convert to JSON
 	dump2 = json.dumps(chart2)
 	
-	
+	#-----------------------------------------
 	#CREATE Chart for number of orders by date
+	#-----------------------------------------
 	#Count how many date objects per distinct date
 	dataset2 = \
 	Order.objects.values('date')\
@@ -203,9 +208,9 @@ def charts(request):
 	# Convert to JSON
 	dump3 = json.dumps(chart3, cls=LazyEncoder)
 
-
+    #-----------------------
 	#CREATE Chart by Ratings 
-	#Count how many rating objects per rating
+	#-----------------------
 	dataset3 = \
 	UserRating.objects.values('rating')\
 	    		 .order_by('rating')\
@@ -269,21 +274,72 @@ def charts(request):
 	
 	# Convert to JSON
 	dump4 = json.dumps(chart4)
-	 
-	#CREATE Chart by Ratings 
-	#Count how many rating objects per rating
+	
+	#---------------------------- 
+	#CREATE Chart by User Ratings
+	#----------------------------
 	dataset4 = \
-	UserRating.objects.values('user_profile','rating', 'user_profile__user__username')\
-	    		 .order_by('rating')\
-	             .annotate(count=Count('rating'))
-	for val in dataset4:
-		keys = list(val.keys())
-		for key in keys:
-			if key == 'user_profile__user__username':
-				val['username'] = val[key]
-				del val[key]
+	UserRating.objects.values('user_profile__user__username')\
+	    		 .order_by('user_profile__user__username')\
+	             .annotate(count=Count('user_profile__user__username'))
+	
+	# Create lists
+	rating = list()
+	count_series4 = list()
+	
+	# Append the values & formatting
+	for entry in dataset4:
+		rating.append(entry['user_profile__user__username'])
+		count_series4.append(entry['count'])
 		
-	for item in dataset4:
-		print(item['username'])
-					
-	return render(request, 'charts.html', {'chart1': dump1, 'chart2': dump2, 'chart3': dump3, 'chart4': dump4})
+	# Highcharts Configuration
+	count_series4 = {'name': 'Ratings',
+		            'data': count_series4
+ 	}
+ 
+	chart5 = {
+		'chart': {
+			'type':'column', 
+			'borderRadius': 20,
+		    'borderWidth':2,
+		    'marginTop':50,
+		    'marginLeft':65,
+		    'marginRight':10
+		 },
+		 'credits': {
+		 	'position':{
+		 	   'align':'left','x':50}
+		 },     	  
+		 'title': {
+		 	'text':'Product Ratings by User'
+		 },
+	     'legend': {
+	     	'enabled':'false'
+	     },
+	     'xAxis': {
+		 	'categories':rating,
+		 },
+		 'yAxis': {
+		 	'title': {
+		 		'text':'Number of ratings'}
+		 },
+	 	 'series': [
+	 	 	count_series4
+	 	 ],
+		 'plotOptions': {
+		 	'series':{
+		 		'borderRadius': 5,
+		 		'colorByPoint':'true'
+		 	},
+		    'column':{
+		    	'groupPadding':0,
+		    	'pointPadding':0.1
+		    }
+		    
+		 },
+	}
+	
+	# Convert to JSON
+	dump5 = json.dumps(chart5)
+	
+	return render(request, 'charts.html', {'chart1': dump1, 'chart2': dump2, 'chart3': dump3, 'chart4': dump4, 'chart5': dump5})
