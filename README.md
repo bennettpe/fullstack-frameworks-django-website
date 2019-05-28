@@ -2406,104 +2406,72 @@ Step 12 - Testing
 <p>
 
 ### Testing
-The project guidelines stated that a Test Driven Development (TDD) approach should be taken to developing the game, But all of my testing / bug fixes was done from a manual testing approach using print() method ,Building some test* python code when I wanted to create a new piece of logic / functionality or had a issue.   
+The project guidelines stated **test your project extensively**, All of my testing / bug fixes was done from a manual testing approach using print() method ,Building some test* python code when I wanted to create a new piece of logic / functionality or had a issue.   
 
 ### Manual Testing
 
-**Testing connection to MongoDB from Flask**  
 
-I connected to the MongoDB **Database:online_cookbook** via the mongo shell to check connect was good - <span style="color:green">PASSED</span> <br>
-I did notice that the versions of MongoDB shell and MongoDB server did not match after applying changes as per video's <br> Have raised comment on Slack.<br>
-The following response came back on 07/02/19 when someone else raised the same question, <br> Just replace the numbers with the version you want.
-
-```python
-sudo apt-get install -y mongodb-org=4.0.6 mongodb-org-server=4.0.6 mongodb-org-shell=4.0.6 mongodb-org-mongos=4.0.6 mongodb-org-tools=4.0.6
-```
-
-```python
-MongoDB shell version v3.4.18
-connecting to: mongodb://ds213665.mlab.com:13665/online_cookbook
-MongoDB server version: 3.6.9
-WARNING: shell and server versions do not match
-Welcome to the MongoDB shell.
-```
-
-I ran the connection test as per mLab documentation https://docs.mlab.com/#load-data <br>
-    Ran the following commands which   
-    - Created db.mynewcollection and inserted "foo" : "bar"  
-    - Confirm that the shell output matches after amending "_id"
-
-```python
- rs-ds213665:PRIMARY> db.mynewcollection.insert({ "foo" : "bar" })
- WriteResult({ "nInserted" : 1 })
- rs-ds213665:PRIMARY> db.mynewcollection.find()
- { "_id" : ObjectId("5c4d6817b30a5f0e694dee60"), "foo" : "bar" }
- rs-ds213665:PRIMARY>  { "_id" : ObjectId("5c4d6817b30a5f0e694dee60"), "foo" : "bar" }
-```
-
-**Testing Flask-Bcrypt**   
-
- I needed to make sure that the hashing the password worked and reading a hashed password worked ok.
-
- I ran the following checks as per Corey Schafer youtube video <br> 
- `Python Flask Tutorial: Full-Featured Web App Part 6 - User Authentication`
- https://youtu.be/CSHx6eCkmv0 <br>
- 
- Ran the following commands after logging into python <br>
-     - `>>> from flask_bcrypt import Bcrypt`
-     - `>>> bcrypt = Bcrypt()` <br>
-       
-To generate a hashed password of **'testings'** adding (.decode('utf-8')) creates a string. <br>
-     - `>>> hashed_pw = bcrypt.generate_password_hash('testings').decode('utf-8')` <br>
-
-To check if hashed password = password of 'testings' <br>
-     - `>>> bcrypt.check_password_hash(hashed_pw, 'testings'.encode('utf-8'))`
-
-```
-    >>> bennettpe:~/workspace (master) $ python3
-    Python 3.4.3 (default, Nov 17 2016, 01:08:31)
-    [GCC 4.8.4] on linux
-    Type "help", "copyright", "credits" or "license" for more information.
-
-    >>> from flask_bcrypt import Bcrypt
-    >>> bcrypt = Bcrypt()
-
-    >>> bcrypt.generate_password_hash('testings').decode('utf-8')
-    '$2b$12$e9dwKKM2CqbA0z4WDzNYWeGo4CI2FGB7l0UmK0OjSiLWp9MsUXW1y'
-
-    >>> hashed_pw = bcrypt.generate_password_hash('testings').decode('utf-8')                                                                      
-
-    >>> bcrypt.check_password_hash(hashed_pw, 'password')
-    False
-
-    >>> bcrypt.check_password_hash(hashed_pw, 'testings')
-    True
-
-    >>> bcrypt.check_password_hash(hashed_pw, 'testings'.encode('utf-8'))
-    True
-```
 
 **Register**    
 I tested to make sure the following worked as designed and <span style="color:green">All passed</span>
 
-* Enter **username** (Field must be between 5 and 15 characters long)  
-* Enter **password** (Field must be 8 charaters long)                 
-* Confirm **password** (Field must be equal to password)   
-* Click on **register button** (route to `/base`)   
-* Enter existing **usename & password** (Message saying `username already registered`)      
-* Click on `Already Have An Account Sign` link (route to `/sign_in_user`)
+* Click on **register button** (url goes to `/accounts/register/registration.html`) 
+* In the form enter the following <br>
+
+* Enter **Email address**  
+* Enter **duplicate Email address** (Message saying `Email address must be unique`) 
+* Enter **invalid Email address** (Message saying `Please include a @ in the email address 'xxx' is missing an @`)
+* Enter **blank Email address** (Message saying `Email address must not be empty`)
+
+* Enter **username** (Field must be 150 characters or fewer. Letters, digits and @/./+/-/_ only.) 
+* Enter ** duplicate username** (Message saying `A user with that username already exists.`)
+* Enter **invalid username** (Message saying `Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.)`
+* Enyer **blank username** (Message saying `This field is required`)
 
 
-**Sign-in**    
+* Enter **password**
+* Enter **invalid password** (Message saying `Passwords do not match`) in Confirm password field.
+* Enter **invalid password length** (Message saying `Invalid Password, must contain between 8 and 20 characters`)
+* Enter **blank password** (Message saying `Please fill in this field`)
+
+
+* Enter Confirm **password**
+* Enter Confirm **invalid password** (Message saying `Passwords do not match`)
+* Enter Confirm **blank password** (Message saying `Passwords do not match`) <br>
+
+* Click on **sign-up button** (url goes to `/index`) 
+* Click on `If you already have an account?, Please Log in` (url goes to `/accounts/login/login.html`)
+
+
+**Log-in**    
 I tested to make sure the following worked as designed and <span style="color:green">All passed</span>    
     
 * Enter **username**   
-* Enter **invalid username** (Does not sign-in)   
+* Enter **invalid username** (Does not sign-in) 
+
 * Enter **password**   
-* Enter **invalid password** (Message saying `Invalid username or password`)   
-* Enter **blank password** (Message saying `Please fill in this field`)   
-* Click on **Not Registered ?** link (route to `/register_user`)    
-* Click on **sign-in button** (route to `/base`) 
+* Enter **invalid password** (Message saying `Your username or password is incorrect`)   
+* Enter **blank password** (Message saying `Your username or password is incorrect`)   
+
+* Click on **login button** (url goes to `/index`) 
+* Click on **Click here if you need to Reset Password** (url goes to `/accounts/password-reset`)    
+
+
+**Password reset**    
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span>  
+
+* Enter **Email address** 
+* Enter **blank email address** (Message saying `Please fill in this field`)
+* Enter **invalid email address** (Message saying `Please include a @ in the email address 'xxx' is missing an @`) <br> 
+  or (Message saying `Please enter a part following @. 'xxx@' is incomplete`)         
+
+* Click on **reset password button** (url goes to `/accounts/password-rest-done`) 
+
+* Message after clicking **reset password button** <br>
+```
+We have emailed instructions for setting your password to the e-mail address you used to register.
+Please check your email inbox or spam folder.
+```
 
 
 **Sign-out**   
@@ -2653,7 +2621,7 @@ I used open source Bootstrap theme (Creative) by [Start Bootstrap](https://start
 I inspected via google chrome developer each html page on the following devices <br>(Responsive, iphone 5/se, iphone 6/7/8/plus, iphone x, ipad, ipad pro) and made any corretions as required.
 
 ### Development Testing
-Testing for this project was implemented manually and the majority of the testing was covered by building and developing flask routes.
+Testing for this project was implemented manually and the majority of the testing was covered by building and developing django views.
 
 ### Refactoring
 Refactoring was implemented while developing this project and I am sure there are things that can be done to streamline code even more, in an additional phase of this project.
@@ -2807,6 +2775,144 @@ problem was due to having the following line in my **setting.py** file
 ```bash
 ![Database schema](static/wireframe/My_Full_Stack_Frameworks_with_Django_Database_Schema_Diagram.jpg)   
 Diagram of website database schema
+```
+
+#### Issue with password length when registering
+1. I checked password length and could add any length password checked `AUTH_PASSWORD_VALIDATORS` in `settings.py` and though it would give 
+    error messages if the password was less than 8 in length, but looks like its not working and could not find out why not.
+2. add the following check into my accounts app `forms.py`
+```python
+ def clean_password1(self):
+        password1 = self.cleaned_data.get('password1')
+        
+        if len(password1) < 8 or len(password1) > 20:
+            raise ValidationError("Invalid Password, must contain between 8 and 20 characters")
+        return password1
+```
+
+#### Issue with rating icons not refreshing
+1. I had an issue with my button icons not updating the number of liked / disliked when clicked , So I added `location.reload();` in each 
+   of the liked / disliked buttons and it seemed to work ok.
+   When I raised this issue on slack they said that I should not have to add the reload to refresh the button clicks.
+2. The problem was due to each liked / disliked button & count not being unique as they had the following coded in `parts_card.html` 
+```python
+    <span id="prod-disliked">
+        {% get_disliked product.id %}
+    </span>`
+
+    <span id="prod-liked">
+        {% get_liked product.id %}
+    </span>
+```
+3. So I had to find a way of making the buttons and counts unique for liked / disliked, I raised this on slack and John Longgately (johnL3_alumni on      slack) helped me come up with a potential solution as follows.
+4. Button code in `parts_cards.html` was 
+
+Changed from this
+```python
+    <button data-part-number={{ product.part_number }} data-token="{{ csrf_token }}"
+        class="disliked-button btn btn-outline-danger" data-toggle="tooltip" title="Vote disliked">
+            <!-- Diskliked votes ---> 
+            <span id="prod-disliked">
+    			 {% get_disliked product.id %}
+            </span>
+            <i class="fas fa-thumbs-down fa-2x"></i>
+    </button>
+			        
+    <button data-part-number="{{ product.part_number }}" data-token="{{ csrf_token }}"
+        class="liked-button btn btn-outline-success" data-toggle="tooltip" title="Vote liked">
+            <i class="fas fa-thumbs-up fa-2x"></i>
+            <!-- Liked votes ---> 
+            <span id="prod-liked">
+                {% get_liked product.id %}
+            </span>
+    </button>
+```
+To this
+```python
+    <button data-part-number={{ product.part_number }} data-token="{{ csrf_token }}"
+        id ="b-{{forloop.counter}}"
+        class="btn disliked-button" data-toggle="tooltip" title="Vote disliked">
+        <i class="fas fa-thumbs-down fa-2x"></i>
+                        
+        <!-- Diskliked votes ---> 
+        <span id="bb-{{forloop.counter}}" class="disliked_num">
+            {% get_disliked product.id %} 
+        </span>
+    </button>
+			         
+    <button data-part-number="{{ product.part_number }}" data-token="{{ csrf_token }}"
+        id ="a-{{forloop.counter}}"
+        class="btn liked-button" data-toggle="tooltip" title="Vote liked">
+        <i class="fas fa-thumbs-up fa-2x"></i>
+				        
+        <!-- Liked votes ---> 
+        <span id="aa-{{forloop.counter}}" class="liked_num">
+            {% get_liked product.id %} 
+        </span>
+    </button>
+```
+
+`id = "b-{{forloop.counter}}"`  was added for disliked button and creates variable `id=b-1` <br>
+`id = "bb-{{forloop.counter}}"` was changed for disliked rating and creates variable `id=bb-1` <br>
+
+`id = "a-{{forloop.counter}}"`  was added for liked button and creates variable `id=a-1` <br>
+`id = "aa-{{forloop.counter}}"` was changed for liked rating and creates variable `id=aa-1` <br>
+
+5. Various changes where made to the `ratings.js`
+   First it was changed from a `$.post` to a `$.ajax` I am not sure if that was required , but was recommended on slack.
+   
+This was added to disliked button
+```js
+ // get id of button clicked
+    let id = $(this).attr('id');
+    let d = id.split('-');
+
+// Assemble disliked
+    let dislike =`#bb-${d[1]}`;
+    $(dislike).text(response['new_disliked']);
+                
+// Assemble liked
+    let l = id.split('-');
+    like =`#aa-${l[1]}`;
+    $(like).text(response['new_liked']);
+```
+
+This was added to liked button
+```js
+// Get id of button clicked
+    let id = $(this).attr('id');
+    let l = id.split('-');
+
+// Assemble liked
+    let like =`#aa-${l[1]}`;
+    $(like).text(response['new_liked']);
+                
+// Assemble disliked
+    let d = id.split('-');
+    dislike =`#bb-${d[1]}`;
+    $(dislike).text(response['new_disliked']);
+```
+
+Output from Chrome developer inspect.
+```bash
+<div class="card-footer text-center">
+    <button data-part-number="307323" data-token="o5rV4b9nGsCZS09h7rpS8LkS9wcRfFzFb9SNmYk5V1lzr0iC4U2l7YV3UpyXlFEd" id="b-1" class="btn disliked-           button" data-toggle="tooltip" title="Vote disliked">
+            <i class="fas fa-thumbs-down fa-2x"></i>
+                        
+            <!-- Diskliked votes ---> 
+            <span id="bb-1" class="disliked_num">
+    			             0 
+            </span>
+            </button>
+			         
+    <button data-part-number="307323" data-token="o5rV4b9nGsCZS09h7rpS8LkS9wcRfFzFb9SNmYk5V1lzr0iC4U2l7YV3UpyXlFEd" id="a-1" class="btn liked-button" data-toggle="tooltip" title="Vote liked">
+            <i class="fas fa-thumbs-up fa-2x"></i>
+				        
+            <!-- Liked votes ---> 
+            <span id="aa-1" class="liked_num">
+    			             1 
+            </span>
+    </button>		        
 ```
 </details>
 
@@ -3036,6 +3142,8 @@ This has now deployed our app to Heroku.
 #### Acknowledgements
 - I would like to thank my fellow students for their help with my (Advice, Bug fixing, Issues, Queries) via [Slack](https://code-institute-room.slack.com/messages)
 - I would also like to thank my Code Institute Mentor **Chris Zielinski** (Display name ckz8780_mentor)
+- I would also like to thank my Code Institute Student **John Longgately** (Display name johnL3_alumni) <br>
+  for helping me with a soulution to have unique ID's for my parts card `like` and `disliked` rating buttons
 - Django Admin Panel changes (Add columns) solution was used <br> https://www.youtube.com/watch?v=KqbvhPLGJwA&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj&index=38
 - Django Admin Panel changes (Sort order) solution was used  <br> https://www.youtube.com/watch?v=j-CCNJmZQ6c&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj&index=39
 

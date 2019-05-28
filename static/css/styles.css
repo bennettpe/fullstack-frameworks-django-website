@@ -258,15 +258,37 @@ p.card-footer {
   border-radius: 300px;
 }
 
+/* CHANGE color on button */
 .btn-success {
-   border: 1px solid #9b9797; 
+   border: 1px solid #9b9797;
+   color: #fff;
 }
 .btn-warning {
    border: 1px solid #9b9797;
+   color: #fff;
 }
 
-.btn-vote {
-  border-color: transparent;
+.disliked-button {
+  border: 1px solid #9b9797; 
+  color: #d9534f;
+  background-color:transparent;
+}
+
+.liked-button {
+  border: 1px solid #9b9797;
+  color: #93c54b;
+  background-color:transparent;
+}
+
+/* Change colour of rating num */
+.disliked_num,
+.liked_num {
+  color: black;  
+}
+
+/* Remove button shadow */
+.btn:focus {
+  box-shadow: none;
 }
 
 /* CHANGE color on button hover */
@@ -279,31 +301,12 @@ p.card-footer {
   color: black;
 }
 
-.btn-success, .btn-warning {
-  color: #fff;
-}
-
 .disliked-button:hover,
 .liked-button:hover {   
   color: black;
-  border-color: transparent;
+  border: 1px solid #9b9797; 
   background-color:transparent;
 }
-
-.disliked-button-clicked,
-.liked-button-clicked {
-    color: #ffbf00; /* Amber */
-    border: 1px solid #ffbf00; 
-}
-
-.disliked-button-clicked:hover,
-.liked-button-clicked:hover {
-    color: #ffbf00; /* Amber */
-    border: 1px solid #ffbf00; 
-}
-
-
-
 
 
 

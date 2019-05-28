@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render
 from products.models import Product, UserRating
 from accounts.models import UserProfile
 from django.contrib.auth.decorators import login_required
@@ -7,13 +7,56 @@ from django.contrib import messages
 
 import json
 
+#RATE PRODUCT 
+@login_required   
+def ratings(request):
+    if request.method == 'POST':
+        success = False
+        part_number = request.POST.get('part_number') # From JS var data
+        button_clicked = request.POST.get('button')
+        
+        # User has rated this product so update current rating
+        try:
+            current_rating = UserRating.objects.get(product__part_number = part_number, user_profile__user__username = request.user.username)
+            product = current_rating.product
+            
+            if button_clicked in ['liked', 'disliked']:
+                current_rating.rating = button_clicked
+                current_rating.save()
+                new_liked = len(UserRating.objects.filter(product=product, rating='liked'))
+                new_disliked = len(UserRating.objects.filter(product=product, rating='disliked'))
+                success = True
+                
+        # User has not rated this product yet so create a user rating      
+        except UserRating.DoesNotExist:
+            product = Product.objects.get(part_number = part_number)
+            user_profile = UserProfile.objects.get(user = request.user)
+            
+            if product and user_profile:
+                UserRating.objects.create(product=product, user_profile=user_profile, rating=button_clicked)
+                new_liked = len(UserRating.objects.filter(product=product, rating='liked'))
+                new_disliked = len(UserRating.objects.filter(product=product, rating='disliked'))
+                success = True
+            
+            # Handle what happens if you cannot find the product or the profile (should never happen, but just in case)
+            else:
+                success = False
+                
+        response = {
+            'success': success,
+            'new_liked': new_liked,
+            'new_disliked': new_disliked
+        }
+        return HttpResponse(json.dumps(response), content_type="application/json")
+        
+    raise Http404('Invalid Request Method')
+
 # Create your views here.
 def products(request):
     return render(request, 'categories.html')
 
 # Product.objects.filter() will find all the product entries in the database whose category=engine
 # Then assign them to a 'products_list' variable and send that variable to engine.html template
-
 
 #ALTERNATOR & DYNAMO
 def alt_dyno(request):
@@ -253,50 +296,4 @@ def wshld_wipe_wash(request):
 #WIRING AND INTERNAL ELECTRICS
 def wire_int(request):
     return render(request, 'wire_int.html', 
-    {'products_list': Product.objects.filter(category='wire_int').order_by('part_name','part_number')})      
-
-
-#RATE PRODUCT 
-@login_required   
-def ratings(request):
-    if request.method == 'POST':
-        success = False
-        part_number = request.POST.get('part_number') # From JS var data
-        button_clicked = request.POST.get('button')
-        
-        # User has rated this product so update current rating
-        try:
-            current_rating = UserRating.objects.get(product__part_number = part_number, user_profile__user__username = request.user.username)
-            product = current_rating.product
-            
-            if button_clicked in ['liked', 'disliked']:
-                current_rating.rating = button_clicked
-                current_rating.save()
-                new_liked = len(UserRating.objects.filter(product=product, rating='liked'))
-                new_disliked = len(UserRating.objects.filter(product=product, rating='disliked'))
-                success = True
-        
-        # User has not rated this product yet so create a user rating      
-        except UserRating.DoesNotExist:
-            product = Product.objects.get(part_number = part_number)
-            user_profile = UserProfile.objects.get(user = request.user)
-            
-            if product and user_profile:
-                UserRating.objects.create(product=product, user_profile=user_profile, rating=button_clicked)
-                new_liked = len(UserRating.objects.filter(product=product, rating='liked'))
-                new_disliked = len(UserRating.objects.filter(product=product, rating='disliked'))
-                success = True
-            
-            # Handle what happens if you cannot find the product or the profile (should never happen, but just in case)
-            else:
-                success = False
-                
-        response = {
-            'success': success,
-            'new_liked': new_liked,
-            'new_disliked': new_disliked
-        }
-         
-        return HttpResponse(json.dumps(response), content_type="application/json")
-        
-    raise Http404('Invalid Request Method')
+    {'products_list': Product.objects.filter(category='wire_int').order_by('part_name','part_number')}) 
