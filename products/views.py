@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from products.models import Product, UserRating
 from accounts.models import UserProfile
 from django.contrib.auth.decorators import login_required
@@ -268,6 +268,7 @@ def ratings(request):
         try:
             current_rating = UserRating.objects.get(product__part_number = part_number, user_profile__user__username = request.user.username)
             product = current_rating.product
+            
             if button_clicked in ['liked', 'disliked']:
                 current_rating.rating = button_clicked
                 current_rating.save()
@@ -279,6 +280,7 @@ def ratings(request):
         except UserRating.DoesNotExist:
             product = Product.objects.get(part_number = part_number)
             user_profile = UserProfile.objects.get(user = request.user)
+            
             if product and user_profile:
                 UserRating.objects.create(product=product, user_profile=user_profile, rating=button_clicked)
                 new_liked = len(UserRating.objects.filter(product=product, rating='liked'))
@@ -286,15 +288,15 @@ def ratings(request):
                 success = True
             
             # Handle what happens if you cannot find the product or the profile (should never happen, but just in case)
-            #else:
-                #success = False
+            else:
+                success = False
+                
         response = {
             'success': success,
             'new_liked': new_liked,
             'new_disliked': new_disliked
         }
-        
+         
         return HttpResponse(json.dumps(response), content_type="application/json")
         
     raise Http404('Invalid Request Method')
-    

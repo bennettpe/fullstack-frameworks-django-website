@@ -4,6 +4,7 @@ from django.shortcuts import render
 from products.models import Product, UserProfile, UserRating
 from checkout.models import OrderLineItem, Order
 from django.db.models import Count, Sum
+from django.db.models.functions import Lower
 
 
 # Create your views here.
@@ -280,7 +281,7 @@ def charts(request):
 	#----------------------------
 	dataset4 = \
 	UserRating.objects.values('user_profile__user__username')\
-	    		 .order_by('user_profile__user__username')\
+	    		 .order_by(Lower('user_profile__user__username'))\
 	             .annotate(count=Count('user_profile__user__username'))
 	
 	# Create lists

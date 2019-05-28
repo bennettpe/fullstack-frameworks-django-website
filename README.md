@@ -1555,35 +1555,32 @@ This section is for setting up an **products** to allow users ability to select 
 
 ### Creating Rating for products (part2)
 1. Changes where made to the following files <br>
-    in **accounts app**
-    `admin.py`
-    `model.py`
-    in **products app**
-    `admin.py`
-    `model.py`
-
-    three things to test to make sure it's working as expected:
-
+    
+    in **accounts app**   
+    `admin.py`   
+    `model.py` <br>
+    
+    in **products app**   
+    `admin.py`   
+    `model.py`   
+    `parts_cards.html`   
+    `templatetags` (new folder)   
+    `url.py`   
+    `views.py` <br>
+    
+    in **static**   
+    `styles.css` <br>
+    
+    in **static\js**   
+    `ratings.js` (new) <br>
+    
+    Three things to test to make sure it's working as expected: <br>
     1) Can the same profile create ratings for two different products (should be yes) (DONE) <br>
     2) Can you create multiple ratings on the same product using different user profiles (should be yes) (DONE) <br>
     3) Can the same profile create two identical or different ratings on the same product (should be no) (DONE)
 
-2. Now need to figure out how to link this all together using buttons !!
-   going to setup a like and disliked icons for rating. <br>
-   
-    in **products app**
-    `parts_cards.html`
-    `views.py`
-    'templatetags' new folder
-
-    in **static**
-    `styles.css`
-    
-    in **static\js**
-    `ratings.js` new 
-    
 #### Creating Disked/Liked on Parts_cards.html
-1. I was looking for a solution to add the number of Disliked/Liked on the parts cards , my mentor helped me with finding a solution. <br>
+1. I was looking for a solution to add the number of Disliked/Liked on the parts cards , <br> my mentor helped me with finding a solution. 
    A template tag was created as follows, <br>
    
    Created a `templatetags` folder in the **products app** called **templatetags** <br> with a `product_tools.py` and an `__init__.py` to register it as a directory to look for stuff in. <br>
@@ -2803,6 +2800,14 @@ problem was due to having the following line in my **setting.py** file
 1. Had the following error when trying to open Heroku app `ModuleNotFoundError: No module named 'fullstack-frameworks-django-project'`
    On checking had the wrong module name it should be the name of the folder that contains `wsgi.py` file , so the Procfile should have
    been `web: gunicorn triumphant_triumphs.wsgi:application`
+   
+#### Readme Issue
+1. I had a problem where the diagram was not being displayed when you opened the readme, this was due to the file being a `pdf` so changed to a
+`jpg` and ok now.
+```bash
+![Database schema](static/wireframe/My_Full_Stack_Frameworks_with_Django_Database_Schema_Diagram.jpg)   
+Diagram of website database schema
+```
 </details>
 
 <details>

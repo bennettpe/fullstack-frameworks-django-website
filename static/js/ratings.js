@@ -15,7 +15,8 @@ $(".disliked-button").click(function(){
         if(response['success']) {
             $('#prod-liked').text(response['new_liked']);
             $('#prod-disliked').text(response['new_disliked']);
-        } else {
+        } 
+        else {
             console.log('it failed :(')
             console.log(response)
         }
@@ -39,7 +40,8 @@ $(".liked-button").click(function(){
         if(response['success']) {
             $('#prod-liked').text(response['new_liked']);
             $('#prod-disliked').text(response['new_disliked']);
-        } else {
+        } 
+        else {
             console.log('it failed :(')
             console.log(response)
         }

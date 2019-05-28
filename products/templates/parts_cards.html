@@ -1,6 +1,9 @@
 {% load static %} 
 {% load product_tools %}
 
+<!-- MESSAGES -->
+{% include 'messages.html' %}
+                
 <!-- Parts Cards -->
 <div class="row p-4">
     <!-- loop through the contents of products_list, 
@@ -22,7 +25,6 @@
             
             <!-- Javascript buttons pass (product.part_number & csrf_token) ---> 
             <div class="card-footer text-center">
-                
                     <button data-part-number={{ product.part_number }} data-token="{{ csrf_token }}"
                     class="disliked-button btn btn-outline-danger" data-toggle="tooltip" title="Vote disliked">
                         <!-- Diskliked votes ---> 
