@@ -185,7 +185,7 @@ Make sure once the workspace has been created in Cloud9 you create the following
 4. Create `.gitignore` and `README.md` files 
 
 5. Create `requirements.txt` file <br>
-   ```python
+   ```bash
    sudo pip freeze --local > requirements.txt
    ```
    output from bash terminal
@@ -265,7 +265,7 @@ Make sure once the workspace has been created in Cloud9 you create the following
    Cleaning up...    
    ```
 10.  Create `requirements.txt` file <br>
-   ```python
+   ```bash
    sudo pip freeze --local > requirements.txt
    ```
    output from bash terminal
@@ -489,7 +489,7 @@ This section is for setting up an **authentication mechanism** to allow users to
 
 5. Create a **templates** folder in the **accounts** app <br>
    Create a new file called **index.html**
-   ```python
+   ```html
    <!DOCTYPE html>
     <html>
         <head>
@@ -761,7 +761,7 @@ This section is for setting up an **authentication mechanism** to allow users to
     ```
 
     add
-    ```python
+    ```bash
     from django.contrib.auth.decorators import login_required
     
     @login_required <== add this line
@@ -832,7 +832,7 @@ This section is for setting up an **authentication mechanism** to allow users to
 #### Password Reset Templates
 1.  Create new folder **registration** in **fullstack-frameworks-django-project/templates/** <br>
     Create new file   **password_reset_form.html** in **fullstack-frameworks-django-project/templates/registration**
-    ```python
+    ```html
      <!--Password Reset Form --> 
 
     {% extends 'base.html' %}
@@ -957,7 +957,7 @@ Step 03 - Django-forms-bootstrap, Static files, Install Travis, Stripe.
    ```
 
 3.  Update `requirements.txt` file <br>
-   ```python
+   ```bash
    sudo pip freeze --local > requirements.txt
    ```
    output from bash terminal
@@ -1096,7 +1096,7 @@ Step 03 - Django-forms-bootstrap, Static files, Install Travis, Stripe.
     ```
     
 2.  Update `requirements.txt` file <br>
-   ```python
+   ```bash
    sudo pip3 freeze --local > requirements.txt
    ```
    output from bash terminal
@@ -1265,7 +1265,7 @@ This section is for setting up an **products** to allow users ability to select 
     ```
     
 6. Update `requirements.txt` file <br>
-    ```python
+    ```bash
     sudo pip3 freeze --local > requirements.txt
     ```
 
@@ -1892,11 +1892,10 @@ This section is for setting up an **customer payment mechanism** to allow users 
 
 4. Update file **base.html** in <i>fullstack-frameworks-django-project/checkout/templates</i> <br>
    to include stripe js in head section
-    ```python 
+    ```html
     <!-- STRIPE -->          <== add this section
     {% block head_js %}
     {% endblock head_js %}
-    </head>
     ```
 
 #### Create javascript for Stripe
@@ -1978,7 +1977,7 @@ Step 06 - CONTACT App
     ```
     
 4. Update `requirements.txt` file <br>
-    ```python
+    ```bash
     sudo pip3 freeze --local > requirements.txt
     ```
 
@@ -2026,7 +2025,7 @@ Step 07 - ABOUT App
     ```
  
      ouput from bash terminal
-    ```python
+    ```bash
     bennettpe:~/workspace (master) $ python3 manage.py startapp about 
     ```
     
@@ -2091,7 +2090,7 @@ Step 09 - Adding S3 to Django
     ```
     
 2. Update `requirements.txt` file <br>
-    ```python
+    ```bash
     sudo pip3 freeze --local > requirements.txt
     ```
 
@@ -2127,7 +2126,7 @@ Step 09 - Adding S3 to Django
     ```
     
 4. Update `requirements.txt` file <br>
-    ```python
+    ```bash
     sudo pip3 freeze --local > requirements.txt
     ``` 
 
@@ -2467,26 +2466,39 @@ I tested to make sure the following worked as designed and <span style="color:gr
 
 * Click on **reset password button** (url goes to `/accounts/password-rest-done`) 
 
-* Message after clicking **reset password button** <br>
+* Message after clicking **reset password** button <br>
 ```
 We have emailed instructions for setting your password to the e-mail address you used to register.
 Please check your email inbox or spam folder.
 ```
 
+* In the email sent theres a link to click which will allow you to create a new password.
+
+* If you click on the link you are taken to a `Set New Password` page (url goes to '/accounts/password-reset/...)
+
+* Enter **New Password**
+* Click on **Save** button** (url goes to `/accounts/password-reset/complete`)
+
+* Message after clicking **save** button <br>
+```
+Your password has been successfully reset. You can now log in.
+```
+* Click on **Log in to Triumphant Triumphs** button (url goes to `accounts/login`)
+
 
 **Sign-out**   
 I tested to make sure the following worked as designed and <span style="color:green">All passed</span>
 
-* When click on **sign out icon** <br> (Message saying `You have signed out`)
+* When click on **log out icon** <br> (Message saying `You have successfully been logged out`)
 
 
 **NavBar**    
 I tested to make sure the following worked as designed and <span style="color:green">All passed</span>
 
-When `signed in` you see the following icons <br> (Home, All Recipes, Add Recipes, My Recipes & Sign Out)   
+When `logged in` you see the following icons <br> (About, Parts, Log Out(xxx), My Recipes & Sign Out)   
 * Click on **Add Recipes** icon (route to `/<username>/add_recipe`)   
 * Click on **My Recipes** icon (route to `/<username>/by_my_recipes`) <br> if there are no recipes by username (Message saying `You don't have any recipes !`)   
-  When `not signed` in you see the following icons (Home, All Recipes, Add Recipes, Sign in & Register)   
+  When `not logged in` in you see the following icons (About, Parts, Register, Log in, Cart, Contact, Charts)   
 * Click on **Home** icon (route to `/base)`   
 * Click on **All Recipes** icon (route to `/by_recipes)`   
 * Click on **sign in** icon (route to `/sign_in_user)`   
@@ -2667,7 +2679,7 @@ Listed below are some of the issues I have had building the website , but they h
     ```
 
 3.  Update `requirements.txt` file <br>
-    ```python
+    ```bash
     sudo pip3 freeze --local > requirements.txt
     ```
 
@@ -2731,7 +2743,7 @@ Listed below are some of the issues I have had building the website , but they h
     
 issue was due to background url not being correct , should have been 
 
-```css
+```bash
     background: url("../img/vehicles/Triumph_Spitfire_MKIV_colors.svg") no-repeat center; 
 ```
 
@@ -2808,7 +2820,7 @@ Diagram of website database schema
 4. Button code in `parts_cards.html` was 
 
 Changed from this
-```python
+```html
     <button data-part-number={{ product.part_number }} data-token="{{ csrf_token }}"
         class="disliked-button btn btn-outline-danger" data-toggle="tooltip" title="Vote disliked">
             <!-- Diskliked votes ---> 
@@ -2828,7 +2840,7 @@ Changed from this
     </button>
 ```
 To this
-```python
+```html
     <button data-part-number={{ product.part_number }} data-token="{{ csrf_token }}"
         id ="b-{{forloop.counter}}"
         class="btn disliked-button" data-toggle="tooltip" title="Vote disliked">
@@ -2921,6 +2933,27 @@ Output from Chrome developer inspect.
 Step 14 -  Deployment Instructions
 </summary>
 <p>
+
+#### Issue with Django password validation
+1. I was having a problem with the Django password validation not being picked up , apparently according to `niel_ci` it was due to 
+   using `extend user model` which must ignore password validation so had to add the following to the `form.py` so that password is now
+   checked, also added to password2 validation.
+```python
+from django.contrib.auth import password_validation
+
+def clean_password1(self):
+    password1 = self.cleaned_data.get('password1')
+        
+    password_validation.validate_password(
+        self.cleaned_data['password1'],
+        self.instance)
+        
+    return password1
+
+    password_validation.validate_password(
+           self.cleaned_data['password2'],
+           self.instance)
+```
 
 ## Deployment Instructions
 
@@ -3146,4 +3179,5 @@ This has now deployed our app to Heroku.
   for helping me with a soulution to have unique ID's for my parts card `like` and `disliked` rating buttons
 - Django Admin Panel changes (Add columns) solution was used <br> https://www.youtube.com/watch?v=KqbvhPLGJwA&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj&index=38
 - Django Admin Panel changes (Sort order) solution was used  <br> https://www.youtube.com/watch?v=j-CCNJmZQ6c&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj&index=39
+- Created my own maxlength password validator (`accounts/validator.py`) <br> How to Create Your Own Django Password Validator <br> https://sixfeetup.com/blog/how-to-create-custom-password-validators-in-django
 
