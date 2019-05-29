@@ -2477,13 +2477,13 @@ Please check your email inbox or spam folder.
 * If you click on the link you are taken to a `Set New Password` page (url goes to '/accounts/password-reset/...)
 
 * Enter **New Password**
-* Click on **Save** button** (url goes to `/accounts/password-reset/complete`)
+* Click on **Save** button** (url to `/accounts/password-reset/complete`)
 
 * Message after clicking **save** button <br>
 ```
 Your password has been successfully reset. You can now log in.
 ```
-* Click on **Log in to Triumphant Triumphs** button (url goes to `accounts/login`)
+* Click on **Log in to Triumphant Triumphs** button (url to `accounts/login`)
 
 
 **Sign-out**   
@@ -2495,140 +2495,321 @@ I tested to make sure the following worked as designed and <span style="color:gr
 **NavBar**    
 I tested to make sure the following worked as designed and <span style="color:green">All passed</span>
 
-When `logged in` you see the following icons <br> (About, Parts, Log Out(xxx), My Recipes & Sign Out)   
-* Click on **Add Recipes** icon (route to `/<username>/add_recipe`)   
-* Click on **My Recipes** icon (route to `/<username>/by_my_recipes`) <br> if there are no recipes by username (Message saying `You don't have any recipes !`)   
-  When `not logged in` in you see the following icons (About, Parts, Register, Log in, Cart, Contact, Charts)   
-* Click on **Home** icon (route to `/base)`   
-* Click on **All Recipes** icon (route to `/by_recipes)`   
-* Click on **sign in** icon (route to `/sign_in_user)`   
-* Click on **Register** icon (route to `/register_user)`   
+When `logged in` you see the following icons (About, Parts, Log Out(xxx), Cart, Contact, Charts)   
+* Click on **About** icon (url goes to `/about/`)   
+* Click on **Parts** icon this give you a dropdown for the following; <br>
+  **All Parts** (url to `/products/categories/`) <br>
+  **Body Parts & Fittings** (url to `/products/body/`) <br>
+  **Brake System** (url to `/products/brakes/`) <br>
+  **Clutch, Gearbox & Overtime** (url to `/products/clutch/`) <br>
+  **Cooling System** (url to `/products/cooling/`)<br>
+  **Electrical** (url to `/products/electrical/`) <br>
+  **Engine** (url goes to `/products/engine/`) <br>
+  **Exhaust System** (url to `/products/exhaust/`) <br>
+  **External** (url to `/poducts/external`) <br>
+  **Fuel system** (url to `/products/fuel`) <br>
+  **Interior** (url to `/products/interior`) <br>
+  **Roadwheels** (url to `/products/road_wheels/`) <br>
+  **Steering & Suspension** `/products/steering/`) <br>
+* Click on **Log Out** icon (url to `/index/`) <br>
+* Click on **Cart** icon (url to `/cart/`) <br>
+* Click on **Contact** icon (url to `/contact/`) <br>
+* Click on **Charts** icon (url to `/charts/`) 
 
+When **not logged in** you see the following icons (About, Parts, Register, Log in, Cart, Contact, Charts)   
+* Click on **Register** icon (url to `/accounts/register/)`   
+* Click on **Log In** icon (url to `/accounts/login/)`   
+   
 
-**/base**    
+When clicking on the **Parts** dropdown in the navbar it goes to the following pages
+
+**/body/**    
 I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>    
-* When `signed in` you see the following buttons **(Add Recipes, All Recipes, My Recipes)** <br>
-* Click on **Add Recipes** button <br> (route to `/<username>/add_recipe`)   
-* Click on **All Recipes** button <br> (route to `/by_recipes`)   
-* Click on **My recipes** button <br> (route to `/<username/by_my_recipes`)<br> if there are no recipes by username <br> (Message saying `You don't have any recipes !`)   
-* Welcome message shows username signed in.
+* Click on **Home** icon <br> (url to `/index/`)   
+* Click on **products** breadcrumb <br> (url to `/products/categories/`)   
+* Click on **chassis** breadcrumb <br> (url  to `/products/chassis/`)
+* Click on **inner body** breadcrumb <br> (url to `/products/inner_body/`)
+* Click on **outer body** breadcrumb <br> (url to `/products/outer_body/`)
 
 
-**/add_recipe**   
-I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>                  
+**/brakes/**    
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>    
+* Click on **Home** icon <br> (url to `/index/`)   
+* Click on **products** breadcrumb <br> (url to `/products/categories/`)   
+* Click on **front & rear brakes** breadcrumb <br> (url to `/products/brakes_fr/`)
+* Click on **handbrake** breadcrumb <br> (url to `/products/handbrake/`)
+
+
+**/clutch/**    
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>    
+* Click on **Home** icon <br> (url to `/index/`)   
+* Click on **products** breadcrumb <br> (url to `/products/categories/`)   
+* Click on **gearbox** breadcrumb <br> (url to `/products/gearbox/`)
+* Click on **gearbox mk4** breadcrumb <br> (url to `/products/gearbox_mk4/`)
+* Click on **gearbox 1500** breadcrumb <br> (url to `/products/gearbox_1500/`)
+* Click on **overdrive** breadcrumb <br> (url to `/products/overdrive/`)
+* Click on **overdrive_j** breadcrumb <br> (url to `/products/overdrive_j/`)
+
+
+**/cooling/**    
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>    
+* Click on **Home** icon <br> (url to `/index/`)   
+* Click on **products** breadcrumb <br> (url to `/products/categories/`)   
+
+
+**/electrical/**    
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>    
+* Click on **Home** icon <br> (url to `/index/`)   
+* Click on **products** breadcrumb <br> (url to `/products/categories/`)   
+* Click on **charging & starting** breadcrumb <br> (url to `/products/alt_dyno/`)
+* Click on **ignition** breadcrumb <br> (url to `/products/ignition/`)
+* Click on **heating** breadcrumb <br> (url to `/products/heating/`)
+* Click on **lamps** breadcrumb <br> (url to `/products/lamps/`)
+* Click on **instruments and switches** breadcrumb <br> (url to `/products/int_sw/`)
+* Click on **windscreen wipers and washers** breadcrumb <br> (url to `/products/wshld_wipe_wash/`)
+* Click on **wiring & internal electrics** breadcrumb <br> (url to `/products/wire_int/`)
+
+
+**/engine/**    
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>    
+* Click on **Home** icon <br> (url to `/index/`)   
+* Click on **products** breadcrumb <br> (url to `/products/categories/`)   
+* Click on **crankshaft** breadcrumb <br> (url to `/products/crankshaft/`)
+* Click on **oil sump** breadcrumb <br> (url to `/products/oilsump/`)
+
+**/exhaust/**    
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>    
+* Click on **Home** icon <br> (url to `/index/`)   
+* Click on **products** breadcrumb <br> (url to `/products/categories/`)   
+
+
+**/external/**    
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>    
+* Click on **Home** icon <br> (url to `/index/`) 
+* Click on **products** breadcrumb <br> (url to `/products/categories/`) 
+* Click on **boot** breadcrumb <br> (url to `/products/boot/`)   
+* Click on **bumpers** breadcrumb <br> (url to `/products/bumpers/`)
+* Click on **mouldings** breadcrumb <br> (url to `/products/mouldings/`)
+* Click on **radiator grill** breadcrumb <br> (url to `/products/rad_grill/`)
+* Click on **windscreen** breadcrumb <br> (url to `/products/windscreen/`)
+
+
+**/fuel/**    
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>    
+* Click on **Home** icon <br> (url to `/index/`) 
+* Click on **products** breadcrumb <br> (url to `/products/categories/`) 
+* Click on **fuel pipes** breadcrumb <br> (url to `/products/fuel_pipes/`)   
+* Click on **fuel tank & pump** breadcrumb <br> (url to `/products/fuel_tank/`)
+
+
+**/interior/**    
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>    
+* Click on **Home** icon <br> (url to `/index/`) 
+* Click on **products** breadcrumb <br> (url to `/products/categories/`) 
+* Click on **dashboard** breadcrumb <br> (url to `/products/dashboard/`)   
+* Click on **hardtop** breadcrumb <br> (url to `/products/hardtop/`)
+* Click on **hood & tonneau** breadcrumb <br> (url to `/products/hood/`)
+* Click on **seats** breadcrumb <br> (url to `/products/seats/`)
+* Click on **trim kits** breadcrumb <br> (url to `/products/trim_kits/`)
+
+
+**/roadwheels/**    
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>    
+* Click on **Home** icon <br> (url to `/index/`)   
+* Click on **products** breadcrumb <br> (url to `/products/categories/`)   
+
+
+**/steering/**    
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>    
+* Click on **Home** icon <br> (url to `/index/`) 
+* Click on **products** breadcrumb <br> (url to `/products/categories/`) 
+* Click on **drive line** breadcrumb <br> (url to `/products/drive_line/`)   
+* Click on **steering** breadcrumb <br> (url to `/products/steering/`)
+* Click on **suspension** breadcrumb <br> (url to `/products/suspension/`)
+
+**parts cards**
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>  
+Each product category has `parts cards` for each part
+    **Vote Disliked** (Click to vote disliked)
+    **Vote Liked** button (Click to vote liked)
+    **Qty** selection box (Enter quantity or use up/down arrows to increase/decrease amount required)
+    * Click on **Add to my cart** button (url to `/chart/`) amount on `cart` navbar increases / decreases
+
+
+**/cart/**
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>  
+* Click on **Home** icon <br> (url to `/index/`) 
+* Click on **products** breadcrumb <br> (url to `/products/categories/`) 
+
+`parts cards` added to cart are shown , each `parts card` has the following
+ **Qty** selection box (Enter quantity or use up/down arrows to increase/decrease amount required)
+ If you increse / decrease the `Qty` the `TOTAL` cost updates accordinly.
+ If you decrease `Qty` to `0` the the `parts card` is removed from your basket.
+ You can Click on the `products` breadcrumb if you would like to add more items to your basket.
+ * click on **checkout** button (url to `/checkout/`)
+ 
+ 
+ **/checkout/**
+ I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br> 
+ * Click on **Home** icon <br> (url to `/index/`) 
+ * Click on **products** breadcrumb <br> (url to `/products/categories/`) 
+ * Click on **cart** breadcrumb <br> (url to `/products/cart/`)
+ 
+ 
+The checkout form has the following fields which are all required unless indicated as follows: <br>
+**Order Details** <br>
     
-The add recipe form has the following input fields:   
-    **Cuisine** (Select cusine from dropdown)  
-    **Categories** (Select category(s) from dropdown) to multi-select hold cntl key  
-    **Author** (Input original recipe author)  
-    **Recipe name** (Input recipe name)  
-    **Recipe description** (Input recipe description)  
-    **Recipe image** (Input recipe url)  
-    **Preperation time** (Input hh:mm)  
-    **Cooking time** (Input hh:mm)  
-    **Serves** (Input servings)  
-    **Difficulty** (Select difficulty from dropdown  
-    **Main ingredient** (Input main ingredient)  
-    **Allergen** (Select allergen(s) from dropdown)to multi-select hold cntl key  
-    **Ingredients** (Input ingredient) Click `Add ingredent` if more ingredients required  
-    **Instructions** (Input Instructions) Click `Add instructions` if more instructions required    
+**full name** (Input name) Max length=50 <br>
+**Phone number** (Input phone number) Max length=20 <br> 
+**Country** (Input Country) Max length=40 <br>
+**Postcode** (Input Postcode) Max length=20 (Can be left blank) <br>
+**Town or city** (Input Town or city) Max length=40 <br>
+**Street address1** (Input Street address1) Max length=40 <br>
+**Street address2** (Input Street address2) Max length=40 <br>
+**County** (Input County) Max length=40 <br>
 
-* Click on **Add recipe** button <br> (route to `'url_for('add_recipe', username=session['username'])'`) <br> if field not completed then (Message saying `Please fill in this field`) <br>
-  when all fields are complete recipe is added to mongodb and <br> (Message saying `Your recipe has been added`)   
+The payments section has the following fields which are all required to be completed as follows: <br>
+**Payment Details** <br>
+    
+**Card number** <br>
+    Enter **blank Card number** (Message saying `Could not find payment infomation`) <br>
+    Enter **invalid Card number** (Message saying `The card number is not a valid credit card number`) <br>
+    Enter **valid Card number** for testing stripe use `4242424242424242` <br>
 
-* Click on **Cancel** button <br> (route to `/base` )
+**Security code (CVV)** <br>
+    Enter **blank Security code** (No message as apparently ok as some banks don't require a CVV) <br>
+    Enter **invalid Security code** (Message saying `Your card's security code is invalid`) <br>
+    Enter **valid Security code** for testing stripe use `111` <br>
+
+**Expiry Month** <br>
+    Enter **invalid Expiry month** (Message saying `Your card's expiration month is invalid`) <br>
+    Enter **valid Expiry month** for testing stripe use `1`
+
+**Expiry Year** <br>
+    Enter **invalid Expiry year** (Message saying `Your card's expiration year is invalid`) <br>
+    Enter **valid Expiry year** for testing stripe use `2020`
+    
+click on **submit payment** button (url to `/index/`) (Message saying `You have successfully paid`) 
+  
+  
+ **/contact/**
+ I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br> 
+  * Click on **Home** icon <br> (url to `/index/`) 
+  * Click on **products** breadcrumb <br> (url to `/products/categories/`) 
+  * Click on **cart** breadcrumb <br> (url to `/products/cart/`)
+
+The contact form has the following fields which are all required unless indicated as follows: <br>
+**Contact form** <br>
+    
+**Full name** (Input name) <br>
+**Email** (Input Email) <br> 
+**Phone number** (Input Phone number 10 or 11 digits, but can be left blank if required) <br>
+**Your enquiry** (Input Enquiry) <br>
+
+**Full name ** <br>
+    Enter **Blank full name** (Message saying `Please fill in this field`) <br>
+    Enter **valid Full name** for testing used `fredbloggs`
+
+**Email ** <br>
+    Enter **Blank email** (Message saying `Please fill in this field`) <br>
+    Enter **Valid email** for testing used `valid email address`
+    
+**Phone number ** <br>
+    Enter **Blank phone number** (Message saying `Please fill in this field`) <br>
+    Enter **Valid email** for testing used `fredbloggs`
+    
+**Your enquiry ** <br>
+    Enter **Blank enquiry** (Message saying `Please fill in this field`) <br>
+    Enter **Valid enquiry** for testing used `testing testing`
+
+click on **submit enquiry** button (url to `/index/`) <br> 
+(Message saying `Thanks for getting in touch with us, We will get back to you as soon as possible`) 
+
+Your should recive a email thanking you for your enquiry as follows
+```
+Your contact form enquiry
+
+Triumphant Triumphs <valid email address>
+6:33 PM (6 minutes ago)
+to me
+
+Hi fred bloggs!
+
+Thank you for your enquiry. We will be in touch as soon as possible.
+
+Please find your details and enquiry message below.
+
+Contact Name:
+fred bloggs
+
+Email:
+valid email address
+
+Phone:
 
 
-**/by_recipes**   
-I tested to make sure the following worked as designed and <span style="color:green">All passed</span>   
-* Click on **allergens** button to search dropdown for recipes by not allergen <br> (route to `/not_by_allergen/<allergen_name>`)   
-* Click on **Category** button to search dropdown for recipes by category <br> (route to `/by_category/<category_name>`)   
-* Click on **Difficulty** button to search dropdown for recipes by category <br> (route to `/by_difficulty/<difficulty_name>`)   
-* Click on **Main ingredient** button to search dropdown for recipes by category <br> (route to `/by_main_ingredient/<main_ingredient>`)   
-* Click on **Cuisine Card** to search for recipes by cuisine <br> (route to `/by_cuisine/<cuisine_name>`) each cuisine card shows number of recipes by cuisine.   
+Enquiry:
+test 
 
+yours sincerely
 
-**/by_my_recipes**   
-I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>
-* Click on **My Recipes** icon to view recipes by username <br> (route to `/<username>/by_my_recipes`) <br> if there are no recipes by username (Message saying `You don't have any recipes !`)   
-* Click on **recipe card** to view recipe details <br> (route to `/view_my_details_recipe/<recipe_id>`)   
-* Click on **Delete recipe** button to delete recipe <br> (route to `/<username>/delete_recipe/<recipe_id>'`)   
-* Click on **Edit recipe** button to edit recipe <br> (route to `/<username>/edit_recipe/<recipe_id>'`) you will see edit recipe form.   
+Triumphant Triumphs
+```
 
+**/charts/**
+I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>  
+* Click on **Home** icon <br> (url to `/index/`) <br>
+There are 5 charts as follows:
 
-**/edit_recipe**   
-I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>                  
-The edit recipe form has the following fields which are filled in by the recipe to be edited:   
-    **Cuisine** (cusine from dropdown)  
-    **Categories** (category(s) from dropdown)  
-    **Author** (original recipe author)  
-    **Recipe name** recipe name)  
-    **Recipe description** (recipe description)  
-    **Recipe image** (recipe url)  
-    **Preperation time** (hh:mm)  
-    **Cooking time** (hh:mm)  
-    **Serves** (servings)  
-    **Difficulty** (difficulty from dropdown)  
-    **Main ingredient** (main ingredient)  
-    **Allergen** (allergen(s) from dropdown)  
-    **Ingredients** (ingredient) Click `Add ingredent` if more ingredients required.  
-    **Instructions** (Instructions) Click `Add instructions` if more instructions required.
+* Products by Categories (Showing number of parts per Category)
+* Product Ratings (Showing Total number of Disliked / Liked)
+* Product Ratings by user (Showing Total number of disliked / Liked by user)
+* Products Sold (Showing the number of Products sold)
+* Orders by Date (Showing Total number of orders by date)
 
-Click on **Update recipe** button <br> (route to `/update_recipe/<recipe_id>`) <br> 
-if field not completed then (Message saying `Please fill in this field`) <br>
-when all fields are complete recipe is updated on mongodb   
-
-Click on **Cancel** button <br> (route to `/base` )
-
-
-**/by_cuisine**   
-I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>
-* Click on `recipe card` to view recipe details <br> (route to `/view_details_recipe/<recipe_id>`)   
-* Click on **Return to recipes** button to return to <br> (route to `by_recipes`)   
-* Click on **Vote like** button to vote like recipe and increase ratings in recipe card <br> (route to `/vote_like_recipe/<recipe_id>/<cuisine_name>`)   
-* Click on **Vote dislike** button to vote dislike recipe and decrease ratings in recipe card <br> (route to `/vote_dislike_recipe/<recipe_id>/<cuisine_name>`)   
-* Both vote_like_recipe and vote_dislike_recipe <br> 
-(redirect to `return redirect(url_for('vote_if_negative',cuisine_name=cuisine_name))`) <br>
-to check if votes are not negative then <br>
-(redirect to `return redirect(url_for('by_cuisine',cuisine_name=cuisine_name))`      
 
 #### Responsive screen testing
 
-I created some Bootstrap card grids and there was an issue with different size cards , due to image size, issue was resolved by applying the following changes to the height based on size of device. <br> See https://stackoverflow.com/a/47698201/1375163  
+I created some Bootstrap card grids and there was an issue with different size cards , due to image size, issue was resolved by applying the following changes to the height based on size of device. <br> 
 
 ```css
-/* Equal-height card images, cf. https://stackoverflow.com/a/47698201/1375163*/
-.card-img-top {
-    /*height: 11vw;*/
-    object-fit: cover;
+/* ----- Changes to Padding for Messages ----- */ 
+
+/* iPhone 5 & 5S in portrait & landscape */
+@media (min-width: 320px) and (max-width: 568px) {
+    body { 
+     padding:100px 0 0 0; 
 }
-  /* Small devices (landscape phones, 576px and up) */
-  @media (min-width: 576px) {
-    .card-img-top {
-        height: 19vw;
+    
+/* ADD fixed, scrollable navbar */
+/* see https://codepen.io/ondrejsvestka/pen/BZJEpp */
+.fixed-top .navbar-collapse {
+  max-height: 300px;
+  overflow-y: auto;}    
+}
+
+/* If larger footer */
+@media (max-width: 767px) {
+    body { 
+     padding:70px 0 0 0; /*(top,right,bottom,Left) */
     }
-  }
-  /* Medium devices (tablets, 768px and up) */
-  @media (min-width: 768px) {
-    .card-img-top {
-        height: 16vw;
+    .about-container {
+     min-height: calc(100vh - 184px); /* navbar 50px, footer 134px */
+    }   
+}
+
+/* If Smaller footer */
+@media (min-width: 768px) {
+    body { 
+     padding:70px 0 0 0;
     }
-  }
-  /* Large devices (desktops, 992px and up) */
-  @media (min-width: 992px) {
-    .card-img-top {
-        height: 11vw;
-    }
-  }
-  /* Extra large devices (large desktops, 1200px and up) */
-  @media (min-width: 992px) {
-    .card-img-top {
-        height: 11vw;
-    }
-  }
+    .about-container {
+     min-height: calc(100vh - 100px); /* navbar 50px, footer 50px */
+    }   
+}
 ```
 
-I used open source Bootstrap theme (Creative) by [Start Bootstrap](https://startbootstrap.com/) so responsive screen issues should be ok.
+I used open source Bootstrap theme (Sandstone) by [Bootswatch](https://bootswatch.com/sandstone/) so responsive screen issues should be ok.
 
 I inspected via google chrome developer each html page on the following devices <br>(Responsive, iphone 5/se, iphone 6/7/8/plus, iphone x, ipad, ipad pro) and made any corretions as required.
 
@@ -2639,6 +2820,7 @@ Testing for this project was implemented manually and the majority of the testin
 Refactoring was implemented while developing this project and I am sure there are things that can be done to streamline code even more, in an additional phase of this project.
 1. Creating dynamic product templates.
 2. Class based views 
+3. Add more error validation to forms
 </details>
 
 <details>
@@ -2801,6 +2983,7 @@ Diagram of website database schema
             raise ValidationError("Invalid Password, must contain between 8 and 20 characters")
         return password1
 ```
+3. This has been fix now to use django password validation see (Issue with Django password validation)
 
 #### Issue with rating icons not refreshing
 1. I had an issue with my button icons not updating the number of liked / disliked when clicked , So I added `location.reload();` in each 
@@ -3180,4 +3363,6 @@ This has now deployed our app to Heroku.
 - Django Admin Panel changes (Add columns) solution was used <br> https://www.youtube.com/watch?v=KqbvhPLGJwA&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj&index=38
 - Django Admin Panel changes (Sort order) solution was used  <br> https://www.youtube.com/watch?v=j-CCNJmZQ6c&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj&index=39
 - Created my own maxlength password validator (`accounts/validator.py`) <br> How to Create Your Own Django Password Validator <br> https://sixfeetup.com/blog/how-to-create-custom-password-validators-in-django
+- scrollable navbar <br>
+https://codepen.io/ondrejsvestka/pen/BZJEpp
 
