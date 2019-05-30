@@ -2345,7 +2345,7 @@ Step 10 - Adding CHARTS App
 
 <details>
 <summary>
-Step 11 - Cloud9 File Directory Structure
+Step 11 - Cloud9 Templates
 </summary>
 <p>
    
@@ -2354,9 +2354,6 @@ Step 11 - Cloud9 File Directory Structure
 The following is a list of templates in the Cloud9 environment.
 
 The **Breadcrumb nav link** is the main category and the other pages that are accessed via url links
-<style>
-td {font-size: 14px}
-</style>
 
 | ﻿App                             | Template                           | Description                        | Breadcrumb  navbar   |
 |----------------------------------|------------------------------------|------------------------------------|----------------------|
