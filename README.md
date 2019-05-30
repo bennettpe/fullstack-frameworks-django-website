@@ -2349,53 +2349,85 @@ Step 11 - Cloud9 File Directory Structure
 </summary>
 <p>
    
-### Cloud9 File directory structure
-The following file directory structure was created in the Cloud9 environment.
-```
-├── static
-│   ├── css                         # Bootstrap files
-│   │   │
-│   │   ├── agency.min.css
-│   │   └── my-creative.css         # my css file
-│   │
-│   ├── images                 
-│   │   └── website                 # cookbook image files
-│   │
-│   ├── img                         # Website category images
-│   ├── js                          # Bootstrap files
-│   ├── scss                        # Bootstrap files
-│   ├── vendor                      # Vendor files
-│   └── wireframe                   # Wireframe files
-│    
-├── templates                       # html templates
-│   ├── add_recipe.html             # add recipe form
-│   ├── base.html                   # base recipe page
-│   ├── by_category.html            # recipes by category search
-│   ├── by_cuisine.html             # recipes by cuisine search
-│   ├── by_difficulty.html          # recipes by difficulty search
-│   ├── by_main_ingredient.html     # recipes by main ingredient search
-│   ├── by_my_recipes.html          # recipes by username search
-│   ├── edit_recipes.html           # edit recipe form
-│   ├── footer.html                 # footer
-│   ├── head.html                   # links
-│   ├── list_all_recipes.html       # list all recipes page
-│   ├── messaging.html              # flash messages
-│   ├── navbar.html                 # navbar
-│   ├── not_by_allergen.html        # recipes not by allergen search
-│   ├── register_user.html          # register user
-│   ├── script.html                 # scripts
-│   ├── view_details_recipe.html    # view recipe details
-│   └── view_my_details_recipe.html # view user recipe details
-│
-├── .gitignore                      # Git ignore file
-├── app.py                          # Flask file
-├── forms.py                        # WTF forms file    
-├── mongo.py                        # Manual unit testing file(s)
-├── procfile                        # App dynos Heroku file
-├── README.md                       # Readme file
-├── requirements.txt                # python packages file
-└── secretkey.py                    # Create secretkey
-```  
+### Cloud9 Templates
+
+The following is a list of templates in the Cloud9 environment.
+
+The **Breadcrumb nav link** is the main category and the other pages that are accessed via url links
+<style>
+td {font-size: 14px}
+</style>
+
+| ﻿App                             | Template                           | Description                        | Breadcrumb  navbar   |
+|----------------------------------|------------------------------------|------------------------------------|----------------------|
+| about                            | about.html                         | About company page                 |
+| accounts                         | index.html                         | Index / Home page                  |
+| accounts                         | login.html                         | Log in page                        |
+| accounts                         | registration.html                  | Registration page                  |
+| cart                             | cart.html                          | Cart page                          |
+| charts                           | charts.html                        | Charts page                        |
+| contact                          | contact.html                       | Contact page                       |
+| cart                             | cart.html                          | Cart page                          |
+| products                         | alt_dyno.html                      | Alternator, Dynamo & Starter page  | electrical.html
+| products                         | body.html                          | Bodyshell & Bonnet page            |  
+| products                         | boot.html                          | Boot page                          | external.html
+| products                         | brakes.html                        | Brakes page                        |
+| products                         | brakes_fr.html                     | Brakes Front & Rear page           | brakes.html 
+| products                         | brakes_handbrake.html              | Hanbrake page                      | brakes.html
+| products                         | bumpers.html                       | Bumpers page                       | external.html
+| products                         | categories.html                    | Products cards page                |
+| products                         | chassis.html                       | Chassis page                       | body.html
+| products                         | clutch.html                        | Clutch,gearbox & overdrive page    |
+| products                         | cooling.html                       | Cooling page                       | cooling.html
+| products                         | crankshaft.html                    | Crankshaft page                    | engine.html
+| products                         | dashboard.html                     | Dashboard page                     | interior.html
+| products                         | door.html                          | Door page                          | exterior.html
+| products                         | drive_line.html                    | Drive Line page                    | steering.html
+| products                         | electrical.html                    | Battery page                       | 
+| products                         | engine.html                        | Cylinder block & head page         |
+| products                         | exhaust.html                       | Exhaust page                       | exhaust.html
+| products                         | external.html                      | External page                      |
+| products                         | fuel.html                          | Fuel page                          |
+| products                         | fuel_pipes.html                    | Fuel pipes page                    | fuel.html
+| products                         | fuel_tank.html                     | Fuel pump & tank page              | fuel.html
+| products                         | gearbox.html                       | Gearbox mk3 page                   | clutch.html
+| products                         | gearbox_1500.html                  | Gearbox 1500 page                  | gearbox.html
+| products                         | gearbox_mk4.html                   | Gearbox mk4 page                   | gearbox.html
+| products                         | hardtop.html                       | Hardtop page                       | interior.html
+| products                         | heating.html                       | Heating page                       | electrical.html
+| products                         | hood.html                          | Hood page                          | interior.html
+| products                         | ignition.html                      | Ignition page                      | electrical.html
+| products                         | inner_body.html                    | Inner body page                    | body.html
+| products                         | inst_sw.html                       | Instruments & switches page        |
+| products                         | interior.html                      | Interior page                      | electrical.html
+| products                         | lamps.html                         | Lamps page                         | electrical.html
+| products                         | mouldings.html                     | Mouldings page                     | external.html
+| products                         | oilsump.html                       | Oil Sump page                      | engine.html
+| products                         | outer_body.html                    | Outer Body                         | body.html
+| products                         | overdrive.html                     | Overdrive page                     | clutch.html
+| products                         | overdrive_j.html                   | Overdrive J Type page              | overdrive.html
+| products                         | parts_cards.html                   | Parts Cards page                   |
+| products                         | rad_grill.html                     | Radiator grill page                | external.html
+| products                         | road_wheels.html                   | Road Wheels page                   | road_wheels.hrml
+| products                         | seats.html                         | Seats page                         | interior.html
+| products                         | steering.html                      | Steering page                      |
+| products                         | suspension.html                    | Suspension page                    | steering.html
+| products                         | trim_kits.html                     | Trim Kits page                     | interior.html
+| products                         | windscreen.html                    | Windscreen page                    | external.html
+| products                         | wire_int.html                      | Wiring internal page               | electrical.html
+| products                         | wshld_wipe_wash.html               | Windshield, wipwers & washers page | electrical.html
+| templates/registration           | password_reset_complete.html       | Password reset complete page       |
+| templates/registration           | password_reset_confirm.html        | Password reset confirm page        |
+| templates/registration           | password_reset_done.html           | Password reset done page           |
+| templates/registration           | password_reset_email.html          | Password reset email page          |
+| templates/registration           | password_reset_form.html           | Password reset complete page       |
+| templates                        | base.html                          | base page                          |
+| templates                        | bttop.html                         | Back to the top page               |
+| templates                        | footer.html                        | Footer page                        |
+| templates                        | messages.html                      | Message page                       |
+| templates                        | navbar.html                        | Navigation bar page                |
+
+
 </details>
 
 <details>
@@ -2408,8 +2440,6 @@ Step 12 - Testing
 The project guidelines stated **test your project extensively**, All of my testing / bug fixes was done from a manual testing approach using print() method ,Building some test* python code when I wanted to create a new piece of logic / functionality or had a issue.   
 
 ### Manual Testing
-
-
 
 **Register**    
 I tested to make sure the following worked as designed and <span style="color:green">All passed</span>
@@ -2818,9 +2848,9 @@ Testing for this project was implemented manually and the majority of the testin
 
 ### Refactoring
 Refactoring was implemented while developing this project and I am sure there are things that can be done to streamline code even more, in an additional phase of this project.
-1. Creating dynamic product templates.
+1. Creating dynamic product templates for scalablity.
 2. Class based views 
-3. Add more error validation to forms
+3. Add more detailed error validation to forms
 </details>
 
 <details>
@@ -3362,7 +3392,7 @@ This has now deployed our app to Heroku.
   for helping me with a soulution to have unique ID's for my parts card `like` and `disliked` rating buttons
 - Django Admin Panel changes (Add columns) solution was used <br> https://www.youtube.com/watch?v=KqbvhPLGJwA&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj&index=38
 - Django Admin Panel changes (Sort order) solution was used  <br> https://www.youtube.com/watch?v=j-CCNJmZQ6c&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj&index=39
-- Created my own maxlength password validator (`accounts/validator.py`) <br> How to Create Your Own Django Password Validator <br> https://sixfeetup.com/blog/how-to-create-custom-password-validators-in-django
+- Created my own maxlength password validator `accounts/validator.py` <br> How to Create Your Own Django Password Validator <br> https://sixfeetup.com/blog/how-to-create-custom-password-validators-in-django
 - scrollable navbar <br>
 https://codepen.io/ondrejsvestka/pen/BZJEpp
 
