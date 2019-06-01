@@ -83,66 +83,6 @@ def charts(request):
 	# Convert to JSON
 	dump1 = json.dumps(chart1)
 	
-	#----------------------------------------
-	#CREATE Chart for number of products sold
-	#----------------------------------------
-	dataset1 = \
-	OrderLineItem.objects.values('quantity')\
-	    		 .order_by('quantity')\
-	             .annotate(count=Count('quantity'))
-	
-	# Create lists
-	count_series1 = list()
-	
-	# Append the values & formatting
-	for entry in dataset1:
-		count_series1.append(entry['count'])
-	
-	# Highcharts Configuration	
-	count_series1 = {
-		'name':'Products Sold',
-	    'data':count_series1
-	}
-	
-	chart2 = {
-		'chart': {
-			'type':'gauge',
-			'borderRadius': 20,
-		    'borderWidth':2,
-		},
-		'series': [count_series1],
-        'title': {
-        	'text':'Products Sold'
-        },
-        'pane': {
-        	'startAngle':-90,
-            'endAngle':90,
-            'backgroundColor':'#DDD',
-        },
-        'yAxis': {
-        	'min':0,
-        	'max':100,
-        	'minorTickInterval':5,
-        	'minorTickWidth':1,
-        	'minorTickLength':10,
-        	'minorTickPosition':'inside',
-        	'minorTickColor':'#55BF3B',
-        	'tickPixelInterval':60,
-        	'tickWidth':2,
-        	'tickPosition':'inside',
-        	'tickLength':'inside',
-        	'tickColor':'#666'
-        },
-        'credits': {
-        	'position': {
-        		'align':'left','x':50
-        	 }
-        },  
-    }
-        
-	# Convert to JSON
-	dump2 = json.dumps(chart2)
-	
 	#-----------------------------------------
 	#CREATE Chart for number of orders by date
 	#-----------------------------------------
@@ -343,4 +283,4 @@ def charts(request):
 	# Convert to JSON
 	dump5 = json.dumps(chart5)
 	
-	return render(request, 'charts.html', {'chart1': dump1, 'chart2': dump2, 'chart3': dump3, 'chart4': dump4, 'chart5': dump5})
+	return render(request, 'charts.html', {'chart1': dump1, 'chart3': dump3, 'chart4': dump4, 'chart5': dump5})

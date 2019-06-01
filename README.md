@@ -10,7 +10,7 @@ GitHub: https://github.com/bennettpe/fullstack-frameworks-django-website.git <br
 This is the milestone project that I have created for the **“Full Stack Frameworks with Django”** module, which is part of  “Full Stack Web Development Course” offered by Code Institute.
 
 ## Project Brief
-This project will be built using knowledge which have been learnt within the Full Stack Frameworks with Django module and the other previous eight modules.
+This project will be built using knowledge which has been learnt within the "Full Stack Frameworks with Django module" and the other eight previous modules.
 
 For project brief see [Project Brief documentation](static/wireframe/My_Full_Stack_Frameworks_with_Django_Project_Brief.pdf) <br>
 
@@ -78,18 +78,25 @@ Diagram of website database schema
 
 
 ### Functional Flow    
-On the **navbar** there are the following eight icons (Home, About, Parts, Register, Log in, Cart, Contact, Charts) <br> and on the page there are Register and log in buttons.    
+On the **navbar** there are the following eight icons (**Home**, **About**, **Parts**, **Register**, **Log in**, **Cart**, **Contact**, **Charts**) <br> and on the page there are **Register** and **log in** buttons.    
 Unregistered users can search parts by, clicking on parts which then shows a parts category dropdown. <br>
 The **Register** button allows uses to register username and password.   
 The **sign in** button allows users to sign in.
 once signed in the login and register icon are removed and a Log out icon is shown with userid. <br>
-When logging out a message is displayed saying **You have successfully been logged out**. <br>
-When logging in as **admin** a icon is shown on the navbar to access the django admin panel.
+When **logging out** a message is displayed saying **You have successfully been logged out**. <br>
+When **logging in** as **admin** a icon is shown on the navbar to access the django admin panel.
 
 ![Functional flow](static/wireframe/My_Full_Stack_Frameworks_with_Django_Functional_Flow.jpg)   
 Diagram of website functional flow  
 
-### Technologies Used
+### Technologies
+<details>
+<summary>
+Technologies Used in this project 
+</summary>
+<p>
+    
+   
 Technologies used in the construction of this project include,  
 * [Badel](https://pypi.org/project/Babel/) is a collection of tools for internationalizing Python applications.
 * [Bootstrap](https://getbootstrap.com/) is a framework for building responsive, mobile-first websites.
@@ -106,7 +113,7 @@ Technologies used in the construction of this project include,
 * [Django](https://www.djangoproject.com/download/) is a Python-based open-source web framework, which follows the model-template-view architectural pattern.
 * [Django-Forms-Bootstrap](https://github.com/pinax/django-forms-bootstrap) is a simple bootstrap filter for Django forms.
 * [Django-Storages](https://pypi.org/project/django-storages/) is a collection of custom storage backends for Django.
-* [Django-Phonenumber-Field](https://pypi.org/project/django-phonenumber-field/) is a Django library which interfaces with phonenumbers to validate, convert phone numbers.
+* [Django-Phonenumber-Field](https://pypi.org/project/django-phonenumber-field/) is a Django library which interfaces with phonenumbers to validate, convert phone nums.
 * [Phonenumbers](https://github.com/daviddrysdale/python-phonenumbers) is a Python port of Google's libphonenumber library 
 * [Dj-database-url](https://pypi.org/project/dj-database-url/) is a Django utility to utilize the 12factor inspired DATABASE_URL env va to configure your Django app.
 * [Font Awesome](https://fontawesome.com/) is a font and icon toolkit.
@@ -136,7 +143,8 @@ Technologies used in the construction of this project include,
 * [Stripe](https://stripe.com/gb) is a powerful and flexible tools for internet commerce.
 * [Travis](https://travis-ci.com/) is a hosted continuous integration service used to build and test software projects hosted at GitHub.
 * [Urllib3](https://pypi.org/project/urllib3/) is a HTTP library with thread-safe connection pooling, file post, and more.
-
+</details>
+    
 ## Setting up Project Enviroment
 <details>
 <summary>
@@ -2786,12 +2794,11 @@ Triumphant Triumphs
 **/charts/**
 I tested to make sure the following worked as designed and <span style="color:green">All passed</span> <br>  
 * Click on **Home** icon <br> (url to `/index/`) <br>
-There are 5 charts as follows:
+There are 4 charts as follows:
 
 * Products by Categories (Showing number of parts per Category)
 * Product Ratings (Showing Total number of Disliked / Liked)
 * Product Ratings by user (Showing Total number of disliked / Liked by user)
-* Products Sold (Showing the number of Products sold)
 * Orders by Date (Showing Total number of orders by date)
 
 
@@ -3371,7 +3378,6 @@ This has now deployed our app to Heroku.
 
 ### Credits
 
-#### Content
 
 #### Media
 - Bootstap theme (Sandstone) taken from [bootswatch](https://bootswatch.com/sandstone/)
@@ -3386,10 +3392,10 @@ This has now deployed our app to Heroku.
 - I would like to thank my fellow students for their help with my (Advice, Bug fixing, Issues, Queries) via [Slack](https://code-institute-room.slack.com/messages)
 - I would also like to thank my Code Institute Mentor **Chris Zielinski** (Display name ckz8780_mentor)
 - I would also like to thank my Code Institute Student **John Longgately** (Display name johnL3_alumni) <br>
-  for helping me with a soulution to have unique ID's for my parts card `like` and `disliked` rating buttons
+  for helping me with a solution to have unique ID's for my parts card `like` and `disliked` rating buttons
 - Django Admin Panel changes (Add columns) solution was used <br> https://www.youtube.com/watch?v=KqbvhPLGJwA&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj&index=38
 - Django Admin Panel changes (Sort order) solution was used  <br> https://www.youtube.com/watch?v=j-CCNJmZQ6c&list=PLw02n0FEB3E3VSHjyYMcFadtQORvl1Ssj&index=39
 - Created my own maxlength password validator `accounts/validator.py` <br> How to Create Your Own Django Password Validator <br> https://sixfeetup.com/blog/how-to-create-custom-password-validators-in-django
-- scrollable navbar <br>
+- Scrollable navbar <br>
 https://codepen.io/ondrejsvestka/pen/BZJEpp
 
