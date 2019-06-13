@@ -1,7 +1,5 @@
 ### My ignored directory / files ####################
 *.sqlite3
-__pycache__
-.~c9*
 env.py
 *.png
 db.json
