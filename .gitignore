@@ -4,13 +4,8 @@ env.py
 *.png
 db.json
 
-# Created by https://www.gitignore.io/api/cloud9,django,python
-# Edit at https://www.gitignore.io/?templates=cloud9,django,python
-
-### Cloud9 #########################################
-# Cloud9 IDE - http://c9.io
-.c9revisions
-.c9
+# Created by https://www.gitignore.io/api/django,python
+# Edit at https://www.gitignore.io/?templates=django,python
 
 ### Django ###
 *.log
@@ -145,4 +140,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# End of https://www.gitignore.io/api/cloud9,django,python
+# End of https://www.gitignore.io/api/django,python
