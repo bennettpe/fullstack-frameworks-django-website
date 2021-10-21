@@ -1,6 +1,6 @@
 astroid==1.6.6
 awscli==1.16.169
-Babel==2.7.0
+Babel==2.9.1
 boto3==1.9.144
 botocore==1.12.167
 certifi==2019.3.9
